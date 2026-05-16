@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyundai Mérida - Concesionario Oficial</title>
+<meta name="description" content="Concesionario oficial Hyundai en Mérida, Venezuela. Conoce nuestra gama de vehículos, solicita financiamiento y agenda tu prueba de manejo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #002c5f;
+  --primary-light: #003f7f;
+  --accent: #00a5cf;
+  --accent-light: #e6f7fc;
+  --dark: #1a1a2e;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  --white: #ffffff;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--dark);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* Navbar */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--gray-200);
+  transition: var(--transition);
+}
+.navbar.scrolled { box-shadow: var(--shadow); }
+.navbar .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.navbar .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.navbar .logo svg { height: 28px; }
+.navbar .logo span { font-size: 18px; font-weight: 700; color: var(--primary); }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: var(--gray-700); font-size: 14px; font-weight: 500;
+  transition: var(--transition); position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+  background: var(--accent); transition: var(--transition);
+}
+.nav-links a:hover { color: var(--primary); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links .cta-btn {
+  background: var(--primary); color: var(--white) !important; padding: 10px 24px;
+  border-radius: 8px; font-weight: 600; transition: var(--transition);
+}
+.nav-links .cta-btn:hover { background: var(--primary-light); transform: translateY(-1px); }
+.nav-links .cta-btn::after { display: none; }
+
+.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.menu-toggle span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: var(--transition); }
+.menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Hero */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  background: linear-gradient(135deg, #002c5f 0%, #003f7f 40%, #004d99 100%);
+  position: relative; overflow: hidden; padding-top: 72px;
+}
+.hero::before {
+  content: ''; position: absolute; top: -50%; right: -30%; width: 80%; height: 200%;
+  background: radial-gradient(ellipse, rgba(0,165,207,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding-top: 60px; padding-bottom: 60px; }
+.hero-content h1 {
+  font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 20px;
+}
+.hero-content h1 span { color: var(--accent); }
+.hero-content p { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 32px; max-width: 480px; line-height: 1.7; }
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
+  border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none;
+  transition: var(--transition); cursor: pointer; border: none;
+}
+.btn-primary { background: var(--accent); color: var(--white); }
+.btn-primary:hover { background: #0090b5; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,165,207,0.3); }
+.btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
+.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+.hero-image { display: flex; justify-content: center; align-items: center; }
+.hero-image img { max-width: 100%; height: auto; filter: drop-shadow(0 20px 60px rgba(0,0,0,0.3)); animation: float 6s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+
+.hero-stats { display: flex; gap: 40px; margin-top: 40px; }
+.hero-stat h3 { font-size: 28px; font-weight: 700; color: var(--white); }
+.hero-stat p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 0; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Sections */
+.section { padding: 100px 0; }
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-header h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; color: var(--primary); margin-bottom: 16px; }
+.section-header p { font-size: 17px; color: var(--gray-600); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+.section-header .subtitle { display: inline-block; font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+
+/* Category Tabs */
+.categories { display: flex; justify-content: center; gap: 8px; margin-bottom: 48px; flex-wrap: wrap; }
+.cat-btn {
+  padding: 10px 24px; border-radius: 100px; border: 1px solid var(--gray-300);
+  background: var(--white); color: var(--gray-700); font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: var(--transition); font-family: inherit;
+}
+.cat-btn:hover { border-color: var(--accent); color: var(--accent); }
+.cat-btn.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
+
+/* Models Grid */
+.models-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+.model-card {
+  background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
+  border: 1px solid var(--gray-200); transition: var(--transition);
+}
+.model-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.model-card-image {
+  height: 220px; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--gray-100), var(--white)); padding: 24px;
+  position: relative; overflow: hidden;
+}
+.model-card-image img { max-width: 90%; max-height: 90%; object-fit: contain; transition: var(--transition); }
+.model-card:hover .model-card-image img { transform: scale(1.05); }
+.model-card-badge {
+  position: absolute; top: 16px; left: 16px; background: var(--accent); color: var(--white);
+  padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.model-card-body { padding: 24px; }
+.model-card-body h3 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+.model-card-body .variant { font-size: 14px; color: var(--gray-500); margin-bottom: 16px; }
+.model-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.model-spec { }
+.model-spec .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-500); font-weight: 500; }
+.model-spec .value { font-size: 14px; font-weight: 600; color: var(--dark); }
+.price-breakdown { margin: 12px 0; padding: 12px; background: var(--gray-100); border-radius: 8px; font-size: 13px; }
+.price-row { display: flex; justify-content: space-between; padding: 3px 0; color: var(--gray-600); }
+.price-row.total { border-top: 1px solid var(--gray-300); margin-top: 4px; padding-top: 6px; font-weight: 700; color: var(--primary); font-size: 14px; }
+.model-card-actions { display: flex; gap: 8px; }
+.model-card-actions .btn { flex: 1; justify-content: center; padding: 10px 16px; font-size: 13px; }
+.btn-small { padding: 10px 16px; font-size: 13px; border-radius: 8px; }
+
+/* Simulator */
+.simulator-section { background: var(--gray-100); }
+.simulator {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+  background: var(--white); border-radius: var(--radius-lg); padding: 48px;
+  box-shadow: var(--shadow);
+}
+.simulator-form h3 { font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+.simulator-form > p { color: var(--gray-600); margin-bottom: 32px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 14px; font-weight: 500; color: var(--gray-700); margin-bottom: 6px; }
+.form-group select, .form-group input {
+  width: 100%; padding: 12px 16px; border: 1px solid var(--gray-300); border-radius: 8px;
+  font-size: 15px; font-family: inherit; color: var(--dark); background: var(--white);
+  transition: var(--transition);
+}
+.form-group select:focus, .form-group input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,165,207,0.15); }
+.form-group input[type="range"] { padding: 0; border: none; height: 6px; appearance: none; background: var(--gray-200); border-radius: 3px; }
+.form-group input[type="range"]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); cursor: pointer; box-shadow: 0 2px 8px rgba(0,165,207,0.3); }
+.range-labels { display: flex; justify-content: space-between; font-size: 13px; color: var(--gray-500); margin-top: 4px; }
+.simulator-result { background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: var(--radius); padding: 32px; color: var(--white); }
+.simulator-result h4 { font-size: 18px; font-weight: 600; margin-bottom: 24px; opacity: 0.9; }
+.result-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.result-item:last-child { border-bottom: none; }
+.result-item .label { font-size: 14px; opacity: 0.8; }
+.result-item .value { font-size: 16px; font-weight: 600; }
+.result-item .value.highlight { font-size: 22px; color: var(--accent); }
+.result-total { margin-top: 16px; padding-top: 16px; border-top: 2px solid rgba(255,255,255,0.2); }
+.result-total .value { font-size: 28px !important; font-weight: 700 !important; color: var(--accent); }
+
+/* Why Us */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+.feature-card {
+  text-align: center; padding: 40px 24px; border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200); transition: var(--transition);
+}
+.feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.feature-icon { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 28px; }
+.feature-card h3 { font-size: 18px; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
+.feature-card p { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
+
+/* Contact */
+.contact-section { background: var(--primary); color: var(--white); }
+.contact-section .section-header h2 { color: var(--white); }
+.contact-section .section-header p { color: rgba(255,255,255,0.7); }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.contact-card {
+  background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+  border-radius: var(--radius); padding: 32px; text-align: center;
+  border: 1px solid rgba(255,255,255,0.1); transition: var(--transition);
+}
+.contact-card:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+.contact-card .icon { font-size: 32px; margin-bottom: 16px; }
+.contact-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.contact-card p, .contact-card a { font-size: 14px; color: rgba(255,255,255,0.8); text-decoration: none; line-height: 1.6; }
+.contact-card a:hover { color: var(--accent); }
+
+/* Footer */
+.footer {
+  background: var(--dark); color: rgba(255,255,255,0.6); padding: 48px 0 24px;
+}
+.footer .container { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.footer h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 16px; }
+.footer p, .footer a { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; line-height: 2; display: block; }
+.footer a:hover { color: var(--accent); }
+.footer-logo { margin-bottom: 16px; }
+.footer-logo svg { height: 24px; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px; padding-top: 24px; text-align: center; font-size: 13px; }
+
+/* WhatsApp Float */
+.whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 999;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; color: white; display: flex; align-items: center; justify-content: center;
+  text-decoration: none; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: var(--transition); font-size: 28px;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5); }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
+  .nav-links {
+    position: fixed; top: 72px; left: 0; right: 0; background: var(--white);
+    flex-direction: column; padding: 24px; gap: 16px; border-bottom: 1px solid var(--gray-200);
+    transform: translateY(-100%); opacity: 0; pointer-events: none; transition: var(--transition);
+  }
+  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+  .hero .container { grid-template-columns: 1fr; text-align: center; }
+  .hero-content p { margin: 0 auto 32px; }
+  .hero-buttons { justify-content: center; }
+  .hero-stats { justify-content: center; }
+  .hero-image { display: none; }
+  .simulator { grid-template-columns: 1fr; padding: 24px; }
+  .footer .container { grid-template-columns: 1fr 1fr; }
+  .models-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .footer .container { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; gap: 16px; align-items: center; }
+  .model-specs { grid-template-columns: 1fr; }
+}
+
+/* Animations */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#" class="logo">
+      <svg viewBox="0 0 126 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:24px">
+        <path d="M32.8744 9.28159C33.1278 6.45959 30.6987 4.34324 28.5529 3.13952C27.7538 2.70378 26.9137 2.35126 26.0636 2.02915C22.2582 0.690924 17.7849 0.22417 13.535 0.753258C9.61795 1.30292 5.81315 2.25731 2.82726 5.03845C1.40064 6.39726 0.550604 8.44173 1.24849 10.4021C2.15962 12.789 4.58871 14.3753 6.75424 15.2993C13.1603 17.9558 21.8737 17.8615 28.0773 14.8218C30.2024 13.7225 32.5809 11.8963 32.8744 9.28159ZM25.1854 3.11872C25.1402 3.09951 25.0946 3.08017 25.0515 3.05661C22.5116 2.33008 19.8396 1.89405 17.0062 1.91552C15.6904 1.9355 14.7391 3.19171 14.2027 4.25973C13.7983 5.11092 13.3326 6.12764 13.6761 7.10291C13.8585 7.42471 14.1521 7.64243 14.4758 7.72564C15.5667 7.9702 16.5763 7.67526 17.5639 7.38673C17.8313 7.30862 18.0971 7.23098 18.3624 7.16464C20.811 6.34566 23.2098 5.41156 25.3043 3.73094C25.3217 3.70918 25.3417 3.68743 25.3621 3.66523C25.4484 3.57121 25.5419 3.46936 25.4763 3.32652C25.4113 3.21465 25.2994 3.16712 25.1854 3.11872ZM11.8038 2.71422L11.8446 2.55824C11.7818 2.4392 11.6319 2.44163 11.5001 2.44376C11.4829 2.44404 11.4661 2.44431 11.4498 2.44431C10.0939 2.66203 8.80835 3.04617 7.57373 3.52336C5.48879 4.42615 2.98929 5.75454 2.37199 8.24399C1.98799 10.1531 3.32326 11.7615 4.80108 12.7573C4.87931 12.7932 4.959 12.849 5.03995 12.9057C5.2624 13.0616 5.49438 13.2242 5.73199 12.9959C7.39191 9.4164 9.14289 5.81628 11.8038 2.71422ZM31.5083 9.54107C31.8931 7.79812 30.7595 6.3558 29.5045 5.29763C29.4115 5.23402 29.3211 5.16298 29.2304 5.09175C28.9662 4.88413 28.7 4.67496 28.3612 4.64387C28.2798 4.67519 28.2091 4.71635 28.1384 4.79896C27.6529 5.89919 27.1266 7.01999 26.5593 8.10919C25.3352 10.5271 23.9385 12.913 22.0962 15.0395L22.0659 15.1848C22.0826 15.2869 22.1734 15.2916 22.2502 15.2956C22.2674 15.2965 22.2839 15.2974 22.2987 15.2993C23.5695 15.1773 24.7425 14.7759 25.9047 14.3781L25.9729 14.3547C28.1483 13.4836 30.8805 12.114 31.5083 9.54107ZM19.4654 13.9219C19.9759 12.9669 20.5071 11.9732 20.2847 10.7964C20.123 10.3603 19.6677 10.0388 19.2124 9.9768C18.1155 9.83212 17.0787 10.1387 16.1022 10.4274L16.0849 10.4325C15.9672 10.4729 15.8495 10.5132 15.7318 10.5536C13.2169 11.4149 10.6918 12.2797 8.55555 14.0544C8.45431 14.1478 8.38362 14.2817 8.43424 14.4275C8.49504 14.5316 8.60646 14.6035 8.71729 14.6351C11.1665 15.3923 13.8076 15.8185 16.5105 15.8597C17.7145 15.9838 18.7164 15.1537 19.3233 14.1892C19.37 14.1004 19.4176 14.0113 19.4654 13.9219ZM39 2.50023H41.7345V7.62257H47.8509V2.50023H50.5853V15.4972H47.8509V10.1934H41.7345V15.4972H39V2.50023ZM58.6991 7.81358L55.2712 2.50023H51.9528L57.3302 10.8086V15.4972H60.0649V10.8094L65.4059 2.50023H62.0854L58.6991 7.81358ZM75.5823 15.4972H66.7725V2.50023H69.5066L69.5072 13.0261H74.3052C75.1549 13.0261 75.2851 12.8912 75.2851 11.7788V2.50023H78.019V12.3635C78.0542 14.9735 77.3348 15.4972 75.5823 15.4972ZM126 15.5002H123.265V2.50291H126V15.5002ZM80.7529 2.50023H89.5636C90.8193 2.50023 92.0355 2.68228 91.9994 5.30747V15.4972H89.2655V6.24163C89.2655 5.12243 89.1358 4.88665 88.2856 4.88665H83.4876V15.4972H80.7529V2.50023ZM106.092 5.30747V12.342C106.092 14.581 104.875 15.4972 103.358 15.4972H94.7333V2.50023H103.358C105.687 2.50023 106.092 4.03039 106.092 5.30747ZM103.325 6.08972C103.325 5.37791 102.905 4.88665 102.17 4.88665H97.468V13.0076L102.17 13.0073C103.241 12.9514 103.325 12.2874 103.325 11.7606V6.08972ZM120.531 2.50232V15.5002H117.798V11.7639H111.56V15.5002H108.826V5.31075C108.826 3.51019 109.532 2.50232 111.56 2.50232H120.531ZM117.798 4.88934H112.663C111.801 4.94217 111.56 5.16272 111.56 6.24402V9.22496H117.798V4.88934Z" fill="#002c5f"/>
+      </svg>
+      <span>Hyundai Mérida</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#modelos">Modelos</a></li>
+      <li><a href="#simulador">Simulador</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="https://wa.me/584161234567" class="cta-btn">WhatsApp</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Hyundai <span>Mérida</span><br>Tu concesionario de confianza</h1>
+      <p>Descubre la gama completa de vehículos Hyundai en Mérida. Innovación, seguridad y diseño coreano para ti. Solicita tu prueba de manejo.</p>
+      <div class="hero-buttons">
+        <a href="#modelos" class="btn btn-primary">Ver Modelos</a>
+        <a href="#simulador" class="btn btn-outline">Simular Crédito</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><h3>10</h3><p>Modelos Disponibles</p></div>
+        <div class="hero-stat"><h3>3 años</h3><p>Garantía</p></div>
+        <div class="hero-stat"><h3>24/7</h3><p>Post-Venta</p></div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson Premium">
+    </div>
+  </div>
+</section>
+
+<!-- Modelos -->
+<section class="section" id="modelos">
+  <div class="container">
+    <div class="section-header">
+      <span class="subtitle">Nuestra Gama</span>
+      <h2>Modelos Hyundai</h2>
+      <p>Explora nuestra completa línea de vehículos. Encuentra el Hyundai perfecto para ti en Mérida.</p>
+    </div>
+    <div class="categories" id="categories">
+      <button class="cat-btn active" data-category="all">Todos</button>
+      <button class="cat-btn" data-category="hatchback">Hatchback</button>
+      <button class="cat-btn" data-category="sedan">Sedán</button>
+      <button class="cat-btn" data-category="suv">SUV</button>
+      <button class="cat-btn" data-category="mvp">MVP</button>
+    </div>
+    <div class="models-grid" id="modelsGrid"></div>
+  </div>
+</section>
+
+<!-- Simulador -->
+<section class="section simulator-section" id="simulador">
+  <div class="container">
+    <div class="section-header">
+      <span class="subtitle">Simulador</span>
+      <h2>Simula tu Financiamiento</h2>
+      <p>Calcula cuotas mensuales personalizadas para el vehículo de tus sueños.</p>
+    </div>
+    <div class="simulator">
+      <div class="simulator-form">
+        <h3>Calcula tu cuota</h3>
+        <p>Completa los campos para recibir una estimación personalizada.</p>
+        <div class="form-group">
+          <label for="simModel">Modelo</label>
+          <select id="simModel"></select>
+        </div>
+        <div class="form-group">
+          <label for="simPrice">Precio del vehículo (USD)</label>
+          <input type="text" id="simPrice" readonly>
+        </div>
+        <div class="form-group">
+          <label for="simDown">Inicial: <span id="downLabel">30%</span></label>
+          <input type="range" id="simDown" min="10" max="60" value="30">
+          <div class="range-labels"><span>10%</span><span>60%</span></div>
+        </div>
+        <div class="form-group">
+          <label for="simTerm">Plazo: <span id="termLabel">24 meses</span></label>
+          <input type="range" id="simTerm" min="12" max="60" value="24" step="12">
+          <div class="range-labels"><span>12 meses</span><span>60 meses</span></div>
+        </div>
+      </div>
+      <div class="simulator-result" id="simResult">
+        <h4>Resultado de simulación</h4>
+        <div class="result-item"><span class="label">Precio del vehículo</span><span class="value" id="resPrice">$0</span></div>
+        <div class="result-item"><span class="label">Inicial (<span id="resDownPct">30</span>%)</span><span class="value" id="resDown">$0</span></div>
+        <div class="result-item"><span class="label">Monto a financiar</span><span class="value" id="resFinance">$0</span></div>
+        <div class="result-item"><span class="label">Plazo</span><span class="value" id="resTerm">24 meses</span></div>
+        <div class="result-item"><span class="label">Tasa de interés estimada</span><span class="value">12% anual</span></div>
+        <div class="result-item result-total"><span class="label">Cuota mensual estimada</span><span class="value highlight" id="resMonthly">$0</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Nosotros -->
+<section class="section" id="nosotros">
+  <div class="container">
+    <div class="section-header">
+      <span class="subtitle">¿Por qué elegirnos?</span>
+      <h2>Hyundai Mérida</h2>
+      <p>Somos tu concesionario oficial Hyundai en Mérida, Venezuela. Respaldados por más de 30 años de presencia de Hyundai en el país.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <div class="feature-icon" style="background:var(--accent-light);color:var(--accent)">&#9670;</div>
+        <h3>Garantía de 3 años</h3>
+        <p>Todos nuestros vehículos nuevos incluyen garantía de 3 años o 125,000 km.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon" style="background:#e8f5e9;color:#2e7d32">&#36;</div>
+        <h3>Financiamiento flexible</h3>
+        <p>Planes desde 12 hasta 36 meses. Tasa preferencial para residentes de Mérida.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon" style="background:#fff3e0;color:#e65100">&#9881;</div>
+        <h3>Servicio post-venta</h3>
+        <p>Taller especializado con repuestos originales y personal certificado Hyundai.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon" style="background:#f3e5f5;color:#7b1fa2">&#9733;</div>
+        <h3>Entrega inmediata</h3>
+        <p>Contamos con stock disponible en nuestros showrooms para entrega en Mérida.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="section contact-section" id="contacto">
+  <div class="container">
+    <div class="section-header">
+      <span class="subtitle" style="color:var(--accent)">Contacto</span>
+      <h2>Visítanos en Mérida</h2>
+      <p>Estamos ubicados en el centro de Mérida. Agenda tu prueba de manejo o recibe asesoría personalizada.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="icon">&#128205;</div>
+        <h3>Ubicación</h3>
+        <p>Av. Principal, Sector Centro<br>Mérida, Estado Mérida<br>Venezuela</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">&#128222;</div>
+        <h3>Teléfonos</h3>
+        <a href="tel:+584161234567">+58 416-1234567</a>
+        <a href="tel:+582742345678">+58 274-2345678</a>
+      </div>
+      <div class="contact-card">
+        <div class="icon">&#128231;</div>
+        <h3>Email</h3>
+        <a href="mailto:info@hyundaimerida.com">info@hyundaimerida.com</a>
+        <a href="mailto:ventas@hyundaimerida.com">ventas@hyundaimerida.com</a>
+      </div>
+      <div class="contact-card">
+        <div class="icon">&#128337;</div>
+        <h3>Horarios</h3>
+        <p>Lun - Vie: 8:00 - 18:00<br>Sáb: 9:00 - 17:00<br>Dom: Cita previa</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div>
+      <div class="footer-logo">
+        <svg viewBox="0 0 126 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:24px">
+          <path d="M32.8744 9.28159C33.1278 6.45959 30.6987 4.34324 28.5529 3.13952C27.7538 2.70378 26.9137 2.35126 26.0636 2.02915C22.2582 0.690924 17.7849 0.22417 13.535 0.753258C9.61795 1.30292 5.81315 2.25731 2.82726 5.03845C1.40064 6.39726 0.550604 8.44173 1.24849 10.4021C2.15962 12.789 4.58871 14.3753 6.75424 15.2993C13.1603 17.9558 21.8737 17.8615 28.0773 14.8218C30.2024 13.7225 32.5809 11.8963 32.8744 9.28159Z" fill="white"/>
+        </svg>
+      </div>
+      <p>Concesionario oficial Hyundai en Mérida, Venezuela. Excelencia automotriz con respaldo global.</p>
+    </div>
+    <div>
+      <h4>Modelos</h4>
+      <a href="#modelos">Grand i10</a>
+      <a href="#modelos">Elantra</a>
+      <a href="#modelos">Accent</a>
+      <a href="#modelos">Tucson</a>
+      <a href="#modelos">Creta</a>
+      <a href="#modelos">Palisade</a>
+    </div>
+    <div>
+      <h4>Servicios</h4>
+      <a href="#simulador">Simulador</a>
+      <a href="#contacto">Prueba de manejo</a>
+      <a href="#contacto">Financiamiento</a>
+      <a href="#contacto">Post-venta</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="#">Aviso de privacidad</a>
+      <a href="#">Términos y condiciones</a>
+      <a href="#">Política de garantía</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">&copy; 2026 Hyundai Mérida. Todos los derechos reservados. Hyundai es una marca registrada de Hyundai Motor Company.</div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/584161234567?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20veh%C3%ADculos%20Hyundai%20en%20M%C3%A9rida" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">&#128172;</a>
+
+<script>
+const models = [
+  { name: 'Grand i10 1.2L M/T GL', variant: 'M/T 5 vel', category: 'hatchback', price: 20640.04, pvp: 16107.00, iva: 2577.12, igtf: 483.21, tramites: 1472.71, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69856148203811e31988110b_Grandi10-Hatchback-GL-Azul.png' },
+  { name: 'Grand i10 1.2L A/T GL', variant: 'A/T 4 vel', category: 'hatchback', price: 22681.10, pvp: 17780.00, iva: 2844.80, igtf: 533.40, tramites: 1522.90, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823fe186892428b7a8fab3_Grandi10-Hatchback-GL-Plata.png' },
+  { name: 'Grand i10 1.2L A/T GLS', variant: 'A/T 4 vel', category: 'hatchback', price: 25267.50, pvp: 19900.00, iva: 3184.00, igtf: 597.00, tramites: 1586.50, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png' },
+  { name: 'Grand i10 1.2L A/T GLS Sedán', variant: 'A/T 4 vel', category: 'sedan', price: 26261.80, pvp: 20715.00, iva: 3314.40, igtf: 621.45, tramites: 1610.95, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png' },
+  { name: 'Accent 1.5L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 32029.50, pvp: 25073.74, iva: 4011.80, igtf: 752.21, tramites: 2191.75, motor: '1.5L', potencia: '113 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69d444234c01074f6c41678a_Accent-blanco.png' },
+  { name: 'Elantra 2.0L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 41619.56, pvp: 32923.00, iva: 5267.68, igtf: 987.69, tramites: 2441.19, motor: '2.0L', potencia: '156 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/698561c627e39b93b4031662_Elantra-rojo.png' },
+  { name: 'Creta 1.5L A/T GLS', variant: 'A/T 6 vel', category: 'suv', price: 39310.35, pvp: 31030.17, iva: 4964.83, igtf: 930.91, tramites: 2384.45, motor: '1.5L', potencia: '113 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/699dc30fedebb4b0d6d72a19_Creta%20Blanco_.png' },
+  { name: 'Tucson 2.0L A/T 2WD GLS', variant: 'A/T 6 vel', category: 'suv', price: 50130.00, pvp: 39900.00, iva: 6384.00, igtf: 1197.00, tramites: 2649.00, motor: '2.0L', potencia: '154 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png' },
+  { name: 'Tucson 2.0L A/T 4WD GLX', variant: 'A/T 6 vel', category: 'suv', price: 59525.50, pvp: 47600.00, iva: 7616.00, igtf: 1428.00, tramites: 2881.50, motor: '2.0L', potencia: '154 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823c97ec17a7e03309284f_Tucson-blanco.png' },
+  { name: 'Palisade 3.8L A/T 4WD GLS 7P', variant: 'A/T 8 vel', category: 'suv', price: 124063.50, pvp: 100500.00, iva: 16080.00, igtf: 3015.00, tramites: 4468.50, motor: '3.8L', potencia: '291 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695f0af617714685f4d6adc9_Palisade-rojo.png' }
+];
+
+const modelsGrid = document.getElementById('modelsGrid');
+const categoryBtns = document.querySelectorAll('.cat-btn');
+const simModel = document.getElementById('simModel');
+const simPrice = document.getElementById('simPrice');
+const simDown = document.getElementById('simDown');
+const simTerm = document.getElementById('simTerm');
+const downLabel = document.getElementById('downLabel');
+const termLabel = document.getElementById('termLabel');
+
+const resPrice = document.getElementById('resPrice');
+const resDownPct = document.getElementById('resDownPct');
+const resDown = document.getElementById('resDown');
+const resFinance = document.getElementById('resFinance');
+const resTerm = document.getElementById('resTerm');
+const resMonthly = document.getElementById('resMonthly');
+
+function renderModels(category = 'all') {
+  const filtered = category === 'all' ? models : models.filter(m => m.category === category);
+  modelsGrid.innerHTML = filtered.map(m => `
+    <div class="model-card">
+      <div class="model-card-image">
+        <span class="model-card-badge">${m.category.toUpperCase()}</span>
+        <img src="${m.image}" alt="${m.name}" loading="lazy">
+      </div>
+      <div class="model-card-body">
+        <h3>${m.name}</h3>
+        <div class="variant">${m.variant}</div>
+        ${m.pvp ? `
+        <div class="price-breakdown">
+          <div class="price-row"><span>PVP</span><span>$${m.pvp.toFixed(2)}</span></div>
+          <div class="price-row"><span>IVA 16%</span><span>$${m.iva.toFixed(2)}</span></div>
+          <div class="price-row"><span>IGTF 3%</span><span>$${m.igtf.toFixed(2)}</span></div>
+          <div class="price-row"><span>Trámites y gastos</span><span>$${m.tramites.toFixed(2)}</span></div>
+          <div class="price-row total"><span>Total</span><span>$${m.price.toFixed(2)}</span></div>
+        </div>
+        ` : `
+        <div class="model-specs">
+          <div class="model-spec"><span class="label">Motor</span><span class="value">${m.motor}</span></div>
+          <div class="model-spec"><span class="label">Potencia</span><span class="value">${m.potencia}</span></div>
+        </div>
+        `}
+        <div class="model-card-actions">
+          <a href="#simulador" class="btn btn-primary btn-small" onclick="selectModel('${m.name}')">Simular</a>
+          <a href="https://wa.me/584161234567?text=Quiero%20informaci%C3%B3n%20sobre%20${encodeURIComponent(m.name)}" class="btn btn-outline btn-small" style="border-color:var(--gray-300);color:var(--gray-700)">Consultar</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function selectModel(name) {
+  const idx = models.findIndex(m => m.name === name);
+  if (idx >= 0) {
+    simModel.value = idx;
+    simModel.dispatchEvent(new Event('change'));
+  }
+}
+
+categoryBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    categoryBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderModels(btn.dataset.category);
+  });
+});
+
+function updateSimulator() {
+  const idx = parseInt(simModel.value);
+  const model = models[idx];
+  const price = model.price;
+  const downPct = parseInt(simDown.value);
+  const termMonths = parseInt(simTerm.value);
+  const downAmount = price * (downPct / 100);
+  const financeAmount = price - downAmount;
+  const annualRate = 0.12;
+  const monthlyRate = annualRate / 12;
+  const monthlyPayment = financeAmount * (monthlyRate * Math.pow(1 + monthlyRate, termMonths)) / (Math.pow(1 + monthlyRate, termMonths) - 1);
+
+  simPrice.value = `$${price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+  downLabel.textContent = `${downPct}%`;
+  termLabel.textContent = `${termMonths} meses`;
+
+  resPrice.textContent = `$${price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+  resDownPct.textContent = downPct;
+  resDown.textContent = `$${downAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+  resFinance.textContent = `$${financeAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+  resTerm.textContent = `${termMonths} meses`;
+  resMonthly.textContent = `$${Math.round(monthlyPayment).toLocaleString()}/mes`;
+}
+
+// Populate simulator dropdown
+models.forEach((m, i) => {
+  const opt = document.createElement('option');
+  opt.value = i;
+  opt.textContent = `${m.name} - Total: $${m.price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+  simModel.appendChild(opt);
+});
+
+simModel.addEventListener('change', updateSimulator);
+simDown.addEventListener('input', updateSimulator);
+simTerm.addEventListener('input', updateSimulator);
+
+// Init
+renderModels();
+updateSimulator();
+
+// Mobile menu
+document.getElementById('menuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// Close mobile menu on link click
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('menuToggle').classList.remove('active');
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Fade-in animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
