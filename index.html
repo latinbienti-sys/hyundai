@@ -106,9 +106,48 @@ body {
 .btn-primary:hover { background: #0090b5; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,165,207,0.3); }
 .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
 .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
-.hero-image { display: flex; justify-content: center; align-items: center; }
-.hero-image img { max-width: 100%; height: auto; filter: drop-shadow(0 20px 60px rgba(0,0,0,0.3)); animation: float 6s ease-in-out infinite; }
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+.hero-image {
+  display: flex; justify-content: center; align-items: center;
+  position: relative;
+  animation: carEntrance 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+@keyframes carEntrance {
+  0% { opacity: 0; transform: translateX(120px) scale(0.9); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+.hero-image img {
+  max-width: 100%; height: auto;
+  position: relative; z-index: 2;
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 30px 40px rgba(0,0,0,0.35));
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  40% { transform: translateY(-14px) rotate(-0.8deg); }
+  60% { transform: translateY(-10px) rotate(-0.4deg); }
+}
+.hero-image::before {
+  content: ''; position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%);
+  width: 70%; height: 20px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.3) 0%, transparent 70%);
+  z-index: 1;
+  animation: shadowPulse 4s ease-in-out infinite;
+}
+@keyframes shadowPulse {
+  0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 0.8; }
+  40% { transform: translateX(-50%) scaleX(0.85); opacity: 0.4; }
+  60% { transform: translateX(-50%) scaleX(0.9); opacity: 0.5; }
+}
+.hero-image::after {
+  content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  z-index: 3; pointer-events: none;
+  animation: lightSweep 6s ease-in-out infinite;
+}
+@keyframes lightSweep {
+  0%, 100% { left: -100%; }
+  50% { left: 200%; }
+}
 
 .hero-stats { display: flex; gap: 40px; margin-top: 40px; }
 .hero-stat h3 { font-size: 28px; font-weight: 700; color: var(--white); }
