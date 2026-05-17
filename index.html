@@ -90,6 +90,20 @@ body {
   background: radial-gradient(ellipse, rgba(0,165,207,0.15) 0%, transparent 70%);
   pointer-events: none;
 }
+.hero-road {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.25) 100%);
+  pointer-events: none;
+}
+.hero-road-line {
+  position: absolute; top: 40px; left: 0; right: 0; height: 2px;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.3) 0px, rgba(255,255,255,0.3) 40px, transparent 40px, transparent 80px);
+  animation: roadLineScroll 1.5s linear infinite;
+}
+@keyframes roadLineScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-80px); }
+}
 .hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding-top: 60px; padding-bottom: 60px; }
 .hero-content h1 {
   font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 20px;
@@ -108,45 +122,31 @@ body {
 .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 .hero-image {
   display: flex; justify-content: center; align-items: center;
-  position: relative;
-  animation: carEntrance 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-@keyframes carEntrance {
-  0% { opacity: 0; transform: translateX(120px) scale(0.9); }
-  100% { opacity: 1; transform: translateX(0) scale(1); }
+  position: relative; overflow: visible;
 }
 .hero-image img {
   max-width: 100%; height: auto;
   position: relative; z-index: 2;
-  animation: float 4s ease-in-out infinite;
-  filter: drop-shadow(0 30px 40px rgba(0,0,0,0.35));
+  animation: drive 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
 }
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  40% { transform: translateY(-14px) rotate(-0.8deg); }
-  60% { transform: translateY(-10px) rotate(-0.4deg); }
+@keyframes drive {
+  0% { transform: translateX(120px) scale(0.95); opacity: 0; }
+  8% { transform: translateX(0) scale(1); opacity: 1; }
+  15% { transform: translateX(-10px) scale(1); }
+  20% { transform: translateX(0) scale(1); }
+  75% { transform: translateX(0) scale(1); opacity: 1; }
+  85% { transform: translateX(-30px) scale(0.98); opacity: 0.9; }
+  92% { transform: translateX(-80px) scale(0.95); opacity: 0.4; }
+  100% { transform: translateX(120px) scale(0.95); opacity: 0; }
 }
-.hero-image::before {
-  content: ''; position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%);
-  width: 70%; height: 20px;
-  background: radial-gradient(ellipse, rgba(0,0,0,0.3) 0%, transparent 70%);
-  z-index: 1;
-  animation: shadowPulse 4s ease-in-out infinite;
-}
-@keyframes shadowPulse {
-  0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 0.8; }
-  40% { transform: translateX(-50%) scaleX(0.85); opacity: 0.4; }
-  60% { transform: translateX(-50%) scaleX(0.9); opacity: 0.5; }
-}
-.hero-image::after {
-  content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-  z-index: 3; pointer-events: none;
-  animation: lightSweep 6s ease-in-out infinite;
-}
-@keyframes lightSweep {
-  0%, 100% { left: -100%; }
-  50% { left: 200%; }
+@keyframes driveLoop {
+  0% { transform: translateX(120px) scale(0.95); opacity: 0; }
+  5% { transform: translateX(60px) scale(0.98); opacity: 0.5; }
+  10% { transform: translateX(0) scale(1); opacity: 1; }
+  85% { transform: translateX(0) scale(1); opacity: 1; }
+  92% { transform: translateX(-60px) scale(0.98); opacity: 0.5; }
+  100% { transform: translateX(-120px) scale(0.95); opacity: 0; }
 }
 
 .hero-stats { display: flex; gap: 40px; margin-top: 40px; }
@@ -295,6 +295,7 @@ body {
   .hero-buttons { justify-content: center; }
   .hero-stats { justify-content: center; }
   .hero-image { display: none; }
+  .hero-road { height: 60px; }
   .simulator { grid-template-columns: 1fr; padding: 24px; }
   .footer .container { grid-template-columns: 1fr 1fr; }
   .models-grid { grid-template-columns: 1fr; }
@@ -338,6 +339,7 @@ body {
 
 <!-- Hero -->
 <section class="hero" id="inicio">
+  <div class="hero-road"><div class="hero-road-line"></div></div>
   <div class="container">
     <div class="hero-content">
       <h1>Hyundai <span>Mérida</span><br>Tu concesionario de confianza</h1>
