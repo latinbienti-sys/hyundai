@@ -273,6 +273,57 @@ body {
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
 .hidden { display: none; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center;
+  padding: 24px; animation: fadeIn 0.2s ease;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white); border-radius: var(--radius-lg);
+  max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  animation: scaleIn 0.3s ease;
+}
+.modal-image {
+  background: linear-gradient(135deg, var(--gray-100), var(--white));
+  display: flex; align-items: center; justify-content: center; padding: 32px; min-height: 350px;
+}
+.modal-image img { max-width: 100%; max-height: 320px; object-fit: contain; }
+.modal-info { padding: 32px; position: relative; }
+.modal-close {
+  position: absolute; top: 16px; right: 16px; width: 36px; height: 36px;
+  border-radius: 50%; border: none; background: var(--gray-100); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; font-size: 20px;
+  color: var(--gray-600); transition: var(--transition);
+}
+.modal-close:hover { background: var(--gray-200); color: var(--dark); }
+.modal-info h2 { font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 4px; padding-right: 40px; }
+.modal-info .variant { font-size: 14px; color: var(--gray-500); margin-bottom: 20px; }
+.modal-specs { margin-bottom: 20px; }
+.modal-specs h4 { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.specs-table { width: 100%; border-collapse: collapse; }
+.specs-table td { padding: 8px 12px; font-size: 14px; border-bottom: 1px solid var(--gray-200); }
+.specs-table td:first-child { color: var(--gray-500); font-weight: 500; width: 45%; }
+.specs-table td:last-child { color: var(--dark); font-weight: 600; }
+.modal-price { background: var(--gray-100); border-radius: 8px; padding: 16px; margin-bottom: 20px; }
+.modal-price .price-row { padding: 4px 0; }
+.modal-price .price-row.total { font-size: 16px; }
+.modal-actions { display: flex; gap: 12px; }
+.modal-actions .btn { flex: 1; justify-content: center; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@media (max-width: 768px) {
+  .modal { grid-template-columns: 1fr; }
+  .modal-image { min-height: 220px; padding: 20px; }
+  .modal-image img { max-height: 200px; }
+  .modal-info { padding: 24px; }
+}
+
+.hidden { display: none; }
 </style>
 </head>
 <body style="padding-top:72px;">
@@ -354,21 +405,39 @@ body {
   </div>
 </footer>
 
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal">
+    <div class="modal-image" id="modalImage"><img src="" alt=""></div>
+    <div class="modal-info">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h2 id="modalName"></h2>
+      <div class="variant" id="modalVariant"></div>
+      <div class="modal-price" id="modalPrice"></div>
+      <div class="modal-specs">
+        <h4>Ficha Técnica</h4>
+        <table class="specs-table" id="modalSpecs"></table>
+      </div>
+      <div class="modal-actions" id="modalActions"></div>
+    </div>
+  </div>
+</div>
+
 <!-- WhatsApp Float -->
 <a href="https://wa.me/584161234567?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20veh%C3%ADculos%20Hyundai%20en%20M%C3%A9rida" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">&#128172;</a>
 
 <script>
 const models = [
-  { name: 'Grand i10 1.2L M/T GL', variant: 'M/T 5 vel', category: 'hatchback', price: 20640.04, pvp: 16107.00, iva: 2577.12, igtf: 483.21, tramites: 1472.71, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69856148203811e31988110b_Grandi10-Hatchback-GL-Azul.png' },
-  { name: 'Grand i10 1.2L A/T GL', variant: 'A/T 4 vel', category: 'hatchback', price: 22681.10, pvp: 17780.00, iva: 2844.80, igtf: 533.40, tramites: 1522.90, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823fe186892428b7a8fab3_Grandi10-Hatchback-GL-Plata.png' },
-  { name: 'Grand i10 1.2L A/T GLS', variant: 'A/T 4 vel', category: 'hatchback', price: 25267.50, pvp: 19900.00, iva: 3184.00, igtf: 597.00, tramites: 1586.50, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png' },
-  { name: 'Grand i10 1.2L A/T GLS Sedán', variant: 'A/T 4 vel', category: 'sedan', price: 26261.80, pvp: 20715.00, iva: 3314.40, igtf: 621.45, tramites: 1610.95, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png' },
-  { name: 'Accent 1.5L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 32029.50, pvp: 25073.74, iva: 4011.80, igtf: 752.21, tramites: 2191.75, motor: '1.5L', potencia: '113 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69d444234c01074f6c41678a_Accent-blanco.png' },
-  { name: 'Elantra 2.0L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 41619.56, pvp: 32923.00, iva: 5267.68, igtf: 987.69, tramites: 2441.19, motor: '2.0L', potencia: '156 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/698561c627e39b93b4031662_Elantra-rojo.png' },
-  { name: 'Creta 1.5L A/T GLS', variant: 'A/T 6 vel', category: 'suv', price: 39310.35, pvp: 31030.17, iva: 4964.83, igtf: 930.91, tramites: 2384.45, motor: '1.5L', potencia: '113 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/699dc30fedebb4b0d6d72a19_Creta%20Blanco_.png' },
-  { name: 'Tucson 2.0L A/T 2WD GLS', variant: 'A/T 6 vel', category: 'suv', price: 50130.00, pvp: 39900.00, iva: 6384.00, igtf: 1197.00, tramites: 2649.00, motor: '2.0L', potencia: '154 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png' },
-  { name: 'Tucson 2.0L A/T 4WD GLX', variant: 'A/T 6 vel', category: 'suv', price: 59525.50, pvp: 47600.00, iva: 7616.00, igtf: 1428.00, tramites: 2881.50, motor: '2.0L', potencia: '154 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823c97ec17a7e03309284f_Tucson-blanco.png' },
-  { name: 'Palisade 3.8L A/T 4WD GLS 7P', variant: 'A/T 8 vel', category: 'suv', price: 124063.50, pvp: 100500.00, iva: 16080.00, igtf: 3015.00, tramites: 4468.50, motor: '3.8L', potencia: '291 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695f0af617714685f4d6adc9_Palisade-rojo.png' }
+  { name: 'Grand i10 1.2L M/T GL', variant: 'M/T 5 vel', category: 'hatchback', price: 20640.04, pvp: 16107.00, iva: 2577.12, igtf: 483.21, tramites: 1472.71, motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Manual 5 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '40 L', largo: '3,665 mm', ancho: '1,660 mm', alto: '1,530 mm', peso: '1,012 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69856148203811e31988110b_Grandi10-Hatchback-GL-Azul.png' },
+  { name: 'Grand i10 1.2L A/T GL', variant: 'A/T 4 vel', category: 'hatchback', price: 22681.10, pvp: 17780.00, iva: 2844.80, igtf: 533.40, tramites: 1522.90, motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Automática 4 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '40 L', largo: '3,665 mm', ancho: '1,660 mm', alto: '1,530 mm', peso: '1,025 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823fe186892428b7a8fab3_Grandi10-Hatchback-GL-Plata.png' },
+  { name: 'Grand i10 1.2L A/T GLS', variant: 'A/T 4 vel', category: 'hatchback', price: 25267.50, pvp: 19900.00, iva: 3184.00, igtf: 597.00, tramites: 1586.50, motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Automática 4 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '40 L', largo: '3,665 mm', ancho: '1,660 mm', alto: '1,530 mm', peso: '1,025 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png' },
+  { name: 'Grand i10 1.2L A/T GLS Sedán', variant: 'A/T 4 vel', category: 'sedan', price: 26261.80, pvp: 20715.00, iva: 3314.40, igtf: 621.45, tramites: 1610.95, motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Automática 4 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '43 L', largo: '4,225 mm', ancho: '1,660 mm', alto: '1,520 mm', peso: '1,068 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png' },
+  { name: 'Accent 1.5L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 32029.50, pvp: 25073.74, iva: 4011.80, igtf: 752.21, tramites: 2191.75, motor: '1.5L MPI', potencia: '113 HP @ 6300 rpm', transmision: 'Automática IVT 6 vel', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '45 L', largo: '4,500 mm', ancho: '1,760 mm', alto: '1,470 mm', peso: '1,152 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69d444234c01074f6c41678a_Accent-blanco.png' },
+  { name: 'Elantra 2.0L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 41619.56, pvp: 32923.00, iva: 5267.68, igtf: 987.69, tramites: 2441.19, motor: '2.0L MPI', potencia: '156 HP @ 6200 rpm', transmision: 'Automática IVT 6 vel', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '47 L', largo: '4,640 mm', ancho: '1,820 mm', alto: '1,425 mm', peso: '1,250 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/698561c627e39b93b4031662_Elantra-rojo.png' },
+  { name: 'Creta 1.5L A/T GLS', variant: 'A/T 6 vel', category: 'suv', price: 39310.35, pvp: 31030.17, iva: 4964.83, igtf: 930.91, tramites: 2384.45, motor: '1.5L MPI', potencia: '113 HP @ 6300 rpm', transmision: 'Automática 6 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '50 L', largo: '4,300 mm', ancho: '1,790 mm', alto: '1,635 mm', peso: '1,220 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/699dc30fedebb4b0d6d72a19_Creta%20Blanco_.png' },
+  { name: 'Tucson 2.0L A/T 2WD GLS', variant: 'A/T 6 vel', category: 'suv', price: 50130.00, pvp: 39900.00, iva: 6384.00, igtf: 1197.00, tramites: 2649.00, motor: '2.0L MPI', potencia: '154 HP @ 6200 rpm', transmision: 'Automática 6 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '54 L', largo: '4,630 mm', ancho: '1,865 mm', alto: '1,665 mm', peso: '1,530 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png' },
+  { name: 'Tucson 2.0L A/T 4WD GLX', variant: 'A/T 6 vel', category: 'suv', price: 59525.50, pvp: 47600.00, iva: 7616.00, igtf: 1428.00, tramites: 2881.50, motor: '2.0L MPI', potencia: '154 HP @ 6200 rpm', transmision: 'Automática 6 velocidades', traccion: '4x4', combustible: 'Gasolina', capacidad_tanque: '54 L', largo: '4,630 mm', ancho: '1,865 mm', alto: '1,665 mm', peso: '1,612 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823c97ec17a7e03309284f_Tucson-blanco.png' },
+  { name: 'Palisade 3.8L A/T 4WD GLS 7P', variant: 'A/T 8 vel', category: 'suv', price: 124063.50, pvp: 100500.00, iva: 16080.00, igtf: 3015.00, tramites: 4468.50, motor: '3.8L V6 GDI', potencia: '291 HP @ 6000 rpm', transmision: 'Automática 8 velocidades', traccion: '4x4', combustible: 'Gasolina', capacidad_tanque: '71 L', largo: '4,995 mm', ancho: '1,975 mm', alto: '1,750 mm', peso: '1,905 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695f0af617714685f4d6adc9_Palisade-rojo.png' }
 ];
 
 const modelsGrid = document.getElementById('modelsGrid');
@@ -376,8 +445,8 @@ const categoryBtns = document.querySelectorAll('.cat-btn');
 
 function renderModels(category = 'all') {
   const filtered = category === 'all' ? models : models.filter(m => m.category === category);
-  modelsGrid.innerHTML = filtered.map(m => `
-    <div class="model-card">
+      modelsGrid.innerHTML = filtered.map((m, i) => `
+    <div class="model-card" data-index="${i}" onclick="openModal(${i})">
       <div class="model-card-image">
         <span class="model-card-badge">${m.category.toUpperCase()}</span>
         <img src="${m.image}" alt="${m.name}" loading="lazy">
@@ -399,8 +468,9 @@ function renderModels(category = 'all') {
           <div class="model-spec"><span class="label">Potencia</span><span class="value">${m.potencia}</span></div>
         </div>
         `}
-        <div class="model-card-actions">
+        <div class="model-card-actions" onclick="event.stopPropagation()">
           <a href="simulador.html" class="btn btn-primary btn-small">Simular</a>
+          <button class="btn btn-small" style="border:1px solid var(--gray-300);color:var(--gray-700);background:var(--white);cursor:pointer" onclick="openModal(${i})">Ficha técnica</button>
           <a href="https://wa.me/584161234567?text=Quiero%20informaci%C3%B3n%20sobre%20${encodeURIComponent(m.name)}" class="btn btn-outline btn-small" style="border-color:var(--gray-300);color:var(--gray-700)">Consultar</a>
         </div>
       </div>
@@ -448,6 +518,44 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Modal
+const specLabels = { motor: 'Motor', potencia: 'Potencia', transmision: 'Transmisión', traccion: 'Tracción', combustible: 'Combustible', capacidad_tanque: 'Capacidad del tanque', largo: 'Largo', ancho: 'Ancho', alto: 'Alto', peso: 'Peso' };
+
+function openModal(index) {
+  const m = models[index];
+  document.getElementById('modalName').textContent = m.name;
+  document.getElementById('modalVariant').textContent = m.variant;
+  document.getElementById('modalImage').querySelector('img').src = m.image;
+  document.getElementById('modalImage').querySelector('img').alt = m.name;
+  const priceDiv = document.getElementById('modalPrice');
+  if (m.pvp) {
+    priceDiv.innerHTML = `
+      <div class="price-row"><span>PVP</span><span>$${m.pvp.toFixed(2)}</span></div>
+      <div class="price-row"><span>IVA 16%</span><span>$${m.iva.toFixed(2)}</span></div>
+      <div class="price-row"><span>IGTF 3%</span><span>$${m.igtf.toFixed(2)}</span></div>
+      <div class="price-row"><span>Trámites y gastos</span><span>$${m.tramites.toFixed(2)}</span></div>
+      <div class="price-row total"><span>Total</span><span>$${m.price.toFixed(2)}</span></div>
+    `;
+  } else {
+    priceDiv.innerHTML = '';
+  }
+  const specsHtml = Object.keys(specLabels).map(k => m[k] ? `<tr><td>${specLabels[k]}</td><td>${m[k]}</td></tr>` : '').join('');
+  document.getElementById('modalSpecs').innerHTML = specsHtml;
+  document.getElementById('modalActions').innerHTML = `
+    <a href="simulador.html" class="btn btn-primary btn-small">Simular financiamiento</a>
+    <a href="https://wa.me/584161234567?text=Quiero%20informaci%C3%B3n%20sobre%20${encodeURIComponent(m.name)}" class="btn btn-outline btn-small" style="border-color:var(--gray-300);color:var(--gray-700)">Consultar por WhatsApp</a>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
 </body>
 </html>
