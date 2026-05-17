@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hyundai Mérida - Concesionario Oficial</title>
-<meta name="description" content="Concesionario oficial Hyundai en Mérida, Venezuela. Conoce nuestra gama de vehículos, solicita financiamiento y agenda tu prueba de manejo.">
+<title>Modelos - Hyundai Mérida</title>
+<meta name="description" content="Explora nuestra gama completa de vehículos Hyundai en Mérida. Hatchbacks, sedanes, SUVs y más.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -39,6 +39,7 @@ body {
   background: var(--white);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  padding-top: 72px;
 }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
@@ -274,7 +275,7 @@ body {
 .hidden { display: none; }
 </style>
 </head>
-<body>
+<body style="padding-top:72px;">
 
 <!-- Navbar -->
 <nav class="navbar" id="navbar">
@@ -287,8 +288,8 @@ body {
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#" style="color: var(--accent); font-weight: 600;">Inicio</a></li>
-      <li><a href="modelos.html">Modelos</a></li>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="#" style="color: var(--accent); font-weight: 600;">Modelos</a></li>
       <li><a href="simulador.html">Simulador</a></li>
       <li><a href="nosotros.html">Nosotros</a></li>
       <li><a href="contacto.html">Contacto</a></li>
@@ -297,25 +298,22 @@ body {
   </div>
 </nav>
 
-<!-- Hero -->
-<section class="hero" id="inicio">
+<!-- Modelos -->
+<section class="section" id="modelos">
   <div class="container">
-    <div class="hero-content">
-      <h1>Hyundai <span>Mérida</span><br>Tu concesionario de confianza</h1>
-      <p>Descubre la gama completa de vehículos Hyundai en Mérida. Innovación, seguridad y diseño coreano para ti. Solicita tu prueba de manejo.</p>
-      <div class="hero-buttons">
-        <a href="modelos.html" class="btn btn-primary">Ver Modelos</a>
-        <a href="simulador.html" class="btn btn-outline">Simular Crédito</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><h3>10</h3><p>Modelos Disponibles</p></div>
-        <div class="hero-stat"><h3>3 años</h3><p>Garantía</p></div>
-        <div class="hero-stat"><h3>24/7</h3><p>Post-Venta</p></div>
-      </div>
+    <div class="section-header">
+      <span class="subtitle">Nuestra Gama</span>
+      <h2>Modelos Hyundai</h2>
+      <p>Explora nuestra completa línea de vehículos. Encuentra el Hyundai perfecto para ti en Mérida.</p>
     </div>
-    <div class="hero-image">
-      <img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson Premium">
+    <div class="categories" id="categories">
+      <button class="cat-btn active" data-category="all">Todos</button>
+      <button class="cat-btn" data-category="hatchback">Hatchback</button>
+      <button class="cat-btn" data-category="sedan">Sedán</button>
+      <button class="cat-btn" data-category="suv">SUV</button>
+      <button class="cat-btn" data-category="mvp">MVP</button>
     </div>
+    <div class="models-grid" id="modelsGrid"></div>
   </div>
 </section>
 
@@ -360,6 +358,67 @@ body {
 <a href="https://wa.me/584161234567?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20veh%C3%ADculos%20Hyundai%20en%20M%C3%A9rida" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">&#128172;</a>
 
 <script>
+const models = [
+  { name: 'Grand i10 1.2L M/T GL', variant: 'M/T 5 vel', category: 'hatchback', price: 20640.04, pvp: 16107.00, iva: 2577.12, igtf: 483.21, tramites: 1472.71, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69856148203811e31988110b_Grandi10-Hatchback-GL-Azul.png' },
+  { name: 'Grand i10 1.2L A/T GL', variant: 'A/T 4 vel', category: 'hatchback', price: 22681.10, pvp: 17780.00, iva: 2844.80, igtf: 533.40, tramites: 1522.90, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823fe186892428b7a8fab3_Grandi10-Hatchback-GL-Plata.png' },
+  { name: 'Grand i10 1.2L A/T GLS', variant: 'A/T 4 vel', category: 'hatchback', price: 25267.50, pvp: 19900.00, iva: 3184.00, igtf: 597.00, tramites: 1586.50, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png' },
+  { name: 'Grand i10 1.2L A/T GLS Sedán', variant: 'A/T 4 vel', category: 'sedan', price: 26261.80, pvp: 20715.00, iva: 3314.40, igtf: 621.45, tramites: 1610.95, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png' },
+  { name: 'Accent 1.5L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 32029.50, pvp: 25073.74, iva: 4011.80, igtf: 752.21, tramites: 2191.75, motor: '1.5L', potencia: '113 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69d444234c01074f6c41678a_Accent-blanco.png' },
+  { name: 'Elantra 2.0L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 41619.56, pvp: 32923.00, iva: 5267.68, igtf: 987.69, tramites: 2441.19, motor: '2.0L', potencia: '156 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/698561c627e39b93b4031662_Elantra-rojo.png' },
+  { name: 'Creta 1.5L A/T GLS', variant: 'A/T 6 vel', category: 'suv', price: 39310.35, pvp: 31030.17, iva: 4964.83, igtf: 930.91, tramites: 2384.45, motor: '1.5L', potencia: '113 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/699dc30fedebb4b0d6d72a19_Creta%20Blanco_.png' },
+  { name: 'Tucson 2.0L A/T 2WD GLS', variant: 'A/T 6 vel', category: 'suv', price: 50130.00, pvp: 39900.00, iva: 6384.00, igtf: 1197.00, tramites: 2649.00, motor: '2.0L', potencia: '154 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png' },
+  { name: 'Tucson 2.0L A/T 4WD GLX', variant: 'A/T 6 vel', category: 'suv', price: 59525.50, pvp: 47600.00, iva: 7616.00, igtf: 1428.00, tramites: 2881.50, motor: '2.0L', potencia: '154 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823c97ec17a7e03309284f_Tucson-blanco.png' },
+  { name: 'Palisade 3.8L A/T 4WD GLS 7P', variant: 'A/T 8 vel', category: 'suv', price: 124063.50, pvp: 100500.00, iva: 16080.00, igtf: 3015.00, tramites: 4468.50, motor: '3.8L', potencia: '291 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695f0af617714685f4d6adc9_Palisade-rojo.png' }
+];
+
+const modelsGrid = document.getElementById('modelsGrid');
+const categoryBtns = document.querySelectorAll('.cat-btn');
+
+function renderModels(category = 'all') {
+  const filtered = category === 'all' ? models : models.filter(m => m.category === category);
+  modelsGrid.innerHTML = filtered.map(m => `
+    <div class="model-card">
+      <div class="model-card-image">
+        <span class="model-card-badge">${m.category.toUpperCase()}</span>
+        <img src="${m.image}" alt="${m.name}" loading="lazy">
+      </div>
+      <div class="model-card-body">
+        <h3>${m.name}</h3>
+        <div class="variant">${m.variant}</div>
+        ${m.pvp ? `
+        <div class="price-breakdown">
+          <div class="price-row"><span>PVP</span><span>$${m.pvp.toFixed(2)}</span></div>
+          <div class="price-row"><span>IVA 16%</span><span>$${m.iva.toFixed(2)}</span></div>
+          <div class="price-row"><span>IGTF 3%</span><span>$${m.igtf.toFixed(2)}</span></div>
+          <div class="price-row"><span>Trámites y gastos</span><span>$${m.tramites.toFixed(2)}</span></div>
+          <div class="price-row total"><span>Total</span><span>$${m.price.toFixed(2)}</span></div>
+        </div>
+        ` : `
+        <div class="model-specs">
+          <div class="model-spec"><span class="label">Motor</span><span class="value">${m.motor}</span></div>
+          <div class="model-spec"><span class="label">Potencia</span><span class="value">${m.potencia}</span></div>
+        </div>
+        `}
+        <div class="model-card-actions">
+          <a href="simulador.html" class="btn btn-primary btn-small">Simular</a>
+          <a href="https://wa.me/584161234567?text=Quiero%20informaci%C3%B3n%20sobre%20${encodeURIComponent(m.name)}" class="btn btn-outline btn-small" style="border-color:var(--gray-300);color:var(--gray-700)">Consultar</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+categoryBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    categoryBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderModels(btn.dataset.category);
+  });
+});
+
+// Init
+renderModels();
+
 // Mobile menu
 document.getElementById('menuToggle').addEventListener('click', function() {
   this.classList.toggle('active');

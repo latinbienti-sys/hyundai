@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hyundai Mérida - Concesionario Oficial</title>
-<meta name="description" content="Concesionario oficial Hyundai en Mérida, Venezuela. Conoce nuestra gama de vehículos, solicita financiamiento y agenda tu prueba de manejo.">
+<title>Simulador - Hyundai Mérida</title>
+<meta name="description" content="Simula tu financiamiento Hyundai en Mérida. Calcula cuotas mensuales personalizadas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -39,6 +39,7 @@ body {
   background: var(--white);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  padding-top: 72px;
 }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
@@ -274,7 +275,7 @@ body {
 .hidden { display: none; }
 </style>
 </head>
-<body>
+<body style="padding-top:72px;">
 
 <!-- Navbar -->
 <nav class="navbar" id="navbar">
@@ -287,9 +288,9 @@ body {
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#" style="color: var(--accent); font-weight: 600;">Inicio</a></li>
+      <li><a href="index.html">Inicio</a></li>
       <li><a href="modelos.html">Modelos</a></li>
-      <li><a href="simulador.html">Simulador</a></li>
+      <li><a href="#" style="color: var(--accent); font-weight: 600;">Simulador</a></li>
       <li><a href="nosotros.html">Nosotros</a></li>
       <li><a href="contacto.html">Contacto</a></li>
       <li><a href="https://wa.me/584161234567" class="cta-btn">WhatsApp</a></li>
@@ -297,24 +298,46 @@ body {
   </div>
 </nav>
 
-<!-- Hero -->
-<section class="hero" id="inicio">
+<!-- Simulador -->
+<section class="section simulator-section" id="simulador">
   <div class="container">
-    <div class="hero-content">
-      <h1>Hyundai <span>Mérida</span><br>Tu concesionario de confianza</h1>
-      <p>Descubre la gama completa de vehículos Hyundai en Mérida. Innovación, seguridad y diseño coreano para ti. Solicita tu prueba de manejo.</p>
-      <div class="hero-buttons">
-        <a href="modelos.html" class="btn btn-primary">Ver Modelos</a>
-        <a href="simulador.html" class="btn btn-outline">Simular Crédito</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><h3>10</h3><p>Modelos Disponibles</p></div>
-        <div class="hero-stat"><h3>3 años</h3><p>Garantía</p></div>
-        <div class="hero-stat"><h3>24/7</h3><p>Post-Venta</p></div>
-      </div>
+    <div class="section-header">
+      <span class="subtitle">Simulador</span>
+      <h2>Simula tu Financiamiento</h2>
+      <p>Calcula cuotas mensuales personalizadas para el vehículo de tus sueños.</p>
     </div>
-    <div class="hero-image">
-      <img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson Premium">
+    <div class="simulator">
+      <div class="simulator-form">
+        <h3>Calcula tu cuota</h3>
+        <p>Completa los campos para recibir una estimación personalizada.</p>
+        <div class="form-group">
+          <label for="simModel">Modelo</label>
+          <select id="simModel"></select>
+        </div>
+        <div class="form-group">
+          <label for="simPrice">Precio Total (USD)</label>
+          <input type="text" id="simPrice" readonly>
+        </div>
+        <div class="form-group">
+          <label for="simDown">Inicial: <span id="downLabel">30%</span></label>
+          <input type="range" id="simDown" min="10" max="60" value="30">
+          <div class="range-labels"><span>10%</span><span>60%</span></div>
+        </div>
+        <div class="form-group">
+          <label for="simTerm">Plazo: <span id="termLabel">24 meses</span></label>
+          <input type="range" id="simTerm" min="12" max="60" value="24" step="12">
+          <div class="range-labels"><span>12 meses</span><span>60 meses</span></div>
+        </div>
+      </div>
+      <div class="simulator-result" id="simResult">
+        <h4>Resultado de simulación</h4>
+        <div class="result-item"><span class="label">Precio Total</span><span class="value" id="resPrice">$0</span></div>
+        <div class="result-item"><span class="label">Inicial (<span id="resDownPct">30</span>%)</span><span class="value" id="resDown">$0</span></div>
+        <div class="result-item"><span class="label">Monto a financiar</span><span class="value" id="resFinance">$0</span></div>
+        <div class="result-item"><span class="label">Plazo</span><span class="value" id="resTerm">24 meses</span></div>
+        <div class="result-item"><span class="label">Tasa de interés estimada</span><span class="value">12% anual</span></div>
+        <div class="result-item result-total"><span class="label">Cuota mensual estimada</span><span class="value highlight" id="resMonthly">$0</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -360,6 +383,72 @@ body {
 <a href="https://wa.me/584161234567?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20veh%C3%ADculos%20Hyundai%20en%20M%C3%A9rida" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">&#128172;</a>
 
 <script>
+const models = [
+  { name: 'Grand i10 1.2L M/T GL', variant: 'M/T 5 vel', category: 'hatchback', price: 20640.04, pvp: 16107.00, iva: 2577.12, igtf: 483.21, tramites: 1472.71, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69856148203811e31988110b_Grandi10-Hatchback-GL-Azul.png' },
+  { name: 'Grand i10 1.2L A/T GL', variant: 'A/T 4 vel', category: 'hatchback', price: 22681.10, pvp: 17780.00, iva: 2844.80, igtf: 533.40, tramites: 1522.90, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823fe186892428b7a8fab3_Grandi10-Hatchback-GL-Plata.png' },
+  { name: 'Grand i10 1.2L A/T GLS', variant: 'A/T 4 vel', category: 'hatchback', price: 25267.50, pvp: 19900.00, iva: 3184.00, igtf: 597.00, tramites: 1586.50, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png' },
+  { name: 'Grand i10 1.2L A/T GLS Sedán', variant: 'A/T 4 vel', category: 'sedan', price: 26261.80, pvp: 20715.00, iva: 3314.40, igtf: 621.45, tramites: 1610.95, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png' },
+  { name: 'Accent 1.5L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 32029.50, pvp: 25073.74, iva: 4011.80, igtf: 752.21, tramites: 2191.75, motor: '1.5L', potencia: '113 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69d444234c01074f6c41678a_Accent-blanco.png' },
+  { name: 'Elantra 2.0L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 41619.56, pvp: 32923.00, iva: 5267.68, igtf: 987.69, tramites: 2441.19, motor: '2.0L', potencia: '156 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/698561c627e39b93b4031662_Elantra-rojo.png' },
+  { name: 'Creta 1.5L A/T GLS', variant: 'A/T 6 vel', category: 'suv', price: 39310.35, pvp: 31030.17, iva: 4964.83, igtf: 930.91, tramites: 2384.45, motor: '1.5L', potencia: '113 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/699dc30fedebb4b0d6d72a19_Creta%20Blanco_.png' },
+  { name: 'Tucson 2.0L A/T 2WD GLS', variant: 'A/T 6 vel', category: 'suv', price: 50130.00, pvp: 39900.00, iva: 6384.00, igtf: 1197.00, tramites: 2649.00, motor: '2.0L', potencia: '154 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png' },
+  { name: 'Tucson 2.0L A/T 4WD GLX', variant: 'A/T 6 vel', category: 'suv', price: 59525.50, pvp: 47600.00, iva: 7616.00, igtf: 1428.00, tramites: 2881.50, motor: '2.0L', potencia: '154 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823c97ec17a7e03309284f_Tucson-blanco.png' },
+  { name: 'Palisade 3.8L A/T 4WD GLS 7P', variant: 'A/T 8 vel', category: 'suv', price: 124063.50, pvp: 100500.00, iva: 16080.00, igtf: 3015.00, tramites: 4468.50, motor: '3.8L', potencia: '291 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695f0af617714685f4d6adc9_Palisade-rojo.png' }
+];
+
+const simModel = document.getElementById('simModel');
+const simPrice = document.getElementById('simPrice');
+const simDown = document.getElementById('simDown');
+const simTerm = document.getElementById('simTerm');
+const downLabel = document.getElementById('downLabel');
+const termLabel = document.getElementById('termLabel');
+
+const resPrice = document.getElementById('resPrice');
+const resDownPct = document.getElementById('resDownPct');
+const resDown = document.getElementById('resDown');
+const resFinance = document.getElementById('resFinance');
+const resTerm = document.getElementById('resTerm');
+const resMonthly = document.getElementById('resMonthly');
+
+function updateSimulator() {
+  const idx = parseInt(simModel.value);
+  const model = models[idx];
+  const price = model.price;
+  const downPct = parseInt(simDown.value);
+  const termMonths = parseInt(simTerm.value);
+  const downAmount = price * (downPct / 100);
+  const financeAmount = price - downAmount;
+  const annualRate = 0.12;
+  const monthlyRate = annualRate / 12;
+  const monthlyPayment = financeAmount * (monthlyRate * Math.pow(1 + monthlyRate, termMonths)) / (Math.pow(1 + monthlyRate, termMonths) - 1);
+
+  simPrice.value = `$${price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+  downLabel.textContent = `${downPct}%`;
+  termLabel.textContent = `${termMonths} meses`;
+
+  resPrice.textContent = `$${price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+  resDownPct.textContent = downPct;
+  resDown.textContent = `$${downAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+  resFinance.textContent = `$${financeAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+  resTerm.textContent = `${termMonths} meses`;
+  resMonthly.textContent = `$${Math.round(monthlyPayment).toLocaleString()}/mes`;
+}
+
+// Populate simulator dropdown
+models.forEach((m, i) => {
+  const opt = document.createElement('option');
+  opt.value = i;
+  opt.textContent = `${m.name} - Total: $${m.price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+  simModel.appendChild(opt);
+});
+
+simModel.addEventListener('change', updateSimulator);
+simDown.addEventListener('input', updateSimulator);
+simTerm.addEventListener('input', updateSimulator);
+
+// Init
+updateSimulator();
+
 // Mobile menu
 document.getElementById('menuToggle').addEventListener('click', function() {
   this.classList.toggle('active');
