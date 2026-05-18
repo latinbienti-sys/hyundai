@@ -104,24 +104,27 @@ body {
 
 /* Car entry */
 .hero-car {
-  position: absolute; bottom: 10px; right: 5%; z-index: 2;
+  position: absolute; top: 46%; right: 5%; z-index: 2;
   width: 42%; max-width: 520px;
-  transform: translateX(100vw);
+  transform: translateY(-50%) translateX(100vw);
 }
 .hero-car.entered {
   animation: carEntry 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 @keyframes carEntry {
-  0% { transform: translateX(100vw); }
-  100% { transform: translateX(0); }
+  0% { transform: translateY(-50%) translateX(100vw); }
+  100% { transform: translateY(-50%) translateX(0); }
 }
 .hero-car.idle {
+  transform: translateY(-50%) translateX(0);
+}
+.hero-car.idle .car-body {
   animation: carSideToSide 4s ease-in-out infinite;
 }
 .hero-car .car-body img { width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)); }
 @keyframes carSideToSide {
-  0%, 100% { transform: translateX(-30px); }
-  50% { transform: translateX(30px); }
+  0%, 100% { transform: translateX(-25px); }
+  50% { transform: translateX(25px); }
 }
 
 /* Headlight flash */
@@ -148,17 +151,17 @@ body {
 
 /* Car shadow */
 .car-shadow {
-  position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
   width: 75%; height: 12px;
-  background: radial-gradient(ellipse, rgba(0,0,0,0.4) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(0,0,0,0.35) 0%, transparent 70%);
   border-radius: 50%; z-index: 1;
   opacity: 0; transition: opacity 0.8s ease 0.3s;
 }
 .car-shadow.show { opacity: 1; }
 .hero-car.idle .car-shadow { animation: shadowMove 4s ease-in-out infinite; }
 @keyframes shadowMove {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.25; }
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.2; }
 }
 
 /* Hero content */
@@ -276,7 +279,7 @@ body {
   .hero-content { text-align: center; margin: 0 auto; }
   .hero-buttons { justify-content: center; }
   .hero-stats { justify-content: center; }
-  .hero-car { width: 70%; bottom: 56px; }
+  .hero-car { width: 70%; top: 52%; }
   .hero-car.entered { right: 15%; }
   .headlight-flash { display: none; }
   .footer .container { grid-template-columns: 1fr 1fr; }
