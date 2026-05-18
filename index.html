@@ -65,11 +65,17 @@ body {
 }
 .nav-links a:hover { color: #fff; }
 .nav-links a:hover::after { width: 100%; }
-.nav-links .cta-btn {
-  background: var(--accent); color: #fff !important; padding: 8px 20px;
+.nav-links .btn-primary-nav {
+  background: #002c5f; color: #fff !important; padding: 8px 20px;
   border-radius: 6px; font-weight: 600; transition: var(--transition);
 }
-.nav-links .cta-btn:hover { background: #0090b5; transform: translateY(-1px); }
+.nav-links .btn-primary-nav:hover { background: #003f7f; transform: translateY(-1px); }
+.nav-links .btn-primary-nav::after { display: none; }
+.nav-links .cta-btn {
+  background: #25D366; color: #fff !important; padding: 8px 20px;
+  border-radius: 6px; font-weight: 600; transition: var(--transition);
+}
+.nav-links .cta-btn:hover { background: #1da851; transform: translateY(-1px); }
 .nav-links .cta-btn::after { display: none; }
 
 .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
@@ -256,6 +262,7 @@ body {
       <li><a href="simulador.html">Simulador</a></li>
       <li><a href="nosotros.html">Nosotros</a></li>
       <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="contacto.html" class="btn-primary-nav">Solicitar Cotización</a></li>
       <li><a href="https://wa.me/584161234567" class="cta-btn">WhatsApp</a></li>
     </ul>
   </div>
