@@ -82,42 +82,69 @@ body {
 /* Hero */
 .hero {
   min-height: 100vh; display: flex; align-items: center;
-  background: linear-gradient(135deg, #002c5f 0%, #003f7f 40%, #004d99 100%);
+  background: linear-gradient(180deg, #1a3a5c 0%, #2d5f8a 30%, #4a8bc2 55%, #87ceeb 80%, #b8dff0 100%);
   position: relative; overflow: hidden; padding-top: 72px;
 }
-.hero::before {
-  content: ''; position: absolute; top: -50%; right: -30%; width: 80%; height: 200%;
-  background: radial-gradient(ellipse, rgba(0,165,207,0.15) 0%, transparent 70%);
-  pointer-events: none;
+
+/* Mountains background */
+.mountains {
+  position: absolute; bottom: 100px; left: 0; right: 0; height: 35vh; pointer-events: none; z-index: 0;
 }
+.mountain {
+  position: absolute; bottom: 0; width: 100%; height: 100%;
+}
+.mountain-1 {
+  background: linear-gradient(180deg, transparent 0%, rgba(34,85,51,0.6) 40%, rgba(17,60,34,0.8) 100%);
+  clip-path: polygon(0% 100%, 5% 60%, 12% 75%, 20% 45%, 28% 65%, 35% 30%, 42% 55%, 48% 25%, 55% 50%, 62% 35%, 70% 55%, 78% 20%, 85% 40%, 92% 30%, 100% 50%, 100% 100%);
+}
+.mountain-2 {
+  background: linear-gradient(180deg, transparent 0%, rgba(60,120,80,0.5) 30%, rgba(30,80,50,0.7) 100%);
+  clip-path: polygon(0% 100%, 8% 70%, 15% 50%, 22% 70%, 30% 40%, 38% 60%, 45% 30%, 52% 55%, 58% 35%, 65% 50%, 72% 25%, 80% 45%, 88% 35%, 95% 55%, 100% 45%, 100% 100%);
+  bottom: -20px;
+}
+.mountain-3 {
+  background: linear-gradient(180deg, transparent 0%, rgba(100,160,100,0.35) 20%, rgba(60,120,70,0.5) 100%);
+  clip-path: polygon(0% 100%, 5% 60%, 15% 80%, 22% 55%, 30% 70%, 38% 45%, 48% 65%, 55% 40%, 65% 60%, 72% 35%, 80% 55%, 90% 30%, 100% 50%, 100% 100%);
+  bottom: -40px;
+}
+
+/* Sun / sky glow */
+.hero::before {
+  content: ''; position: absolute; top: 15%; right: 25%; width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(255,200,100,0.2) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+
+/* Road */
 .hero-road {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 130px;
-  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.12) 50%, rgba(0,0,0,0.3) 100%);
-  pointer-events: none;
+  position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
+  background: linear-gradient(to bottom, #3a3a3a 0%, #2a2a2a 100%);
+  pointer-events: none; z-index: 1;
 }
 .hero-road-line {
-  position: absolute; top: 44px; left: 0; right: 0; height: 2px;
-  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.35) 0px, rgba(255,255,255,0.35) 40px, transparent 40px, transparent 80px);
-  animation: roadLineScroll 1s linear infinite;
+  position: absolute; top: 34px; left: 0; right: 0; height: 2px;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.4) 0px, rgba(255,255,255,0.4) 30px, transparent 30px, transparent 60px);
+  animation: roadLineScroll 0.8s linear infinite;
 }
 .hero-road-edge {
-  position: absolute; top: 28px; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.15) 100%);
+  position: absolute; top: 18px; left: 0; right: 0; height: 2px;
+  background: rgba(255,255,255,0.15);
 }
 .hero-road-edge-bottom {
-  position: absolute; top: 60px; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.1) 100%);
+  position: absolute; top: 52px; left: 0; right: 0; height: 2px;
+  background: rgba(255,255,255,0.1);
 }
 @keyframes roadLineScroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-80px); }
+  100% { transform: translateX(-60px); }
 }
-.hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding-top: 60px; padding-bottom: 60px; }
+
+.hero .container { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding-top: 60px; padding-bottom: 60px; }
 .hero-content h1 {
   font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 20px;
 }
-.hero-content h1 span { color: var(--accent); }
-.hero-content p { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 32px; max-width: 480px; line-height: 1.7; }
+.hero-content h1 span { color: #87ceeb; }
+.hero-content p { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 32px; max-width: 480px; line-height: 1.7; }
 .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
 .btn {
   display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
@@ -128,92 +155,99 @@ body {
 .btn-primary:hover { background: #0090b5; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,165,207,0.3); }
 .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
 .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+/* Car container */
 .hero-image {
   display: flex; justify-content: center; align-items: center;
-  position: relative; overflow: visible;
+  position: relative; overflow: visible; padding-bottom: 30px;
+}
+
+/* Wheels */
+.hero-image .wheel {
+  position: absolute; width: 40px; height: 40px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  background: conic-gradient(from 0deg, #222 0deg, #444 30deg, #222 60deg, #555 90deg, #222 120deg, #444 150deg, #222 180deg, #444 210deg, #222 240deg, #555 270deg, #222 300deg, #444 330deg, #222 360deg);
+  z-index: 3; pointer-events: none;
+  animation: spinWheel 0.35s linear infinite;
+  transform-origin: center;
+}
+.hero-image .wheel::after {
+  content: ''; position: absolute; inset: 6px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1); background: #1a1a1a;
+}
+.hero-image .wheel-1 { bottom: -8px; left: 22%; }
+.hero-image .wheel-2 { bottom: -8px; right: 22%; }
+@keyframes spinWheel {
+  to { transform: rotate(360deg); }
 }
 
 /* Speed lines */
 .speed-lines { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .speed-line {
-  position: absolute; height: 1.5px; right: 10%; border-radius: 2px;
-  background: linear-gradient(270deg, rgba(255,255,255,0.4), transparent);
-  animation: speedLineFade 0.8s linear infinite;
+  position: absolute; height: 1.5px; right: 5%; border-radius: 2px;
+  background: linear-gradient(270deg, rgba(255,255,255,0.3), transparent);
+  animation: speedLineFade 0.6s linear infinite;
 }
-.speed-line:nth-child(1) { top: 25%; width: 120px; animation-duration: 0.6s; animation-delay: 0s; }
-.speed-line:nth-child(2) { top: 45%; width: 80px; animation-duration: 0.7s; animation-delay: 0.2s; }
-.speed-line:nth-child(3) { top: 60%; width: 100px; animation-duration: 0.5s; animation-delay: 0.4s; }
-.speed-line:nth-child(4) { top: 75%; width: 60px; animation-duration: 0.9s; animation-delay: 0.1s; }
-.speed-line:nth-child(5) { top: 35%; width: 90px; animation-duration: 0.65s; animation-delay: 0.6s; }
+.speed-line:nth-child(1) { top: 20%; width: 100px; animation-duration: 0.5s; animation-delay: 0s; }
+.speed-line:nth-child(2) { top: 40%; width: 70px; animation-duration: 0.6s; animation-delay: 0.15s; }
+.speed-line:nth-child(3) { top: 55%; width: 90px; animation-duration: 0.45s; animation-delay: 0.3s; }
+.speed-line:nth-child(4) { top: 70%; width: 50px; animation-duration: 0.7s; animation-delay: 0.1s; }
+.speed-line:nth-child(5) { top: 30%; width: 80px; animation-duration: 0.55s; animation-delay: 0.5s; }
+.speed-line:nth-child(6) { top: 65%; width: 60px; animation-duration: 0.5s; animation-delay: 0.4s; }
 @keyframes speedLineFade {
   0% { transform: translateX(0); opacity: 0; }
-  20% { opacity: 1; }
-  100% { transform: translateX(-300px); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateX(-350px); opacity: 0; }
 }
 
-/* Motion trail */
+/* Motion trail under the car */
 .motion-trail {
-  position: absolute; bottom: 8%; left: -40%; width: 50%; height: 20px;
-  background: linear-gradient(270deg, rgba(0,165,207,0.3), transparent);
-  border-radius: 50%; filter: blur(12px);
-  animation: trailPulse 1s ease-in-out infinite;
+  position: absolute; bottom: 15%; left: -30%; width: 40%; height: 14px;
+  background: linear-gradient(270deg, rgba(0,165,207,0.25), transparent);
+  border-radius: 50%; filter: blur(8px);
+  animation: trailPulse 0.8s ease-in-out infinite;
   z-index: 0;
 }
 @keyframes trailPulse {
-  0%, 100% { opacity: 0.3; transform: scaleX(1); }
-  50% { opacity: 0.7; transform: scaleX(1.3); }
+  0%, 100% { opacity: 0.2; transform: scaleX(1); }
+  50% { opacity: 0.6; transform: scaleX(1.4); }
 }
 
-/* Exhaust particles */
-.exhaust {
-  position: absolute; bottom: 18%; right: -5%; pointer-events: none;
-}
-.exhaust-particle {
-  position: absolute; width: 6px; height: 6px;
-  border-radius: 50%; background: rgba(200,200,200,0.3);
-  animation: exhaustFloat 1.2s ease-out infinite;
-}
-.exhaust-particle:nth-child(1) { animation-delay: 0s; }
-.exhaust-particle:nth-child(2) { animation-delay: 0.4s; width: 4px; height: 4px; }
-.exhaust-particle:nth-child(3) { animation-delay: 0.8s; width: 5px; height: 5px; }
-@keyframes exhaustFloat {
-  0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-  100% { transform: translate(30px, -20px) scale(0); opacity: 0; }
-}
-
-.hero-image img {
-  max-width: 100%; height: auto;
+/* Car body drive */
+.hero-image .car-body {
   position: relative; z-index: 2;
-  animation: drive 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
-  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5));
+  animation: drive 3.5s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+.hero-image .car-body img {
+  max-width: 100%; height: auto; display: block;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
 }
 @keyframes drive {
-  0% { transform: translateX(-90px) rotate(0deg) translateY(0); }
-  15% { transform: translateX(-60px) rotate(0.6deg) translateY(-4px); }
-  30% { transform: translateX(-20px) rotate(0deg) translateY(0); }
-  50% { transform: translateX(90px) rotate(0deg) translateY(0); }
-  65% { transform: translateX(60px) rotate(-0.6deg) translateY(-4px); }
-  80% { transform: translateX(20px) rotate(0deg) translateY(0); }
-  100% { transform: translateX(-90px) rotate(0deg) translateY(0); }
+  0% { transform: translateX(-120px) rotate(0deg) translateY(0); }
+  12% { transform: translateX(-60px) rotate(0.4deg) translateY(-2px); }
+  25% { transform: translateX(0) rotate(0deg) translateY(0); }
+  50% { transform: translateX(120px) rotate(0deg) translateY(0); }
+  62% { transform: translateX(60px) rotate(-0.4deg) translateY(-2px); }
+  75% { transform: translateX(0) rotate(0deg) translateY(0); }
+  100% { transform: translateX(-120px) rotate(0deg) translateY(0); }
 }
 
 /* Car ground shadow */
 .car-shadow {
-  position: absolute; bottom: -4%; left: 50%; transform: translateX(-50%);
-  width: 70%; height: 24px;
-  background: radial-gradient(ellipse, rgba(0,0,0,0.35) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: shadowPulse 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
-  z-index: 1;
+  position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
+  width: 75%; height: 16px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.4) 0%, transparent 70%);
+  border-radius: 50%; z-index: 1;
+  animation: shadowPulse 3.5s cubic-bezier(0.42, 0, 0.58, 1) infinite;
 }
 @keyframes shadowPulse {
-  0% { transform: translateX(-50%) scaleX(1) scaleY(1); opacity: 1; }
-  15% { transform: translateX(-50%) scaleX(1.1) scaleY(0.8); opacity: 0.6; }
-  30% { transform: translateX(-50%) scaleX(1) scaleY(1); opacity: 1; }
-  50% { transform: translateX(-50%) scaleX(1) scaleY(1); opacity: 1; }
-  65% { transform: translateX(-50%) scaleX(1.1) scaleY(0.8); opacity: 0.6; }
-  80% { transform: translateX(-50%) scaleX(1) scaleY(1); opacity: 1; }
-  100% { transform: translateX(-50%) scaleX(1) scaleY(1); opacity: 1; }
+  0% { transform: translateX(-50%) scaleX(1); opacity: 1; }
+  12% { transform: translateX(-50%) scaleX(1.15); opacity: 0.6; }
+  25% { transform: translateX(-50%) scaleX(1); opacity: 1; }
+  50% { transform: translateX(-50%) scaleX(1); opacity: 1; }
+  62% { transform: translateX(-50%) scaleX(1.15); opacity: 0.6; }
+  75% { transform: translateX(-50%) scaleX(1); opacity: 1; }
+  100% { transform: translateX(-50%) scaleX(1); opacity: 1; }
 }
 
 .hero-stats { display: flex; gap: 40px; margin-top: 40px; }
@@ -362,9 +396,12 @@ body {
   .hero-buttons { justify-content: center; }
   .hero-stats { justify-content: center; }
   .hero-image { margin-top: 24px; }
-  .hero-road { height: 60px; }
+  .hero-image .wheel { width: 28px; height: 28px; }
+  .mountains { height: 20vh; bottom: 70px; }
+  .hero-road { height: 70px; }
   .hero-road-line { top: 24px; }
   .speed-lines { display: none; }
+  .mountain-2, .mountain-3 { display: none; }
   .simulator { grid-template-columns: 1fr; padding: 24px; }
   .footer .container { grid-template-columns: 1fr 1fr; }
   .models-grid { grid-template-columns: 1fr; }
@@ -408,6 +445,13 @@ body {
 
 <!-- Hero -->
 <section class="hero" id="inicio">
+  <!-- Mountains -->
+  <div class="mountains">
+    <div class="mountain mountain-3"></div>
+    <div class="mountain mountain-2"></div>
+    <div class="mountain mountain-1"></div>
+  </div>
+  <!-- Road -->
   <div class="hero-road">
     <div class="hero-road-edge"></div>
     <div class="hero-road-line"></div>
@@ -416,7 +460,7 @@ body {
   <div class="container">
     <div class="hero-content">
       <h1>Hyundai <span>Mérida</span><br>Tu concesionario de confianza</h1>
-      <p>Descubre la gama completa de vehículos Hyundai en Mérida. Innovación, seguridad y diseño coreano para ti. Solicita tu prueba de manejo.</p>
+      <p>Descubre la gama completa de vehículos Hyundai en Mérida. Recorre los Andes venezolanos con estilo y seguridad.</p>
       <div class="hero-buttons">
         <a href="modelos.html" class="btn btn-primary">Ver Modelos</a>
         <a href="simulador.html" class="btn btn-outline">Simular Crédito</a>
@@ -434,15 +478,15 @@ body {
         <div class="speed-line"></div>
         <div class="speed-line"></div>
         <div class="speed-line"></div>
+        <div class="speed-line"></div>
       </div>
       <div class="motion-trail"></div>
-      <img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson Premium">
-      <div class="car-shadow"></div>
-      <div class="exhaust">
-        <div class="exhaust-particle"></div>
-        <div class="exhaust-particle"></div>
-        <div class="exhaust-particle"></div>
+      <div class="car-body">
+        <img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson Premium">
       </div>
+      <div class="car-shadow"></div>
+      <div class="wheel wheel-1"></div>
+      <div class="wheel wheel-2"></div>
     </div>
   </div>
 </section>
