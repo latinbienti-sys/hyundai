@@ -137,7 +137,11 @@ body {
 .section-header p { font-size: 16px; color: var(--gray-600); max-width: 600px; margin: 0 auto; line-height: 1.7; }
 
 /* Category Tabs */
-.categories { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
+.filter-box {
+  background: #f6f3ee; border-radius: 16px; padding: 24px; margin-bottom: 40px;
+  display: flex; justify-content: center;
+}
+.categories { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
 .cat-btn {
   padding: 10px 24px; border-radius: 100px; border: 1px solid var(--gray-300);
   background: var(--white); color: var(--gray-700); font-size: 14px; font-weight: 500;
@@ -147,10 +151,11 @@ body {
 .cat-btn.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
 
 /* Models Grid */
+#modelos { background-color: #f6f3ee; padding-bottom: 100px; }
 .models-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
 .model-card {
   background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
-  border: 1px solid var(--gray-200); transition: var(--transition);
+  border: 1px solid #e1e7ef; transition: var(--transition);
 }
 .model-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .model-card-image {
@@ -376,12 +381,17 @@ body {
 <!-- Models Grid -->
 <section class="section" id="modelos">
   <div class="container">
-    <div class="categories" id="categories">
-      <button class="cat-btn active" data-category="all">Todos</button>
-      <button class="cat-btn" data-category="hatchback">Hatchback</button>
-      <button class="cat-btn" data-category="sedan">Sedán</button>
-      <button class="cat-btn" data-category="suv">SUV</button>
-      <button class="cat-btn" data-category="mvp">MVP</button>
+    <div class="section-header">
+      <h2>Toda la gama Hyundai</h2>
+      <p>Encuentra el vehículo perfecto para ti, desde hatchbacks urbanos hasta SUVs familiares.</p>
+    </div>
+    <div class="filter-box">
+      <div class="categories" id="categories">
+        <button class="cat-btn active" data-category="all">Todos</button>
+        <button class="cat-btn" data-category="hatchback">Hatchback</button>
+        <button class="cat-btn" data-category="sedan">Sedán</button>
+        <button class="cat-btn" data-category="suv">SUV</button>
+      </div>
     </div>
     <div class="models-grid" id="modelsGrid"></div>
   </div>
