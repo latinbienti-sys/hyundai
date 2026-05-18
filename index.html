@@ -81,45 +81,57 @@ body {
 
 /* Hero */
 .hero {
-  min-height: 100vh; display: flex; align-items: center;
+  min-height: 100vh; display: flex; align-items: stretch;
   background: linear-gradient(180deg, #1a3a5c 0%, #2d5f8a 30%, #4a8bc2 55%, #87ceeb 80%, #b8dff0 100%);
   position: relative; overflow: hidden; padding-top: 72px;
 }
 
-/* Mountains background */
-.mountains {
-  position: absolute; bottom: 100px; left: 0; right: 0; height: 35vh; pointer-events: none; z-index: 0;
-}
-.mountain {
-  position: absolute; bottom: 0; width: 100%; height: 100%;
-}
-.mountain-1 {
-  background: linear-gradient(180deg, transparent 0%, rgba(34,85,51,0.6) 40%, rgba(17,60,34,0.8) 100%);
-  clip-path: polygon(0% 100%, 5% 60%, 12% 75%, 20% 45%, 28% 65%, 35% 30%, 42% 55%, 48% 25%, 55% 50%, 62% 35%, 70% 55%, 78% 20%, 85% 40%, 92% 30%, 100% 50%, 100% 100%);
-}
-.mountain-2 {
-  background: linear-gradient(180deg, transparent 0%, rgba(60,120,80,0.5) 30%, rgba(30,80,50,0.7) 100%);
-  clip-path: polygon(0% 100%, 8% 70%, 15% 50%, 22% 70%, 30% 40%, 38% 60%, 45% 30%, 52% 55%, 58% 35%, 65% 50%, 72% 25%, 80% 45%, 88% 35%, 95% 55%, 100% 45%, 100% 100%);
-  bottom: -20px;
-}
-.mountain-3 {
-  background: linear-gradient(180deg, transparent 0%, rgba(100,160,100,0.35) 20%, rgba(60,120,70,0.5) 100%);
-  clip-path: polygon(0% 100%, 5% 60%, 15% 80%, 22% 55%, 30% 70%, 38% 45%, 48% 65%, 55% 40%, 65% 60%, 72% 35%, 80% 55%, 90% 30%, 100% 50%, 100% 100%);
-  bottom: -40px;
+/* Scene layer (mountains + road + car) */
+.hero-scene {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
 }
 
-/* Sun / sky glow */
+/* Mountains background */
+.mountain {
+  position: absolute; bottom: 100px; width: 200vw; height: 35vh;
+}
+.mountain-1 {
+  left: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(34,85,51,0.55) 40%, rgba(17,60,34,0.75) 100%);
+  clip-path: polygon(0% 100%, 2.5% 60%, 6% 75%, 10% 45%, 14% 65%, 17.5% 30%, 21% 55%, 24% 25%, 27.5% 50%, 31% 35%, 35% 55%, 39% 20%, 42.5% 40%, 46% 30%, 50% 50%, 50% 100%, 52.5% 60%, 56% 75%, 60% 45%, 64% 65%, 67.5% 30%, 71% 55%, 74% 25%, 77.5% 50%, 81% 35%, 85% 55%, 89% 20%, 92.5% 40%, 96% 30%, 100% 50%, 100% 100%);
+  animation: mountainScroll 35s linear infinite;
+}
+.mountain-2 {
+  left: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(60,120,80,0.45) 30%, rgba(30,80,50,0.65) 100%);
+  clip-path: polygon(0% 100%, 4% 70%, 7.5% 50%, 11% 70%, 15% 40%, 19% 60%, 22.5% 30%, 26% 55%, 29% 35%, 32.5% 50%, 36% 25%, 40% 45%, 44% 35%, 47.5% 55%, 50% 45%, 50% 100%, 54% 70%, 57.5% 50%, 61% 70%, 65% 40%, 69% 60%, 72.5% 30%, 76% 55%, 79% 35%, 82.5% 50%, 86% 25%, 90% 45%, 94% 35%, 97.5% 55%, 100% 45%, 100% 100%);
+  bottom: 80px;
+  animation: mountainScroll 25s linear infinite;
+}
+.mountain-3 {
+  left: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(100,160,100,0.3) 20%, rgba(60,120,70,0.45) 100%);
+  clip-path: polygon(0% 100%, 2.5% 60%, 7.5% 80%, 11% 55%, 15% 70%, 19% 45%, 24% 65%, 27.5% 40%, 32.5% 60%, 36% 35%, 40% 55%, 45% 30%, 50% 50%, 50% 100%, 52.5% 60%, 57.5% 80%, 61% 55%, 65% 70%, 69% 45%, 74% 65%, 77.5% 40%, 82.5% 60%, 86% 35%, 90% 55%, 95% 30%, 100% 50%, 100% 100%);
+  bottom: 60px;
+  animation: mountainScroll 18s linear infinite;
+}
+@keyframes mountainScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Sun glow */
 .hero::before {
   content: ''; position: absolute; top: 15%; right: 25%; width: 300px; height: 300px;
   background: radial-gradient(circle, rgba(255,200,100,0.2) 0%, transparent 70%);
-  pointer-events: none; z-index: 0;
+  pointer-events: none; z-index: 1;
 }
 
 /* Road */
 .hero-road {
   position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
   background: linear-gradient(to bottom, #3a3a3a 0%, #2a2a2a 100%);
-  pointer-events: none; z-index: 1;
+  z-index: 2;
 }
 .hero-road-line {
   position: absolute; top: 34px; left: 0; right: 0; height: 2px;
@@ -139,12 +151,14 @@ body {
   100% { transform: translateX(-60px); }
 }
 
-.hero .container { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding-top: 60px; padding-bottom: 60px; }
+/* Container - text overlay */
+.hero .container { position: relative; z-index: 3; display: flex; align-items: center; width: 100%; padding-top: 72px; padding-bottom: 120px; }
+.hero-content { max-width: 560px; }
 .hero-content h1 {
   font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 20px;
 }
 .hero-content h1 span { color: #87ceeb; }
-.hero-content p { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 32px; max-width: 480px; line-height: 1.7; }
+.hero-content p { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 32px; line-height: 1.7; }
 .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
 .btn {
   display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
@@ -156,29 +170,44 @@ body {
 .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
 .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 
-/* Car container */
-.hero-image {
-  display: flex; justify-content: center; align-items: center;
-  position: relative; overflow: visible; padding-bottom: 30px;
+/* Car positioned on road */
+.hero-car {
+  position: absolute; bottom: 62px; right: 5%; z-index: 2;
+  width: 42%; max-width: 520px;
+}
+.hero-car .car-body {
+  animation: drive 3.5s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+.hero-car .car-body img { width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)); }
+@keyframes drive {
+  0% { transform: translateX(-100px) rotate(0deg) translateY(0); }
+  12% { transform: translateX(-50px) rotate(0.4deg) translateY(-2px); }
+  25% { transform: translateX(0) rotate(0deg) translateY(0); }
+  50% { transform: translateX(100px) rotate(0deg) translateY(0); }
+  62% { transform: translateX(50px) rotate(-0.4deg) translateY(-2px); }
+  75% { transform: translateX(0) rotate(0deg) translateY(0); }
+  100% { transform: translateX(-100px) rotate(0deg) translateY(0); }
 }
 
 /* Wheels */
-.hero-image .wheel {
-  position: absolute; width: 40px; height: 40px; border-radius: 50%;
+.hero-car .wheel {
+  position: absolute; width: 9%; z-index: 3; pointer-events: none;
+}
+.hero-car .wheel::before {
+  content: ''; display: block; padding-bottom: 100%; border-radius: 50%;
   border: 2px solid rgba(255,255,255,0.2);
   background: conic-gradient(from 0deg, #222 0deg, #444 30deg, #222 60deg, #555 90deg, #222 120deg, #444 150deg, #222 180deg, #444 210deg, #222 240deg, #555 270deg, #222 300deg, #444 330deg, #222 360deg);
-  z-index: 3; pointer-events: none;
   animation: spinWheel 0.35s linear infinite;
-  transform-origin: center;
 }
-.hero-image .wheel::after {
-  content: ''; position: absolute; inset: 6px; border-radius: 50%;
+.hero-car .wheel::after {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 55%; height: 55%; border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.1); background: #1a1a1a;
 }
-.hero-image .wheel-1 { bottom: -8px; left: 22%; }
-.hero-image .wheel-2 { bottom: -8px; right: 22%; }
+.hero-car .wheel-1 { bottom: -6px; left: 18%; }
+.hero-car .wheel-2 { bottom: -6px; right: 18%; }
 @keyframes spinWheel {
-  to { transform: rotate(360deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Speed lines */
@@ -200,42 +229,22 @@ body {
   100% { transform: translateX(-350px); opacity: 0; }
 }
 
-/* Motion trail under the car */
+/* Motion trail */
 .motion-trail {
   position: absolute; bottom: 15%; left: -30%; width: 40%; height: 14px;
   background: linear-gradient(270deg, rgba(0,165,207,0.25), transparent);
   border-radius: 50%; filter: blur(8px);
-  animation: trailPulse 0.8s ease-in-out infinite;
-  z-index: 0;
+  animation: trailPulse 0.8s ease-in-out infinite; z-index: 0;
 }
 @keyframes trailPulse {
   0%, 100% { opacity: 0.2; transform: scaleX(1); }
   50% { opacity: 0.6; transform: scaleX(1.4); }
 }
 
-/* Car body drive */
-.hero-image .car-body {
-  position: relative; z-index: 2;
-  animation: drive 3.5s cubic-bezier(0.42, 0, 0.58, 1) infinite;
-}
-.hero-image .car-body img {
-  max-width: 100%; height: auto; display: block;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
-}
-@keyframes drive {
-  0% { transform: translateX(-120px) rotate(0deg) translateY(0); }
-  12% { transform: translateX(-60px) rotate(0.4deg) translateY(-2px); }
-  25% { transform: translateX(0) rotate(0deg) translateY(0); }
-  50% { transform: translateX(120px) rotate(0deg) translateY(0); }
-  62% { transform: translateX(60px) rotate(-0.4deg) translateY(-2px); }
-  75% { transform: translateX(0) rotate(0deg) translateY(0); }
-  100% { transform: translateX(-120px) rotate(0deg) translateY(0); }
-}
-
-/* Car ground shadow */
+/* Car shadow */
 .car-shadow {
-  position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
-  width: 75%; height: 16px;
+  position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
+  width: 75%; height: 12px;
   background: radial-gradient(ellipse, rgba(0,0,0,0.4) 0%, transparent 70%);
   border-radius: 50%; z-index: 1;
   animation: shadowPulse 3.5s cubic-bezier(0.42, 0, 0.58, 1) infinite;
@@ -391,13 +400,11 @@ body {
     transform: translateY(-100%); opacity: 0; pointer-events: none; transition: var(--transition);
   }
   .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
-  .hero .container { grid-template-columns: 1fr; text-align: center; }
-  .hero-content p { margin: 0 auto 32px; }
+  .hero-content { text-align: center; margin: 0 auto; }
   .hero-buttons { justify-content: center; }
   .hero-stats { justify-content: center; }
-  .hero-image { margin-top: 24px; }
-  .hero-image .wheel { width: 28px; height: 28px; }
-  .mountains { height: 20vh; bottom: 70px; }
+  .hero-car { width: 65%; right: 50%; transform: translateX(50%); bottom: 48px; }
+  .mountain { height: 20vh; bottom: 70px !important; }
   .hero-road { height: 70px; }
   .hero-road-line { top: 24px; }
   .speed-lines { display: none; }
@@ -409,7 +416,6 @@ body {
 
 @media (max-width: 480px) {
   .footer .container { grid-template-columns: 1fr; }
-  .hero-stats { flex-direction: column; gap: 16px; align-items: center; }
   .model-specs { grid-template-columns: 1fr; }
 }
 
@@ -445,33 +451,17 @@ body {
 
 <!-- Hero -->
 <section class="hero" id="inicio">
-  <!-- Mountains -->
-  <div class="mountains">
+  <!-- Scene layer -->
+  <div class="hero-scene">
     <div class="mountain mountain-3"></div>
     <div class="mountain mountain-2"></div>
     <div class="mountain mountain-1"></div>
-  </div>
-  <!-- Road -->
-  <div class="hero-road">
-    <div class="hero-road-edge"></div>
-    <div class="hero-road-line"></div>
-    <div class="hero-road-edge-bottom"></div>
-  </div>
-  <div class="container">
-    <div class="hero-content">
-      <h1>Hyundai <span>Mérida</span><br>Tu concesionario de confianza</h1>
-      <p>Descubre la gama completa de vehículos Hyundai en Mérida. Recorre los Andes venezolanos con estilo y seguridad.</p>
-      <div class="hero-buttons">
-        <a href="modelos.html" class="btn btn-primary">Ver Modelos</a>
-        <a href="simulador.html" class="btn btn-outline">Simular Crédito</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><h3>10</h3><p>Modelos Disponibles</p></div>
-        <div class="hero-stat"><h3>3 años</h3><p>Garantía</p></div>
-        <div class="hero-stat"><h3>24/7</h3><p>Post-Venta</p></div>
-      </div>
+    <div class="hero-road">
+      <div class="hero-road-edge"></div>
+      <div class="hero-road-line"></div>
+      <div class="hero-road-edge-bottom"></div>
     </div>
-    <div class="hero-image">
+    <div class="hero-car">
       <div class="speed-lines">
         <div class="speed-line"></div>
         <div class="speed-line"></div>
@@ -487,6 +477,22 @@ body {
       <div class="car-shadow"></div>
       <div class="wheel wheel-1"></div>
       <div class="wheel wheel-2"></div>
+    </div>
+  </div>
+  <!-- Text overlay -->
+  <div class="container">
+    <div class="hero-content">
+      <h1>Hyundai <span>Mérida</span><br>Tu concesionario de confianza</h1>
+      <p>Descubre la gama completa de vehículos Hyundai en Mérida. Recorre los Andes venezolanos con estilo y seguridad.</p>
+      <div class="hero-buttons">
+        <a href="modelos.html" class="btn btn-primary">Ver Modelos</a>
+        <a href="simulador.html" class="btn btn-outline">Simular Crédito</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><h3>10</h3><p>Modelos Disponibles</p></div>
+        <div class="hero-stat"><h3>3 años</h3><p>Garantía</p></div>
+        <div class="hero-stat"><h3>24/7</h3><p>Post-Venta</p></div>
+      </div>
     </div>
   </div>
 </section>
