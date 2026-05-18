@@ -51,8 +51,9 @@ body {
 }
 .navbar.scrolled { background: rgba(0,0,0,0.6); backdrop-filter: blur(12px); padding: 8px 0; }
 .navbar .container { display: flex; align-items: center; justify-content: space-between; height: 40px; }
-.navbar .logo { display: flex; align-items: center; text-decoration: none; }
+.navbar .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .navbar .logo img { height: 28px; width: auto; }
+.navbar .logo span { font-size: 16px; font-weight: 700; color: #fff; }
 .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
 .nav-links a {
   text-decoration: none; color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500;
@@ -244,6 +245,7 @@ body {
   <div class="container">
     <a href="index.html" class="logo">
       <img src="https://cdn.prod.website-files.com/695b182e874dc417335a062b/69cec19d0592eb45eefce71b_Favicon%20hyundai%20blanco.png" alt="Hyundai">
+      <span>Hyundai Mérida</span>
     </a>
     <button class="menu-toggle" id="menuToggle" aria-label="Menú">
       <span></span><span></span><span></span>
