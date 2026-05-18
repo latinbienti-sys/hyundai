@@ -79,116 +79,81 @@ body {
 .menu-toggle.active span:nth-child(2) { opacity: 0; }
 .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-/* Hero */
+/* Hero Carousel */
 .hero {
-  min-height: 100vh; display: flex; align-items: stretch;
-  position: relative; overflow: hidden; padding-top: 72px;
+  position: relative; width: 100%; height: 100vh; min-height: 640px;
+  overflow: hidden; background: #000; padding-top: 72px;
 }
-.hero-bg {
-  position: absolute; inset: 0; z-index: -1;
-  background: #0f2a45;
+.slides { display: flex; height: 100%; transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.slide { flex: 0 0 100%; height: 100%; display: flex; align-items: flex-end; position: relative; }
+.slide-bg {
+  position: absolute; inset: 0; background-size: cover; background-position: center center;
+  background-repeat: no-repeat; transition: background-position 6s linear;
 }
-.hero-bg img {
-  width: 100%; height: 100%; object-fit: cover;
-  opacity: 0; animation: heroBgFade 2s ease-out 0.3s forwards;
+.slide-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.35) 35%, rgba(0,0,0,0.45) 100%);
 }
-@keyframes heroBgFade {
-  0% { opacity: 0; }
-  100% { opacity: 0.85; }
+.slide-content {
+  position: relative; z-index: 2; max-width: 1280px; margin: 0 auto;
+  padding: 0 48px 180px; width: 100%;
 }
-.hero-overlay {
-  position: absolute; inset: 0; z-index: 0;
-  background: linear-gradient(135deg, rgba(0,44,95,0.85) 0%, rgba(0,44,95,0.4) 50%, rgba(0,0,0,0.3) 100%);
+.slide-content .tagline {
+  display: inline-flex; align-items: center; gap: 8px; font-size: 11px;
+  letter-spacing: 0.3em; text-transform: uppercase; font-weight: 700; color: rgba(255,255,255,0.85);
+  margin-bottom: 24px; opacity: 0; transform: translateY(16px);
+  transition: all 0.6s ease 0.2s;
 }
-.hero-scene { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-
-/* Car */
-.hero-car {
-  position: absolute; bottom: 74px; right: 5%; z-index: 2;
-  width: 42%; max-width: 520px; transform: translateX(100vw);
+.slide-content .tagline.show { opacity: 1; transform: translateY(0); }
+.slide-content .tagline .line { width: 32px; height: 1px; background: #00AAD2; }
+.slide-content h1 {
+  font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: #fff; line-height: 1.1;
+  margin-bottom: 4px; opacity: 0; transform: translateY(20px);
+  transition: all 0.6s ease 0.3s;
 }
-.hero-car.entered { animation: carEntry 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-@keyframes carEntry {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(0); right: 18%; }
+.slide-content h1.show { opacity: 1; transform: translateY(0); }
+.slide-content h1 .accent { color: #00AAD2; }
+.slide-content p {
+  font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6;
+  margin: 16px 0 32px; max-width: 560px; opacity: 0; transform: translateY(20px);
+  transition: all 0.6s ease 0.4s;
 }
-.car-body { animation: carIdle 2.5s ease-in-out infinite; }
-@keyframes carIdle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+.slide-content p.show { opacity: 1; transform: translateY(0); }
+.slide-buttons {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  opacity: 0; transform: translateY(20px); transition: all 0.6s ease 0.5s;
 }
-.hero-car img { width: 100%; height: auto; display: block; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.6)); }
-
-/* Headlight flash */
-.headlight-flash {
-  position: absolute; pointer-events: none; z-index: 5;
-  width: 60px; height: 60px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,230,0.5), transparent 70%);
-  opacity: 0;
-}
-.headlight-flash.front { top: 28%; right: 0; transform: translate(20px, -50%); }
-.headlight-flash.rear { top: 50%; left: -10px; transform: translate(-20px, -50%); width: 40px; height: 40px; }
-.headlight-flash.fire { animation: headlightFlash 0.4s ease-out forwards; }
-@keyframes headlightFlash {
-  0% { opacity: 0; transform: translate(20px, -50%) scale(0.5); }
-  30% { opacity: 1; transform: translate(40px, -50%) scale(1.2); }
-  100% { opacity: 0; transform: translate(60px, -50%) scale(0.8); }
-}
-.headlight-flash.rear.fire { animation: rearFlash 0.4s ease-out forwards; }
-@keyframes rearFlash {
-  0% { opacity: 0; transform: translate(-20px, -50%) scale(0.5); }
-  30% { opacity: 1; transform: translate(-40px, -50%) scale(1.2); }
-  100% { opacity: 0; transform: translate(-60px, -50%) scale(0.8); }
-}
-
-/* Car shadow */
-.car-shadow {
-  position: absolute; bottom: -4px; left: 10%; width: 80%; height: 10px;
-  background: radial-gradient(ellipse, rgba(0,0,0,0.3) 0%, transparent 70%);
-  border-radius: 50%; z-index: 0;
-}
-
-/* Hero content */
-.hero .container { position: relative; z-index: 3; display: flex; align-items: center; width: 100%; padding-bottom: 120px; }
-.hero-content { max-width: 580px; }
-.hero-content .subtitle {
-  display: inline-block; font-size: 13px; font-weight: 600; color: var(--accent);
-  text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
-  opacity: 0; transition: opacity 0.6s ease 0.2s;
-}
-.hero-content .subtitle.reveal { opacity: 1; }
-.hero-content h1 {
-  font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 16px;
-  opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.hero-content h1.reveal { opacity: 1; transform: translateX(0); }
-.hero-content h1 span { color: #87ceeb; }
-.hero-content p {
-  font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 32px; line-height: 1.7;
-  opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s;
-}
-.hero-content p.reveal { opacity: 1; transform: translateX(0); }
-.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.slide-buttons.show { opacity: 1; transform: translateY(0); }
 .btn {
-  display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
-  border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none;
-  transition: var(--transition); cursor: pointer; border: none;
+  display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px;
+  border-radius: 4px; font-size: 13px; font-weight: 600; text-decoration: none;
+  cursor: pointer; border: none; transition: all 0.2s;
 }
-.btn-primary {
-  background: var(--accent); color: var(--white);
-  opacity: 0; transform: scale(0.8); transition: opacity 0.5s ease 0.35s, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s, background 0.3s ease, box-shadow 0.3s ease;
+.btn-primary { background: #00AAD2; color: #fff; }
+.btn-primary:hover { background: #0090b5; }
+.btn-outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+.btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+.arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08); backdrop-filter: blur(8px);
+  color: #fff; font-size: 18px; cursor: pointer; display: flex;
+  align-items: center; justify-content: center;
+  transition: all 0.2s; font-family: inherit; line-height: 1;
 }
-.btn-primary.reveal { opacity: 1; transform: scale(1); }
-.btn-primary:hover { background: #0090b5; transform: scale(1.05); box-shadow: 0 8px 32px rgba(0,165,207,0.5); }
-.btn-outline {
-  background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3);
-  opacity: 0; transform: scale(0.8); transition: opacity 0.5s ease 0.45s, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s, border-color 0.3s ease, background 0.3s ease;
+.arrow:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.4); }
+.arrow-prev { left: 20px; }
+.arrow-next { right: 20px; }
+.dots {
+  position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%); z-index: 10;
+  display: flex; gap: 8px;
 }
-.btn-outline.reveal { opacity: 1; transform: scale(1); }
-.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.15); }
-.hero-stats { display: flex; gap: 40px; margin-top: 40px; }
-.hero-stat h3 { font-size: 28px; font-weight: 700; color: var(--white); }
-.hero-stat p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 0; text-transform: uppercase; letter-spacing: 1px; }
+.dots button {
+  width: 8px; height: 8px; border-radius: 50%; border: none; cursor: pointer;
+  background: rgba(255,255,255,0.3); transition: all 0.3s; padding: 0;
+}
+.dots button.active { background: #00AAD2; width: 28px; border-radius: 4px; }
+.dots button:hover { background: rgba(255,255,255,0.6); }
 
 /* Sections */
 .section { padding: 80px 0; }
@@ -260,12 +225,11 @@ body {
     transform: translateY(-100%); opacity: 0; pointer-events: none; transition: var(--transition);
   }
   .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
-  .hero-content { text-align: center; margin: 0 auto; }
-  .hero-buttons { justify-content: center; }
-  .hero-stats { justify-content: center; }
-  .hero-car { width: 70%; bottom: 56px; }
-  .hero-car.entered { right: 15%; }
-  .headlight-flash { display: none; }
+  .slide-content { padding: 0 24px 140px; }
+  .arrow { width: 36px; height: 36px; font-size: 15px; }
+  .arrow-prev { left: 10px; }
+  .arrow-next { right: 10px; }
+  .dots { bottom: 28px; }
   .footer .container { grid-template-columns: 1fr 1fr; }
 }
 
@@ -297,37 +261,12 @@ body {
   </div>
 </nav>
 
-<!-- Hero -->
+<!-- Hero Carousel -->
 <section class="hero" id="inicio">
-  <div class="hero-bg">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Pico_Bolivar_Merida_Venezuela.jpg" alt="Pico Bolívar - Mérida, Venezuela">
-  </div>
-  <div class="hero-overlay"></div>
-  <div class="container">
-    <div class="hero-content">
-      <div class="subtitle" id="heroSub">Concesionario Oficial</div>
-      <h1 id="heroTitle">Hyundai <span>Mérida</span><br>Tu concesionario de confianza</h1>
-      <p id="heroDesc">Descubre la gama completa de vehículos Hyundai en Mérida. Recorre los Andes venezolanos con estilo y seguridad.</p>
-      <div class="hero-buttons">
-        <a href="modelos.html" class="btn btn-primary" id="btnModels">Ver Modelos</a>
-        <a href="simulador.html" class="btn btn-outline" id="btnSim">Simular Crédito</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><h3 id="statModels">0</h3><p>Modelos</p></div>
-        <div class="hero-stat"><h3 id="statWarranty">0</h3><p>Años Garantía</p></div>
-        <div class="hero-stat"><h3>24/7</h3><p>Post-Venta</p></div>
-      </div>
-    </div>
-  </div>
-  <!-- Car -->
-  <div class="hero-car" id="heroCar">
-    <div class="headlight-flash front" id="headlightFront"></div>
-    <div class="headlight-flash rear" id="headlightRear"></div>
-    <div class="car-body">
-      <img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson Premium">
-    </div>
-    <div class="car-shadow" id="carShadow"></div>
-  </div>
+  <div class="slides" id="slides"></div>
+  <button class="arrow arrow-prev" id="prevBtn">&#10094;</button>
+  <button class="arrow arrow-next" id="nextBtn">&#10095;</button>
+  <div class="dots" id="dots"></div>
 </section>
 
 <!-- Why Hyundai -->
@@ -451,42 +390,56 @@ window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Hero sequence
-function startHeroSequence() {
-  document.getElementById('heroCar').classList.add('entered');
-  setTimeout(function() {
-    document.getElementById('heroSub').classList.add('reveal');
-  }, 200);
-  setTimeout(function() {
-    document.getElementById('heroTitle').classList.add('reveal');
-  }, 600);
-  setTimeout(function() {
-    document.getElementById('heroDesc').classList.add('reveal');
-  }, 1000);
-  setTimeout(function() {
-    document.getElementById('btnModels').classList.add('reveal');
-    document.getElementById('btnSim').classList.add('reveal');
-    document.getElementById('headlightFront').classList.add('fire');
-    document.getElementById('headlightRear').classList.add('fire');
-  }, 1400);
-  setTimeout(function() {
-    animateCount(document.getElementById('statModels'), 10, '');
-    animateCount(document.getElementById('statWarranty'), 3, '');
-  }, 2000);
+// Hero Carousel
+const SLIDES = [
+  { image: 'img/hero-merida.png', eyebrow: 'Palisade · Sierra Nevada de Mérida', title: 'Manejá tu próximo', accent: 'Hyundai', end: 'en los Andes.', sub: 'Descubre la línea completa Hyundai 2025 con precios en USD, simulador de crédito y atención personalizada en el corazón de Mérida.', cta: 'Ver modelos', ctaHref: 'modelos.html', cta2: 'Simular crédito', cta2Href: 'simulador.html' },
+  { image: 'img/hero-tucson.png', eyebrow: 'Tucson · Páramo Merideño', title: 'Aventura sin', accent: 'límites,', end: 'diseñada para los Andes.', sub: 'El nuevo Hyundai Tucson combina tecnología SmartSense, tracción HTRAC y un diseño Parametric Dynamics listo para conquistar el páramo merideño.', cta: 'Conocer Tucson', ctaHref: 'modelos.html', cta2: 'Solicitar prueba', cta2Href: 'contacto.html' },
+  { image: 'img/hero-creta.png', eyebrow: 'Creta · Pico Bolívar', title: 'Tu ciudad,', accent: 'tu ritmo,', end: 'tu nuevo Creta.', sub: 'SUV compacta con techo panorámico, pantalla de 10.25" y consumo eficiente para moverte con estilo por Mérida.', cta: 'Ver detalles', ctaHref: 'modelos.html', cta2: 'Cotizar Creta', cta2Href: 'contacto.html' },
+  { image: 'img/hero-elantra.png', eyebrow: 'Elantra · Laguna de Mucubají', title: 'Elegancia que', accent: 'se siente', end: 'en cada kilómetro.', sub: 'Diseño Parametric, tablero digital y consumo inteligente. El nuevo Elantra te lleva más lejos con el confort de un sedán premium.', cta: 'Conocer Elantra', ctaHref: 'modelos.html', cta2: 'Financiar ahora', cta2Href: 'simulador.html' }
+];
+
+const slidesEl = document.getElementById('slides');
+const dotsEl = document.getElementById('dots');
+let current = 0;
+let timer;
+
+function build() {
+  SLIDES.forEach((s, i) => {
+    const div = document.createElement('div');
+    div.className = 'slide';
+    div.innerHTML = '<div class="slide-bg" style="background-image:url(\'' + s.image + '\')"></div><div class="slide-overlay"></div><div class="slide-content"><div class="tagline"><span class="line"></span><span>' + s.eyebrow + '</span></div><h1>' + s.title + ' <span class="accent">' + s.accent + '</span> ' + s.end + '</h1><p>' + s.sub + '</p><div class="slide-buttons"><a href="' + s.ctaHref + '" class="btn btn-primary">' + s.cta + '</a><a href="' + s.cta2Href + '" class="btn btn-outline">' + s.cta2 + '</a></div></div>';
+    slidesEl.appendChild(div);
+    const dot = document.createElement('button');
+    dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+    dot.addEventListener('click', function() { go(i); });
+    dotsEl.appendChild(dot);
+  });
 }
 
-function animateCount(el, target, suffix) {
-  if (!el) return;
-  const duration = 600;
-  const start = performance.now();
-  function frame(now) {
-    const t = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - t, 3);
-    el.textContent = Math.floor(eased * target) + (suffix || '');
-    if (t < 1) requestAnimationFrame(frame);
-  }
-  requestAnimationFrame(frame);
+function go(idx) {
+  if (idx === current) return;
+  current = idx;
+  slidesEl.style.transform = 'translateX(-' + (idx * 100) + '%)';
+  document.querySelectorAll('.dots button').forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+  animate(idx);
+  resetTimer();
 }
+
+function animate(idx) {
+  var els = slidesEl.children[idx].querySelectorAll('.tagline, h1, p, .slide-buttons');
+  els.forEach(function(el) { el.classList.remove('show'); });
+  requestAnimationFrame(function() { requestAnimationFrame(function() { els.forEach(function(el) { el.classList.add('show'); }); }); });
+}
+
+function next() { go((current + 1) % SLIDES.length); }
+function prev() { go((current - 1 + SLIDES.length) % SLIDES.length); }
+function resetTimer() { clearInterval(timer); timer = setInterval(next, 6500); }
+
+document.getElementById('nextBtn').addEventListener('click', function() { next(); resetTimer(); });
+document.getElementById('prevBtn').addEventListener('click', function() { prev(); resetTimer(); });
+
+build();
+go(0);
 
 // Fade-in observer
 const observer = new IntersectionObserver((entries) => {
@@ -495,8 +448,6 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-window.addEventListener('load', startHeroSequence);
 </script>
 </body>
 </html>
