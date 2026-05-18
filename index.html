@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hyundai Mérida - Concesionario Oficial</title>
-<meta name="description" content="Concesionario oficial Hyundai en Mérida, Venezuela. Conoce nuestra gama de vehículos, solicita financiamiento y agenda tu prueba de manejo.">
+<meta name="description" content="Concesionario oficial Hyundai en Mérida, Venezuela. Explora nuestra gama completa de vehículos en el corazón de los Andes venezolanos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--dark);
-  background: var(--white);
+  background: var(--gray-100);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -84,168 +84,25 @@ body {
   min-height: 100vh; display: flex; align-items: stretch;
   position: relative; overflow: hidden; padding-top: 72px;
 }
-.hero-sky {
+.hero-bg {
   position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(180deg, #0f2a45 0%, #1a4a6e 20%, #2d6a8a 40%, #5a9ec4 55%, #87ceeb 75%, #b8dff0 100%);
-  animation: skyFadeIn 2s ease-out forwards;
+  background: #0f2a45;
 }
-@keyframes skyFadeIn {
+.hero-bg img {
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; animation: heroBgFade 2s ease-out 0.3s forwards;
+}
+@keyframes heroBgFade {
   0% { opacity: 0; }
-  100% { opacity: 1; }
+  100% { opacity: 0.85; }
 }
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(135deg, rgba(0,44,95,0.85) 0%, rgba(0,44,95,0.4) 50%, rgba(0,0,0,0.3) 100%);
+}
+.hero-scene { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
 
-/* Scene layer */
-.hero-scene { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
-
-/* Andes mountain range */
-.mountain-wrap {
-  position: absolute; width: 100%; height: 38vh; left: 0;
-  opacity: 0; animation: mountainRise 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-.mountain-wrap-1 { bottom: 60px; animation-delay: 0.1s; }
-.mountain-wrap-2 { bottom: 0; height: 30vh; animation-delay: 0.25s; }
-@keyframes mountainRise {
-  0% { transform: translateY(100%); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-.mountain {
-  position: absolute; inset: 0; width: 200vw; height: 100%;
-  animation: mountainScroll 40s linear infinite;
-}
-.mountain-2 { animation-duration: 28s; }
-.mountain-1 {
-  background: linear-gradient(180deg, transparent 0%, rgba(40,90,50,0.5) 30%, rgba(20,60,30,0.7) 100%);
-  clip-path: polygon(0% 100%, 3% 65%, 8% 78%, 14% 50%, 20% 68%, 26% 40%, 33% 55%, 40% 35%, 46% 50%, 52% 28%, 58% 45%, 64% 32%, 70% 48%, 76% 22%, 82% 40%, 88% 30%, 94% 45%, 100% 38%, 100% 100%);
-}
-.mountain-2 {
-  background: linear-gradient(180deg, transparent 0%, rgba(70,140,80,0.3) 30%, rgba(40,100,50,0.5) 100%);
-  clip-path: polygon(0% 100%, 5% 72%, 12% 55%, 18% 70%, 24% 48%, 30% 62%, 38% 40%, 45% 55%, 52% 35%, 60% 50%, 66% 30%, 74% 45%, 80% 28%, 88% 42%, 94% 32%, 100% 40%, 100% 100%);
-}
-@keyframes mountainScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* Pico Bolívar - iconic snowy peak */
-.pico-wrap {
-  position: absolute; bottom: 60px; left: 15%; width: 35%; height: 65vh;
-  opacity: 0; animation: mountainRise 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
-}
-.pico {
-  position: absolute; inset: 0;
-  clip-path: polygon(10% 100%, 30% 55%, 42% 30%, 50% 0%, 58% 30%, 70% 55%, 90% 100%);
-  background: linear-gradient(180deg, #2a5a3a 0%, #1a4028 50%, #0d2a18 100%);
-}
-.pico-snow {
-  position: absolute; top: 0; left: 0; width: 100%; height: 18%;
-  clip-path: polygon(35% 100%, 42% 50%, 50% 0%, 58% 50%, 65% 100%);
-  background: linear-gradient(180deg, #ffffff 0%, #d0e0f0 40%, transparent 100%);
-}
-.pico-shadow {
-  position: absolute; top: 2%; left: 48%; width: 8%; height: 20%;
-  background: rgba(255,255,255,0.15); filter: blur(6px);
-  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-}
-
-/* Teleférico de Mérida */
-.teleferico {
-  position: absolute; bottom: 200px; left: 18%; width: 30%; height: 45vh;
-  transform-origin: bottom left; transform: rotate(-32deg);
-  opacity: 0; animation: telefericoFade 0.8s ease 0.8s forwards;
-}
-@keyframes telefericoFade {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-.teleferico-cable {
-  position: absolute; inset: 0;
-  border-left: 1.5px solid rgba(255,255,255,0.15);
-}
-.teleferico-tower {
-  position: absolute; bottom: 0; left: 30%; width: 3px; height: 30px;
-  background: rgba(150,150,150,0.3); transform-origin: bottom;
-}
-.teleferico-tower::after {
-  content: ''; position: absolute; top: 0; left: -4px; width: 11px; height: 2px;
-  background: rgba(150,150,150,0.3);
-}
-.teleferico-tower-2 { left: 65%; height: 22px; }
-.cabin {
-  position: absolute; left: 50%; width: 8px; height: 7px; margin-left: -4px;
-  background: #c0392b; border-radius: 2px 2px 3px 3px;
-  animation: cabinUp 14s linear infinite;
-}
-.cabin::before {
-  content: ''; position: absolute; top: -5px; left: 50%; margin-left: -0.5px;
-  width: 1px; height: 5px; background: rgba(255,255,255,0.2);
-}
-.cabin::after {
-  content: ''; position: absolute; bottom: -3px; left: 50%; margin-left: -2px;
-  width: 4px; height: 3px; background: rgba(200,80,60,0.4); border-radius: 0 0 2px 2px;
-}
-.cabin:nth-child(3) { animation-delay: -4.7s; }
-.cabin:nth-child(4) { animation-delay: -9.3s; }
-@keyframes cabinUp {
-  0% { bottom: 0; opacity: 0; }
-  5% { opacity: 1; }
-  85% { opacity: 1; }
-  95% { bottom: 100%; opacity: 0; }
-  100% { bottom: 100%; opacity: 0; }
-}
-
-/* Páramo ground */
-.paramo {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 70px;
-  background: linear-gradient(180deg, #4a7a3a 0%, #3a6a2e 40%, #2d5a22 100%);
-  z-index: 2;
-}
-
-/* Sun glow pulsing */
-.hero::before {
-  content: ''; position: absolute; top: 10%; right: 20%; width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(255,220,140,0.12) 0%, rgba(255,200,100,0.06) 40%, transparent 70%);
-  pointer-events: none; z-index: 1; border-radius: 50%;
-  animation: sunPulse 4s ease-in-out infinite;
-}
-@keyframes sunPulse {
-  0%, 100% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.2); opacity: 1; }
-}
-
-/* Container - text overlay (initially hidden, revealed by JS) */
-.hero .container { position: relative; z-index: 3; display: flex; align-items: center; width: 100%; padding-top: 72px; padding-bottom: 120px; }
-.hero-content { max-width: 560px; }
-.hero-content h1 {
-  font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 20px;
-  opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.hero-content h1.reveal { opacity: 1; transform: translateX(0); }
-.hero-content h1 span { color: #87ceeb; }
-.hero-content p { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 32px; line-height: 1.7; }
-.hero-content > p {
-  opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s;
-}
-.hero-content > p.reveal { opacity: 1; transform: translateX(0); }
-.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-.btn {
-  display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
-  border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none;
-  transition: var(--transition); cursor: pointer; border: none;
-}
-.btn-primary {
-  background: var(--accent); color: var(--white);
-  opacity: 0; transform: scale(0.8); transition: opacity 0.5s ease 0.35s, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s, background 0.3s ease, box-shadow 0.3s ease;
-}
-.btn-primary.reveal { opacity: 1; transform: scale(1); }
-.btn-primary:hover { background: #0090b5; transform: scale(1.05); box-shadow: 0 8px 32px rgba(0,165,207,0.5); }
-.btn-outline {
-  background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3);
-  opacity: 0; transform: scale(0.8); transition: opacity 0.5s ease 0.45s, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s, border-color 0.3s ease, background 0.3s ease;
-}
-.btn-outline.reveal { opacity: 1; transform: scale(1); }
-.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.15); transform: scale(1.05); }
-
-/* Car entry from right */
+/* Car entry */
 .hero-car {
   position: absolute; bottom: 74px; right: 5%; z-index: 2;
   width: 42%; max-width: 520px;
@@ -258,9 +115,7 @@ body {
   0% { transform: translateX(100vw); }
   100% { transform: translateX(0); }
 }
-.hero-car.idle {
-  transform: translateX(0);
-}
+.hero-car.idle { transform: translateX(0); }
 .hero-car.idle .car-body {
   animation: carIdle 2.5s ease-in-out infinite;
 }
@@ -273,7 +128,7 @@ body {
 /* Headlight flash */
 .headlight-flash {
   position: absolute; pointer-events: none; z-index: 4; opacity: 0;
-  border-radius: 50%; background: radial-gradient(circle, rgba(255,255,230,0.6), transparent);
+  border-radius: 50%;
 }
 .headlight-flash.front {
   width: 120px; height: 60px; top: 35%; right: -30px;
@@ -292,7 +147,7 @@ body {
   100% { opacity: 0; transform: scale(1.5); }
 }
 
-/* Car reflection/shadow */
+/* Car shadow */
 .car-shadow {
   position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
   width: 75%; height: 12px;
@@ -307,19 +162,57 @@ body {
   50% { transform: translateX(-50%) scaleX(0.9); opacity: 0.25; }
 }
 
+/* Hero content */
+.hero .container { position: relative; z-index: 3; display: flex; align-items: center; width: 100%; padding-bottom: 120px; }
+.hero-content { max-width: 580px; }
+.hero-content .subtitle {
+  display: inline-block; font-size: 13px; font-weight: 600; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
+  opacity: 0; transition: opacity 0.6s ease 0.2s;
+}
+.hero-content .subtitle.reveal { opacity: 1; }
+.hero-content h1 {
+  font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 16px;
+  opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.hero-content h1.reveal { opacity: 1; transform: translateX(0); }
+.hero-content h1 span { color: #87ceeb; }
+.hero-content p {
+  font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 32px; line-height: 1.7;
+  opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s;
+}
+.hero-content p.reveal { opacity: 1; transform: translateX(0); }
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
+  border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none;
+  transition: var(--transition); cursor: pointer; border: none;
+}
+.btn-primary {
+  background: var(--accent); color: var(--white);
+  opacity: 0; transform: scale(0.8); transition: opacity 0.5s ease 0.35s, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s, background 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-primary.reveal { opacity: 1; transform: scale(1); }
+.btn-primary:hover { background: #0090b5; transform: scale(1.05); box-shadow: 0 8px 32px rgba(0,165,207,0.5); }
+.btn-outline {
+  background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3);
+  opacity: 0; transform: scale(0.8); transition: opacity 0.5s ease 0.45s, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s, border-color 0.3s ease, background 0.3s ease;
+}
+.btn-outline.reveal { opacity: 1; transform: scale(1); }
+.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.15); }
 .hero-stats { display: flex; gap: 40px; margin-top: 40px; }
 .hero-stat h3 { font-size: 28px; font-weight: 700; color: var(--white); }
 .hero-stat p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 0; text-transform: uppercase; letter-spacing: 1px; }
 
 /* Sections */
-.section { padding: 100px 0; }
-.section-header { text-align: center; margin-bottom: 60px; }
-.section-header h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; color: var(--primary); margin-bottom: 16px; }
-.section-header p { font-size: 17px; color: var(--gray-600); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+.section { padding: 80px 0; }
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 { font-size: clamp(26px, 3vw, 36px); font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+.section-header p { font-size: 16px; color: var(--gray-600); max-width: 600px; margin: 0 auto; line-height: 1.7; }
 .section-header .subtitle { display: inline-block; font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
 
 /* Category Tabs */
-.categories { display: flex; justify-content: center; gap: 8px; margin-bottom: 48px; flex-wrap: wrap; }
+.categories { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
 .cat-btn {
   padding: 10px 24px; border-radius: 100px; border: 1px solid var(--gray-300);
   background: var(--white); color: var(--gray-700); font-size: 14px; font-weight: 500;
@@ -350,7 +243,6 @@ body {
 .model-card-body h3 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
 .model-card-body .variant { font-size: 14px; color: var(--gray-500); margin-bottom: 16px; }
 .model-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-.model-spec { }
 .model-spec .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-500); font-weight: 500; }
 .model-spec .value { font-size: 14px; font-weight: 600; color: var(--dark); }
 .price-breakdown { margin: 12px 0; padding: 12px; background: var(--gray-100); border-radius: 8px; font-size: 13px; }
@@ -360,41 +252,11 @@ body {
 .model-card-actions .btn { flex: 1; justify-content: center; padding: 10px 16px; font-size: 13px; }
 .btn-small { padding: 10px 16px; font-size: 13px; border-radius: 8px; }
 
-/* Simulator */
-.simulator-section { background: var(--gray-100); }
-.simulator {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
-  background: var(--white); border-radius: var(--radius-lg); padding: 48px;
-  box-shadow: var(--shadow);
-}
-.simulator-form h3 { font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
-.simulator-form > p { color: var(--gray-600); margin-bottom: 32px; }
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; font-size: 14px; font-weight: 500; color: var(--gray-700); margin-bottom: 6px; }
-.form-group select, .form-group input {
-  width: 100%; padding: 12px 16px; border: 1px solid var(--gray-300); border-radius: 8px;
-  font-size: 15px; font-family: inherit; color: var(--dark); background: var(--white);
-  transition: var(--transition);
-}
-.form-group select:focus, .form-group input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,165,207,0.15); }
-.form-group input[type="range"] { padding: 0; border: none; height: 6px; appearance: none; background: var(--gray-200); border-radius: 3px; }
-.form-group input[type="range"]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); cursor: pointer; box-shadow: 0 2px 8px rgba(0,165,207,0.3); }
-.range-labels { display: flex; justify-content: space-between; font-size: 13px; color: var(--gray-500); margin-top: 4px; }
-.simulator-result { background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: var(--radius); padding: 32px; color: var(--white); }
-.simulator-result h4 { font-size: 18px; font-weight: 600; margin-bottom: 24px; opacity: 0.9; }
-.result-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.result-item:last-child { border-bottom: none; }
-.result-item .label { font-size: 14px; opacity: 0.8; }
-.result-item .value { font-size: 16px; font-weight: 600; }
-.result-item .value.highlight { font-size: 22px; color: var(--accent); }
-.result-total { margin-top: 16px; padding-top: 16px; border-top: 2px solid rgba(255,255,255,0.2); }
-.result-total .value { font-size: 28px !important; font-weight: 700 !important; color: var(--accent); }
-
-/* Why Us */
+/* Features */
 .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
 .feature-card {
   text-align: center; padding: 40px 24px; border-radius: var(--radius-lg);
-  border: 1px solid var(--gray-200); transition: var(--transition);
+  border: 1px solid var(--gray-200); background: var(--white); transition: var(--transition);
 }
 .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 .feature-icon { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 28px; }
@@ -426,7 +288,6 @@ body {
 .footer p, .footer a { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; line-height: 2; display: block; }
 .footer a:hover { color: var(--accent); }
 .footer-logo { margin-bottom: 16px; }
-.footer-logo svg { height: 24px; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px; padding-top: 24px; text-align: center; font-size: 13px; }
 
 /* WhatsApp Float */
@@ -438,6 +299,10 @@ body {
   transition: var(--transition); font-size: 28px;
 }
 .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5); }
+
+/* Animations */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 
 /* Mobile */
 @media (max-width: 768px) {
@@ -453,25 +318,15 @@ body {
   .hero-stats { justify-content: center; }
   .hero-car { width: 70%; bottom: 56px; }
   .hero-car.entered { right: 15%; }
-  .pico-wrap { width: 50%; left: 25%; height: 40vh; bottom: 50px; }
-  .teleferico { display: none; }
-  .paramo { height: 55px; }
   .headlight-flash { display: none; }
-  .simulator { grid-template-columns: 1fr; padding: 24px; }
-  .footer .container { grid-template-columns: 1fr 1fr; }
   .models-grid { grid-template-columns: 1fr; }
+  .footer .container { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 480px) {
   .footer .container { grid-template-columns: 1fr; }
   .model-specs { grid-template-columns: 1fr; }
 }
-
-/* Animations */
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-.hidden { display: none; }
 </style>
 </head>
 <body>
@@ -499,48 +354,111 @@ body {
 
 <!-- Hero -->
 <section class="hero" id="inicio">
-  <div class="hero-sky"></div>
-  <!-- Scene layer -->
-  <div class="hero-scene">
-    <div class="mountain-wrap mountain-wrap-2"><div class="mountain mountain-2"></div></div>
-    <div class="mountain-wrap mountain-wrap-1"><div class="mountain mountain-1"></div></div>
-    <div class="pico-wrap">
-      <div class="pico">
-        <div class="pico-snow"></div>
-        <div class="pico-shadow"></div>
-      </div>
-    </div>
-    <div class="teleferico">
-      <div class="teleferico-cable"></div>
-      <div class="teleferico-tower"></div>
-      <div class="teleferico-tower teleferico-tower-2"></div>
-      <div class="cabin"></div>
-      <div class="cabin"></div>
-      <div class="cabin"></div>
-    </div>
-    <div class="paramo"></div>
-    <div class="hero-car" id="heroCar">
-      <div class="headlight-flash front" id="headlightFront"></div>
-      <div class="headlight-flash rear" id="headlightRear"></div>
-      <div class="car-body">
-        <img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson Premium">
-      </div>
-      <div class="car-shadow" id="carShadow"></div>
-    </div>
+  <div class="hero-bg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Pico_Bolivar_Merida_Venezuela.jpg" alt="Pico Bolívar - Mérida, Venezuela">
   </div>
-  <!-- Text overlay -->
+  <div class="hero-overlay"></div>
   <div class="container">
     <div class="hero-content">
-      <h1 id="heroTitle">Hyundai <span>Mérida</span><br>Tu concesionario de confianza</h1>
-      <p id="heroDesc">Descubre la gama completa de vehículos Hyundai en Mérida. Recorre los Andes venezolanos con estilo y seguridad.</p>
+      <div class="subtitle" id="heroSub">Concesionario Oficial</div>
+      <h1 id="heroTitle">Hyundai <span>Mérida</span><br>Nuestra flota completa</h1>
+      <p id="heroDesc">Explora todos los modelos Hyundai disponibles en Venezuela. Desde el compacto Grand i10 hasta el imponente Palisade, encuentra el vehículo que se adapta a tu estilo de vida en los Andes.</p>
       <div class="hero-buttons">
-        <a href="modelos.html" class="btn btn-primary" id="btnModels">Ver Modelos</a>
+        <a href="#models" class="btn btn-primary" id="btnModels">Ver Modelos</a>
         <a href="simulador.html" class="btn btn-outline" id="btnSim">Simular Crédito</a>
       </div>
       <div class="hero-stats">
-        <div class="hero-stat"><h3 id="statModels">0</h3><p>Modelos Disponibles</p></div>
-        <div class="hero-stat"><h3 id="statWarranty">0</h3><p>años Garantía</p></div>
-        <div class="hero-stat"><h3 id="statSupport">24/7</h3><p>Post-Venta</p></div>
+        <div class="hero-stat"><h3 id="statModels">0</h3><p>Modelos</p></div>
+        <div class="hero-stat"><h3 id="statWarranty">0</h3><p>Años Garantía</p></div>
+        <div class="hero-stat"><h3>24/7</h3><p>Post-Venta</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-car" id="heroCar">
+    <div class="headlight-flash front" id="headlightFront"></div>
+    <div class="headlight-flash rear" id="headlightRear"></div>
+    <div class="car-body">
+      <img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson Premium">
+    </div>
+    <div class="car-shadow" id="carShadow"></div>
+  </div>
+</section>
+
+<!-- Vehicles Section -->
+<section class="section" id="models">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="subtitle">Nuestra gama</span>
+      <h2>Todos los modelos Hyundai</h2>
+      <p>Desde hatchbacks urbanos hasta SUVs todoterreno, encuentra el Hyundai perfecto para ti en Mérida.</p>
+    </div>
+    <div class="categories fade-in">
+      <button class="cat-btn active" data-category="all">Todos</button>
+      <button class="cat-btn" data-category="hatchback">Hatchbacks</button>
+      <button class="cat-btn" data-category="sedan">Sedanes</button>
+      <button class="cat-btn" data-category="suv">SUVs</button>
+    </div>
+    <div class="models-grid fade-in" id="modelsGrid"></div>
+  </div>
+</section>
+
+<!-- Why Hyundai -->
+<section class="section" style="background: var(--white);">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="subtitle">¿Por qué Hyundai Mérida?</span>
+      <h2>Excelencia automotriz en los Andes</h2>
+      <p>Respaldados por Hyundai Motor Company, llevamos innovación y calidad a las carreteras venezolanas.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <div class="feature-icon" style="background: var(--accent-light);">&#128663;</div>
+        <h3>Modelos 2025-2026</h3>
+        <p>Las últimas novedades de Hyundai con la más avanzada tecnología y diseño.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon" style="background: var(--accent-light);">&#9888;</div>
+        <h3>Garantía de 3 años</h3>
+        <p>Todos nuestros vehículos incluyen garantía oficial Hyundai con cobertura nacional.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon" style="background: var(--accent-light);">&#128179;</div>
+        <h3>Financiamiento flexible</h3>
+        <p>Planes de crédito diseñados para ti. Simula tu financiamiento en segundos.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon" style="background: var(--accent-light);">&#128222;</div>
+        <h3>Soporte 24/7</h3>
+        <p>Atención post-venta permanente. Estamos aquí cuando nos necesites.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section contact-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="subtitle" style="color: var(--accent);">Contacto</span>
+      <h2>Visítanos en Mérida</h2>
+      <p>Te esperamos en el corazón de los Andes venezolanos.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card fade-in">
+        <div class="icon">&#128222;</div>
+        <h3>Teléfono</h3>
+        <p>+58 416-1234567</p>
+        <p>+58 274-1234567</p>
+      </div>
+      <div class="contact-card fade-in">
+        <div class="icon">&#128231;</div>
+        <h3>Email</h3>
+        <a href="mailto:info@hyundaimerida.com">info@hyundaimerida.com</a>
+      </div>
+      <div class="contact-card fade-in">
+        <div class="icon">&#128205;</div>
+        <h3>Ubicación</h3>
+        <p>Av. 4 entre calles 22 y 23<br>Mérida, Venezuela</p>
       </div>
     </div>
   </div>
@@ -587,6 +505,19 @@ body {
 <a href="https://wa.me/584161234567?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20veh%C3%ADculos%20Hyundai%20en%20M%C3%A9rida" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">&#128172;</a>
 
 <script>
+const models = [
+  { name: 'Grand i10 1.2L M/T GL', variant: 'M/T 5 vel', category: 'hatchback', price: 20640.04, pvp: 16107.00, iva: 2577.12, igtf: 483.21, tramites: 1472.71, motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Manual 5 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '40 L', largo: '3,665 mm', ancho: '1,660 mm', alto: '1,530 mm', peso: '1,012 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69856148203811e31988110b_Grandi10-Hatchback-GL-Azul.png' },
+  { name: 'Grand i10 1.2L A/T GL', variant: 'A/T 4 vel', category: 'hatchback', price: 22681.10, pvp: 17780.00, iva: 2844.80, igtf: 533.40, tramites: 1522.90, motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Automática 4 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '40 L', largo: '3,665 mm', ancho: '1,660 mm', alto: '1,530 mm', peso: '1,025 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823fe186892428b7a8fab3_Grandi10-Hatchback-GL-Plata.png' },
+  { name: 'Grand i10 1.2L A/T GLS', variant: 'A/T 4 vel', category: 'hatchback', price: 25267.50, pvp: 19900.00, iva: 3184.00, igtf: 597.00, tramites: 1586.50, motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Automática 4 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '40 L', largo: '3,665 mm', ancho: '1,660 mm', alto: '1,530 mm', peso: '1,025 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png' },
+  { name: 'Grand i10 1.2L A/T GLS Sedán', variant: 'A/T 4 vel', category: 'sedan', price: 26261.80, pvp: 20715.00, iva: 3314.40, igtf: 621.45, tramites: 1610.95, motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Automática 4 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '43 L', largo: '4,225 mm', ancho: '1,660 mm', alto: '1,520 mm', peso: '1,068 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png' },
+  { name: 'Accent 1.5L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 32029.50, pvp: 25073.74, iva: 4011.80, igtf: 752.21, tramites: 2191.75, motor: '1.5L MPI', potencia: '113 HP @ 6300 rpm', transmision: 'Automática IVT 6 vel', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '45 L', largo: '4,500 mm', ancho: '1,760 mm', alto: '1,470 mm', peso: '1,152 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69d444234c01074f6c41678a_Accent-blanco.png' },
+  { name: 'Elantra 2.0L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 41619.56, pvp: 32923.00, iva: 5267.68, igtf: 987.69, tramites: 2441.19, motor: '2.0L MPI', potencia: '156 HP @ 6200 rpm', transmision: 'Automática IVT 6 vel', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '47 L', largo: '4,640 mm', ancho: '1,820 mm', alto: '1,425 mm', peso: '1,250 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/698561c627e39b93b4031662_Elantra-rojo.png' },
+  { name: 'Creta 1.5L A/T GLS', variant: 'A/T 6 vel', category: 'suv', price: 39310.35, pvp: 31030.17, iva: 4964.83, igtf: 930.91, tramites: 2384.45, motor: '1.5L MPI', potencia: '113 HP @ 6300 rpm', transmision: 'Automática 6 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '50 L', largo: '4,300 mm', ancho: '1,790 mm', alto: '1,635 mm', peso: '1,220 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/699dc30fedebb4b0d6d72a19_Creta%20Blanco_.png' },
+  { name: 'Tucson 2.0L A/T 2WD GLS', variant: 'A/T 6 vel', category: 'suv', price: 50130.00, pvp: 39900.00, iva: 6384.00, igtf: 1197.00, tramites: 2649.00, motor: '2.0L MPI', potencia: '154 HP @ 6200 rpm', transmision: 'Automática 6 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '54 L', largo: '4,630 mm', ancho: '1,865 mm', alto: '1,665 mm', peso: '1,530 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png' },
+  { name: 'Tucson 2.0L A/T 4WD GLX', variant: 'A/T 6 vel', category: 'suv', price: 59525.50, pvp: 47600.00, iva: 7616.00, igtf: 1428.00, tramites: 2881.50, motor: '2.0L MPI', potencia: '154 HP @ 6200 rpm', transmision: 'Automática 6 velocidades', traccion: '4x4', combustible: 'Gasolina', capacidad_tanque: '54 L', largo: '4,630 mm', ancho: '1,865 mm', alto: '1,665 mm', peso: '1,612 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823c97ec17a7e03309284f_Tucson-blanco.png' },
+  { name: 'Palisade 3.8L A/T 4WD GLS 7P', variant: 'A/T 8 vel', category: 'suv', price: 124063.50, pvp: 100500.00, iva: 16080.00, igtf: 3015.00, tramites: 4468.50, motor: '3.8L V6 GDI', potencia: '291 HP @ 6000 rpm', transmision: 'Automática 8 velocidades', traccion: '4x4', combustible: 'Gasolina', capacidad_tanque: '71 L', largo: '4,995 mm', ancho: '1,975 mm', alto: '1,750 mm', peso: '1,905 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695f0af617714685f4d6adc9_Palisade-rojo.png' }
+];
+
 // Mobile menu
 document.getElementById('menuToggle').addEventListener('click', function() {
   this.classList.toggle('active');
@@ -604,7 +535,51 @@ window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// --- Hero load sequence ---
+// Category filter
+const modelsGrid = document.getElementById('modelsGrid');
+const categoryBtns = document.querySelectorAll('.cat-btn');
+
+function renderModels(category = 'all') {
+  const filtered = category === 'all' ? models : models.filter(m => m.category === category);
+  modelsGrid.innerHTML = filtered.map(m => {
+    const idx = models.indexOf(m);
+    return `
+    <div class="model-card" data-index="${idx}">
+      <div class="model-card-image">
+        <span class="model-card-badge">${m.category.toUpperCase()}</span>
+        <img src="${m.image}" alt="${m.name}" loading="lazy">
+      </div>
+      <div class="model-card-body">
+        <h3>${m.name}</h3>
+        <div class="variant">${m.variant}</div>
+        <div class="price-breakdown">
+          <div class="price-row"><span>PVP</span><span>$${m.pvp.toFixed(2)}</span></div>
+          <div class="price-row"><span>IVA 16%</span><span>$${m.iva.toFixed(2)}</span></div>
+          <div class="price-row"><span>IGTF 3%</span><span>$${m.igtf.toFixed(2)}</span></div>
+          <div class="price-row"><span>Trámites y gastos</span><span>$${m.tramites.toFixed(2)}</span></div>
+          <div class="price-row total"><span>Total</span><span>$${m.price.toFixed(2)}</span></div>
+        </div>
+        <div class="model-card-actions">
+          <a href="simulador.html" class="btn btn-primary btn-small">Simular</a>
+          <a href="modelos.html" class="btn btn-small" style="border:1px solid var(--gray-300);color:var(--gray-700);background:var(--white);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer">Ficha técnica</a>
+          <a href="https://wa.me/584161234567?text=Quiero%20informaci%C3%B3n%20sobre%20${encodeURIComponent(m.name)}" class="btn btn-outline btn-small" style="border-color:var(--gray-300);color:var(--gray-700);text-decoration:none">Consultar</a>
+        </div>
+      </div>
+    </div>
+  `}).join('');
+}
+
+categoryBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    categoryBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderModels(btn.dataset.category);
+  });
+});
+
+renderModels();
+
+// Hero animation sequence
 function animateCount(el, target, suffix) {
   if (!el) return;
   const duration = 600;
@@ -619,46 +594,41 @@ function animateCount(el, target, suffix) {
 }
 
 function startHeroSequence() {
-  // Step 1: Mountains rise (handled by CSS animation with delays)
-
-  // Step 2: Car enters from right
   const car = document.getElementById('heroCar');
   setTimeout(() => {
     car.classList.add('entered');
-    // After entry animation completes (~1.8s), switch to idle
     setTimeout(() => {
       car.classList.remove('entered');
       car.classList.add('idle');
-      // Step 2b: Headlight flash
       document.getElementById('headlightFront').classList.add('fire');
       document.getElementById('headlightRear').classList.add('fire');
-      // Step 2c: Reflection fades in
       document.getElementById('carShadow').classList.add('show');
     }, 1900);
   }, 500);
 
-  // Step 3: Text reveal after car settles
   setTimeout(() => {
-    document.getElementById('heroTitle').classList.add('reveal');
+    document.getElementById('heroSub').classList.add('reveal');
     setTimeout(() => {
-      document.getElementById('heroDesc').classList.add('reveal');
+      document.getElementById('heroTitle').classList.add('reveal');
     }, 200);
-  }, 2600);
+  }, 2000);
 
-  // Step 4: Buttons pop
+  setTimeout(() => {
+    document.getElementById('heroDesc').classList.add('reveal');
+  }, 2800);
+
   setTimeout(() => {
     document.getElementById('btnModels').classList.add('reveal');
     document.getElementById('btnSim').classList.add('reveal');
-  }, 3200);
+  }, 3400);
 
-  // Step 5: Counters
   setTimeout(() => {
     animateCount(document.getElementById('statModels'), 10, '');
-    animateCount(document.getElementById('statWarranty'), 3, ' años');
-  }, 3600);
+    animateCount(document.getElementById('statWarranty'), 3, '');
+  }, 3800);
 }
 
-// Fade-in for sections
+// Fade-in observer
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -666,7 +636,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Start hero when page loads
 window.addEventListener('load', startHeroSequence);
 </script>
 </body>
