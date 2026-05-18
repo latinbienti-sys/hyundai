@@ -91,14 +91,22 @@ body {
   pointer-events: none;
 }
 .hero-road {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
-  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.25) 100%);
+  position: absolute; bottom: 0; left: 0; right: 0; height: 130px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.12) 50%, rgba(0,0,0,0.3) 100%);
   pointer-events: none;
 }
 .hero-road-line {
-  position: absolute; top: 40px; left: 0; right: 0; height: 2px;
-  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.3) 0px, rgba(255,255,255,0.3) 40px, transparent 40px, transparent 80px);
-  animation: roadLineScroll 1.5s linear infinite;
+  position: absolute; top: 44px; left: 0; right: 0; height: 2px;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.35) 0px, rgba(255,255,255,0.35) 40px, transparent 40px, transparent 80px);
+  animation: roadLineScroll 1s linear infinite;
+}
+.hero-road-edge {
+  position: absolute; top: 28px; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.15) 100%);
+}
+.hero-road-edge-bottom {
+  position: absolute; top: 60px; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.1) 100%);
 }
 @keyframes roadLineScroll {
   0% { transform: translateX(0); }
@@ -124,16 +132,88 @@ body {
   display: flex; justify-content: center; align-items: center;
   position: relative; overflow: visible;
 }
+
+/* Speed lines */
+.speed-lines { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.speed-line {
+  position: absolute; height: 1.5px; right: 10%; border-radius: 2px;
+  background: linear-gradient(270deg, rgba(255,255,255,0.4), transparent);
+  animation: speedLineFade 0.8s linear infinite;
+}
+.speed-line:nth-child(1) { top: 25%; width: 120px; animation-duration: 0.6s; animation-delay: 0s; }
+.speed-line:nth-child(2) { top: 45%; width: 80px; animation-duration: 0.7s; animation-delay: 0.2s; }
+.speed-line:nth-child(3) { top: 60%; width: 100px; animation-duration: 0.5s; animation-delay: 0.4s; }
+.speed-line:nth-child(4) { top: 75%; width: 60px; animation-duration: 0.9s; animation-delay: 0.1s; }
+.speed-line:nth-child(5) { top: 35%; width: 90px; animation-duration: 0.65s; animation-delay: 0.6s; }
+@keyframes speedLineFade {
+  0% { transform: translateX(0); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateX(-300px); opacity: 0; }
+}
+
+/* Motion trail */
+.motion-trail {
+  position: absolute; bottom: 8%; left: -40%; width: 50%; height: 20px;
+  background: linear-gradient(270deg, rgba(0,165,207,0.3), transparent);
+  border-radius: 50%; filter: blur(12px);
+  animation: trailPulse 1s ease-in-out infinite;
+  z-index: 0;
+}
+@keyframes trailPulse {
+  0%, 100% { opacity: 0.3; transform: scaleX(1); }
+  50% { opacity: 0.7; transform: scaleX(1.3); }
+}
+
+/* Exhaust particles */
+.exhaust {
+  position: absolute; bottom: 18%; right: -5%; pointer-events: none;
+}
+.exhaust-particle {
+  position: absolute; width: 6px; height: 6px;
+  border-radius: 50%; background: rgba(200,200,200,0.3);
+  animation: exhaustFloat 1.2s ease-out infinite;
+}
+.exhaust-particle:nth-child(1) { animation-delay: 0s; }
+.exhaust-particle:nth-child(2) { animation-delay: 0.4s; width: 4px; height: 4px; }
+.exhaust-particle:nth-child(3) { animation-delay: 0.8s; width: 5px; height: 5px; }
+@keyframes exhaustFloat {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  100% { transform: translate(30px, -20px) scale(0); opacity: 0; }
+}
+
 .hero-image img {
   max-width: 100%; height: auto;
   position: relative; z-index: 2;
-  animation: drive 5s ease-in-out infinite;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+  animation: drive 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5));
 }
 @keyframes drive {
-  0% { transform: translateX(-40px); }
-  50% { transform: translateX(40px); }
-  100% { transform: translateX(-40px); }
+  0% { transform: translateX(-90px) rotate(0deg) translateY(0); }
+  15% { transform: translateX(-60px) rotate(0.6deg) translateY(-4px); }
+  30% { transform: translateX(-20px) rotate(0deg) translateY(0); }
+  50% { transform: translateX(90px) rotate(0deg) translateY(0); }
+  65% { transform: translateX(60px) rotate(-0.6deg) translateY(-4px); }
+  80% { transform: translateX(20px) rotate(0deg) translateY(0); }
+  100% { transform: translateX(-90px) rotate(0deg) translateY(0); }
+}
+
+/* Car ground shadow */
+.car-shadow {
+  position: absolute; bottom: -4%; left: 50%; transform: translateX(-50%);
+  width: 70%; height: 24px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.35) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: shadowPulse 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  z-index: 1;
+}
+@keyframes shadowPulse {
+  0% { transform: translateX(-50%) scaleX(1) scaleY(1); opacity: 1; }
+  15% { transform: translateX(-50%) scaleX(1.1) scaleY(0.8); opacity: 0.6; }
+  30% { transform: translateX(-50%) scaleX(1) scaleY(1); opacity: 1; }
+  50% { transform: translateX(-50%) scaleX(1) scaleY(1); opacity: 1; }
+  65% { transform: translateX(-50%) scaleX(1.1) scaleY(0.8); opacity: 0.6; }
+  80% { transform: translateX(-50%) scaleX(1) scaleY(1); opacity: 1; }
+  100% { transform: translateX(-50%) scaleX(1) scaleY(1); opacity: 1; }
 }
 
 .hero-stats { display: flex; gap: 40px; margin-top: 40px; }
@@ -281,8 +361,10 @@ body {
   .hero-content p { margin: 0 auto 32px; }
   .hero-buttons { justify-content: center; }
   .hero-stats { justify-content: center; }
-  .hero-image { display: none; }
+  .hero-image { margin-top: 24px; }
   .hero-road { height: 60px; }
+  .hero-road-line { top: 24px; }
+  .speed-lines { display: none; }
   .simulator { grid-template-columns: 1fr; padding: 24px; }
   .footer .container { grid-template-columns: 1fr 1fr; }
   .models-grid { grid-template-columns: 1fr; }
@@ -326,7 +408,11 @@ body {
 
 <!-- Hero -->
 <section class="hero" id="inicio">
-  <div class="hero-road"><div class="hero-road-line"></div></div>
+  <div class="hero-road">
+    <div class="hero-road-edge"></div>
+    <div class="hero-road-line"></div>
+    <div class="hero-road-edge-bottom"></div>
+  </div>
   <div class="container">
     <div class="hero-content">
       <h1>Hyundai <span>Mérida</span><br>Tu concesionario de confianza</h1>
@@ -342,7 +428,21 @@ body {
       </div>
     </div>
     <div class="hero-image">
+      <div class="speed-lines">
+        <div class="speed-line"></div>
+        <div class="speed-line"></div>
+        <div class="speed-line"></div>
+        <div class="speed-line"></div>
+        <div class="speed-line"></div>
+      </div>
+      <div class="motion-trail"></div>
       <img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson Premium">
+      <div class="car-shadow"></div>
+      <div class="exhaust">
+        <div class="exhaust-particle"></div>
+        <div class="exhaust-particle"></div>
+        <div class="exhaust-particle"></div>
+      </div>
     </div>
   </div>
 </section>
