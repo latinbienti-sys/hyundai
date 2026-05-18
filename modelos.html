@@ -445,8 +445,10 @@ const categoryBtns = document.querySelectorAll('.cat-btn');
 
 function renderModels(category = 'all') {
   const filtered = category === 'all' ? models : models.filter(m => m.category === category);
-      modelsGrid.innerHTML = filtered.map((m, i) => `
-    <div class="model-card" data-index="${i}" onclick="openModal(${i})">
+      modelsGrid.innerHTML = filtered.map(m => {
+    const idx = models.indexOf(m);
+    return `
+    <div class="model-card" data-index="${idx}" onclick="openModal(${idx})">
       <div class="model-card-image">
         <span class="model-card-badge">${m.category.toUpperCase()}</span>
         <img src="${m.image}" alt="${m.name}" loading="lazy">
@@ -470,12 +472,12 @@ function renderModels(category = 'all') {
         `}
         <div class="model-card-actions" onclick="event.stopPropagation()">
           <a href="simulador.html" class="btn btn-primary btn-small">Simular</a>
-          <button class="btn btn-small" style="border:1px solid var(--gray-300);color:var(--gray-700);background:var(--white);cursor:pointer" onclick="openModal(${i})">Ficha técnica</button>
+          <button class="btn btn-small" style="border:1px solid var(--gray-300);color:var(--gray-700);background:var(--white);cursor:pointer" onclick="openModal(${idx})">Ficha técnica</button>
           <a href="https://wa.me/584161234567?text=Quiero%20informaci%C3%B3n%20sobre%20${encodeURIComponent(m.name)}" class="btn btn-outline btn-small" style="border-color:var(--gray-300);color:var(--gray-700)">Consultar</a>
         </div>
       </div>
     </div>
-  `).join('');
+  `}).join('');
 }
 
 categoryBtns.forEach(btn => {
