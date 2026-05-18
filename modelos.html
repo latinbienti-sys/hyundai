@@ -80,24 +80,46 @@ body {
 .menu-toggle.active span:nth-child(2) { opacity: 0; }
 .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-/* Hero */
-.hero {
-  min-height: 100vh; display: flex; align-items: center;
+/* Page Hero */
+.page-hero {
+  min-height: 55vh; display: flex; align-items: center; justify-content: center;
   background: linear-gradient(135deg, #002c5f 0%, #003f7f 40%, #004d99 100%);
   position: relative; overflow: hidden; padding-top: 72px;
 }
-.hero::before {
+.page-hero::before {
   content: ''; position: absolute; top: -50%; right: -30%; width: 80%; height: 200%;
   background: radial-gradient(ellipse, rgba(0,165,207,0.15) 0%, transparent 70%);
   pointer-events: none;
 }
-.hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding-top: 60px; padding-bottom: 60px; }
-.hero-content h1 {
-  font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 20px;
+.page-hero-road {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.25) 100%);
+  pointer-events: none;
 }
-.hero-content h1 span { color: var(--accent); }
-.hero-content p { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 32px; max-width: 480px; line-height: 1.7; }
-.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.page-hero-road-line {
+  position: absolute; top: 30px; left: 0; right: 0; height: 2px;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.3) 0px, rgba(255,255,255,0.3) 40px, transparent 40px, transparent 80px);
+  animation: roadLineScroll 1.5s linear infinite;
+}
+@keyframes roadLineScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-80px); }
+}
+.page-hero .container { position: relative; z-index: 1; text-align: center; padding-top: 40px; padding-bottom: 40px; }
+.page-hero .subtitle { display: inline-block; font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+.page-hero h1 { font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: var(--white); margin-bottom: 12px; }
+.page-hero p { font-size: 17px; color: rgba(255,255,255,0.8); max-width: 500px; margin: 0 auto; line-height: 1.7; }
+.hero-cars { display: flex; justify-content: center; gap: 60px; margin-top: 32px; align-items: center; }
+.hero-cars .car-wrap { width: 240px; position: relative; }
+.hero-cars .car-wrap img { width: 100%; height: auto; filter: drop-shadow(0 12px 32px rgba(0,0,0,0.4)); }
+.hero-cars .car-wrap:nth-child(1) img { animation: drive 4.5s ease-in-out infinite; }
+.hero-cars .car-wrap:nth-child(2) img { animation: drive 5.5s ease-in-out infinite 0.8s; }
+@keyframes drive {
+  0% { transform: translateX(-20px); }
+  50% { transform: translateX(20px); }
+  100% { transform: translateX(-20px); }
+}
+
 .btn {
   display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
   border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none;
@@ -107,23 +129,15 @@ body {
 .btn-primary:hover { background: #0090b5; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,165,207,0.3); }
 .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
 .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
-.hero-image { display: flex; justify-content: center; align-items: center; }
-.hero-image img { max-width: 100%; height: auto; filter: drop-shadow(0 20px 60px rgba(0,0,0,0.3)); animation: float 6s ease-in-out infinite; }
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
-
-.hero-stats { display: flex; gap: 40px; margin-top: 40px; }
-.hero-stat h3 { font-size: 28px; font-weight: 700; color: var(--white); }
-.hero-stat p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 0; text-transform: uppercase; letter-spacing: 1px; }
 
 /* Sections */
-.section { padding: 100px 0; }
-.section-header { text-align: center; margin-bottom: 60px; }
-.section-header h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; color: var(--primary); margin-bottom: 16px; }
-.section-header p { font-size: 17px; color: var(--gray-600); max-width: 600px; margin: 0 auto; line-height: 1.7; }
-.section-header .subtitle { display: inline-block; font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+.section { padding: 80px 0; }
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 { font-size: clamp(26px, 3vw, 36px); font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+.section-header p { font-size: 16px; color: var(--gray-600); max-width: 600px; margin: 0 auto; line-height: 1.7; }
 
 /* Category Tabs */
-.categories { display: flex; justify-content: center; gap: 8px; margin-bottom: 48px; flex-wrap: wrap; }
+.categories { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
 .cat-btn {
   padding: 10px 24px; border-radius: 100px; border: 1px solid var(--gray-300);
   background: var(--white); color: var(--gray-700); font-size: 14px; font-weight: 500;
@@ -252,11 +266,8 @@ body {
     transform: translateY(-100%); opacity: 0; pointer-events: none; transition: var(--transition);
   }
   .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
-  .hero .container { grid-template-columns: 1fr; text-align: center; }
-  .hero-content p { margin: 0 auto 32px; }
-  .hero-buttons { justify-content: center; }
-  .hero-stats { justify-content: center; }
-  .hero-image { display: none; }
+  .hero-cars { flex-direction: column; gap: 24px; }
+  .hero-cars .car-wrap { width: 200px; }
   .simulator { grid-template-columns: 1fr; padding: 24px; }
   .footer .container { grid-template-columns: 1fr 1fr; }
   .models-grid { grid-template-columns: 1fr; }
@@ -264,7 +275,6 @@ body {
 
 @media (max-width: 480px) {
   .footer .container { grid-template-columns: 1fr; }
-  .hero-stats { flex-direction: column; gap: 16px; align-items: center; }
   .model-specs { grid-template-columns: 1fr; }
 }
 
@@ -349,14 +359,23 @@ body {
   </div>
 </nav>
 
-<!-- Modelos -->
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="page-hero-road"><div class="page-hero-road-line"></div></div>
+  <div class="container">
+    <span class="subtitle">Nuestra Gama</span>
+    <h1>Modelos Hyundai</h1>
+    <p>Explora nuestra completa línea de vehículos. Encuentra el Hyundai perfecto para ti en Mérida.</p>
+    <div class="hero-cars">
+      <div class="car-wrap"><img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson"></div>
+      <div class="car-wrap"><img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/698561c627e39b93b4031662_Elantra-rojo.png" alt="Hyundai Elantra"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Models Grid -->
 <section class="section" id="modelos">
   <div class="container">
-    <div class="section-header">
-      <span class="subtitle">Nuestra Gama</span>
-      <h2>Modelos Hyundai</h2>
-      <p>Explora nuestra completa línea de vehículos. Encuentra el Hyundai perfecto para ti en Mérida.</p>
-    </div>
     <div class="categories" id="categories">
       <button class="cat-btn active" data-category="all">Todos</button>
       <button class="cat-btn" data-category="hatchback">Hatchback</button>
