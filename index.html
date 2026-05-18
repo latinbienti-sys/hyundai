@@ -97,89 +97,119 @@ body {
 /* Scene layer */
 .hero-scene { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
 
-/* Mountains - rise from below */
+/* Andes mountain range */
 .mountain-wrap {
-  position: absolute; width: 100%; height: 35vh; left: 0;
+  position: absolute; width: 100%; height: 38vh; left: 0;
   opacity: 0; animation: mountainRise 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.mountain-wrap-1 { bottom: 100px; animation-delay: 0.1s; }
-.mountain-wrap-2 { bottom: 80px; animation-delay: 0.25s; }
-.mountain-wrap-3 { bottom: 60px; animation-delay: 0.4s; }
+.mountain-wrap-1 { bottom: 60px; animation-delay: 0.1s; }
+.mountain-wrap-2 { bottom: 0; height: 30vh; animation-delay: 0.25s; }
 @keyframes mountainRise {
   0% { transform: translateY(100%); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
 }
 .mountain {
   position: absolute; inset: 0; width: 200vw; height: 100%;
-  animation: mountainScroll 35s linear infinite;
+  animation: mountainScroll 40s linear infinite;
 }
-.mountain-2 { animation-duration: 25s; }
-.mountain-3 { animation-duration: 18s; }
+.mountain-2 { animation-duration: 28s; }
 .mountain-1 {
-  background: linear-gradient(180deg, transparent 0%, rgba(34,85,51,0.55) 40%, rgba(17,60,34,0.75) 100%);
-  clip-path: polygon(0% 100%, 2.5% 60%, 6% 75%, 10% 45%, 14% 65%, 17.5% 30%, 21% 55%, 24% 25%, 27.5% 50%, 31% 35%, 35% 55%, 39% 20%, 42.5% 40%, 46% 30%, 50% 50%, 50% 100%, 52.5% 60%, 56% 75%, 60% 45%, 64% 65%, 67.5% 30%, 71% 55%, 74% 25%, 77.5% 50%, 81% 35%, 85% 55%, 89% 20%, 92.5% 40%, 96% 30%, 100% 50%, 100% 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(40,90,50,0.5) 30%, rgba(20,60,30,0.7) 100%);
+  clip-path: polygon(0% 100%, 3% 65%, 8% 78%, 14% 50%, 20% 68%, 26% 40%, 33% 55%, 40% 35%, 46% 50%, 52% 28%, 58% 45%, 64% 32%, 70% 48%, 76% 22%, 82% 40%, 88% 30%, 94% 45%, 100% 38%, 100% 100%);
 }
 .mountain-2 {
-  background: linear-gradient(180deg, transparent 0%, rgba(60,120,80,0.45) 30%, rgba(30,80,50,0.65) 100%);
-  clip-path: polygon(0% 100%, 4% 70%, 7.5% 50%, 11% 70%, 15% 40%, 19% 60%, 22.5% 30%, 26% 55%, 29% 35%, 32.5% 50%, 36% 25%, 40% 45%, 44% 35%, 47.5% 55%, 50% 45%, 50% 100%, 54% 70%, 57.5% 50%, 61% 70%, 65% 40%, 69% 60%, 72.5% 30%, 76% 55%, 79% 35%, 82.5% 50%, 86% 25%, 90% 45%, 94% 35%, 97.5% 55%, 100% 45%, 100% 100%);
-}
-.mountain-3 {
-  background: linear-gradient(180deg, transparent 0%, rgba(100,160,100,0.3) 20%, rgba(60,120,70,0.45) 100%);
-  clip-path: polygon(0% 100%, 2.5% 60%, 7.5% 80%, 11% 55%, 15% 70%, 19% 45%, 24% 65%, 27.5% 40%, 32.5% 60%, 36% 35%, 40% 55%, 45% 30%, 50% 50%, 50% 100%, 52.5% 60%, 57.5% 80%, 61% 55%, 65% 70%, 69% 45%, 74% 65%, 77.5% 40%, 82.5% 60%, 86% 35%, 90% 55%, 95% 30%, 100% 50%, 100% 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(70,140,80,0.3) 30%, rgba(40,100,50,0.5) 100%);
+  clip-path: polygon(0% 100%, 5% 72%, 12% 55%, 18% 70%, 24% 48%, 30% 62%, 38% 40%, 45% 55%, 52% 35%, 60% 50%, 66% 30%, 74% 45%, 80% 28%, 88% 42%, 94% 32%, 100% 40%, 100% 100%);
 }
 @keyframes mountainScroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
+/* Pico Bolívar - iconic snowy peak */
+.pico-wrap {
+  position: absolute; bottom: 60px; left: 15%; width: 35%; height: 65vh;
+  opacity: 0; animation: mountainRise 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+.pico {
+  position: absolute; inset: 0;
+  clip-path: polygon(10% 100%, 30% 55%, 42% 30%, 50% 0%, 58% 30%, 70% 55%, 90% 100%);
+  background: linear-gradient(180deg, #2a5a3a 0%, #1a4028 50%, #0d2a18 100%);
+}
+.pico-snow {
+  position: absolute; top: 0; left: 0; width: 100%; height: 18%;
+  clip-path: polygon(35% 100%, 42% 50%, 50% 0%, 58% 50%, 65% 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #d0e0f0 40%, transparent 100%);
+}
+.pico-shadow {
+  position: absolute; top: 2%; left: 48%; width: 8%; height: 20%;
+  background: rgba(255,255,255,0.15); filter: blur(6px);
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+}
+
+/* Teleférico de Mérida */
+.teleferico {
+  position: absolute; bottom: 200px; left: 18%; width: 30%; height: 45vh;
+  transform-origin: bottom left; transform: rotate(-32deg);
+  opacity: 0; animation: telefericoFade 0.8s ease 0.8s forwards;
+}
+@keyframes telefericoFade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.teleferico-cable {
+  position: absolute; inset: 0;
+  border-left: 1.5px solid rgba(255,255,255,0.15);
+}
+.teleferico-tower {
+  position: absolute; bottom: 0; left: 30%; width: 3px; height: 30px;
+  background: rgba(150,150,150,0.3); transform-origin: bottom;
+}
+.teleferico-tower::after {
+  content: ''; position: absolute; top: 0; left: -4px; width: 11px; height: 2px;
+  background: rgba(150,150,150,0.3);
+}
+.teleferico-tower-2 { left: 65%; height: 22px; }
+.cabin {
+  position: absolute; left: 50%; width: 8px; height: 7px; margin-left: -4px;
+  background: #c0392b; border-radius: 2px 2px 3px 3px;
+  animation: cabinUp 14s linear infinite;
+}
+.cabin::before {
+  content: ''; position: absolute; top: -5px; left: 50%; margin-left: -0.5px;
+  width: 1px; height: 5px; background: rgba(255,255,255,0.2);
+}
+.cabin::after {
+  content: ''; position: absolute; bottom: -3px; left: 50%; margin-left: -2px;
+  width: 4px; height: 3px; background: rgba(200,80,60,0.4); border-radius: 0 0 2px 2px;
+}
+.cabin:nth-child(3) { animation-delay: -4.7s; }
+.cabin:nth-child(4) { animation-delay: -9.3s; }
+@keyframes cabinUp {
+  0% { bottom: 0; opacity: 0; }
+  5% { opacity: 1; }
+  85% { opacity: 1; }
+  95% { bottom: 100%; opacity: 0; }
+  100% { bottom: 100%; opacity: 0; }
+}
+
+/* Páramo ground */
+.paramo {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 70px;
+  background: linear-gradient(180deg, #4a7a3a 0%, #3a6a2e 40%, #2d5a22 100%);
+  z-index: 2;
+}
+
 /* Sun glow pulsing */
 .hero::before {
-  content: ''; position: absolute; top: 12%; right: 22%; width: 350px; height: 350px;
-  background: radial-gradient(circle, rgba(255,210,120,0.15) 0%, rgba(255,200,100,0.08) 40%, transparent 70%);
+  content: ''; position: absolute; top: 10%; right: 20%; width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(255,220,140,0.12) 0%, rgba(255,200,100,0.06) 40%, transparent 70%);
   pointer-events: none; z-index: 1; border-radius: 50%;
   animation: sunPulse 4s ease-in-out infinite;
 }
 @keyframes sunPulse {
-  0%, 100% { transform: scale(1); opacity: 0.7; }
-  50% { transform: scale(1.15); opacity: 1; }
-}
-
-/* Road */
-.hero-road {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
-  background: linear-gradient(to bottom, #3a3a3a 0%, #2a2a2a 100%);
-  z-index: 2;
-}
-.hero-road-line {
-  position: absolute; top: 34px; left: 0; right: 0; height: 2px;
-  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.4) 0px, rgba(255,255,255,0.4) 30px, transparent 30px, transparent 60px);
-  animation: roadLineScroll 0.8s linear infinite;
-}
-.hero-road-edge {
-  position: absolute; top: 18px; left: 0; right: 0; height: 2px;
-  background: rgba(255,255,255,0.15);
-}
-.hero-road-edge-bottom {
-  position: absolute; top: 52px; left: 0; right: 0; height: 2px;
-  background: rgba(255,255,255,0.1);
-}
-@keyframes roadLineScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-60px); }
-}
-
-/* Small cars on road */
-.road-car {
-  position: absolute; bottom: 42px; z-index: 2; pointer-events: none;
-  height: 26px; opacity: 0.5;
-  animation: roadCarDrive 8s linear infinite;
-}
-.road-car img { height: 100%; width: auto; }
-.road-car:nth-child(2) { animation-duration: 11s; animation-delay: -3s; opacity: 0.3; height: 20px; bottom: 50px; }
-.road-car:nth-child(3) { animation-duration: 6s; animation-delay: -5s; opacity: 0.4; height: 22px; bottom: 48px; }
-@keyframes roadCarDrive {
-  0% { transform: translateX(100vw); }
-  100% { transform: translateX(-200px); }
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
 }
 
 /* Container - text overlay (initially hidden, revealed by JS) */
@@ -217,7 +247,7 @@ body {
 
 /* Car entry from right */
 .hero-car {
-  position: absolute; bottom: 62px; right: 5%; z-index: 2;
+  position: absolute; bottom: 74px; right: 5%; z-index: 2;
   width: 42%; max-width: 520px;
   transform: translateX(100vw);
 }
@@ -421,13 +451,11 @@ body {
   .hero-content { text-align: center; margin: 0 auto; }
   .hero-buttons { justify-content: center; }
   .hero-stats { justify-content: center; }
-  .hero-car { width: 70%; bottom: 48px; }
+  .hero-car { width: 70%; bottom: 56px; }
   .hero-car.entered { right: 15%; }
-  .mountain-wrap { height: 18vh; }
-  .mountain-wrap-2, .mountain-wrap-3 { display: none; }
-  .hero-road { height: 70px; }
-  .hero-road-line { top: 24px; }
-  .road-car { display: none; }
+  .pico-wrap { width: 50%; left: 25%; height: 40vh; bottom: 50px; }
+  .teleferico { display: none; }
+  .paramo { height: 55px; }
   .headlight-flash { display: none; }
   .simulator { grid-template-columns: 1fr; padding: 24px; }
   .footer .container { grid-template-columns: 1fr 1fr; }
@@ -474,17 +502,23 @@ body {
   <div class="hero-sky"></div>
   <!-- Scene layer -->
   <div class="hero-scene">
-    <div class="mountain-wrap mountain-wrap-3"><div class="mountain mountain-3"></div></div>
     <div class="mountain-wrap mountain-wrap-2"><div class="mountain mountain-2"></div></div>
     <div class="mountain-wrap mountain-wrap-1"><div class="mountain mountain-1"></div></div>
-    <div class="hero-road">
-      <div class="hero-road-edge"></div>
-      <div class="hero-road-line"></div>
-      <div class="hero-road-edge-bottom"></div>
-      <div class="road-car"><img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69856148203811e31988110b_Grandi10-Hatchback-GL-Azul.png" alt=""></div>
-      <div class="road-car"><img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69d444234c01074f6c41678a_Accent-blanco.png" alt=""></div>
-      <div class="road-car"><img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt=""></div>
+    <div class="pico-wrap">
+      <div class="pico">
+        <div class="pico-snow"></div>
+        <div class="pico-shadow"></div>
+      </div>
     </div>
+    <div class="teleferico">
+      <div class="teleferico-cable"></div>
+      <div class="teleferico-tower"></div>
+      <div class="teleferico-tower teleferico-tower-2"></div>
+      <div class="cabin"></div>
+      <div class="cabin"></div>
+      <div class="cabin"></div>
+    </div>
+    <div class="paramo"></div>
     <div class="hero-car" id="heroCar">
       <div class="headlight-flash front" id="headlightFront"></div>
       <div class="headlight-flash rear" id="headlightRear"></div>
