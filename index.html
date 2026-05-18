@@ -104,7 +104,7 @@ body {
 
 /* Car entry */
 .hero-car {
-  position: absolute; bottom: 74px; right: 5%; z-index: 2;
+  position: absolute; bottom: 10px; right: 5%; z-index: 2;
   width: 42%; max-width: 520px;
   transform: translateX(100vw);
 }
@@ -115,14 +115,13 @@ body {
   0% { transform: translateX(100vw); }
   100% { transform: translateX(0); }
 }
-.hero-car.idle { transform: translateX(0); }
-.hero-car.idle .car-body {
-  animation: carIdle 2.5s ease-in-out infinite;
+.hero-car.idle {
+  animation: carSideToSide 4s ease-in-out infinite;
 }
 .hero-car .car-body img { width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)); }
-@keyframes carIdle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
+@keyframes carSideToSide {
+  0%, 100% { transform: translateX(-30px); }
+  50% { transform: translateX(30px); }
 }
 
 /* Headlight flash */
@@ -156,10 +155,10 @@ body {
   opacity: 0; transition: opacity 0.8s ease 0.3s;
 }
 .car-shadow.show { opacity: 1; }
-.hero-car.idle .car-shadow { animation: shadowIdle 2.5s ease-in-out infinite; }
-@keyframes shadowIdle {
-  0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 0.4; }
-  50% { transform: translateX(-50%) scaleX(0.9); opacity: 0.25; }
+.hero-car.idle .car-shadow { animation: shadowMove 4s ease-in-out infinite; }
+@keyframes shadowMove {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.25; }
 }
 
 /* Hero content */
@@ -211,45 +210,6 @@ body {
 .section-header p { font-size: 16px; color: var(--gray-600); max-width: 600px; margin: 0 auto; line-height: 1.7; }
 .section-header .subtitle { display: inline-block; font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
 
-/* Category Tabs */
-.categories { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
-.cat-btn {
-  padding: 10px 24px; border-radius: 100px; border: 1px solid var(--gray-300);
-  background: var(--white); color: var(--gray-700); font-size: 14px; font-weight: 500;
-  cursor: pointer; transition: var(--transition); font-family: inherit;
-}
-.cat-btn:hover { border-color: var(--accent); color: var(--accent); }
-.cat-btn.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
-
-/* Models Grid */
-.models-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
-.model-card {
-  background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
-  border: 1px solid var(--gray-200); transition: var(--transition);
-}
-.model-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.model-card-image {
-  height: 220px; display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, var(--gray-100), var(--white)); padding: 24px;
-  position: relative; overflow: hidden;
-}
-.model-card-image img { max-width: 90%; max-height: 90%; object-fit: contain; transition: var(--transition); }
-.model-card:hover .model-card-image img { transform: scale(1.05); }
-.model-card-badge {
-  position: absolute; top: 16px; left: 16px; background: var(--accent); color: var(--white);
-  padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
-}
-.model-card-body { padding: 24px; }
-.model-card-body h3 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
-.model-card-body .variant { font-size: 14px; color: var(--gray-500); margin-bottom: 16px; }
-.model-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-.model-spec .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-500); font-weight: 500; }
-.model-spec .value { font-size: 14px; font-weight: 600; color: var(--dark); }
-.price-breakdown { margin: 12px 0; padding: 12px; background: var(--gray-100); border-radius: 8px; font-size: 13px; }
-.price-row { display: flex; justify-content: space-between; padding: 3px 0; color: var(--gray-600); }
-.price-row.total { border-top: 1px solid var(--gray-300); margin-top: 4px; padding-top: 6px; font-weight: 700; color: var(--primary); font-size: 14px; }
-.model-card-actions { display: flex; gap: 8px; }
-.model-card-actions .btn { flex: 1; justify-content: center; padding: 10px 16px; font-size: 13px; }
 .btn-small { padding: 10px 16px; font-size: 13px; border-radius: 8px; }
 
 /* Features */
@@ -319,13 +279,11 @@ body {
   .hero-car { width: 70%; bottom: 56px; }
   .hero-car.entered { right: 15%; }
   .headlight-flash { display: none; }
-  .models-grid { grid-template-columns: 1fr; }
   .footer .container { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 480px) {
   .footer .container { grid-template-columns: 1fr; }
-  .model-specs { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -361,10 +319,10 @@ body {
   <div class="container">
     <div class="hero-content">
       <div class="subtitle" id="heroSub">Concesionario Oficial</div>
-      <h1 id="heroTitle">Hyundai <span>Mérida</span><br>Nuestra flota completa</h1>
-      <p id="heroDesc">Explora todos los modelos Hyundai disponibles en Venezuela. Desde el compacto Grand i10 hasta el imponente Palisade, encuentra el vehículo que se adapta a tu estilo de vida en los Andes.</p>
+      <h1 id="heroTitle">Hyundai <span>Mérida</span><br>Tu concesionario de confianza</h1>
+      <p id="heroDesc">Descubre la gama completa de vehículos Hyundai en Mérida. Recorre los Andes venezolanos con estilo y seguridad.</p>
       <div class="hero-buttons">
-        <a href="#models" class="btn btn-primary" id="btnModels">Ver Modelos</a>
+        <a href="modelos.html" class="btn btn-primary" id="btnModels">Ver Modelos</a>
         <a href="simulador.html" class="btn btn-outline" id="btnSim">Simular Crédito</a>
       </div>
       <div class="hero-stats">
@@ -381,24 +339,6 @@ body {
       <img src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson Premium">
     </div>
     <div class="car-shadow" id="carShadow"></div>
-  </div>
-</section>
-
-<!-- Vehicles Section -->
-<section class="section" id="models">
-  <div class="container">
-    <div class="section-header fade-in">
-      <span class="subtitle">Nuestra gama</span>
-      <h2>Todos los modelos Hyundai</h2>
-      <p>Desde hatchbacks urbanos hasta SUVs todoterreno, encuentra el Hyundai perfecto para ti en Mérida.</p>
-    </div>
-    <div class="categories fade-in">
-      <button class="cat-btn active" data-category="all">Todos</button>
-      <button class="cat-btn" data-category="hatchback">Hatchbacks</button>
-      <button class="cat-btn" data-category="sedan">Sedanes</button>
-      <button class="cat-btn" data-category="suv">SUVs</button>
-    </div>
-    <div class="models-grid fade-in" id="modelsGrid"></div>
   </div>
 </section>
 
@@ -505,18 +445,6 @@ body {
 <a href="https://wa.me/584161234567?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20veh%C3%ADculos%20Hyundai%20en%20M%C3%A9rida" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">&#128172;</a>
 
 <script>
-const models = [
-  { name: 'Grand i10 1.2L M/T GL', variant: 'M/T 5 vel', category: 'hatchback', price: 20640.04, pvp: 16107.00, iva: 2577.12, igtf: 483.21, tramites: 1472.71, motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Manual 5 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '40 L', largo: '3,665 mm', ancho: '1,660 mm', alto: '1,530 mm', peso: '1,012 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69856148203811e31988110b_Grandi10-Hatchback-GL-Azul.png' },
-  { name: 'Grand i10 1.2L A/T GL', variant: 'A/T 4 vel', category: 'hatchback', price: 22681.10, pvp: 17780.00, iva: 2844.80, igtf: 533.40, tramites: 1522.90, motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Automática 4 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '40 L', largo: '3,665 mm', ancho: '1,660 mm', alto: '1,530 mm', peso: '1,025 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823fe186892428b7a8fab3_Grandi10-Hatchback-GL-Plata.png' },
-  { name: 'Grand i10 1.2L A/T GLS', variant: 'A/T 4 vel', category: 'hatchback', price: 25267.50, pvp: 19900.00, iva: 3184.00, igtf: 597.00, tramites: 1586.50, motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Automática 4 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '40 L', largo: '3,665 mm', ancho: '1,660 mm', alto: '1,530 mm', peso: '1,025 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png' },
-  { name: 'Grand i10 1.2L A/T GLS Sedán', variant: 'A/T 4 vel', category: 'sedan', price: 26261.80, pvp: 20715.00, iva: 3314.40, igtf: 621.45, tramites: 1610.95, motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Automática 4 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '43 L', largo: '4,225 mm', ancho: '1,660 mm', alto: '1,520 mm', peso: '1,068 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png' },
-  { name: 'Accent 1.5L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 32029.50, pvp: 25073.74, iva: 4011.80, igtf: 752.21, tramites: 2191.75, motor: '1.5L MPI', potencia: '113 HP @ 6300 rpm', transmision: 'Automática IVT 6 vel', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '45 L', largo: '4,500 mm', ancho: '1,760 mm', alto: '1,470 mm', peso: '1,152 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69d444234c01074f6c41678a_Accent-blanco.png' },
-  { name: 'Elantra 2.0L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 41619.56, pvp: 32923.00, iva: 5267.68, igtf: 987.69, tramites: 2441.19, motor: '2.0L MPI', potencia: '156 HP @ 6200 rpm', transmision: 'Automática IVT 6 vel', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '47 L', largo: '4,640 mm', ancho: '1,820 mm', alto: '1,425 mm', peso: '1,250 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/698561c627e39b93b4031662_Elantra-rojo.png' },
-  { name: 'Creta 1.5L A/T GLS', variant: 'A/T 6 vel', category: 'suv', price: 39310.35, pvp: 31030.17, iva: 4964.83, igtf: 930.91, tramites: 2384.45, motor: '1.5L MPI', potencia: '113 HP @ 6300 rpm', transmision: 'Automática 6 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '50 L', largo: '4,300 mm', ancho: '1,790 mm', alto: '1,635 mm', peso: '1,220 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/699dc30fedebb4b0d6d72a19_Creta%20Blanco_.png' },
-  { name: 'Tucson 2.0L A/T 2WD GLS', variant: 'A/T 6 vel', category: 'suv', price: 50130.00, pvp: 39900.00, iva: 6384.00, igtf: 1197.00, tramites: 2649.00, motor: '2.0L MPI', potencia: '154 HP @ 6200 rpm', transmision: 'Automática 6 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '54 L', largo: '4,630 mm', ancho: '1,865 mm', alto: '1,665 mm', peso: '1,530 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png' },
-  { name: 'Tucson 2.0L A/T 4WD GLX', variant: 'A/T 6 vel', category: 'suv', price: 59525.50, pvp: 47600.00, iva: 7616.00, igtf: 1428.00, tramites: 2881.50, motor: '2.0L MPI', potencia: '154 HP @ 6200 rpm', transmision: 'Automática 6 velocidades', traccion: '4x4', combustible: 'Gasolina', capacidad_tanque: '54 L', largo: '4,630 mm', ancho: '1,865 mm', alto: '1,665 mm', peso: '1,612 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823c97ec17a7e03309284f_Tucson-blanco.png' },
-  { name: 'Palisade 3.8L A/T 4WD GLS 7P', variant: 'A/T 8 vel', category: 'suv', price: 124063.50, pvp: 100500.00, iva: 16080.00, igtf: 3015.00, tramites: 4468.50, motor: '3.8L V6 GDI', potencia: '291 HP @ 6000 rpm', transmision: 'Automática 8 velocidades', traccion: '4x4', combustible: 'Gasolina', capacidad_tanque: '71 L', largo: '4,995 mm', ancho: '1,975 mm', alto: '1,750 mm', peso: '1,905 kg', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695f0af617714685f4d6adc9_Palisade-rojo.png' }
-];
 
 // Mobile menu
 document.getElementById('menuToggle').addEventListener('click', function() {
@@ -534,50 +462,6 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
 });
-
-// Category filter
-const modelsGrid = document.getElementById('modelsGrid');
-const categoryBtns = document.querySelectorAll('.cat-btn');
-
-function renderModels(category = 'all') {
-  const filtered = category === 'all' ? models : models.filter(m => m.category === category);
-  modelsGrid.innerHTML = filtered.map(m => {
-    const idx = models.indexOf(m);
-    return `
-    <div class="model-card" data-index="${idx}">
-      <div class="model-card-image">
-        <span class="model-card-badge">${m.category.toUpperCase()}</span>
-        <img src="${m.image}" alt="${m.name}" loading="lazy">
-      </div>
-      <div class="model-card-body">
-        <h3>${m.name}</h3>
-        <div class="variant">${m.variant}</div>
-        <div class="price-breakdown">
-          <div class="price-row"><span>PVP</span><span>$${m.pvp.toFixed(2)}</span></div>
-          <div class="price-row"><span>IVA 16%</span><span>$${m.iva.toFixed(2)}</span></div>
-          <div class="price-row"><span>IGTF 3%</span><span>$${m.igtf.toFixed(2)}</span></div>
-          <div class="price-row"><span>Trámites y gastos</span><span>$${m.tramites.toFixed(2)}</span></div>
-          <div class="price-row total"><span>Total</span><span>$${m.price.toFixed(2)}</span></div>
-        </div>
-        <div class="model-card-actions">
-          <a href="simulador.html" class="btn btn-primary btn-small">Simular</a>
-          <a href="modelos.html" class="btn btn-small" style="border:1px solid var(--gray-300);color:var(--gray-700);background:var(--white);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer">Ficha técnica</a>
-          <a href="https://wa.me/584161234567?text=Quiero%20informaci%C3%B3n%20sobre%20${encodeURIComponent(m.name)}" class="btn btn-outline btn-small" style="border-color:var(--gray-300);color:var(--gray-700);text-decoration:none">Consultar</a>
-        </div>
-      </div>
-    </div>
-  `}).join('');
-}
-
-categoryBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    categoryBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderModels(btn.dataset.category);
-  });
-});
-
-renderModels();
 
 // Hero animation sequence
 function animateCount(el, target, suffix) {
