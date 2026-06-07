@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicio Automotriz - Automotores Kibun</title>
+<meta name="description" content="Agenda tu cita de servicio automotriz Hyundai en Mérida. Mantenimiento, garantía y taller autorizado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="https://cdn.prod.website-files.com/695b182e874dc417335a062b/695c394d095ae1ab3242a04a_Favion%20Hyundai.png" type="image/png">
+<style>
+:root {
+  --primary: #002c5f;
+  --primary-light: #003f7f;
+  --accent: #00a5cf;
+  --accent-light: #e6f7fc;
+  --dark: #1a1a2e;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  --white: #ffffff;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--dark);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-top: 72px;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* Navbar */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--gray-200);
+  transition: var(--transition);
+}
+.navbar.scrolled { box-shadow: var(--shadow); }
+.navbar .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.navbar .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.navbar .logo img { height: 32px; width: auto; }
+.navbar .logo span { font-size: 18px; font-weight: 700; color: var(--primary); }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: var(--gray-700); font-size: 14px; font-weight: 500;
+  transition: var(--transition); position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+  background: var(--accent); transition: var(--transition);
+}
+.nav-links a:hover { color: var(--primary); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links .btn-primary-nav {
+  background: var(--primary); color: var(--white) !important; padding: 10px 24px;
+  border-radius: 8px; font-weight: 600; transition: var(--transition);
+}
+.nav-links .btn-primary-nav:hover { background: var(--primary-light); transform: translateY(-1px); }
+.nav-links .btn-primary-nav::after { display: none; }
+
+.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.menu-toggle span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: var(--transition); }
+.menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Page Hero */
+.page-hero {
+  min-height: 45vh; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #002c5f 0%, #003f7f 40%, #004d99 100%);
+  position: relative; overflow: hidden; padding-top: 72px;
+}
+.page-hero::before {
+  content: ''; position: absolute; top: -50%; right: -30%; width: 80%; height: 200%;
+  background: radial-gradient(ellipse, rgba(0,165,207,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.page-hero .container { position: relative; z-index: 1; text-align: center; padding-top: 40px; padding-bottom: 40px; }
+.page-hero .subtitle { display: inline-block; font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+.page-hero h1 { font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: var(--white); margin-bottom: 12px; }
+.page-hero p { font-size: 17px; color: rgba(255,255,255,0.8); max-width: 540px; margin: 0 auto; line-height: 1.7; }
+.page-hero .hero-icon { font-size: 48px; margin-bottom: 16px; }
+
+/* Service Section */
+.service-section { padding: 80px 0; background: var(--gray-100); }
+.service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.service-info h2 { font-size: clamp(26px, 3vw, 36px); font-weight: 700; color: var(--primary); margin-bottom: 16px; }
+.service-info p { font-size: 16px; color: var(--gray-600); line-height: 1.7; margin-bottom: 32px; }
+.service-benefits { display: grid; gap: 16px; }
+.service-benefit { display: flex; gap: 14px; align-items: flex-start; padding: 16px; background: var(--white); border-radius: var(--radius); border: 1px solid var(--gray-200); }
+.service-benefit .icon { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+.service-benefit div h4 { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 2px; }
+.service-benefit div p { font-size: 13px; color: var(--gray-500); margin-bottom: 0; }
+
+/* Form */
+.form-card { background: var(--white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-lg); }
+.form-card h3 { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+.form-card > p { font-size: 14px; color: var(--gray-500); margin-bottom: 28px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--gray-700); margin-bottom: 6px; }
+.form-group label .required { color: #dc3545; }
+.form-group select, .form-group input, .form-group textarea {
+  width: 100%; padding: 12px 16px; border: 1px solid var(--gray-300); border-radius: 8px;
+  font-size: 14px; font-family: inherit; color: var(--dark); background: var(--white);
+  transition: var(--transition);
+}
+.form-group select:focus, .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,165,207,0.15); }
+.form-group textarea { resize: vertical; min-height: 80px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
+  border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none;
+  transition: var(--transition); cursor: pointer; border: none; font-family: inherit;
+}
+.btn-primary { background: var(--accent); color: var(--white); }
+.btn-primary:hover { background: #0090b5; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,165,207,0.3); }
+.btn-primary .whatsapp-icon { font-size: 18px; }
+.btn-block { width: 100%; justify-content: center; }
+.form-card .btn { margin-top: 4px; }
+
+/* Services List */
+.services-list-section { padding: 80px 0; background: var(--white); }
+.services-list-section .section-header { text-align: center; margin-bottom: 48px; }
+.services-list-section .section-header h2 { font-size: clamp(26px, 3vw, 36px); font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+.services-list-section .section-header p { font-size: 16px; color: var(--gray-600); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+.service-card { text-align: center; padding: 32px 20px; border-radius: var(--radius-lg); border: 1px solid var(--gray-200); transition: var(--transition); }
+.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.service-card .icon { font-size: 36px; margin-bottom: 16px; }
+.service-card h4 { font-size: 16px; font-weight: 600; color: var(--primary); margin-bottom: 6px; }
+.service-card p { font-size: 13px; color: var(--gray-500); }
+
+/* Contact */
+.contact-section { background: var(--primary); color: var(--white); padding: 60px 0; }
+.contact-section .section-header { text-align: center; margin-bottom: 40px; }
+.contact-section .section-header h2 { color: var(--white); font-size: clamp(26px, 3vw, 36px); margin-bottom: 12px; }
+.contact-section .section-header p { color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+.contact-card {
+  background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+  border-radius: var(--radius); padding: 28px; text-align: center;
+  border: 1px solid rgba(255,255,255,0.1); transition: var(--transition);
+}
+.contact-card:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+.contact-card .icon { font-size: 28px; margin-bottom: 12px; }
+.contact-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.contact-card p, .contact-card a { font-size: 14px; color: rgba(255,255,255,0.8); text-decoration: none; line-height: 1.6; }
+.contact-card a:hover { color: var(--accent); }
+
+/* Footer */
+.footer {
+  background: var(--dark); color: rgba(255,255,255,0.6); padding: 48px 0 24px;
+}
+.footer .container { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.footer h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 16px; }
+.footer p, .footer a { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; line-height: 2; display: block; }
+.footer a:hover { color: var(--accent); }
+.footer-logo { margin-bottom: 16px; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px; padding-top: 24px; text-align: center; font-size: 13px; }
+
+/* WhatsApp Float */
+.whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 999;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; color: white; display: flex; align-items: center; justify-content: center;
+  text-decoration: none; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: var(--transition); font-size: 28px;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5); }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
+  .nav-links {
+    position: fixed; top: 72px; left: 0; right: 0; background: var(--white);
+    flex-direction: column; padding: 24px; gap: 16px; border-bottom: 1px solid var(--gray-200);
+    transform: translateY(-100%); opacity: 0; pointer-events: none; transition: var(--transition);
+  }
+  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+  .service-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer .container { grid-template-columns: 1fr 1fr; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .footer .container { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+}
+
+/* Animations */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body style="padding-top:72px;">
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="https://cdn.prod.website-files.com/695b182e874dc417335a062b/695c394d095ae1ab3242a04a_Favion%20Hyundai.png" alt="Hyundai">
+      <span>Automotores Kibun</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="modelos.html">Modelos</a></li>
+      <li><a href="#" style="color: var(--accent); font-weight: 600;">Servicios</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="contacto.html" class="btn-primary-nav">Solicitar Cotización</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-icon">&#128295;</div>
+    <span class="subtitle">Taller Autorizado Hyundai</span>
+    <h1>Servicio Automotriz</h1>
+    <p>Agenda tu cita de mantenimiento o reparación con nuestro equipo certificado. Repuestos originales y garantía de fábrica.</p>
+  </div>
+</section>
+
+<!-- Service Form -->
+<section class="service-section" id="agendar">
+  <div class="container">
+    <div class="service-grid">
+      <div class="service-info">
+        <h2>Agenda tu cita</h2>
+        <p>Completa el formulario con los datos de tu vehículo y el servicio que necesitas. Te confirmaremos la disponibilidad por WhatsApp.</p>
+        <div class="service-benefits">
+          <div class="service-benefit">
+            <div class="icon">&#128737;</div>
+            <div>
+              <h4>Técnicos certificados</h4>
+              <p>Personal entrenado directamente por Hyundai.</p>
+            </div>
+          </div>
+          <div class="service-benefit">
+            <div class="icon">&#128230;</div>
+            <div>
+              <h4>Repuestos originales</h4>
+              <p>Garantizamos autenticidad en cada pieza.</p>
+            </div>
+          </div>
+          <div class="service-benefit">
+            <div class="icon">&#128337;</div>
+            <div>
+              <h4>Servicio rápido</h4>
+              <p>Mantenimiento programado sin esperas.</p>
+            </div>
+          </div>
+          <div class="service-benefit">
+            <div class="icon">&#128179;</div>
+            <div>
+              <h4>Presupuesto sin compromiso</h4>
+              <p>Cotizamos tu servicio antes de iniciar.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <h3>Formulario de cita</h3>
+        <p>Datos necesarios para agendar tu servicio.</p>
+        <form id="serviceForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Modelo del vehículo <span class="required">*</span></label>
+              <select id="svModel" required>
+                <option value="">Selecciona un modelo</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Año <span class="required">*</span></label>
+              <select id="svYear" required>
+                <option value="">Selecciona año</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Tipo de servicio <span class="required">*</span></label>
+            <select id="svService" required>
+              <option value="">Selecciona tipo de servicio</option>
+              <option value="mantenimiento-programado">Mantenimiento programado</option>
+              <option value="cambio-aceite">Cambio de aceite y filtros</option>
+              <option value="frenos">Revisión y cambio de frenos</option>
+              <option value="suspension">Suspensión y dirección</option>
+              <option value="electrico">Sistema eléctrico</option>
+              <option value="aire-acondicionado">Aire acondicionado</option>
+              <option value="transmision">Transmisión</option>
+              <option value="motor">Motor</option>
+              <option value="garantia">Servicio de garantía</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Fecha preferida <span class="required">*</span></label>
+              <input type="date" id="svDate" required>
+            </div>
+            <div class="form-group">
+              <label>Turno preferido</label>
+              <select id="svTime">
+                <option value="manana">Mañana (8:00–12:00)</option>
+                <option value="tarde">Tarde (13:00–17:00)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre completo <span class="required">*</span></label>
+              <input type="text" id="svName" placeholder="Juan Pérez" required>
+            </div>
+            <div class="form-group">
+              <label>Teléfono <span class="required">*</span></label>
+              <input type="tel" id="svPhone" placeholder="+58 414 0000000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="svEmail" placeholder="correo@ejemplo.com">
+          </div>
+          <div class="form-group">
+            <label>Notas adicionales</label>
+            <textarea id="svNotes" placeholder="Describe el problema o detalles importantes..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block"><span class="whatsapp-icon">&#128172;</span> Agendar cita por WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services List -->
+<section class="services-list-section" id="servicios">
+  <div class="container">
+    <div class="section-header">
+      <h2>Nuestros servicios</h2>
+      <p>Ofrecemos atención integral para tu Hyundai, desde mantenimiento de rutina hasta reparaciones mayores.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon">&#128200;</div>
+        <h4>Mantenimiento programado</h4>
+        <p>Cumple con el plan de mantenimiento Hyundai según tu kilometraje.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#128167;</div>
+        <h4>Cambio de aceite</h4>
+        <p>Aceites y filtros originales Hyundai para máxima protección.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#9881;</div>
+        <h4>Frenos</h4>
+        <p>Pastillas, discos y líquido de frenos con estándar original.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#128665;</div>
+        <h4>Suspensión y dirección</h4>
+        <p>Diagnóstico y reparación del sistema de suspensión.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#9889;</div>
+        <h4>Sistema eléctrico</h4>
+        <p>Batería, alternador, motor de arranque y sensores.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#10052;</div>
+        <h4>Aire acondicionado</h4>
+        <p>Carga de gas, compresor y mantenimiento del sistema HVAC.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#9881;</div>
+        <h4>Transmisión</h4>
+        <p>Servicio de transmisión automática y manual.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#128295;</div>
+        <h4>Motor</h4>
+        <p>Diagnóstico avanzado y reparación de motor.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#128196;</div>
+        <h4>Garantía</h4>
+        <p>Servicio de garantía oficial Hyundai sin costo.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#128270;</div>
+        <h4>Diagnóstico general</h4>
+        <p>Revisión completa con equipo de escáner profesional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>¿Necesitas ayuda?</h2>
+      <p>Contáctanos directamente por cualquiera de estos canales.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="icon">&#128222;</div>
+        <h3>Teléfono</h3>
+        <p>+58 274 000 0000</p>
+        <p>Lun–Vie 8:00–17:00</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">&#128172;</div>
+        <h3>WhatsApp</h3>
+        <a href="https://wa.me/584161234567?text=Hola%2C%20quiero%20agendar%20un%20servicio%20automotriz" target="_blank" rel="noopener">+58 416 1234567</a>
+      </div>
+      <div class="contact-card">
+        <div class="icon">&#9906;</div>
+        <h3>Ubicación</h3>
+        <p>Av. Las Américas, Mérida 5101</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div>
+      <div class="footer-logo">
+        <img src="https://cdn.prod.website-files.com/695b182e874dc417335a062b/69cec19d0592eb45eefce71b_Favicon%20hyundai%20blanco.png" alt="Hyundai" style="height:36px;width:auto;">
+      </div>
+      <p>Concesionario oficial Hyundai en Mérida, Venezuela. Excelencia automotriz con respaldo global.</p>
+    </div>
+    <div>
+      <h4>Modelos</h4>
+      <a href="modelos.html">Grand i10</a>
+      <a href="modelos.html">Elantra</a>
+      <a href="modelos.html">Accent</a>
+      <a href="modelos.html">Tucson</a>
+      <a href="modelos.html">Creta</a>
+      <a href="modelos.html">Palisade</a>
+    </div>
+    <div>
+      <h4>Servicios</h4>
+      <a href="servicios.html">Agendar cita</a>
+      <a href="contacto.html">Prueba de manejo</a>
+      <a href="contacto.html">Financiamiento</a>
+      <a href="contacto.html">Post-venta</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="#">Aviso de privacidad</a>
+      <a href="#">Términos y condiciones</a>
+      <a href="#">Política de garantía</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">&copy; 2026 Automotores Kibun. Todos los derechos reservados. Hyundai es una marca registrada de Hyundai Motor Company.</div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/584161234567?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20veh%C3%ADculos%20Hyundai%20en%20M%C3%A9rida" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">&#128172;</a>
+
+<script>
+// Populate year dropdown
+const yearSelect = document.getElementById('svYear');
+const currentYear = new Date().getFullYear();
+for (let y = currentYear; y >= 2010; y--) {
+  const opt = document.createElement('option');
+  opt.value = y;
+  opt.textContent = y;
+  yearSelect.appendChild(opt);
+}
+
+// Populate model dropdown
+const models = [
+  'Grand i10 1.2L M/T GL',
+  'Grand i10 1.2L A/T GL',
+  'Grand i10 1.2L A/T GLS',
+  'Grand i10 1.2L A/T GLS Sedán',
+  'Accent 1.5L A/T GLS',
+  'Elantra 2.0L A/T GLS',
+  'Creta 1.5L A/T GLS',
+  'Tucson 2.0L A/T 2WD GLS',
+  'Tucson 2.0L A/T 4WD GLX',
+  'Palisade 3.8L A/T 4WD GLS 7P'
+];
+const modelSelect = document.getElementById('svModel');
+models.forEach(m => {
+  const opt = document.createElement('option');
+  opt.value = m;
+  opt.textContent = m;
+  modelSelect.appendChild(opt);
+});
+
+// Set min date to today
+document.getElementById('svDate').min = new Date().toISOString().split('T')[0];
+
+// Form submit
+document.getElementById('serviceForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const model = document.getElementById('svModel').value;
+  const year = document.getElementById('svYear').value;
+  const service = document.getElementById('svService');
+  const serviceText = service.options[service.selectedIndex]?.text || '';
+  const date = document.getElementById('svDate').value;
+  const time = document.getElementById('svTime');
+  const timeText = time.options[time.selectedIndex]?.text || '';
+  const name = document.getElementById('svName').value;
+  const phone = document.getElementById('svPhone').value;
+  const email = document.getElementById('svEmail').value;
+  const notes = document.getElementById('svNotes').value;
+
+  const msg = `Hola%2C%20quiero%20agendar%20un%20servicio%20para%20mi%20${encodeURIComponent(model)}%20(${year})%0A%0A` +
+    `*Servicio:*%20${encodeURIComponent(serviceText)}%0A` +
+    `*Fecha:*%20${encodeURIComponent(date)}%0A` +
+    `*Turno:*%20${encodeURIComponent(timeText)}%0A` +
+    `*Nombre:*%20${encodeURIComponent(name)}%0A` +
+    `*Tel%C3%A9fono:*%20${encodeURIComponent(phone)}` +
+    (email ? `%0A*Email:*%20${encodeURIComponent(email)}` : '') +
+    (notes ? `%0A*Notas:*%20${encodeURIComponent(notes)}` : '');
+
+  window.open(`https://wa.me/584161234567?text=${msg}`, '_blank');
+});
+
+// Mobile menu
+document.getElementById('menuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('menuToggle').classList.remove('active');
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Fade-in animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
