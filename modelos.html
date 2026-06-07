@@ -507,10 +507,9 @@ function renderModels(category = 'all') {
   const filtered = category === 'all' ? models : models.filter(m => m.category === category);
   modelsGrid.innerHTML = filtered.map(m => {
     const idx = models.indexOf(m);
-    const p = paletteMap.blanco;
     return `
     <div class="model-card" data-index="${idx}" onclick="openModal(${idx})">
-      <div class="model-card-image" style="background:linear-gradient(135deg,${p[0]},${p[1]},${p[2]});">
+      <div class="model-card-image" style="background:#eef2f5;">
         <span class="model-card-badge">${m.category.toUpperCase()}</span>
         <img src="${m.image}" alt="${m.name}" loading="lazy" style="filter:drop-shadow(0 6px 20px rgba(0,0,0,0.3));">
       </div>
@@ -590,8 +589,7 @@ function openModal(index) {
   const m = models[index];
   document.getElementById('modalName').textContent = m.name;
   document.getElementById('modalVariant').textContent = m.variant;
-  const p = paletteMap.blanco;
-  document.getElementById('modalImage').style.background = 'linear-gradient(135deg,' + p[0] + ',' + p[1] + ',' + p[2] + ')';
+  document.getElementById('modalImage').style.background = '#eef2f5';
   document.getElementById('modalImage').querySelector('img').src = m.image;
   document.getElementById('modalImage').querySelector('img').alt = m.name;
   const modalColors = document.getElementById('modalImageColors');
