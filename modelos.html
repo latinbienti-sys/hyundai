@@ -151,7 +151,7 @@ body {
 .cat-btn.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
 
 /* Models Grid */
-#modelos { background-color: #f6f3ee; padding-bottom: 100px; }
+#modelos { background-color: #eef2f5; padding-bottom: 100px; }
 .models-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
 .model-card {
   background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
@@ -507,7 +507,7 @@ function renderModels(category = 'all') {
   const filtered = category === 'all' ? models : models.filter(m => m.category === category);
   modelsGrid.innerHTML = filtered.map(m => {
     const idx = models.indexOf(m);
-    const p = paletteMap[m.palette] || paletteMap.blanco;
+    const p = paletteMap.blanco;
     return `
     <div class="model-card" data-index="${idx}" onclick="openModal(${idx})">
       <div class="model-card-image" style="background:linear-gradient(135deg,${p[0]},${p[1]},${p[2]});">
@@ -590,7 +590,7 @@ function openModal(index) {
   const m = models[index];
   document.getElementById('modalName').textContent = m.name;
   document.getElementById('modalVariant').textContent = m.variant;
-  const p = paletteMap[m.palette] || paletteMap.blanco;
+  const p = paletteMap.blanco;
   document.getElementById('modalImage').style.background = 'linear-gradient(135deg,' + p[0] + ',' + p[1] + ',' + p[2] + ')';
   document.getElementById('modalImage').querySelector('img').src = m.image;
   document.getElementById('modalImage').querySelector('img').alt = m.name;
