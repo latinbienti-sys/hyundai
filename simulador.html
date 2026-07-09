@@ -101,10 +101,10 @@ body {
 .btn {
   display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
   border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none;
-  transition: var(--transition); cursor: pointer; border: none;
+  transition: all 0.3s ease-in-out; cursor: pointer; border: none;
 }
 .btn-primary { background: var(--accent); color: var(--white); }
-.btn-primary:hover { background: #0090b5; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,165,207,0.3); }
+.btn-primary:hover { background: #0090b5; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,165,207,0.3); }
 .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
 .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 .hero-image { display: flex; justify-content: center; align-items: center; }
@@ -219,14 +219,14 @@ body {
 .contact-card:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
 .contact-card .icon { font-size: 32px; margin-bottom: 16px; }
 .contact-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
-.contact-card p, .contact-card a { font-size: 14px; color: rgba(255,255,255,0.8); text-decoration: none; line-height: 1.6; }
-.contact-card a:hover { color: var(--accent); }
+.contact-card p, .contact-card a { font-size: 14px; color: rgba(255,255,255,0.8); text-decoration: none; line-height: 1.6; transition: all 0.3s ease-in-out; }
+.contact-card a:hover { color: var(--accent); transform: translateY(-1px); }
 
 /* Footer */
 .footer {
   background: var(--dark); color: rgba(255,255,255,0.6); padding: 48px 0 24px;
 }
-.footer .container { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.footer .container { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
 .footer h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 16px; }
 .footer p, .footer a { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; line-height: 2; display: block; }
 .footer a:hover { color: var(--accent); }
@@ -240,8 +240,10 @@ body {
   width: 56px; height: 56px; border-radius: 50%;
   background: #25D366; color: white; display: flex; align-items: center; justify-content: center;
   text-decoration: none; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  transition: var(--transition); font-size: 28px;
+  transition: all 0.4s ease; font-size: 28px;
+  opacity: 1; transform: translateY(0);
 }
+.whatsapp-float.hidden-float { opacity: 0; transform: translateY(20px); pointer-events: none; }
 .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5); }
 
 /* Mobile */
@@ -368,15 +370,9 @@ body {
       <a href="contacto.html">Financiamiento</a>
       <a href="contacto.html">Post-venta</a>
     </div>
-    <div>
-      <h4>Legal</h4>
-      <a href="#">Aviso de privacidad</a>
-      <a href="#">Términos y condiciones</a>
-      <a href="#">Política de garantía</a>
     </div>
-  </div>
   <div class="footer-bottom">
-    <div class="container">&copy; 2026 Automotores Kibun. Todos los derechos reservados. Hyundai es una marca registrada de Hyundai Motor Company.</div>
+    <div class="container">&copy; 2026 Automotores Kibun. Hyundai es una marca registrada de Hyundai Motor Company.</div>
   </div>
 </footer>
 
@@ -479,6 +475,19 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// WhatsApp scroll animation
+const whatsappBtn = document.querySelector('.whatsapp-float');
+let lastScrollY = window.scrollY;
+window.addEventListener('scroll', () => {
+  const currentScrollY = window.scrollY;
+  if (currentScrollY > 300 && currentScrollY > lastScrollY) {
+    whatsappBtn.classList.add('hidden-float');
+  } else {
+    whatsappBtn.classList.remove('hidden-float');
+  }
+  lastScrollY = currentScrollY;
+});
 </script>
 </body>
 </html>

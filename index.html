@@ -133,12 +133,12 @@ body {
 .btn {
   display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px;
   border-radius: 4px; font-size: 13px; font-weight: 600; text-decoration: none;
-  cursor: pointer; border: none; transition: all 0.2s;
+  cursor: pointer; border: none; transition: all 0.3s ease-in-out;
 }
 .btn-primary { background: rgb(0,170,210); color: #fff; }
-.btn-primary:hover { background: rgb(0,150,190); }
+.btn-primary:hover { background: rgb(0,150,190); transform: translateY(-2px); }
 .btn-outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
-.btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+.btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 .arrow {
   position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
   width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2);
@@ -183,14 +183,14 @@ body {
 .contact-card:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
 .contact-card .icon { font-size: 32px; margin-bottom: 16px; }
 .contact-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
-.contact-card p, .contact-card a { font-size: 14px; color: rgba(255,255,255,0.8); text-decoration: none; line-height: 1.6; }
-.contact-card a:hover { color: var(--accent); }
+.contact-card p, .contact-card a { font-size: 14px; color: rgba(255,255,255,0.8); text-decoration: none; line-height: 1.6; transition: all 0.3s ease-in-out; }
+.contact-card a:hover { color: var(--accent); transform: translateY(-1px); }
 
 /* Footer */
 .footer {
   background: var(--dark); color: rgba(255,255,255,0.8); padding: 48px 0 24px;
 }
-.footer .container { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.footer .container { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
 .footer h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 16px; }
 .footer p, .footer a { font-size: 14px; color: rgba(255,255,255,0.7); text-decoration: none; line-height: 2; display: block; }
 .footer a:hover { color: var(--accent); }
@@ -203,8 +203,10 @@ body {
   width: 56px; height: 56px; border-radius: 50%;
   background: #25D366; color: white; display: flex; align-items: center; justify-content: center;
   text-decoration: none; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  transition: var(--transition); font-size: 28px;
+  transition: all 0.4s ease; font-size: 28px;
+  opacity: 1; transform: translateY(0);
 }
+.whatsapp-float.hidden-float { opacity: 0; transform: translateY(20px); pointer-events: none; }
 .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5); }
 
 /* Animations */
@@ -290,15 +292,9 @@ body {
       <a href="contacto.html">Financiamiento</a>
       <a href="contacto.html">Post-venta</a>
     </div>
-    <div>
-      <h4>Legal</h4>
-      <a href="#">Aviso de privacidad</a>
-      <a href="#">Términos y condiciones</a>
-      <a href="#">Política de garantía</a>
     </div>
-  </div>
   <div class="footer-bottom">
-    <div class="container">&copy; 2026 Automotores Kibun. Todos los derechos reservados. Hyundai es una marca registrada de Hyundai Motor Company.</div>
+    <div class="container">&copy; 2026 Automotores Kibun. Hyundai es una marca registrada de Hyundai Motor Company.</div>
   </div>
 </footer>
 
@@ -326,9 +322,9 @@ window.addEventListener('scroll', () => {
 
 // Hero Carousel
 const SLIDES = [
+  { image: 'img/hero-creta.png', eyebrow: 'Creta · Pico Bolívar', title: 'Con CRETA', accent: 'concreta', end: 'tus sueños.', sub: 'SUV compacta con techo panorámico, pantalla de 10.25" y consumo eficiente. El Creta llegó para acompañarte en cada etapa de tu vida.', cta: 'Ver detalles', ctaHref: 'modelos.html', cta2: 'Cotizar Creta', cta2Href: 'contacto.html' },
   { image: 'img/hero-merida.png', eyebrow: 'Palisade · Sierra Nevada de Mérida', title: 'Manejá tu próximo', accent: 'Hyundai', end: 'en los Andes.', sub: 'Descubre la línea completa Hyundai 2025 con precios en USD, simulador de crédito y atención personalizada en el corazón de Mérida.', cta: 'Ver modelos', ctaHref: 'modelos.html', cta2: 'Solicitar cotización', cta2Href: 'contacto.html' },
   { image: 'img/hero-tucson.png', eyebrow: 'Tucson · Páramo Merideño', title: 'Aventura sin', accent: 'límites,', end: 'diseñada para los Andes.', sub: 'El nuevo Hyundai Tucson combina tecnología SmartSense, tracción HTRAC y un diseño Parametric Dynamics listo para conquistar el páramo merideño.', cta: 'Conocer Tucson', ctaHref: 'modelos.html', cta2: 'Solicitar prueba', cta2Href: 'contacto.html' },
-  { image: 'img/hero-creta.png', eyebrow: 'Creta · Pico Bolívar', title: 'Tu ciudad,', accent: 'tu ritmo,', end: 'tu nuevo Creta.', sub: 'SUV compacta con techo panorámico, pantalla de 10.25" y consumo eficiente para moverte con estilo por Mérida.', cta: 'Ver detalles', ctaHref: 'modelos.html', cta2: 'Cotizar Creta', cta2Href: 'contacto.html' },
   { image: 'img/hero-elantra.png', eyebrow: 'Elantra · Laguna de Mucubají', title: 'Elegancia que', accent: 'se siente', end: 'en cada kilómetro.', sub: 'Diseño Parametric, tablero digital y consumo inteligente. El nuevo Elantra te lleva más lejos con el confort de un sedán premium.', cta: 'Conocer Elantra', ctaHref: 'modelos.html', cta2: 'Agendar cita', cta2Href: 'servicios.html' }
 ];
 
@@ -382,6 +378,19 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// WhatsApp scroll animation
+const whatsappBtn = document.querySelector('.whatsapp-float');
+let lastScrollY = window.scrollY;
+window.addEventListener('scroll', () => {
+  const currentScrollY = window.scrollY;
+  if (currentScrollY > 300 && currentScrollY > lastScrollY) {
+    whatsappBtn.classList.add('hidden-float');
+  } else {
+    whatsappBtn.classList.remove('hidden-float');
+  }
+  lastScrollY = currentScrollY;
+});
 </script>
 </body>
 </html>
