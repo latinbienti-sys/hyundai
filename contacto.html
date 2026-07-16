@@ -220,7 +220,9 @@ body {
             <div class="icon">&#128222;</div>
             <div>
               <h4>Llamanos</h4>
-              <p>+58 422 176 1030</p>
+              <p>0414-7447887</p>
+              <p>0422-8927419</p>
+              <p>+58 414-7482282</p>
             </div>
           </div>
           <div class="contact-info-item">
@@ -296,9 +298,6 @@ body {
     <div>
       <h4>Servicios</h4>
       <a href="servicios.html">Agendar cita</a>
-      <a href="contacto.html">Prueba de manejo</a>
-      <a href="contacto.html">Financiamiento</a>
-      <a href="contacto.html">Post-venta</a>
     </div>
     </div>
   <div class="footer-bottom">
@@ -353,23 +352,26 @@ window.addEventListener('scroll', () => {
   lastScrollY = currentScrollY;
 });
 
-// Contact form submit to webform
+// Contact form submit to email
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  const formData = new FormData(this);
-  const payload = {
-    name: formData.get('name') || this.querySelector('input[type="text"]')?.value || '',
-    email: formData.get('email') || this.querySelector('input[type="email"]')?.value || '',
-    phone: formData.get('phone') || this.querySelector('input[type="tel"]')?.value || '',
-    model: this.querySelector('select')?.value || '',
-    message: this.querySelector('textarea')?.value || '',
-    source: 'contacto'
-  };
-  fetch('https://webform.company.com/api/hyundai/lead', {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  }).catch(() => {});
-  alert('Gracias por tu interés. Un asesor te contactará pronto.');
+  const name = this.querySelector('input[type="text"]')?.value || '';
+  const email = this.querySelector('input[type="email"]')?.value || '';
+  const phone = this.querySelector('input[type="tel"]')?.value || '';
+  const model = this.querySelector('select')?.value || '';
+  const message = this.querySelector('textarea')?.value || '';
+
+  const subject = encodeURIComponent('Consulta desde la web - Automotores Kibun');
+  const body = encodeURIComponent(
+    'Nombre: ' + name + '\n' +
+    'Email: ' + email + '\n' +
+    'Teléfono: ' + phone + '\n' +
+    'Modelo de interés: ' + model + '\n' +
+    'Mensaje: ' + message
+  );
+
+  window.location.href = 'mailto:administracion.guillen@kibunhyundai.com?subject=' + subject + '&body=' + body;
+  alert('Gracias por tu interés. Tu consulta será enviada a nuestro equipo.');
   this.reset();
 });
 </script>
