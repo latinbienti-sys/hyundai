@@ -175,49 +175,34 @@ body {
 .model-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.25); }
 .model-card:hover::after { opacity: 0.7; transform: scale(1.1); }
 .model-card-image {
-  height: 220px; display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, var(--gray-100), var(--white)); padding: 24px;
+  height: 220px; display: flex; align-items: center; justify-content: center; gap: 4px;
+  background: linear-gradient(135deg, var(--gray-100), var(--white)); padding: 12px 8px;
   position: relative; overflow: hidden;
   cursor: pointer;
-  transition: background 0.5s ease;
 }
-.model-card-image .flip-img {
-  max-width: 90%; max-height: 90%; object-fit: contain;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+.model-card-image .view-wrap {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  height: 100%; position: relative;
 }
-.model-card-image .flip-img.rear {
-  position: absolute; inset: 0; margin: auto;
-  transform: rotateY(180deg) scaleX(-1);
-  opacity: 0;
-  pointer-events: none;
-  padding: 24px;
-  max-width: 90%; max-height: 90%;
-  object-fit: contain;
+.model-card-image .view-wrap img {
+  max-width: 100%; max-height: 85%; object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+  transition: transform 0.3s ease;
 }
-.model-card-image:hover .flip-img.front {
-  transform: rotateY(180deg);
-  opacity: 0;
+.model-card-image .view-wrap:hover img {
+  transform: scale(1.05);
 }
-.model-card-image:hover .flip-img.rear {
-  transform: rotateY(0deg) scaleX(-1);
-  opacity: 1;
+.model-card-image .view-label {
+  font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--gray-500); margin-top: 4px;
 }
-.model-card-image:hover {
-  background: linear-gradient(135deg, #001a3a, var(--primary));
+.model-card-image .view-wrap.front-view { border-right: 1px solid var(--gray-200); padding-right: 4px; }
+.model-card-image .view-wrap.rear-view { padding-left: 4px; }
+.model-card-image .view-wrap.rear-view img {
+  transform: scaleX(-1);
 }
-.model-card-image .rear-badge {
-  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-  background: rgba(0,165,207,0.2); backdrop-filter: blur(8px);
-  color: var(--accent); font-size: 11px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 1px; padding: 4px 14px; border-radius: 100px;
-  border: 1px solid rgba(0,165,207,0.3); z-index: 2;
-  opacity: 0; transition: opacity 0.4s ease 0.3s;
-}
-.model-card-image:hover .rear-badge {
-  opacity: 1;
+.model-card-image .view-wrap.rear-view:hover img {
+  transform: scaleX(-1) scale(1.05);
 }
 .model-card-badge {
   position: absolute; top: 16px; left: 16px; background: var(--accent); color: var(--white);
@@ -561,9 +546,14 @@ function renderModels(category = 'all') {
     <div class="model-card" data-index="${idx}" onclick="openModal(${idx})">
       <div class="model-card-image">
         <span class="model-card-badge">${m.category.toUpperCase()}</span>
-        <img src="${m.image}" alt="${m.name}" class="flip-img front" loading="lazy" style="filter:drop-shadow(0 6px 20px rgba(0,0,0,0.3));">
-        <img src="${m.image}" alt="${m.name} trasero" class="flip-img rear" loading="lazy" style="filter:drop-shadow(0 6px 20px rgba(0,0,0,0.3));">
-        <span class="rear-badge">&#128260; Vista Trasera</span>
+        <div class="view-wrap front-view">
+          <img src="${m.image}" alt="${m.name}" loading="lazy">
+          <span class="view-label">&#9654; Delantera</span>
+        </div>
+        <div class="view-wrap rear-view">
+          <img src="${m.image}" alt="${m.name} trasero" loading="lazy">
+          <span class="view-label">&#9664; Trasera</span>
+        </div>
       </div>
       <div class="model-card-body">
         <h3>${m.name}</h3>
