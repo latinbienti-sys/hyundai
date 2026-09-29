@@ -1,8 +1,11 @@
 /* ==========================================================================
    KIBU · Reproductor de Reels
    Mini player con forma de celular que se abre al hacer clic en "Reels" de la
-   barra de secciones. Los videos vienen de videos/manifest.json y el nombre y
-   el precio salen de KIBU (js/data.js), asi que no se repite ningun dato.
+   barra de secciones. Los videos vienen de videos/manifest.json.
+
+   Si la pagina carga js/data.js, el nombre y el precio salen de KIBU; si no,
+   el player funciona igual y solo muestra lo que trae el manifiesto. Asi sirve
+   para el sitio de inicio y para /original/.
 
    Todo el CSS se inyecta la primera vez que se abre, y todas las clases llevan
    el prefijo "rl-", de modo que el resto de la pagina no se ve afectado.
@@ -11,9 +14,9 @@
 (function () {
   "use strict";
 
-  var D = window.KIBU;
+  var D = window.KIBU || null;
   var open = document.getElementById('reels-open');
-  if (!D || !open) return;
+  if (!open) return;
 
   var WA = '584147482282';
   var reels = null;
@@ -22,10 +25,22 @@
   var cssInyectado = false;
 
   function findModel(name) {
+    if (!D || !name) return null;
     for (var i = 0; i < D.models.length; i++) {
       if (D.models[i].name === name) return D.models[i];
     }
     return null;
+  }
+
+  /* El precio sale de KIBU si esta disponible; si no, del manifiesto */
+  function priceOf(m, r) {
+    if (m) return D.money(m.precio);
+    return r.precio || '';
+  }
+
+  function familyOf(m, r) {
+    if (m) return D.family(m);
+    return r.familia || '0KM';
   }
 
   /* ------------------------------------------------------------ CSS ------- */
@@ -128,14 +143,15 @@
     var v = box.querySelector('video');
 
     v.pause();
-    v.poster = m ? m.image : '';
+    v.poster = (m && m.image) || r.poster || '';
     v.innerHTML = '<source src="' + r.archivo + '" type="video/mp4">';
     v.load();
 
-    box.querySelector('.rl-tag').textContent = m ? (D.family(m)) : '0KM';
+    box.querySelector('.rl-tag').textContent = familyOf(m, r);
     box.querySelector('.rl-fade h3').textContent = m ? m.name : (r.modelo || '');
-    box.querySelector('.rl-fade p').textContent = m ? (r.bajada || m.variant) : '';
-    box.querySelector('.rl-price').textContent = m ? D.money(m.precio) : '';
+    box.querySelector('.rl-fade p').textContent = m ? (r.bajada || m.variant) : (r.bajada || '');
+    box.querySelector('.rl-price').textContent = priceOf(m, r);
+    box.querySelector('.rl-price').style.display = priceOf(m, r) ? '' : 'none';
 
     var wa = box.querySelector('.rl-wa');
     wa.href = 'https://wa.me/' + WA + '?text=' +
