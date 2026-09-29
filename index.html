@@ -246,9 +246,16 @@
             </div>
           </div>
 
-          <div class="p-4 rounded-xl bg-[#002c5f]/30 border border-[#c89d7c]/30 text-xs space-y-1">
-            <strong class="text-white block font-heading">¿Cómo usar tus videos limpios sin marca de agua?</strong>
-            <p class="text-slate-400 text-[11px] leading-relaxed">Sube tus videos a tu repositorio en una carpeta <code class="text-[#c89d7c]">videos/</code> con los nombres <code class="text-white">grand-i10-gl.mp4</code> y <code class="text-white">grand-i10-gls.mp4</code>. El reproductor vertical 9:16 los cargará automáticamente.</p>
+          <div class="p-4 rounded-xl bg-[#002c5f]/30 border border-[#c89d7c]/30 text-xs space-y-2">
+            <strong class="text-white block font-heading">¿Cómo activar tus videos en tu página?</strong>
+            <p class="text-slate-400 text-[11px] leading-relaxed"><strong>1. En tu GitHub:</strong> Crea una carpeta <code class="text-[#c89d7c]">videos/</code> en tu repositorio y sube tus archivos como <code class="text-white">grand-i10-gl.mp4</code> y <code class="text-white">grand-i10-gls.mp4</code>.</p>
+            <div class="pt-1 flex items-center gap-2 flex-wrap">
+              <label class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/40 text-xs text-white font-semibold">
+                <span>📁 Probar con mi video MP4 ahora</span>
+                <input type="file" accept="video/*" onchange="loadLocalVideo(event)" class="hidden">
+              </label>
+              <span id="localVideoStatus" class="text-[10px] text-[#c89d7c]"></span>
+            </div>
           </div>
 
           <div class="flex gap-3">
@@ -887,6 +894,19 @@
       document.getElementById('deckCardSub').innerText = card.sub;
       document.getElementById('deckCardPrice').innerText = card.price;
       document.getElementById('deckCardImg').src = card.img;
+    }
+
+    function loadLocalVideo(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const url = URL.createObjectURL(file);
+        const v = document.getElementById('reelVideoPlayer');
+        v.src = url;
+        v.muted = true;
+        v.play().catch(() => {});
+        document.getElementById('reelCardDeck').classList.add('hidden');
+        document.getElementById('localVideoStatus').innerText = '✓ Video cargado: ' + file.name;
+      }
     }
 
     // Mobile Menu Toggle
