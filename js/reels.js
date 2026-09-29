@@ -1,5 +1,5 @@
 /* ==========================================================================
-   KIBU · Reproductor de Reels
+   KIBU Â· Reproductor de Reels
    Mini player con forma de celular que se abre al hacer clic en "Reels" de la
    barra de secciones. Los videos vienen de videos/manifest.json.
 
@@ -67,7 +67,7 @@
 '.rl-fade h3{margin:0;color:#fff;font-size:1.0625rem;line-height:1.3}' +
 '.rl-fade p{margin:.2rem 0 0;color:rgba(255,255,255,.78);font-size:.8125rem}' +
 '.rl-price{display:inline-block;margin-top:.5rem;padding:.2rem .55rem;border-radius:100px;' +
-'background:var(--lime,#d7e800);color:#1f1d1e;font-size:.8125rem;font-weight:700}' +
+'background:var(--cobre,#c89d7c);color:#1f1d1e;font-size:.8125rem;font-weight:700}' +
 '.rl-tag{position:absolute;top:1.5rem;left:.85rem;z-index:2;padding:.25rem .6rem;border-radius:100px;' +
 'background:rgba(14,43,92,.88);color:#fff;font-size:.6875rem;font-weight:600;letter-spacing:.08em;' +
 'text-transform:uppercase;pointer-events:none}' +

@@ -1,7 +1,7 @@
 /* ==========================================================================
    KIBU · Sistema de diseño
    Basado en los tokens oficiales de Hyundai Venezuela
-   (--swatch--brand-500 #0e2b5c, dark-900 #1f1d1e, light-200 #ebebeb, lime #d7e800)
+   (--swatch--brand-500 #0e2b5c, dark-900 #1f1d1e, light-200 #ebebeb, cobre #c89d7c)
    ========================================================================== */
 
 :root {
@@ -21,7 +21,8 @@
   --light-200: #ebebeb;
   --light-300: #dcdcdc;
 
-  --lime: #d7e800;
+  --cobre: #c89d7c;
+  --cobre-hover: #b3855f;
   --hover-blue: #345fa8;
 
   /* Roles semánticos */
@@ -72,7 +73,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 h1, h2, h3, h4, p { margin: 0; }
 
 :focus-visible {
-  outline: 2px solid var(--lime);
+  outline: 2px solid var(--cobre);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -114,7 +115,7 @@ h1, h2, h3, h4, p { margin: 0; }
   background: currentColor;
   opacity: 0.6;
 }
-.eyebrow--light { color: var(--lime); }
+.eyebrow--light { color: var(--cobre); }
 
 .section-head { max-width: 46rem; margin-bottom: clamp(2rem, 4vw, 3.25rem); }
 .section-head h2 {
@@ -141,8 +142,8 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 .btn--primary { background: var(--brand-500); color: #fff; }
 .btn--primary:hover { background: var(--hover-blue); }
-.btn--lime { background: var(--lime); color: var(--dark-900); }
-.btn--lime:hover { background: #c6d500; }
+.btn--cobre { background: var(--cobre); color: var(--dark-900); }
+.btn--cobre:hover { background: var(--cobre-hover); }
 .btn--ghost { border-color: currentColor; color: #fff; background: transparent; }
 .btn--ghost:hover { background: #fff; color: var(--brand-500); }
 .btn--outline { border-color: var(--line); color: var(--brand-500); background: #fff; }
@@ -181,7 +182,7 @@ h1, h2, h3, h4, p { margin: 0; }
   transition: background-color 0.2s var(--ease);
 }
 .nav__links a:hover { background: rgba(255, 255, 255, 0.12); }
-.nav__links a[aria-current="page"] { color: var(--lime); }
+.nav__links a[aria-current="page"] { color: var(--cobre); }
 
 .nav__toggle {
   display: none; margin-left: auto;
@@ -249,7 +250,7 @@ h1, h2, h3, h4, p { margin: 0; }
   margin-block: 1.1rem 1.15rem;
   max-width: 15ch;
 }
-.hero__content h1 .accent { color: var(--lime); }
+.hero__content h1 .accent { color: var(--cobre); }
 
 /* Titulo de las diapositivas 2..n: mismo aspecto que el h1 */
 .hero__alt {
@@ -262,7 +263,7 @@ h1, h2, h3, h4, p { margin: 0; }
   max-width: 15ch;
   color: #fff;
 }
-.hero__alt .accent { color: var(--lime); }
+.hero__alt .accent { color: var(--cobre); }
 .hero__content p {
   max-width: 46ch; font-size: clamp(1rem, 1.4vw, 1.1875rem);
   color: rgba(255, 255, 255, 0.86);
@@ -279,7 +280,7 @@ h1, h2, h3, h4, p { margin: 0; }
   background: rgba(255, 255, 255, 0.35);
   transition: background-color 0.25s var(--ease);
 }
-.hero__dot.is-active { background: var(--lime); }
+.hero__dot.is-active { background: var(--cobre); }
 
 @media (max-width: 640px) {
   .hero__dots { bottom: 1.25rem; }
@@ -291,7 +292,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .section--alt { background: var(--bg-alt); }
 .section--dark { background: var(--brand-500); color: #fff; }
 .section--dark .section-head p { color: rgba(255, 255, 255, 0.72); }
-.section--dark .eyebrow { color: var(--lime); }
+.section--dark .eyebrow { color: var(--cobre); }
 
 /* ============================================================== CATÁLOGO */
 .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
@@ -523,7 +524,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .compare__best {
   display: inline-block; margin-left: 0.35rem;
   padding: 0.1rem 0.4rem; border-radius: 3px;
-  background: var(--lime); color: var(--dark-900);
+  background: var(--cobre); color: var(--dark-900);
   font-size: 0.625rem; font-weight: 700;
   letter-spacing: 0.06em; text-transform: uppercase;
 }
@@ -534,7 +535,7 @@ h1, h2, h3, h4, p { margin: 0; }
 @media (max-width: 760px) { .footer__grid { grid-template-columns: 1fr; } }
 .footer h4 { color: #fff; font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
 .footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; font-size: 0.9375rem; }
-.footer a:hover { color: var(--lime); }
+.footer a:hover { color: var(--cobre); }
 .footer__logo img { height: 30px; margin-bottom: 1rem; }
 .footer__bottom {
   margin-top: 3rem; padding-top: 1.5rem;
@@ -570,11 +571,11 @@ h1, h2, h3, h4, p { margin: 0; }
   margin-block: 0.85rem 0.9rem;
 }
 .page-hero p { color: rgba(255, 255, 255, 0.8); font-size: 1.0625rem; max-width: 56ch; }
-.page-hero .eyebrow { color: var(--lime); }
+.page-hero .eyebrow { color: var(--cobre); }
 .page-hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.85rem; }
 
 .breadcrumb { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0 0 1rem; padding: 0; font-size: 0.8125rem; color: rgba(255, 255, 255, 0.6); }
-.breadcrumb a:hover { color: var(--lime); }
+.breadcrumb a:hover { color: var(--cobre); }
 .breadcrumb li + li::before { content: "/"; margin-right: 0.5rem; opacity: 0.5; }
 .breadcrumb [aria-current] { color: #fff; }
 
@@ -597,7 +598,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .tile h3 { font-size: 1.0625rem; }
 .tile p { font-size: 0.9375rem; color: var(--fg-muted); }
 
-.section--dark .tile { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.14); border-left-color: var(--lime); }
+.section--dark .tile { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.14); border-left-color: var(--cobre); }
 .section--dark .tile p { color: rgba(255, 255, 255, 0.7); }
 
 /* Ficha de datos / contacto */
@@ -641,7 +642,7 @@ h1, h2, h3, h4, p { margin: 0; }
   letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--fg-muted);
 }
-.req { color: var(--lime); }
+.req { color: var(--cobre); }
 
 .input, .select, .textarea {
   width: 100%;
@@ -692,7 +693,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .notice {
   padding: 1.1rem 1.35rem;
   border-radius: var(--r-md);
-  border-left: 3px solid var(--lime);
+  border-left: 3px solid var(--cobre);
   background: var(--brand-050);
   font-size: 0.875rem; color: var(--dark-800);
 }
@@ -708,7 +709,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .footer__contact { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; font-size: 0.9375rem; }
 .footer__contact li { display: flex; gap: 0.5rem; align-items: flex-start; }
 .footer__contact a { overflow-wrap: anywhere; }
-.footer__contact a:hover { color: var(--lime); }
+.footer__contact a:hover { color: var(--cobre); }
 
 /* Ficha técnica (modal) */
 .modal {
@@ -786,7 +787,7 @@ body.is-locked { overflow: hidden; }
   transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 .secnav a:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
-.secnav a.is-active { background: var(--lime); color: var(--dark-900); }
+.secnav a.is-active { background: var(--cobre); color: var(--dark-900); }
 
 /* Las anclas no deben quedar escondidas bajo el nav fijo ni la barra */
 main > section[id] { scroll-margin-top: calc(var(--nav-h) + 3.25rem); }
@@ -808,7 +809,7 @@ main > section[id] { scroll-margin-top: calc(var(--nav-h) + 3.25rem); }
   display: block; margin-bottom: 0.15rem;
   font-size: 0.6875rem; font-weight: 700;
   letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--lime);
+  color: var(--cobre);
 }
 .studio__head h3 { font-size: clamp(1.2rem, 2.4vw, 1.55rem); line-height: 1.2; }
 .studio__price { margin-left: auto; text-align: right; }
@@ -964,14 +965,14 @@ main > section[id] { scroll-margin-top: calc(var(--nav-h) + 3.25rem); }
   width: 100%;
   padding: 1.05rem 1.25rem;
   border-radius: var(--r-md);
-  background: var(--lime); color: var(--dark-900);
+  background: var(--cobre); color: var(--dark-900);
   font-size: 0.875rem; font-weight: 800;
   letter-spacing: 0.1em; text-transform: uppercase;
   touch-action: manipulation;
   user-select: none; -webkit-user-select: none;
   transition: background-color 0.2s var(--ease), transform 0.15s var(--ease);
 }
-.andina__throttle:hover { background: #c6d500; }
+.andina__throttle:hover { background: var(--cobre-hover); }
 .andina__throttle.is-on { transform: scale(0.985); background: var(--brand-500); color: #fff; }
 .andina__hint { margin: 0.55rem 0 0; font-size: 0.75rem; color: var(--fg-muted); text-align: center; }
 
