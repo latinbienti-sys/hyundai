@@ -266,7 +266,7 @@
       modelSel.appendChild(o);
     });
 
-    [12, 24, 36, 48].forEach(function (t) {
+    [12, 24, 36, 48, 60, 72, 84].forEach(function (t) {
       var b = document.createElement("button");
       b.type = "button";
       b.textContent = t + " m";

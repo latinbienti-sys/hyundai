@@ -987,6 +987,8 @@ main > section[id] { scroll-margin-top: calc(var(--nav-h) + 3.25rem); }
 }
 .terms button:hover { border-color: var(--brand-300); color: var(--brand-500); }
 .terms button[aria-pressed="true"] { background: var(--brand-500); border-color: var(--brand-500); color: #fff; }
+/* 7 plazos (12 a 84 meses): rejilla que se reparte en varias filas */
+.terms--wrap { grid-template-columns: repeat(auto-fit, minmax(64px, 1fr)); }
 
 /* ============================================================= UTILIDADES */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }

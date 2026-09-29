@@ -40,10 +40,10 @@
 
   /* ======================================================== CARRUSEL === */
   var SLIDES = [
-    { image: 'img/watermarked_img_13367943299367624531.jpg', eyebrow: 'Creta · Pico Bolívar', title: 'Con CRETA', accent: 'concreta', end: 'tus sueños.', sub: 'SUV compacta con techo panorámico, pantalla de 10.25" y consumo eficiente. El Creta llegó para acompañarte en cada etapa de tu vida.', cta: 'Ver detalles', ctaHref: 'modelos.html', cta2: 'Cotizar Creta', cta2Href: 'contacto.html' },
-    { image: 'img/watermarked_img_10948222792170652927.jpg', eyebrow: 'Palisade · Sierra Nevada de Mérida', title: 'Manejá tu próximo', accent: 'Hyundai', end: 'en los Andes.', sub: 'Descubre la línea completa Hyundai 2025 con precios en USD, simulador de crédito y atención personalizada en el corazón de Mérida.', cta: 'Ver modelos', ctaHref: 'modelos.html', cta2: 'Solicitar cotización', cta2Href: 'contacto.html' },
-    { image: 'img/watermarked_img_5871150173315358561.jpg', eyebrow: 'Tucson · Páramo Merideño', title: 'Aventura sin', accent: 'límites,', end: 'diseñada para los Andes.', sub: 'El nuevo Hyundai Tucson combina tecnología SmartSense, tracción HTRAC y un diseño Parametric Dynamics listo para conquistar el páramo merideño.', cta: 'Conocer Tucson', ctaHref: 'modelos.html', cta2: 'Solicitar prueba', cta2Href: 'contacto.html' },
-    { image: 'img/watermarked_img_17804480962303296709.jpg', eyebrow: 'Elantra · Laguna de Mucubají', title: 'Elegancia que', accent: 'se siente', end: 'en cada kilómetro.', sub: 'Diseño Parametric, tablero digital y consumo inteligente. El nuevo Elantra te lleva más lejos con el confort de un sedán premium.', cta: 'Conocer Elantra', ctaHref: 'modelos.html', cta2: 'Agendar cita', cta2Href: 'servicios.html' }
+    { image: 'img/watermarked_img_13367943299367624531.jpg', eyebrow: 'Creta · Pico Bolívar', title: 'Con CRETA', accent: 'concreta', end: 'tus sueños.', sub: 'SUV compacta con techo panorámico, pantalla de 10.25" y consumo eficiente. El Creta llegó para acompañarte en cada etapa de tu vida.', cta: 'Ver detalles', ctaHref: '#catalogo', cta2: 'Cotizar Creta', cta2Href: '#contacto' },
+    { image: 'img/watermarked_img_10948222792170652927.jpg', eyebrow: 'Palisade · Sierra Nevada de Mérida', title: 'Manejá tu próximo', accent: 'Hyundai', end: 'en los Andes.', sub: 'Descubre la línea completa Hyundai 0KM con precios en USD, simulador de crédito y atención personalizada en el corazón de Mérida.', cta: 'Ver modelos', ctaHref: '#catalogo', cta2: 'Solicitar cotización', cta2Href: '#contacto' },
+    { image: 'img/watermarked_img_5871150173315358561.jpg', eyebrow: 'Tucson · Páramo Merideño', title: 'Aventura sin', accent: 'límites,', end: 'diseñada para los Andes.', sub: 'El nuevo Hyundai Tucson combina tecnología SmartSense, tracción HTRAC y un diseño Parametric Dynamics listo para conquistar el páramo merideño.', cta: 'Conocer Tucson', ctaHref: '#estudio', cta2: 'Solicitar prueba', cta2Href: '#contacto' },
+    { image: 'img/watermarked_img_17804480962303296709.jpg', eyebrow: 'Elantra · Laguna de Mucubají', title: 'Elegancia que', accent: 'se siente', end: 'en cada kilómetro.', sub: 'Diseño Parametric, tablero digital y consumo inteligente. El nuevo Elantra te lleva más lejos con el confort de un sedán premium.', cta: 'Conocer Elantra', ctaHref: '#estudio', cta2: 'Agendar cita', cta2Href: '#taller' }
   ];
 
   function initHero() {
@@ -149,7 +149,7 @@
           '<p class="card__variant">' + m.name + ' · ' + m.variant + '</p>' +
           specList(m) +
           '<p class="card__price">' + D.money(m.precio) + '</p>' +
-          '<a class="btn btn--outline btn--sm card__cta" href="modelos.html">Ver más</a>' +
+          '<a class="btn btn--outline btn--sm card__cta" href="#cotizador">Ver más</a>' +
         '</div>';
       return el;
     }

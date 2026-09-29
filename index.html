@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hyundai Automotores Kibun | Modelos 0KM en Mérida</title>
-<meta name="description" content="Hyundai Automotores Kibun. Descubre la línea completa Hyundai 0KM en Mérida: Grand i10, Accent, Elantra, Creta, Tucson y Palisade. Compara modelos, personaliza el color y simula tu crédito.">
+<title>Hyundai Automotores Kibun | Modelos 0KM, taller y financiamiento en Mérida</title>
+<meta name="description" content="Hyundai Automotores Kibun en Mérida: 10 modelos 0KM, comparador, estudio de color, simulador de crédito, taller certificado y garantía oficial. Av. Urdaneta 49-29.">
 <meta name="theme-color" content="#0e2b5c">
 <link rel="icon" href="img/modelos/logo-hyundai.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
 <!-- ══════════════════════════════════════════════════════ NAVBAR ══════ -->
 <header class="nav" id="nav">
   <div class="nav__inner">
-    <a class="nav__logo" href="index.html" aria-label="Hyundai Automotores Kibun, inicio">
+    <a class="nav__logo" href="#inicio" aria-label="Hyundai Automotores Kibun, inicio">
       <img src="img/modelos/logo-hyundai-blanco.png" alt="Hyundai Automotores Kibun" height="30">
     </a>
 
@@ -28,13 +28,13 @@
     </button>
 
     <ul class="nav__links">
-      <li><a href="index.html" aria-current="page">Inicio</a></li>
-      <li><a href="modelos.html">Modelos</a></li>
+      <li><a href="#inicio" aria-current="page">Inicio</a></li>
+      <li><a href="#catalogo">Modelos</a></li>
       <li><a href="#comparador">Compara</a></li>
-      <li><a href="simulador.html">Simulador</a></li>
-      <li><a href="servicios.html">Servicios</a></li>
-      <li><a href="nosotros.html">Nosotros</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="#cotizador">Simulador</a></li>
+      <li><a href="#taller">Servicios</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
   </div>
 </header>
@@ -42,7 +42,7 @@
 <main id="main">
 
   <!-- ══════════════════════════════════════════════════════ HERO ══════ -->
-  <section class="hero" aria-label="Destacados">
+  <section class="hero" id="inicio" aria-label="Destacados">
     <div class="hero__track" id="heroTrack"></div>
     <div class="hero__dots" id="heroDots" role="tablist" aria-label="Diapositivas"></div>
   </section>
@@ -57,7 +57,9 @@
       <a href="#ruta-andina">Ruta Andina</a>
       <a href="#garantia">Garantía</a>
       <a href="#taller">Taller</a>
-      <a href="#visitanos">Visítanos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
     </div>
   </nav>
 
@@ -149,8 +151,8 @@
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Financiamiento</span>
-        <h2 class="display">Calcula tu cuota mensual</h2>
-        <p>Estima tu cuota con el mismo cálculo del simulador del sitio. La cuota final depende de la aprobación de la financiera.</p>
+        <h2 class="display">Simulador de crédito</h2>
+        <p>Elige tu modelo, la cuota inicial y el plazo. Te mostramos una estimación de tu cuota mensual con la misma tasa del 12% anual.</p>
       </div>
 
       <div class="sim__grid">
@@ -161,22 +163,22 @@
           </div>
 
           <div class="sim__field">
-            <span class="sim__label">Inicial <b id="qDownPct">30%</b></span>
-            <input class="sim__range" type="range" id="qDown" min="10" max="70" step="5" value="30"
-                   aria-label="Porcentaje de inicial">
+            <span class="sim__label">Cuota inicial <b id="qDownPct">30%</b></span>
+            <input class="sim__range" type="range" id="qDown" min="10" max="90" step="5" value="30"
+                   aria-label="Porcentaje de cuota inicial">
           </div>
 
           <div class="sim__field">
             <span class="sim__label">Plazo en meses</span>
-            <div class="terms" id="qTerms" role="group" aria-label="Plazo en meses"></div>
+            <div class="terms terms--wrap" id="qTerms" role="group" aria-label="Plazo en meses"></div>
           </div>
         </div>
 
         <div class="sim__panel">
           <ul class="sim__rows">
             <li><span class="k">Precio total</span><span class="v" id="qOutPrice">—</span></li>
-            <li><span class="k">Inicial</span><span class="v" id="qOutDown">—</span></li>
-            <li><span class="k">Saldo a financiar</span><span class="v" id="qOutFinance">—</span></li>
+            <li><span class="k">Cuota inicial</span><span class="v" id="qOutDown">—</span></li>
+            <li><span class="k">Monto a financiar</span><span class="v" id="qOutFinance">—</span></li>
             <li><span class="k">Plazo</span><span class="v" id="qOutTerm">—</span></li>
           </ul>
 
@@ -187,10 +189,9 @@
 
           <div class="form__actions" style="margin-top:1.25rem">
             <button class="btn btn--lime" type="button" id="qSend">Recibir cotización por WhatsApp</button>
-            <a class="btn btn--outline" href="simulador.html">Simulador completo</a>
           </div>
 
-          <p class="sim__note">Cálculo estimado con tasa anual del 12%, la misma del simulador del sitio. No constituye una oferta de crédito.</p>
+          <p class="sim__note">Estimación basada en una tasa fija del 12% anual, sin seguros, gastos de gestión ni comisiones. No constituye una oferta en firme. Los precios pueden variar sin previo aviso.</p>
         </div>
       </div>
     </div>
@@ -269,14 +270,14 @@
   <!-- ═══════════════════════════════════════════════════ TALLER ════════ -->
   <section class="section" id="taller">
     <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Postventa</span>
+        <h2 class="display">Agenda tu cita en el taller</h2>
+        <p>Mantenimiento, reparación o garantía. Completa el formulario con los datos de tu vehículo y te confirmamos la disponibilidad por WhatsApp.</p>
+      </div>
+
       <div class="two-col">
         <div>
-          <div class="section-head">
-            <span class="eyebrow">Postventa</span>
-            <h2 class="display">Agenda tu cita en el taller</h2>
-            <p class="lead">Mantenimiento, reparación o garantía. Escríbenos y armamos tu solicitud con los datos que elijas.</p>
-          </div>
-
           <ul class="chips">
             <li>Cambio de aceite</li>
             <li>Frenos</li>
@@ -287,76 +288,292 @@
             <li>Motor</li>
             <li>Diagnóstico general</li>
           </ul>
+
+          <div class="infogrid">
+            <div class="info">
+              <span class="info__icon" aria-hidden="true">💬</span>
+              <div>
+                <h3>WhatsApp</h3>
+                <p><a href="https://wa.me/584147482282" target="_blank" rel="noopener">+58 414-7482282</a></p>
+                <small>Respuesta en horario laboral</small>
+              </div>
+            </div>
+            <div class="info">
+              <span class="info__icon" aria-hidden="true">📞</span>
+              <div>
+                <h3>Teléfono</h3>
+                <p><a href="tel:+584147447887">0414-7447887</a></p>
+                <small><a href="tel:+584228927419">0422-8927419</a></small>
+              </div>
+            </div>
+            <div class="info">
+              <span class="info__icon" aria-hidden="true">🕘</span>
+              <div>
+                <h3>Horario</h3>
+                <p>Lun a Vie</p>
+                <small>8:00 – 12:00 / 14:00 – 18:00</small>
+              </div>
+            </div>
+            <div class="info">
+              <span class="info__icon" aria-hidden="true">📍</span>
+              <div>
+                <h3>Ubicación</h3>
+                <p>Av. Urdaneta N° 49-29</p>
+                <small>Mérida, Edo. Mérida</small>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <form class="form formpanel" data-wa data-wa-title="deseo agendar una cita en el taller.">
+        <div class="formpanel">
           <h3>Solicitar cita</h3>
-          <p>Te respondemos en horario de oficina.</p>
+          <p>Los campos marcados con <span class="req">*</span> son obligatorios.</p>
 
-          <div class="field">
-            <label class="field__label" for="apService">Servicio requerido</label>
-            <select class="select" id="apService" name="Servicio" required>
-              <option value="">Elige un servicio</option>
-              <option>Cambio de aceite</option>
-              <option>Frenos</option>
-              <option>Suspensión y dirección</option>
-              <option>Sistema eléctrico</option>
-              <option>Aire acondicionado</option>
-              <option>Transmisión</option>
-              <option>Motor</option>
-              <option>Diagnóstico general</option>
-              <option>Garantía</option>
-            </select>
-          </div>
-
-          <div class="form__row">
-            <div class="field">
-              <label class="field__label" for="apModel">Vehículo</label>
-              <select class="select" id="apModel" name="Vehículo" data-models required>
-                <option value="">Elige tu vehículo</option>
-              </select>
+          <form class="form" data-wa data-wa-title="deseo agendar una cita de servicio en el taller." novalidate>
+            <div class="form__row">
+              <div class="field">
+                <label for="apModel">Vehículo <span class="req">*</span></label>
+                <select class="select" id="apModel" name="Vehículo" data-models required>
+                  <option value="">Elige tu vehículo</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="apYear">Año <span class="req">*</span></label>
+                <select class="select" id="apYear" name="Año" data-years required>
+                  <option value="">Selecciona año</option>
+                </select>
+              </div>
             </div>
 
             <div class="field">
-              <label class="field__label" for="apDay">Día de preferencia</label>
-              <select class="select" id="apDay" name="Día" required>
-                <option value="">Elige un día</option>
-                <option>Lunes</option>
-                <option>Martes</option>
-                <option>Miércoles</option>
-                <option>Jueves</option>
-                <option>Viernes</option>
-                <option>Sábado (mañana)</option>
+              <label for="apService">Servicio requerido <span class="req">*</span></label>
+              <select class="select" id="apService" name="Servicio" required>
+                <option value="">Elige un servicio</option>
+                <option>Mantenimiento programado</option>
+                <option>Cambio de aceite y filtros</option>
+                <option>Revisión y cambio de frenos</option>
+                <option>Suspensión y dirección</option>
+                <option>Sistema eléctrico</option>
+                <option>Aire acondicionado</option>
+                <option>Transmisión</option>
+                <option>Motor</option>
+                <option>Servicio de garantía</option>
+                <option>Diagnóstico general</option>
               </select>
             </div>
-          </div>
 
-          <div class="form__actions">
-            <button class="btn btn--primary" type="submit">Confirmar cita por WhatsApp</button>
-          </div>
+            <div class="form__row">
+              <div class="field">
+                <label for="apDate">Fecha preferida <span class="req">*</span></label>
+                <input class="input" type="date" id="apDate" name="Fecha preferida" required>
+              </div>
+              <div class="field">
+                <label for="apTurno">Turno preferido <span class="req">*</span></label>
+                <select class="select" id="apTurno" name="Turno" required>
+                  <option value="">Selecciona turno</option>
+                  <option>Mañana (8:00-12:00)</option>
+                  <option>Tarde (13:00-17:00)</option>
+                </select>
+              </div>
+            </div>
 
-          <p class="form__note" data-wa-done hidden tabindex="-1">Abrimos WhatsApp con tu solicitud.</p>
-        </form>
+            <div class="field">
+              <label for="apName">Nombre completo <span class="req">*</span></label>
+              <input class="input" type="text" id="apName" name="Nombre" autocomplete="name" required>
+            </div>
+
+            <div class="form__row">
+              <div class="field">
+                <label for="apPhone">Teléfono <span class="req">*</span></label>
+                <input class="input" type="tel" id="apPhone" name="Teléfono" placeholder="+58 414 0000000" autocomplete="tel" required>
+              </div>
+              <div class="field">
+                <label for="apEmail">Email</label>
+                <input class="input" type="email" id="apEmail" name="Email" autocomplete="email">
+              </div>
+            </div>
+
+            <div class="form__actions">
+              <button class="btn btn--primary" type="submit">Agendar cita por WhatsApp</button>
+            </div>
+
+            <p class="form__note" data-wa-done hidden tabindex="-1">Abrimos WhatsApp con tu solicitud.</p>
+          </form>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════ CONTACTO ══════ -->
-  <section class="section section--dark" id="visitanos">
+  <!-- ════════════════════════════════════════════════ SERVICIOS ═══════ -->
+  <section class="section section--alt" id="servicios">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Nuestros servicios</span>
+        <h2 class="display">Atención integral para tu Hyundai</h2>
+        <p>Desde mantenimiento de rutina hasta reparaciones mayores, con equipo certificado y repuestos originales.</p>
+      </div>
+
+      <ul class="svclist">
+        <li class="svc"><span class="svc__icon" aria-hidden="true">📅</span><div><h3>Mantenimiento programado</h3><p>Cumple con el plan de mantenimiento Hyundai según tu kilometraje.</p></div></li>
+        <li class="svc"><span class="svc__icon" aria-hidden="true">💧</span><div><h3>Cambio de aceite</h3><p>Aceites y filtros originales Hyundai para máxima protección.</p></div></li>
+        <li class="svc"><span class="svc__icon" aria-hidden="true">⚙️</span><div><h3>Frenos</h3><p>Pastillas, discos y líquido de frenos con estándar original.</p></div></li>
+        <li class="svc"><span class="svc__icon" aria-hidden="true">🛞</span><div><h3>Suspensión y dirección</h3><p>Diagnóstico y reparación del sistema de suspensión.</p></div></li>
+        <li class="svc"><span class="svc__icon" aria-hidden="true">⚡</span><div><h3>Sistema eléctrico</h3><p>Batería, alternador, motor de arranque y sensores.</p></div></li>
+        <li class="svc"><span class="svc__icon" aria-hidden="true">❄️</span><div><h3>Aire acondicionado</h3><p>Carga de gas, compresor y mantenimiento del sistema HVAC.</p></div></li>
+        <li class="svc"><span class="svc__icon" aria-hidden="true">⚙️</span><div><h3>Transmisión</h3><p>Servicio de transmisión automática y manual.</p></div></li>
+        <li class="svc"><span class="svc__icon" aria-hidden="true">🔧</span><div><h3>Motor</h3><p>Diagnóstico avanzado y reparación de motor.</p></div></li>
+        <li class="svc"><span class="svc__icon" aria-hidden="true">🛡️</span><div><h3>Garantía</h3><p>Servicio de garantía oficial Hyundai sin costo.</p></div></li>
+        <li class="svc"><span class="svc__icon" aria-hidden="true">🔎</span><div><h3>Diagnóstico general</h3><p>Revisión completa con equipo de escáner profesional.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ NOSOTROS ══════ -->
+  <section class="section" id="nosotros">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Nuestro concesionario</span>
+        <h2 class="display">Para vivir, Mérida. Para conducir, Hyundai.</h2>
+        <p>En Automotores Kibun hacemos realidad tu anhelo. Más que un concesionario: un punto de encuentro entre la ingeniería coreana y la pasión venezolana por conducir. Te recibimos con showroom, taller certificado y respaldo total.</p>
+      </div>
+
+      <div class="tiles">
+        <article class="tile reveal">
+          <span class="tile__icon" aria-hidden="true">💰</span>
+          <h3>Ventas</h3>
+          <p>Asesoría experta en toda la línea Hyundai 0KM.</p>
+        </article>
+        <article class="tile reveal">
+          <span class="tile__icon" aria-hidden="true">🔧</span>
+          <h3>Servicio técnico</h3>
+          <p>Mantenimiento certificado con repuestos originales.</p>
+        </article>
+        <article class="tile reveal">
+          <span class="tile__icon" aria-hidden="true">🛡️</span>
+          <h3>Garantía</h3>
+          <p>5 años o 100.000 km de garantía oficial.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ CONTACTO ══════ -->
+  <section class="section section--alt" id="contacto">
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Visítanos</span>
-        <h2 class="display">Conduce tu Hyundai en Mérida</h2>
-        <p>Te esperamos en nuestro concesionario para que veas los modelos, sus colores disponibles y resuelvas cualquier duda con nuestros asesores.</p>
+        <h2 class="display">Hablemos de tu próximo Hyundai</h2>
+        <p>Te esperamos en el concesionario. Déjanos tus datos y un asesor te contacta con propuestas a medida, disponibilidad de unidades y opciones de financiamiento.</p>
       </div>
-      <div class="hero__actions">
-        <a class="btn btn--lime" href="contacto.html">Contactar</a>
-        <a class="btn btn--ghost" href="modelos.html">Ver modelos</a>
+
+      <div class="infogrid">
+        <div class="info">
+          <span class="info__icon" aria-hidden="true">📍</span>
+          <div>
+            <h3>Visítanos</h3>
+            <p>Av. Urdaneta N° 49-29</p>
+            <small>Mérida, Edo. Mérida</small>
+          </div>
+        </div>
+        <div class="info">
+          <span class="info__icon" aria-hidden="true">📞</span>
+          <div>
+            <h3>Llámanos</h3>
+            <p><a href="tel:+584147447887">0414-7447887</a></p>
+            <small><a href="tel:+584228927419">0422-8927419</a></small>
+          </div>
+        </div>
+        <div class="info">
+          <span class="info__icon" aria-hidden="true">💬</span>
+          <div>
+            <h3>WhatsApp</h3>
+            <p><a href="https://wa.me/584147482282" target="_blank" rel="noopener">+58 414-7482282</a></p>
+            <small>Atención directa</small>
+          </div>
+        </div>
+        <div class="info">
+          <span class="info__icon" aria-hidden="true">✉️</span>
+          <div>
+            <h3>Escríbenos</h3>
+            <p><a href="mailto:administracion.guillen@kibunhyundai.com">administracion.guillen@kibunhyundai.com</a></p>
+            <small>Administración</small>
+          </div>
+        </div>
+        <div class="info">
+          <span class="info__icon" aria-hidden="true">🕘</span>
+          <div>
+            <h3>Horario</h3>
+            <p>Lun a Vie</p>
+            <small>8:00 – 12:00 / 14:00 – 18:00</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-top:clamp(2rem,4vw,3rem)">
+        <div>
+          <span class="eyebrow">Enviar consulta</span>
+          <h3 class="display" style="font-size:clamp(1.6rem,3.4vw,2.3rem);margin-block:.8rem .9rem">Te respondemos rápido</h3>
+          <p class="lead" style="margin-bottom:1.5rem">Cuéntanos qué modelo te interesa y te enviamos información, disponibilidad y condiciones de financiamiento.</p>
+
+          <p class="notice">
+            <strong>Importante.</strong> Todos nuestros modelos son 0KM. Las unidades y precios están sujetos a confirmación con tu asesor, según disponibilidad en Mérida.
+          </p>
+
+          <div class="hero__actions" style="margin-top:1.75rem">
+            <a class="btn btn--lime" href="https://wa.me/584147482282" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+            <a class="btn btn--outline" href="#catalogo">Ver modelos</a>
+          </div>
+        </div>
+
+        <div class="formpanel">
+          <h3>Formulario de contacto</h3>
+          <p>Los campos marcados con <span class="req">*</span> son obligatorios.</p>
+
+          <form class="form" data-wa data-wa-title="me gustaría recibir información sobre un Hyundai." novalidate>
+            <div class="field">
+              <label for="ctName">Nombre completo <span class="req">*</span></label>
+              <input class="input" type="text" id="ctName" name="Nombre" autocomplete="name" required>
+            </div>
+
+            <div class="form__row">
+              <div class="field">
+                <label for="ctEmail">Email <span class="req">*</span></label>
+                <input class="input" type="email" id="ctEmail" name="Email" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="ctPhone">Teléfono <span class="req">*</span></label>
+                <input class="input" type="tel" id="ctPhone" name="Teléfono" placeholder="+58 414 0000000" autocomplete="tel" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="ctModel">Modelo de interés</label>
+              <select class="select" id="ctModel" name="Modelo de interés" data-models>
+                <option value="">Selecciona un modelo</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="ctMsg">Mensaje</label>
+              <textarea class="textarea" id="ctMsg" name="Mensaje" placeholder="Cuéntanos qué necesitas saber: precio, financiamiento, colores disponibles, entrega..."></textarea>
+            </div>
+
+            <div class="form__actions">
+              <button class="btn btn--primary" type="submit">Enviar consulta</button>
+              <span class="form__note">Se abrirá WhatsApp con tu mensaje.</span>
+            </div>
+
+            <p class="notice" data-wa-done hidden tabindex="-1">
+              <strong>Listo.</strong> Se abrió WhatsApp con tu consulta. Envía el mensaje para que un asesor te responda.
+            </p>
+          </form>
+        </div>
       </div>
     </div>
   </section>
 
 </main>
+
 <!-- ══════════════════════════════════════════════════════ FOOTER ══════ -->
 <footer class="footer">
   <div class="wrap">
@@ -371,19 +588,19 @@
       <div>
         <h4>Navegación</h4>
         <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="modelos.html">Modelos</a></li>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#catalogo">Modelos</a></li>
           <li><a href="#comparador">Compara tu Hyundai</a></li>
-          <li><a href="simulador.html">Simulador</a></li>
+          <li><a href="#cotizador">Simulador</a></li>
         </ul>
       </div>
 
       <div>
         <h4>Atención al cliente</h4>
         <ul>
-          <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="nosotros.html">Nosotros</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="#taller">Servicios</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
         </ul>
       </div>
       <div>
@@ -395,11 +612,13 @@
           <li><span>📱</span><a href="tel:+584228927419">0422-8927419</a></li>
           <li><span>✉️</span><a href="mailto:administracion.guillen@kibunhyundai.com">administracion.guillen@kibunhyundai.com</a></li>
         </ul>
-      </div>    </div>
+      </div>
+    </div>
 
     <div class="footer__bottom">
       <span>© 2026 Automotores Kibun. Hyundai es una marca registrada de Hyundai Motor Company.</span>
       <span>Todos los modelos son 0KM</span>
+      <span><a href="original/index.html">Ver sitio anterior</a></span>
     </div>
   </div>
 </footer>

@@ -1,0 +1,748 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modelos - Automotores Kibun</title>
+<meta name="description" content="Explora nuestra gama completa de vehículos Hyundai en Mérida. Hatchbacks, sedanes, SUVs y más.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="img/modelos/logo-hyundai.png" type="image/png">
+<style>
+:root {
+  --primary: #002c5f;
+  --primary-light: #003f7f;
+  --accent: #00a5cf;
+  --accent-light: #e6f7fc;
+  --dark: #1a1a2e;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  --white: #ffffff;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--dark);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-top: 72px;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* Navbar */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--gray-200);
+  transition: var(--transition);
+}
+.navbar.scrolled { box-shadow: var(--shadow); }
+.navbar .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.navbar .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.navbar .logo img { height: 32px; width: auto; }
+.navbar .logo span { font-size: 18px; font-weight: 700; color: var(--primary); }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: var(--gray-700); font-size: 14px; font-weight: 500;
+  transition: var(--transition); position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+  background: var(--accent); transition: var(--transition);
+}
+.nav-links a:hover { color: var(--primary); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links .btn-primary-nav {
+  background: var(--primary); color: var(--white) !important; padding: 10px 24px;
+  border-radius: 8px; font-weight: 600; transition: var(--transition);
+}
+.nav-links .btn-primary-nav:hover { background: var(--primary-light); transform: translateY(-1px); }
+.nav-links .btn-primary-nav::after { display: none; }
+
+.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.menu-toggle span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: var(--transition); }
+.menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Page Hero */
+.page-hero {
+  min-height: 55vh; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #002c5f 0%, #003f7f 40%, #004d99 100%);
+  position: relative; overflow: hidden; padding-top: 72px;
+}
+.page-hero::before {
+  content: ''; position: absolute; top: -50%; right: -30%; width: 80%; height: 200%;
+  background: radial-gradient(ellipse, rgba(0,165,207,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.page-hero-road {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.25) 100%);
+  pointer-events: none;
+}
+.page-hero-road-line {
+  position: absolute; top: 30px; left: 0; right: 0; height: 2px;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.3) 0px, rgba(255,255,255,0.3) 40px, transparent 40px, transparent 80px);
+  animation: roadLineScroll 1.5s linear infinite;
+}
+@keyframes roadLineScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-80px); }
+}
+.page-hero .container { position: relative; z-index: 1; text-align: center; padding-top: 40px; padding-bottom: 40px; }
+.page-hero .subtitle { display: inline-block; font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+.page-hero h1 { font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: var(--white); margin-bottom: 12px; }
+.page-hero p { font-size: 17px; color: rgba(255,255,255,0.8); max-width: 500px; margin: 0 auto; line-height: 1.7; }
+.hero-cars { display: flex; justify-content: center; gap: 60px; margin-top: 32px; align-items: center; }
+.hero-cars .car-wrap { width: 240px; position: relative; }
+.hero-cars .car-wrap img { width: 100%; height: auto; filter: drop-shadow(0 12px 32px rgba(0,0,0,0.4)); }
+.hero-cars .car-wrap:nth-child(1) img { animation: drive 4.5s ease-in-out infinite; }
+.hero-cars .car-wrap:nth-child(2) img { animation: drive 5.5s ease-in-out infinite 0.8s; }
+@keyframes drive {
+  0% { transform: translateX(-20px); }
+  50% { transform: translateX(20px); }
+  100% { transform: translateX(-20px); }
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
+  border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none;
+  transition: all 0.3s ease-in-out; cursor: pointer; border: none;
+}
+.btn-primary { background: var(--accent); color: var(--white); }
+.btn-primary:hover { background: #0090b5; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,165,207,0.3); }
+.btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
+.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+/* Sections */
+.section { padding: 80px 0; }
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 { font-size: clamp(26px, 3vw, 36px); font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+.section-header p { font-size: 16px; color: var(--gray-600); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+/* Category Tabs */
+.filter-box {
+  background: #f6f3ee; border-radius: 16px; padding: 24px; margin-bottom: 40px;
+  display: flex; justify-content: center;
+}
+.categories { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.cat-btn {
+  padding: 10px 24px; border-radius: 100px; border: 1px solid var(--gray-300);
+  background: var(--white); color: var(--gray-700); font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: var(--transition); font-family: inherit;
+}
+.cat-btn:hover { border-color: var(--accent); color: var(--accent); }
+.cat-btn.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
+
+/* Models Grid */
+#modelos {
+  background: linear-gradient(160deg, #001a3a 0%, #002c5f 30%, #003f7f 60%, #002244 100%);
+  padding-bottom: 100px; position: relative;
+}
+#modelos::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 300px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0,165,207,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.models-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+.model-card {
+  background: var(--white); border-radius: var(--radius-lg); overflow: visible;
+  border: 1px solid rgba(255,255,255,0.1); transition: var(--transition);
+  position: relative; box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.model-card::after {
+  content: ''; position: absolute; bottom: -12px; left: 10%; width: 80%; height: 24px;
+  background: radial-gradient(ellipse, rgba(0,165,207,0.3) 0%, rgba(0,165,207,0.1) 40%, transparent 70%);
+  pointer-events: none; z-index: -1;
+  transition: var(--transition);
+}
+.model-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.25); }
+.model-card:hover::after { opacity: 0.7; transform: scale(1.1); }
+.model-card-image {
+  height: 290px; display: flex;
+  background: #ffffff; padding: 0;
+  position: relative; overflow: hidden;
+  cursor: pointer;
+  border: 4px solid #001a3a;
+}
+/* Studio lighting overlay */
+.model-card-image::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, transparent 40%, rgba(0,0,0,0.02) 80%, rgba(0,26,58,0.04) 100%);
+  pointer-events: none; z-index: 3;
+}
+.model-card-image .studio-panel {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  position: relative; padding: 16px 10px 32px;
+  background: #ffffff;
+}
+.model-card-image .studio-panel:first-child {
+  border-right: 1px solid rgba(0,0,0,0.06);
+}
+.model-card-image .studio-panel .car-img {
+  max-width: 92%; max-height: 68%; object-fit: contain;
+  position: relative; z-index: 2;
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,0.18));
+  transition: transform 0.4s ease;
+}
+.model-card-image:hover .studio-panel .car-img {
+  transform: scale(1.03);
+}
+.model-card-image .studio-panel.rear .car-img {
+  transform: scaleX(-1);
+}
+.model-card-image .studio-panel.rear .car-img.real-rear {
+  transform: none;
+}
+.model-card-image:hover .studio-panel.rear .car-img {
+  transform: scaleX(-1) scale(1.03);
+}
+.model-card-image:hover .studio-panel.rear .car-img.real-rear {
+  transform: scale(1.03);
+}
+/* Floor reflection */
+.model-card-image .studio-panel .reflection {
+  position: absolute; bottom: 34px; left: 8%; width: 84%; height: 20px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.05), transparent);
+  border-radius: 50%; z-index: 1;
+}
+.model-card-image .studio-panel .reflection::after {
+  content: ''; position: absolute; bottom: -2px; left: 10%; width: 80%; height: 6px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.03), transparent);
+  border-radius: 50%;
+}
+/* Floor line (subtle horizon) */
+.model-card-image .studio-panel .floor-line {
+  position: absolute; bottom: 30px; left: 5%; width: 90%; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.04), transparent);
+  z-index: 0;
+}
+/* View labels */
+.model-card-image .studio-panel .view-label {
+  position: absolute; bottom: 9px; left: 0; right: 0; text-align: center;
+  font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 2.5px;
+  color: #9aabba; z-index: 3;
+}
+.model-card-image .studio-panel .view-label .arrow {
+  display: inline-block; font-size: 8px; color: #bcc9d4;
+}
+.model-card-image .studio-panel .view-label .arrow.left { margin-right: 5px; }
+.model-card-image .studio-panel .view-label .arrow.right { margin-left: 5px; }
+/* Category oval badge */
+.model-card-image .studio-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: #00a5cf; color: #fff;
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; padding: 5px 16px;
+  border-radius: 100px; z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,165,207,0.3);
+}
+/* Trunk open badge */
+.model-card-image .studio-panel.rear .trunk-badge {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(0,165,207,0.12);
+  color: #00a5cf; font-size: 9px; font-weight: 600;
+  padding: 3px 10px; border-radius: 100px;
+  border: 1px solid rgba(0,165,207,0.2);
+  z-index: 10; letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+}
+.model-card-body { padding: 24px; }
+.model-card-body h3 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+.model-card-body .variant { font-size: 14px; color: var(--gray-500); margin-bottom: 16px; }
+.model-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.model-spec { }
+.model-spec .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-500); font-weight: 500; }
+.model-spec .value { font-size: 14px; font-weight: 600; color: var(--dark); }
+.price-breakdown { margin: 12px 0; padding: 12px; background: var(--gray-100); border-radius: 8px; font-size: 13px; }
+.price-row { display: flex; justify-content: space-between; padding: 3px 0; color: var(--gray-600); }
+.price-row.total { border-top: 1px solid var(--gray-300); margin-top: 4px; padding-top: 6px; font-weight: 700; color: var(--primary); font-size: 14px; }
+.model-card-actions { display: flex; gap: 8px; }
+.model-card-actions .btn { flex: 1; justify-content: center; padding: 10px 16px; font-size: 13px; }
+.model-card-actions .btn:hover { transform: translateY(-2px); }
+.btn-small { padding: 10px 16px; font-size: 13px; border-radius: 8px; }
+.btn-small:hover { transform: translateY(-2px); }
+
+/* Simulator */
+.simulator-section { background: var(--gray-100); }
+.simulator {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+  background: var(--white); border-radius: var(--radius-lg); padding: 48px;
+  box-shadow: var(--shadow);
+}
+.simulator-form h3 { font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+.simulator-form > p { color: var(--gray-600); margin-bottom: 32px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 14px; font-weight: 500; color: var(--gray-700); margin-bottom: 6px; }
+.form-group select, .form-group input {
+  width: 100%; padding: 12px 16px; border: 1px solid var(--gray-300); border-radius: 8px;
+  font-size: 15px; font-family: inherit; color: var(--dark); background: var(--white);
+  transition: var(--transition);
+}
+.form-group select:focus, .form-group input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,165,207,0.15); }
+.form-group input[type="range"] { padding: 0; border: none; height: 6px; appearance: none; background: var(--gray-200); border-radius: 3px; }
+.form-group input[type="range"]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); cursor: pointer; box-shadow: 0 2px 8px rgba(0,165,207,0.3); }
+.range-labels { display: flex; justify-content: space-between; font-size: 13px; color: var(--gray-500); margin-top: 4px; }
+.simulator-result { background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: var(--radius); padding: 32px; color: var(--white); }
+.simulator-result h4 { font-size: 18px; font-weight: 600; margin-bottom: 24px; opacity: 0.9; }
+.result-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.result-item:last-child { border-bottom: none; }
+.result-item .label { font-size: 14px; opacity: 0.8; }
+.result-item .value { font-size: 16px; font-weight: 600; }
+.result-item .value.highlight { font-size: 22px; color: var(--accent); }
+.result-total { margin-top: 16px; padding-top: 16px; border-top: 2px solid rgba(255,255,255,0.2); }
+.result-total .value { font-size: 28px !important; font-weight: 700 !important; color: var(--accent); }
+
+/* Why Us */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+.feature-card {
+  text-align: center; padding: 40px 24px; border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200); transition: var(--transition);
+}
+.feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.feature-icon { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 28px; }
+.feature-card h3 { font-size: 18px; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
+.feature-card p { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
+
+/* Contact */
+.contact-section { background: var(--primary); color: var(--white); }
+.contact-section .section-header h2 { color: var(--white); }
+.contact-section .section-header p { color: rgba(255,255,255,0.7); }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.contact-card {
+  background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+  border-radius: var(--radius); padding: 32px; text-align: center;
+  border: 1px solid rgba(255,255,255,0.1); transition: var(--transition);
+}
+.contact-card:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+.contact-card .icon { font-size: 32px; margin-bottom: 16px; }
+.contact-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.contact-card p, .contact-card a { font-size: 14px; color: rgba(255,255,255,0.8); text-decoration: none; line-height: 1.6; transition: all 0.3s ease-in-out; }
+.contact-card a:hover { color: var(--accent); transform: translateY(-1px); }
+
+/* Footer */
+.footer {
+  background: var(--dark); color: rgba(255,255,255,0.6); padding: 48px 0 24px;
+}
+.footer .container { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+.footer h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 16px; }
+.footer p, .footer a { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; line-height: 2; display: block; }
+.footer a:hover { color: var(--accent); }
+.footer-logo { margin-bottom: 16px; }
+.footer-logo svg { height: 24px; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px; padding-top: 24px; text-align: center; font-size: 13px; }
+
+/* WhatsApp Float */
+.whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 999;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; color: white; display: flex; align-items: center; justify-content: center;
+  text-decoration: none; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: all 0.4s ease; font-size: 28px;
+  opacity: 1; transform: translateY(0);
+}
+.whatsapp-float.hidden-float { opacity: 0; transform: translateY(20px); pointer-events: none; }
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5); }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
+  .nav-links {
+    position: fixed; top: 72px; left: 0; right: 0; background: var(--white);
+    flex-direction: column; padding: 24px; gap: 16px; border-bottom: 1px solid var(--gray-200);
+    transform: translateY(-100%); opacity: 0; pointer-events: none; transition: var(--transition);
+  }
+  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+  .hero-cars { flex-direction: column; gap: 24px; }
+  .hero-cars .car-wrap { width: 200px; }
+  .simulator { grid-template-columns: 1fr; padding: 24px; }
+  .footer .container { grid-template-columns: 1fr 1fr; }
+  .models-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .footer .container { grid-template-columns: 1fr; }
+  .model-specs { grid-template-columns: 1fr; }
+}
+
+/* Animations */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+.hidden { display: none; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center;
+  padding: 24px; animation: fadeIn 0.2s ease;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white); border-radius: var(--radius-lg);
+  max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  animation: scaleIn 0.3s ease;
+}
+.modal-image {
+  background: linear-gradient(135deg, var(--gray-100), var(--white));
+  display: flex; align-items: center; justify-content: center; padding: 32px; min-height: 350px;
+}
+.modal-image img { max-width: 100%; max-height: 320px; object-fit: contain; }
+.modal-info { padding: 32px; position: relative; }
+.modal-close {
+  position: absolute; top: 16px; right: 16px; width: 36px; height: 36px;
+  border-radius: 50%; border: none; background: var(--gray-100); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; font-size: 20px;
+  color: var(--gray-600); transition: var(--transition);
+}
+.modal-close:hover { background: var(--gray-200); color: var(--dark); }
+.modal-info h2 { font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 4px; padding-right: 40px; }
+.modal-info .variant { font-size: 14px; color: var(--gray-500); margin-bottom: 20px; }
+.modal-specs { margin-bottom: 20px; }
+.modal-specs h4 { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.specs-table { width: 100%; border-collapse: collapse; }
+.specs-table td { padding: 8px 12px; font-size: 14px; border-bottom: 1px solid var(--gray-200); }
+.specs-table td:first-child { color: var(--gray-500); font-weight: 500; width: 45%; }
+.specs-table td:last-child { color: var(--dark); font-weight: 600; }
+.modal-price { background: var(--gray-100); border-radius: 8px; padding: 16px; margin-bottom: 20px; }
+.modal-price .price-row { padding: 4px 0; }
+.modal-price .price-row.total { font-size: 16px; }
+.modal-actions { display: flex; gap: 12px; }
+.modal-actions .btn { flex: 1; justify-content: center; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@media (max-width: 768px) {
+  .modal { grid-template-columns: 1fr; }
+  .modal-image { min-height: 220px; padding: 20px; }
+  .modal-image img { max-height: 200px; }
+  .modal-info { padding: 24px; }
+}
+
+/* Color Swatches */
+.model-colors { display: flex; align-items: center; gap: 6px; margin: 12px 0; flex-wrap: wrap; }
+.model-colors .color-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-500); font-weight: 500; margin-right: 4px; }
+.color-swatch { width: 26px; height: 26px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: var(--transition); padding: 0; display: inline-block; }
+.color-swatch:hover { transform: scale(1.2); }
+.color-swatch.active { border-color: var(--dark); box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--dark); }
+.modal-image { position: relative; }
+.modal-image-colors { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; background: rgba(255,255,255,0.85); padding: 8px 14px; border-radius: 100px; backdrop-filter: blur(4px); }
+.modal-image-colors .color-swatch { width: 22px; height: 22px; }
+.modal-image-colors .color-swatch.active { border-color: var(--primary); box-shadow: 0 0 0 2px var(--white), 0 0 0 3px var(--primary); }
+
+.hidden { display: none; }
+</style>
+</head>
+<body style="padding-top:72px;">
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="img/modelos/logo-hyundai.png" alt="Hyundai">
+      <span>Automotores Kibun</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="#" style="color: var(--accent); font-weight: 600;">Modelos</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="contacto.html" class="btn-primary-nav">Solicitar Cotización</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="page-hero-road"><div class="page-hero-road-line"></div></div>
+  <div class="container">
+    <span class="subtitle">Nuestra Gama</span>
+    <h1>Modelos Hyundai</h1>
+    <p>Explora nuestra completa línea de vehículos. Encuentra el Hyundai perfecto para ti en Mérida.</p>
+    <div class="hero-cars">
+      <div class="car-wrap"><img src="img/modelos/Tucson-premium-Azul-.png" alt="Hyundai Tucson"></div>
+      <div class="car-wrap"><img src="img/modelos/Elantra-rojo.png" alt="Hyundai Elantra"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Models Grid -->
+<section class="section" id="modelos">
+  <div class="container">
+    <div class="section-header">
+      <h2>Toda la gama Hyundai</h2>
+      <p>Encuentra el vehículo perfecto para ti, desde hatchbacks urbanos hasta SUVs familiares.</p>
+    </div>
+    <div class="filter-box">
+      <div class="categories" id="categories">
+        <button class="cat-btn active" data-category="all">Todos</button>
+        <button class="cat-btn" data-category="hatchback">Hatchback</button>
+        <button class="cat-btn" data-category="sedan">Sedán</button>
+        <button class="cat-btn" data-category="suv">SUV</button>
+      </div>
+    </div>
+    <div class="models-grid" id="modelsGrid"></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div>
+      <div class="footer-logo">
+        <img src="img/modelos/logo-hyundai-blanco.png" alt="Hyundai" style="height:36px;width:auto;">
+      </div>
+      <p>Concesionario oficial Hyundai en Mérida, Venezuela. Excelencia automotriz con respaldo global.</p>
+    </div>
+    <div>
+      <h4>Modelos</h4>
+      <a href="modelos.html">Grand i10</a>
+      <a href="modelos.html">Elantra</a>
+      <a href="modelos.html">Accent</a>
+      <a href="modelos.html">Tucson</a>
+      <a href="modelos.html">Creta</a>
+      <a href="modelos.html">Palisade</a>
+    </div>
+    <div>
+      <h4>Servicios</h4>
+      <a href="servicios.html">Agendar cita</a>
+    </div>
+    </div>
+  <div class="footer-bottom">
+    <div class="container">&copy; 2026 Automotores Kibun. Hyundai es una marca registrada de Hyundai Motor Company.</div>
+  </div>
+</footer>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal">
+    <div class="modal-image" id="modalImage"><img alt=""><div class="modal-image-colors" id="modalImageColors"></div></div>
+    <div class="modal-info">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h2 id="modalName"></h2>
+      <div class="variant" id="modalVariant"></div>
+      <div class="modal-specs">
+        <h4>Ficha Técnica</h4>
+        <table class="specs-table" id="modalSpecs"></table>
+      </div>
+      <div class="modal-actions" id="modalActions"></div>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/584147482282?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20veh%C3%ADculos%20Hyundai%20en%20M%C3%A9rida" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">&#128172;</a>
+
+<script>
+const paletteMap = {
+  azul: ['#0c3483', '#1a5fc7', '#2978e0'],
+  rojo: ['#8b1a1a', '#c62828', '#e53935'],
+  plata: ['#5c636a', '#8e959e', '#bcc2c9'],
+  blanco: ['#8e9eab', '#c9d6df', '#eef2f5']
+};
+
+const models = [
+  { name: 'Grand i10 1.2L M/T GL', variant: 'M/T 5 vel', category: 'hatchback', motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Manual 5 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '40 L', largo: '3,665 mm', ancho: '1,660 mm', alto: '1,530 mm', peso: '1,012 kg', image: 'img/modelos/Grandi10-Hatchback-GL-Azul.png', rearImage: null, palette: 'azul', colors: [{label:'Rojo',palette:'rojo',image:'img/modelos/Grandi10-Hatchback-GLS-rojo.png'},{label:'Plata',palette:'plata',image:'img/modelos/Grandi10-Hatchback-GL-Plata.png'},{label:'Azul',palette:'azul',image:'img/modelos/Grandi10-Hatchback-GL-Azul.png'}] },
+  { name: 'Grand i10 1.2L A/T GL', variant: 'A/T 4 vel', category: 'hatchback', motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Automática 4 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '40 L', largo: '3,665 mm', ancho: '1,660 mm', alto: '1,530 mm', peso: '1,025 kg', image: 'img/modelos/Grandi10-Hatchback-GL-Plata.png', rearImage: null, palette: 'plata', colors: [{label:'Rojo',palette:'rojo',image:'img/modelos/Grandi10-Hatchback-GLS-rojo.png'},{label:'Plata',palette:'plata',image:'img/modelos/Grandi10-Hatchback-GL-Plata.png'},{label:'Azul',palette:'azul',image:'img/modelos/Grandi10-Hatchback-GL-Azul.png'}] },
+  { name: 'Grand i10 1.2L A/T GLS', variant: 'A/T 4 vel', category: 'hatchback', motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Automática 4 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '40 L', largo: '3,665 mm', ancho: '1,660 mm', alto: '1,530 mm', peso: '1,025 kg', image: 'img/modelos/Grandi10-Hatchback-GLS-rojo.png', rearImage: null, palette: 'rojo', colors: [{label:'Rojo',palette:'rojo',image:'img/modelos/Grandi10-Hatchback-GLS-rojo.png'},{label:'Plata',palette:'plata',image:'img/modelos/Grandi10-Hatchback-GL-Plata.png'},{label:'Azul',palette:'azul',image:'img/modelos/Grandi10-Hatchback-GL-Azul.png'}] },
+  { name: 'Grand i10 1.2L A/T GLS Sedán', variant: 'A/T 4 vel', category: 'sedan', motor: '1.2L MPI', potencia: '82 HP @ 6000 rpm', transmision: 'Automática 4 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '43 L', largo: '4,225 mm', ancho: '1,660 mm', alto: '1,520 mm', peso: '1,068 kg', image: 'img/modelos/Grandi10-sedan-fondo-transparente.png', rearImage: null, palette: 'blanco', colors: [{label:'Blanco',palette:'blanco',image:'img/modelos/Grandi10-sedan-fondo-transparente.png'}] },
+  { name: 'Accent 1.5L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', motor: '1.5L MPI', potencia: '113 HP @ 6300 rpm', transmision: 'Automática IVT 6 vel', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '45 L', largo: '4,500 mm', ancho: '1,760 mm', alto: '1,470 mm', peso: '1,152 kg', image: 'img/modelos/Accent-blanco.png', rearImage: null, palette: 'blanco', colors: [{label:'Blanco',palette:'blanco',image:'img/modelos/Accent-blanco.png'}] },
+  { name: 'Elantra 2.0L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', motor: '2.0L MPI', potencia: '156 HP @ 6200 rpm', transmision: 'Automática IVT 6 vel', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '47 L', largo: '4,640 mm', ancho: '1,820 mm', alto: '1,425 mm', peso: '1,250 kg', image: 'img/modelos/Elantra-rojo.png', rearImage: null, palette: 'rojo', colors: [{label:'Rojo',palette:'rojo',image:'img/modelos/Elantra-rojo.png'}] },
+  { name: 'Creta 1.5L A/T GLS', variant: 'A/T 6 vel', category: 'suv', motor: '1.5L MPI', potencia: '113 HP @ 6300 rpm', transmision: 'Automática 6 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '50 L', largo: '4,300 mm', ancho: '1,790 mm', alto: '1,635 mm', peso: '1,220 kg', image: 'img/modelos/Creta-Blanco_.png', rearImage: null, palette: 'blanco', colors: [{label:'Blanco',palette:'blanco',image:'img/modelos/Creta-Blanco_.png'}] },
+  { name: 'Tucson 2.0L A/T 2WD GLS', variant: 'A/T 6 vel', category: 'suv', motor: '2.0L MPI', potencia: '154 HP @ 6200 rpm', transmision: 'Automática 6 velocidades', traccion: 'Delantera', combustible: 'Gasolina', capacidad_tanque: '54 L', largo: '4,630 mm', ancho: '1,865 mm', alto: '1,665 mm', peso: '1,530 kg', image: 'img/modelos/Tucson-premium-Azul-.png', rearImage: null, palette: 'azul', colors: [{label:'Azul',palette:'azul',image:'img/modelos/Tucson-premium-Azul-.png'},{label:'Blanco',palette:'blanco',image:'img/modelos/Tucson-blanco.png'}] },
+  { name: 'Tucson 2.0L A/T 4WD GLX', variant: 'A/T 6 vel', category: 'suv', motor: '2.0L MPI', potencia: '154 HP @ 6200 rpm', transmision: 'Automática 6 velocidades', traccion: '4x4', combustible: 'Gasolina', capacidad_tanque: '54 L', largo: '4,630 mm', ancho: '1,865 mm', alto: '1,665 mm', peso: '1,612 kg', image: 'img/modelos/Tucson-blanco.png', rearImage: null, palette: 'blanco', colors: [{label:'Blanco',palette:'blanco',image:'img/modelos/Tucson-blanco.png'},{label:'Azul',palette:'azul',image:'img/modelos/Tucson-premium-Azul-.png'}] },
+  { name: 'Palisade 3.8L A/T 4WD GLS 7P', variant: 'A/T 8 vel', category: 'suv', motor: '3.8L V6 GDI', potencia: '291 HP @ 6000 rpm', transmision: 'Automática 8 velocidades', traccion: '4x4', combustible: 'Gasolina', capacidad_tanque: '71 L', largo: '4,995 mm', ancho: '1,975 mm', alto: '1,750 mm', peso: '1,905 kg', image: 'img/modelos/Palisade-rojo.png', rearImage: null, palette: 'rojo', colors: [{label:'Rojo',palette:'rojo',image:'img/modelos/Palisade-rojo.png'}] }
+];
+
+const modelsGrid = document.getElementById('modelsGrid');
+const categoryBtns = document.querySelectorAll('.cat-btn');
+
+function getCurrentCategory() {
+  const active = document.querySelector('.cat-btn.active');
+  return active ? active.dataset.category : 'all';
+}
+
+function switchColor(index, palette) {
+  const m = models[index];
+  const color = m.colors.find(c => c.palette === palette);
+  if (!color) return;
+  m.image = color.image;
+  m.palette = color.palette;
+  renderModels(getCurrentCategory());
+}
+
+function renderModels(category = 'all') {
+  const filtered = category === 'all' ? models : models.filter(m => m.category === category);
+  modelsGrid.innerHTML = filtered.map(m => {
+    const idx = models.indexOf(m);
+    return `
+    <div class="model-card" data-index="${idx}" onclick="openModal(${idx})">
+      <div class="model-card-image">
+        <span class="studio-badge">${m.category}</span>
+        <div class="studio-panel">
+          <img src="${m.image}" alt="${m.name}" class="car-img" loading="lazy">
+          <div class="reflection"></div>
+          <div class="floor-line"></div>
+          <span class="view-label"><span class="arrow left">&#9664;</span> DELANTERA</span>
+        </div>
+        <div class="studio-panel rear">
+          <img src="${m.rearImage || m.image}" alt="${m.name} trasero" class="car-img${m.rearImage ? ' real-rear' : ''}" loading="lazy">
+          <div class="reflection"></div>
+          <div class="floor-line"></div>
+          <span class="trunk-badge">&#128230; Maletero</span>
+          <span class="view-label">TRASERA <span class="arrow right">&#9654;</span></span>
+        </div>
+      </div>
+      <div class="model-card-body">
+        <h3>${m.name}</h3>
+        <div class="variant">${m.variant}</div>
+        <div class="model-specs">
+          <div class="model-spec"><span class="label">Motor</span><span class="value">${m.motor}</span></div>
+          <div class="model-spec"><span class="label">Potencia</span><span class="value">${m.potencia}</span></div>
+          <div class="model-spec"><span class="label">Transmisión</span><span class="value">${m.transmision}</span></div>
+          <div class="model-spec"><span class="label">Tracción</span><span class="value">${m.traccion}</span></div>
+        </div>
+        <div class="model-colors">
+          <span class="color-label">Colores:</span>
+          ${m.colors.map(c => `
+            <button class="color-swatch ${c.palette === m.palette ? 'active' : ''}"
+              style="background:linear-gradient(135deg,${paletteMap[c.palette][0]},${paletteMap[c.palette][2]});"
+              onclick="event.stopPropagation();switchColor(${idx},'${c.palette}')"
+              title="${c.label}"></button>
+          `).join('')}
+        </div>
+        <div class="model-card-actions" onclick="event.stopPropagation()">
+          <a href="servicios.html" class="btn btn-primary btn-small">Servicios</a>
+          <button class="btn btn-small" style="border:1px solid var(--gray-300);color:var(--gray-700);background:var(--white);cursor:pointer" onclick="openModal(${idx})">Ficha técnica</button>
+          <a href="https://wa.me/584147482282?text=Quiero%20informaci%C3%B3n%20sobre%20${encodeURIComponent(m.name)}" class="btn btn-outline btn-small" style="border-color:var(--gray-300);color:var(--gray-700)">Consultar</a>
+        </div>
+      </div>
+    </div>
+  `}).join('');
+}
+
+categoryBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    categoryBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderModels(btn.dataset.category);
+  });
+});
+
+// Init
+renderModels();
+
+// Mobile menu
+document.getElementById('menuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// Close mobile menu on link click
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('menuToggle').classList.remove('active');
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Fade-in animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// WhatsApp scroll animation
+const whatsappBtn = document.querySelector('.whatsapp-float');
+let lastScrollY = window.scrollY;
+window.addEventListener('scroll', () => {
+  const currentScrollY = window.scrollY;
+  if (currentScrollY > 300 && currentScrollY > lastScrollY) {
+    whatsappBtn.classList.add('hidden-float');
+  } else {
+    whatsappBtn.classList.remove('hidden-float');
+  }
+  lastScrollY = currentScrollY;
+});
+
+// Modal
+const specLabels = { motor: 'Motor', potencia: 'Potencia', transmision: 'Transmisión', traccion: 'Tracción', combustible: 'Combustible', capacidad_tanque: 'Capacidad del tanque', largo: 'Largo', ancho: 'Ancho', alto: 'Alto', peso: 'Peso' };
+
+function openModal(index) {
+  const m = models[index];
+  document.getElementById('modalName').textContent = m.name;
+  document.getElementById('modalVariant').textContent = m.variant;
+  document.getElementById('modalImage').style.background = '#eef2f5';
+  document.getElementById('modalImage').querySelector('img').src = m.image;
+  document.getElementById('modalImage').querySelector('img').alt = m.name;
+  const modalColors = document.getElementById('modalImageColors');
+  modalColors.innerHTML = m.colors.map(c => `
+    <button class="color-swatch ${c.palette === m.palette ? 'active' : ''}"
+      style="background:linear-gradient(135deg,${paletteMap[c.palette][0]},${paletteMap[c.palette][2]});"
+      onclick="switchModalColor(${index},'${c.palette}',this)"
+      title="${c.label}"></button>
+  `).join('');
+  const specsHtml = Object.keys(specLabels).map(k => m[k] ? `<tr><td>${specLabels[k]}</td><td>${m[k]}</td></tr>` : '').join('');
+  document.getElementById('modalSpecs').innerHTML = specsHtml;
+  document.getElementById('modalActions').innerHTML = `
+    <a href="contacto.html" class="btn btn-primary btn-small">Solicitar Cotización</a>
+    <a href="https://wa.me/584147482282?text=Quiero%20informaci%C3%B3n%20sobre%20${encodeURIComponent(m.name)}" class="btn btn-outline btn-small" style="border-color:var(--gray-300);color:var(--gray-700)">Consultar por WhatsApp</a>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function switchModalColor(index, palette, el) {
+  const m = models[index];
+  const color = m.colors.find(c => c.palette === palette);
+  if (!color) return;
+  m.image = color.image;
+  m.palette = color.palette;
+  const p = paletteMap[palette] || paletteMap.blanco;
+  document.getElementById('modalImage').style.background = 'linear-gradient(135deg,' + p[0] + ',' + p[1] + ',' + p[2] + ')';
+  document.querySelector('#modalImage img').src = color.image;
+  document.querySelectorAll('#modalImageColors .color-swatch').forEach(e => e.classList.remove('active'));
+  if (el) el.classList.add('active');
+  renderModels(getCurrentCategory());
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
