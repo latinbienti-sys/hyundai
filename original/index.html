@@ -234,6 +234,52 @@ body {
 @media (max-width: 480px) {
   .footer .container { grid-template-columns: 1fr; }
 }
+
+/* Reels */
+.reels { padding: 88px 0 96px; background: var(--white); }
+.reels-head { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+.reels-eyebrow {
+  display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--primary); background: var(--accent-light);
+  padding: 6px 14px; border-radius: 999px; margin-bottom: 16px;
+}
+.reels-head h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -0.02em; color: var(--primary); }
+.reels-head p { margin-top: 12px; color: var(--gray-600); font-size: 16px; }
+
+.reels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+.reel-card {
+  background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
+  overflow: hidden; box-shadow: var(--shadow); transition: var(--transition);
+  display: flex; flex-direction: column;
+}
+.reel-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--gray-300); }
+.reel-media { position: relative; background: var(--dark); aspect-ratio: 9 / 16; max-height: 520px; }
+.reel-media video { width: 100%; height: 100%; object-fit: cover; display: block; background: var(--dark); }
+.reel-badge {
+  position: absolute; top: 12px; left: 12px; background: rgba(0,44,95,0.85);
+  color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  padding: 6px 12px; border-radius: 999px; backdrop-filter: blur(8px);
+}
+.reel-body { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.reel-body h3 { font-size: 20px; font-weight: 700; color: var(--dark); letter-spacing: -0.01em; }
+.reel-bajada { font-size: 13px; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
+.reel-desc { font-size: 14.5px; color: var(--gray-600); }
+.reel-ficha { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gray-200); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; }
+.reel-ficha div { background: var(--gray-100); padding: 10px 12px; }
+.reel-ficha dt { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500); }
+.reel-ficha dd { font-size: 13.5px; font-weight: 600; color: var(--dark); margin-top: 2px; }
+.reel-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.reel-tags span { font-size: 11.5px; font-weight: 600; color: var(--primary); background: var(--accent-light); padding: 4px 10px; border-radius: 999px; }
+.reel-cta { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: auto; padding: 12px 18px; background: var(--primary); color: #fff; text-decoration: none; border-radius: var(--radius); font-weight: 600; font-size: 14px; transition: var(--transition); }
+.reel-cta:hover { background: var(--primary-light); }
+.reels-empty, .reels-error { text-align: center; color: var(--gray-600); padding: 40px 0; }
+
+@media (max-width: 640px) {
+  .reels { padding: 64px 0 72px; }
+  .reels-grid { grid-template-columns: 1fr; gap: 24px; }
+  .reel-media { max-height: 480px; }
+  .reel-ficha { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -251,6 +297,7 @@ body {
     <ul class="nav-links" id="navLinks">
       <li><a href="#" style="color: var(--accent); font-weight: 600;">Inicio</a></li>
       <li><a href="modelos.html">Modelos</a></li>
+      <li><a href="#reels">Reels</a></li>
       <li><a href="servicios.html">Servicios</a></li>
       <li><a href="nosotros.html">Nosotros</a></li>
       <li><a href="contacto.html">Contacto</a></li>
@@ -265,6 +312,20 @@ body {
   <button class="arrow arrow-prev" id="prevBtn">&#10094;</button>
   <button class="arrow arrow-next" id="nextBtn">&#10095;</button>
   <div class="dots" id="dots"></div>
+</section>
+
+<!-- Reels -->
+<section class="reels" id="reels">
+  <div class="container">
+    <div class="reels-head">
+      <span class="reels-eyebrow">Reels</span>
+      <h2>Nuestros vehículos en movimiento</h2>
+      <p>Videos reales de los modelos 0KM que recién llegan a Automotores Kibun, Mérida.</p>
+    </div>
+    <div class="reels-grid" id="reelsGrid">
+      <p class="reels-empty">Cargando reels...</p>
+    </div>
+  </div>
 </section>
 
 <!-- Footer -->
@@ -388,6 +449,56 @@ window.addEventListener('scroll', () => {
   }
   lastScrollY = currentScrollY;
 });
+
+// Reels: se cargan desde videos/manifest.json
+(async function loadReels() {
+  const grid = document.getElementById('reelsGrid');
+  try {
+    const res = await fetch('videos/manifest.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('No se pudo cargar el manifiesto de reels');
+    const { reels } = await res.json();
+
+    if (!reels || !reels.length) {
+      grid.innerHTML = '<p class="reels-empty">Próximamente nuevos videos.</p>';
+      return;
+    }
+
+    grid.innerHTML = reels.map((r, i) => {
+      const wa = 'https://wa.me/584147482282?text=' + encodeURIComponent(r.whatsapp || '');
+      const ficha = r.ficha
+        ? '<dl class="reel-ficha">' + Object.entries(r.ficha)
+            .map(([k, v]) => '<div><dt>' + k + '</dt><dd>' + v + '</dd></div>').join('') + '</dl>'
+        : '';
+      const tags = '<div class="reel-tags">' +
+        (r.tags || []).map(t => '<span>' + t + '</span>').join('') + '</div>';
+      return (
+        '<article class="reel-card">' +
+          '<div class="reel-media">' +
+            '<video controls playsinline preload="' + (i === 0 ? 'auto' : 'metadata') + '"' +
+              (r.poster ? ' poster="' + r.poster + '"' : '') +
+              ' aria-label="' + r.titulo + '">' +
+              '<source src="' + r.archivo + '" type="video/mp4">' +
+              'Tu navegador no soporta video. <a href="' + r.archivo + '">Descárgalo aquí</a>.' +
+            '</video>' +
+            '<span class="reel-badge">' + (r.familia || '0KM') + '</span>' +
+          '</div>' +
+          '<div class="reel-body">' +
+            (r.bajada ? '<span class="reel-bajada">' + r.bajada + '</span>' : '') +
+            '<h3>' + r.titulo + '</h3>' +
+            '<p class="reel-desc">' + (r.descripcion || '') + '</p>' +
+            ficha + tags +
+            '<a class="reel-cta" href="' + wa + '" target="_blank" rel="noopener">' +
+              'Consultar por WhatsApp' +
+            '</a>' +
+          '</div>' +
+        '</article>'
+      );
+    }).join('');
+  } catch (err) {
+    grid.innerHTML = '<p class="reels-error">No pudimos cargar los videos en este momento. ' +
+      'Escríbenos por WhatsApp y te ayudamos.</p>';
+  }
+})();
 </script>
 </body>
 </html>

@@ -1,0 +1,46 @@
+{
+  "reels": [
+    {
+      "archivo": "videos/creta.mp4",
+      "poster": "img/modelos/Creta-Blanco_.png",
+      "modelo": "Creta 1.5L A/T GLS",
+      "familia": "Creta",
+      "titulo": "Creta 1.5L A/T GLS",
+      "bajada": "Edición GLS",
+      "descripcion": "SUV compacta de 4.300 mm, techo panorámico y pantalla de 10.25 pulgadas. La Creta llegó para acompañarte en cada etapa de tu vida.",
+      "ficha": {
+        "Motor": "1.5L MPI",
+        "Potencia": "113 HP @ 6300 rpm",
+        "Transmisión": "Automática 6 velocidades",
+        "Tracción": "Delantera",
+        "Combustible": "Gasolina",
+        "Tanque": "50 L",
+        "Dimensiones": "4.300 × 1.790 × 1.635 mm",
+        "Peso": "1.220 kg"
+      },
+      "tags": ["SUV", "0KM", "Mérida"],
+      "whatsapp": "Hola Automotores Kibun, quiero información sobre la Hyundai Creta 1.5L A/T GLS."
+    },
+    {
+      "archivo": "videos/grand-i10.mp4",
+      "poster": "img/modelos/Grandi10-Hatchback-GL-Azul.png",
+      "modelo": "Grand i10 1.2L M/T GL",
+      "familia": "Grand i10",
+      "titulo": "Grand i10 GL M/T",
+      "bajada": "Edición Dinámica",
+      "descripcion": "El city car de 3.665 mm: compacto, ágil y fácil de parquear en la ciudad. Manual de 5 velocidades con Edición Dinámica de fábrica.",
+      "ficha": {
+        "Motor": "1.2L MPI",
+        "Potencia": "82 HP @ 6000 rpm",
+        "Transmisión": "Manual 5 velocidades",
+        "Tracción": "Delantera",
+        "Combustible": "Gasolina",
+        "Tanque": "40 L",
+        "Dimensiones": "3.665 × 1.660 × 1.530 mm",
+        "Peso": "1.012 kg"
+      },
+      "tags": ["Urbano", "0KM", "Mérida"],
+      "whatsapp": "Hola Automotores Kibun, quiero información sobre el Hyundai Grand i10 1.2L M/T GL."
+    }
+  ]
+}
