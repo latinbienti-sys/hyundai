@@ -250,6 +250,19 @@ h1, h2, h3, h4, p { margin: 0; }
   max-width: 15ch;
 }
 .hero__content h1 .accent { color: var(--lime); }
+
+/* Titulo de las diapositivas 2..n: mismo aspecto que el h1 */
+.hero__alt {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  font-size: clamp(2.5rem, 7vw, 5.25rem);
+  margin-block: 1.1rem 1.15rem;
+  max-width: 15ch;
+  color: #fff;
+}
+.hero__alt .accent { color: var(--lime); }
 .hero__content p {
   max-width: 46ch; font-size: clamp(1rem, 1.4vw, 1.1875rem);
   color: rgba(255, 255, 255, 0.86);
@@ -747,6 +760,234 @@ h1, h2, h3, h4, p { margin: 0; }
 .modal__foot { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
 body.is-locked { overflow: hidden; }
 
+/* ======================================================= EXPERIENCIA ==== */
+/* Secciones de la portada: Estudio 360, Ruta Andina, cotizador y taller. */
+
+/* Barra de secciones: solo existe en la portada */
+.secnav {
+  position: sticky; top: var(--nav-h); z-index: 60;
+  background: var(--dark-900);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.secnav__inner {
+  display: flex; gap: 0.3rem;
+  overflow-x: auto;
+  padding: 0.55rem var(--gutter);
+  scrollbar-width: none;
+}
+.secnav__inner::-webkit-scrollbar { display: none; }
+.secnav a {
+  flex: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 100px;
+  font-size: 0.8125rem; font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
+  white-space: nowrap;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.secnav a:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.secnav a.is-active { background: var(--lime); color: var(--dark-900); }
+
+/* Las anclas no deben quedar escondidas bajo el nav fijo ni la barra */
+main > section[id] { scroll-margin-top: calc(var(--nav-h) + 3.25rem); }
+
+/* ------------------------------------------------- Estudio 360 (color) -- */
+.studio {
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.studio__head {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem;
+  padding: 1.15rem clamp(1.1rem, 2.5vw, 1.75rem);
+  background: var(--brand-500); color: #fff;
+}
+.studio__cat {
+  display: block; margin-bottom: 0.15rem;
+  font-size: 0.6875rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--lime);
+}
+.studio__head h3 { font-size: clamp(1.2rem, 2.4vw, 1.55rem); line-height: 1.2; }
+.studio__price { margin-left: auto; text-align: right; }
+.studio__price span {
+  display: block; margin-bottom: 0.1rem;
+  font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+.studio__price b { font-size: clamp(1.05rem, 2.2vw, 1.35rem); letter-spacing: -0.01em; }
+
+.studio__stage {
+  position: relative;
+  display: grid; place-items: center;
+  min-height: 250px;
+  padding: clamp(1.5rem, 4vw, 2.75rem) 1rem 0;
+  background: radial-gradient(120% 100% at 50% 8%, #ffffff 0%, #eef1f5 58%, #dde3ec 100%);
+}
+
+.studio__glow { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.studio__glow i {
+  position: absolute; top: 40%;
+  width: 32%; height: 30%;
+  background: radial-gradient(closest-side, rgba(215, 232, 0, 0.5), transparent 72%);
+  filter: blur(16px);
+}
+.studio__glow i:first-child { left: 9%; }
+.studio__glow i:last-child { right: 9%; }
+.studio__glow[hidden] { display: none; }
+
+.studio__car { position: relative; z-index: 1; width: min(540px, 100%); }
+.studio__car img { width: 100%; }
+
+/* Reflejo: se muestra la parte inferior del recorte, invertida y difuminada */
+.studio__reflect {
+  width: min(540px, 100%);
+  height: 68px; overflow: hidden;
+  margin-top: -8px;
+  opacity: 0.2;
+  transform: scaleY(-1);
+  filter: blur(2px);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+}
+.studio__reflect img { width: 100%; }
+
+.studio__foot {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem;
+  padding: 1.1rem clamp(1.1rem, 2.5vw, 1.75rem) 1.4rem;
+  border-top: 1px solid var(--line);
+}
+.studio__palette { display: flex; align-items: center; gap: 0.9rem; }
+.studio__swatches { display: flex; align-items: center; gap: 0.5rem; }
+.studio__swatch {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid var(--line);
+  box-shadow: inset 0 0 0 2px #fff;
+  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.studio__swatch:hover { transform: scale(1.14); }
+.studio__swatch[aria-pressed="true"] { border-color: var(--brand-500); transform: scale(1.14); }
+.studio__colorlabel { font-size: 0.875rem; font-weight: 600; }
+
+.studio__models { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-left: auto; }
+.studio__models button {
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--line); border-radius: 100px;
+  background: #fff;
+  font-size: 0.8125rem; font-weight: 600;
+  color: var(--fg-muted);
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.studio__models button:hover { border-color: var(--brand-300); color: var(--brand-500); }
+.studio__models button[aria-pressed="true"] { background: var(--brand-500); border-color: var(--brand-500); color: #fff; }
+
+/* --------------------------------------------------- Ruta Andina (modes) - */
+.andina {
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.andina__view {
+  position: relative;
+  display: grid; place-items: center;
+  min-height: 230px;
+  padding: 1.25rem 1rem 0;
+  background: linear-gradient(180deg, #f4f7fb 0%, #dfe7f2 55%, #ced9ea 100%);
+  overflow: hidden;
+}
+.andina__where {
+  position: absolute; top: 0.85rem; left: 0.9rem; z-index: 3;
+  padding: 0.35rem 0.8rem; border-radius: 100px;
+  background: rgba(14, 43, 92, 0.9); color: #fff;
+  font-size: 0.75rem; font-weight: 600;
+}
+.andina__car { position: relative; z-index: 2; width: min(400px, 84%); }
+.andina__car img { width: 100%; }
+.andina__car.is-boost img { animation: kibu-bob 0.7s ease-in-out infinite; }
+@keyframes kibu-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+.andina__road {
+  position: relative; z-index: 1;
+  height: 44px; margin-top: -12px;
+  background: var(--dark-800);
+  border-top: 2px solid var(--dark-700);
+}
+.andina__lane {
+  position: absolute; top: 50%; left: 0; right: 0; height: 3px;
+  transform: translateY(-50%);
+  background-image: repeating-linear-gradient(90deg, #fff 0 30px, transparent 30px 70px);
+  animation: kibu-road 1s linear infinite;
+}
+@keyframes kibu-road { to { background-position-x: -70px; } }
+
+.andina__panel { display: grid; gap: 1.1rem; padding: clamp(1.1rem, 2.5vw, 1.6rem); }
+
+.andina__modes { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.andina__modes button {
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--line); border-radius: 100px;
+  background: #fff;
+  font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--fg-muted);
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.andina__modes button:hover { border-color: var(--brand-300); color: var(--brand-500); }
+.andina__modes button[aria-pressed="true"] { background: var(--brand-500); border-color: var(--brand-500); color: #fff; }
+
+.andina__gauges { display: grid; gap: 0.8rem; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 560px) { .andina__gauges { grid-template-columns: 1fr; } }
+
+.gauge {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line); border-radius: var(--r-md);
+  background: var(--bg-alt);
+}
+.gauge span {
+  display: block;
+  font-size: 0.6875rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.gauge b {
+  display: block; margin-top: 0.1rem;
+  font-size: clamp(1.45rem, 3.4vw, 1.9rem);
+  letter-spacing: -0.02em; color: var(--brand-500);
+}
+.gauge b i { font-size: 0.75rem; font-style: normal; font-weight: 600; color: var(--fg-muted); letter-spacing: 0; }
+
+.andina__throttle {
+  width: 100%;
+  padding: 1.05rem 1.25rem;
+  border-radius: var(--r-md);
+  background: var(--lime); color: var(--dark-900);
+  font-size: 0.875rem; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  touch-action: manipulation;
+  user-select: none; -webkit-user-select: none;
+  transition: background-color 0.2s var(--ease), transform 0.15s var(--ease);
+}
+.andina__throttle:hover { background: #c6d500; }
+.andina__throttle.is-on { transform: scale(0.985); background: var(--brand-500); color: #fff; }
+.andina__hint { margin: 0.55rem 0 0; font-size: 0.75rem; color: var(--fg-muted); text-align: center; }
+
+/* --------------------------------------------- Plazos del cotizador ----- */
+.terms { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+.terms button {
+  padding: 0.7rem 0.4rem;
+  border: 1px solid var(--line); border-radius: var(--r-md);
+  background: #fff;
+  font-size: 0.875rem; font-weight: 700;
+  color: var(--fg-muted);
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.terms button:hover { border-color: var(--brand-300); color: var(--brand-500); }
+.terms button[aria-pressed="true"] { background: var(--brand-500); border-color: var(--brand-500); color: #fff; }
+
 /* ============================================================= UTILIDADES */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
 .reveal.is-in { opacity: 1; transform: none; }
@@ -756,4 +997,6 @@ body.is-locked { overflow: hidden; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   .reveal { opacity: 1; transform: none; }
   .hero__bg { transform: none; }
+  .andina__lane { animation: none; }
+  .andina__car.is-boost img { animation: none; }
 }

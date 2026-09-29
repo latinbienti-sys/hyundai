@@ -65,9 +65,13 @@
 
       var content = document.createElement('div');
       content.className = 'hero__content';
+      /* Solo la primera diapositiva lleva h1: las demas se anuncian como
+         parrafo para no repetir el encabezado principal del documento. */
       content.innerHTML =
         '<span class="eyebrow eyebrow--light">' + s.eyebrow + '</span>' +
-        '<h1 class="display">' + s.title + ' <span class="accent">' + s.accent + '</span> ' + s.end + '</h1>' +
+        (i === 0
+          ? '<h1 class="display">' + s.title + ' <span class="accent">' + s.accent + '</span> ' + s.end + '</h1>'
+          : '<p class="hero__alt">' + s.title + ' <span class="accent">' + s.accent + '</span> ' + s.end + '</p>') +
         '<p>' + s.sub + '</p>' +
         '<div class="hero__actions">' +
           '<a class="btn btn--lime" href="' + s.ctaHref + '">' + s.cta + '</a>' +

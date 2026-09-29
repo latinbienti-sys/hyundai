@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hyundai Automotores Kibun | Modelos 0KM en Mérida</title>
-<meta name="description" content="Hyundai Automotores Kibun. Descubre la línea completa Hyundai 0KM en Mérida: Grand i10, Accent, Elantra, Creta, Tucson y Palisade. Compara modelos y encuentra el tuyo.">
+<meta name="description" content="Hyundai Automotores Kibun. Descubre la línea completa Hyundai 0KM en Mérida: Grand i10, Accent, Elantra, Creta, Tucson y Palisade. Compara modelos, personaliza el color y simula tu crédito.">
 <meta name="theme-color" content="#0e2b5c">
 <link rel="icon" href="img/modelos/logo-hyundai.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,6 +47,20 @@
     <div class="hero__dots" id="heroDots" role="tablist" aria-label="Diapositivas"></div>
   </section>
 
+  <!-- ═══════════════════════════════════════ BARRA DE SECCIONES ══════ -->
+  <nav class="secnav" aria-label="Secciones de esta página">
+    <div class="secnav__inner">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#estudio">Estudio 360°</a>
+      <a href="#comparador">Comparador</a>
+      <a href="#cotizador">Cotizador</a>
+      <a href="#ruta-andina">Ruta Andina</a>
+      <a href="#garantia">Garantía</a>
+      <a href="#taller">Taller</a>
+      <a href="#visitanos">Visítanos</a>
+    </div>
+  </nav>
+
   <!-- ═══════════════════════════════════════════════════ CATÁLOGO ══════ -->
   <section class="section section--alt" id="catalogo">
     <div class="wrap">
@@ -61,8 +75,53 @@
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════════════════ ESTUDIO 360° ══════ -->
+  <section class="section" id="estudio">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Estudio virtual</span>
+        <h2 class="display">Mira tu Hyundai en el color que quieras</h2>
+        <p>Cambia la pintura y enciende los faros LED sobre la foto real del vehículo. Es una vista previa; los colores disponibles se confirman en el concesionario.</p>
+      </div>
+
+      <div class="studio reveal" id="studio">
+        <div class="studio__head">
+          <div>
+            <span class="studio__cat" id="studioTrim">A/T 6 vel</span>
+            <h3 id="studioName">Tucson 2.0L A/T 2WD GLS</h3>
+          </div>
+          <div class="studio__price">
+            <span>Precio total</span>
+            <b id="studioPrice">$50,130.00</b>
+          </div>
+        </div>
+
+        <div class="studio__stage">
+          <div class="studio__glow" id="studioGlow"><i></i><i></i></div>
+          <div class="studio__car">
+            <img id="studioImg" src="img/modelos/Tucson-premium-Azul-.png" alt="Hyundai Tucson en color Azul" width="700" height="492">
+          </div>
+          <div class="studio__reflect" aria-hidden="true">
+            <img id="studioRefl" src="img/modelos/Tucson-premium-Azul-.png" alt="">
+          </div>
+        </div>
+
+        <div class="studio__foot">
+          <button class="btn btn--outline btn--sm" type="button" id="studioLights" aria-pressed="true">Faros LED: encendidos</button>
+
+          <div class="studio__palette">
+            <div class="studio__swatches" id="studioSwatches" role="group" aria-label="Color del vehículo"></div>
+            <span class="studio__colorlabel" id="studioColorLabel">Azul</span>
+          </div>
+
+          <div class="studio__models" id="studioModels" role="group" aria-label="Elegir modelo"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═════════════════════════════════════════════════ COMPARADOR ══════ -->
-  <section class="section" id="comparador">
+  <section class="section section--alt" id="comparador">
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Comparador</span>
@@ -85,8 +144,205 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════════════════ CONTACTO ══════ -->
-  <section class="section section--dark">
+  <!-- ══════════════════════════════════════════════════ COTIZADOR ══════ -->
+  <section class="section" id="cotizador">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Financiamiento</span>
+        <h2 class="display">Calcula tu cuota mensual</h2>
+        <p>Estima tu cuota con el mismo cálculo del simulador del sitio. La cuota final depende de la aprobación de la financiera.</p>
+      </div>
+
+      <div class="sim__grid">
+        <div class="sim__panel">
+          <div class="sim__field">
+            <label class="sim__label" for="qModel">Modelo</label>
+            <select class="sim__select" id="qModel"></select>
+          </div>
+
+          <div class="sim__field">
+            <span class="sim__label">Inicial <b id="qDownPct">30%</b></span>
+            <input class="sim__range" type="range" id="qDown" min="10" max="70" step="5" value="30"
+                   aria-label="Porcentaje de inicial">
+          </div>
+
+          <div class="sim__field">
+            <span class="sim__label">Plazo en meses</span>
+            <div class="terms" id="qTerms" role="group" aria-label="Plazo en meses"></div>
+          </div>
+        </div>
+
+        <div class="sim__panel">
+          <ul class="sim__rows">
+            <li><span class="k">Precio total</span><span class="v" id="qOutPrice">—</span></li>
+            <li><span class="k">Inicial</span><span class="v" id="qOutDown">—</span></li>
+            <li><span class="k">Saldo a financiar</span><span class="v" id="qOutFinance">—</span></li>
+            <li><span class="k">Plazo</span><span class="v" id="qOutTerm">—</span></li>
+          </ul>
+
+          <div class="sim__result">
+            <span>Cuota mensual estimada</span>
+            <b id="qOutMonthly">—</b>
+          </div>
+
+          <div class="form__actions" style="margin-top:1.25rem">
+            <button class="btn btn--lime" type="button" id="qSend">Recibir cotización por WhatsApp</button>
+            <a class="btn btn--outline" href="simulador.html">Simulador completo</a>
+          </div>
+
+          <p class="sim__note">Cálculo estimado con tasa anual del 12%, la misma del simulador del sitio. No constituye una oferta de crédito.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════ RUTA ANDINA ══════ -->
+  <section class="section section--dark" id="ruta-andina">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Simulador de ascenso</span>
+        <h2 class="display">Sube la cordillera de Mérida</h2>
+        <p>Elige el modo de conducción y mantén el acelerador para ver cómo responde el vehículo mientras sube hacia el páramo.</p>
+      </div>
+
+      <div class="andina reveal" id="andina">
+        <div class="andina__view">
+          <span class="andina__where" id="andinaWhere">Mérida Centro · 1.630 msnm</span>
+          <div class="andina__car" id="andinaCar">
+            <img src="img/modelos/Tucson-premium-Azul-.png" alt="Hyundai Tucson subiendo la cordillera de Mérida" width="700" height="492">
+          </div>
+          <div class="andina__road"><div class="andina__lane" id="andinaLane"></div></div>
+        </div>
+
+        <div class="andina__panel">
+          <div class="andina__modes" id="andinaModes" role="group" aria-label="Modo de conducción"></div>
+
+          <div class="andina__gauges">
+            <div class="gauge"><span>Velocidad</span><b id="gSpeed">75 <i>km/h</i></b></div>
+            <div class="gauge"><span>Tacómetro</span><b id="gRpm">2.300 <i>rpm</i></b></div>
+            <div class="gauge"><span>Altitud</span><b id="gAlt">1.630 <i>msnm</i></b></div>
+          </div>
+
+          <div>
+            <button class="andina__throttle" type="button" id="andinaThrottle">Mantener acelerador</button>
+            <p class="andina__hint">Mantén presionado el botón para acelerar en la subida.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════ GARANTÍA ═════════ -->
+  <section class="section section--alt" id="garantia">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Respaldo oficial</span>
+        <h2 class="display">Garantía y postventa Hyundai</h2>
+        <p>Todos nuestros vehículos son 0KM y cuentan con el respaldo de la garantía oficial de la marca.</p>
+      </div>
+
+      <div class="tiles">
+        <article class="tile reveal">
+          <span class="tile__icon" aria-hidden="true">🛡️</span>
+          <h3>5 años o 100.000 km</h3>
+          <p>5 años o 100.000 km de garantía oficial de fábrica.</p>
+        </article>
+        <article class="tile reveal">
+          <span class="tile__icon" aria-hidden="true">🔩</span>
+          <h3>Repuestos originales</h3>
+          <p>Repuestos originales y garantía de fábrica. Garantizamos la autenticidad en cada pieza.</p>
+        </article>
+        <article class="tile reveal">
+          <span class="tile__icon" aria-hidden="true">🤝</span>
+          <h3>Garantía sin costo</h3>
+          <p>Servicio de garantía oficial Hyundai sin costo para los vehículos que estén dentro del período.</p>
+        </article>
+        <article class="tile reveal">
+          <span class="tile__icon" aria-hidden="true">🔧</span>
+          <h3>Taller certificado</h3>
+          <p>Agenda tu cita de mantenimiento o reparación con nuestro equipo certificado.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ TALLER ════════ -->
+  <section class="section" id="taller">
+    <div class="wrap">
+      <div class="two-col">
+        <div>
+          <div class="section-head">
+            <span class="eyebrow">Postventa</span>
+            <h2 class="display">Agenda tu cita en el taller</h2>
+            <p class="lead">Mantenimiento, reparación o garantía. Escríbenos y armamos tu solicitud con los datos que elijas.</p>
+          </div>
+
+          <ul class="chips">
+            <li>Cambio de aceite</li>
+            <li>Frenos</li>
+            <li>Suspensión y dirección</li>
+            <li>Sistema eléctrico</li>
+            <li>Aire acondicionado</li>
+            <li>Transmisión</li>
+            <li>Motor</li>
+            <li>Diagnóstico general</li>
+          </ul>
+        </div>
+
+        <form class="form formpanel" data-wa data-wa-title="deseo agendar una cita en el taller.">
+          <h3>Solicitar cita</h3>
+          <p>Te respondemos en horario de oficina.</p>
+
+          <div class="field">
+            <label class="field__label" for="apService">Servicio requerido</label>
+            <select class="select" id="apService" name="Servicio" required>
+              <option value="">Elige un servicio</option>
+              <option>Cambio de aceite</option>
+              <option>Frenos</option>
+              <option>Suspensión y dirección</option>
+              <option>Sistema eléctrico</option>
+              <option>Aire acondicionado</option>
+              <option>Transmisión</option>
+              <option>Motor</option>
+              <option>Diagnóstico general</option>
+              <option>Garantía</option>
+            </select>
+          </div>
+
+          <div class="form__row">
+            <div class="field">
+              <label class="field__label" for="apModel">Vehículo</label>
+              <select class="select" id="apModel" name="Vehículo" data-models required>
+                <option value="">Elige tu vehículo</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="apDay">Día de preferencia</label>
+              <select class="select" id="apDay" name="Día" required>
+                <option value="">Elige un día</option>
+                <option>Lunes</option>
+                <option>Martes</option>
+                <option>Miércoles</option>
+                <option>Jueves</option>
+                <option>Viernes</option>
+                <option>Sábado (mañana)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form__actions">
+            <button class="btn btn--primary" type="submit">Confirmar cita por WhatsApp</button>
+          </div>
+
+          <p class="form__note" data-wa-done hidden tabindex="-1">Abrimos WhatsApp con tu solicitud.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ CONTACTO ══════ -->
+  <section class="section section--dark" id="visitanos">
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Visítanos</span>
@@ -101,7 +357,6 @@
   </section>
 
 </main>
-
 <!-- ══════════════════════════════════════════════════════ FOOTER ══════ -->
 <footer class="footer">
   <div class="wrap">
@@ -137,6 +392,7 @@
           <li><span>📍</span><span>Av. Urdaneta N° 49-29, Mérida</span></li>
           <li><span>💬</span><a href="https://wa.me/584147482282" target="_blank" rel="noopener">+58 414-7482282</a></li>
           <li><span>📞</span><a href="tel:+584147447887">0414-7447887</a></li>
+          <li><span>📱</span><a href="tel:+584228927419">0422-8927419</a></li>
           <li><span>✉️</span><a href="mailto:administracion.guillen@kibunhyundai.com">administracion.guillen@kibunhyundai.com</a></li>
         </ul>
       </div>    </div>
@@ -153,5 +409,7 @@
 </a>
 <script src="js/data.js"></script>
 <script src="js/kibu.js"></script>
+<script src="js/form-wa.js"></script>
+<script src="js/experiencia.js"></script>
 </body>
 </html>
