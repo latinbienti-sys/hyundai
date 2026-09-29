@@ -84,7 +84,17 @@
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="text-xs font-bold text-slate-400 uppercase block mb-1">Modelo de Vehículo</label>
-            <input id="apptModel" type="text" value="Hyundai Tucson" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white text-xs">
+            <select id="apptModel" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white text-xs">
+              <option value="Hyundai Tucson GLX 4WD">Hyundai Tucson GLX 4WD</option>
+              <option value="Hyundai Creta GLS">Hyundai Creta GLS</option>
+              <option value="Hyundai Palisade V6 4WD">Hyundai Palisade V6 4WD</option>
+              <option value="Hyundai Staria Wagon 11P">Hyundai Staria Wagon 11P</option>
+              <option value="Hyundai Elantra GLS IVT">Hyundai Elantra GLS IVT</option>
+              <option value="Hyundai Accent GLS IVT">Hyundai Accent GLS IVT</option>
+              <option value="Hyundai Grand i10 Sedán">Hyundai Grand i10 Sedán</option>
+              <option value="Hyundai Grand i10 Hatchback">Hyundai Grand i10 Hatchback</option>
+              <option value="Otro vehículo (especificar)">Otro vehículo (especificar)</option>
+            </select>
           </div>
           <div>
             <label class="text-xs font-bold text-slate-400 uppercase block mb-1">Día de Preferencia</label>
@@ -103,7 +113,97 @@
         </button>
       </div>
     </div>
+  
+  <!-- ================= SERVICIOS DEL TALLER ================= -->
+  <section class="py-20 bg-[#0b111a] border-t border-slate-800/80 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-[#c89d7c] block mb-3 font-heading">Taller Certificado</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading mb-4">Qu&eacute; hacemos en el taller</h2>
+        <p class="text-slate-400">Mantenimiento, diagnostico y repuestos originales Hyundai para que tu vehiculo siga como el dia que lo recibiste.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-[#0b111a] border border-slate-800 hover:border-[#c89d7c]/50 rounded-2xl p-7 transition-all hover:-translate-y-1">
+            <div class="w-11 h-11 rounded-xl bg-[#002c5f] border border-[#c89d7c]/40 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-[#c89d7c]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2M12 21a9 9 0 100-18 9 9 0 000 18z"/></svg>
+            </div>
+            <h3 class="text-white font-bold font-heading mb-2">Mantenimiento Preventivo</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Intervencion programada a los 5.000 y 10.000 km: aceite, filtros y revision general.</p>
+          </div>
+          <div class="bg-[#0b111a] border border-slate-800 hover:border-[#c89d7c]/50 rounded-2xl p-7 transition-all hover:-translate-y-1">
+            <div class="w-11 h-11 rounded-xl bg-[#002c5f] border border-[#c89d7c]/40 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-[#c89d7c]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+            </div>
+            <h3 class="text-white font-bold font-heading mb-2">Diagn&oacute;stico G-Scan</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Lectura de la central del vehiculo para localizar fallas electronicas con precision.</p>
+          </div>
+          <div class="bg-[#0b111a] border border-slate-800 hover:border-[#c89d7c]/50 rounded-2xl p-7 transition-all hover:-translate-y-1">
+            <div class="w-11 h-11 rounded-xl bg-[#002c5f] border border-[#c89d7c]/40 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-[#c89d7c]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v-3a4 4 0 014-4h8a4 4 0 014 4v3M6 16h12v4H6z"/></svg>
+            </div>
+            <h3 class="text-white font-bold font-heading mb-2">Frenos y Suspension</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Pastillas, discos, amortiguadores y alineacion para recuperar el control en la cuesta.</p>
+          </div>
+          <div class="bg-[#0b111a] border border-slate-800 hover:border-[#c89d7c]/50 rounded-2xl p-7 transition-all hover:-translate-y-1">
+            <div class="w-11 h-11 rounded-xl bg-[#002c5f] border border-[#c89d7c]/40 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-[#c89d7c]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8 8-4-4M20 7h-6M20 7v6"/></svg>
+            </div>
+            <h3 class="text-white font-bold font-heading mb-2">Repuestos Mobis&reg;</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Repuestos originales Hyundai con el respaldo de la red oficial.</p>
+          </div>
+          <div class="bg-[#0b111a] border border-slate-800 hover:border-[#c89d7c]/50 rounded-2xl p-7 transition-all hover:-translate-y-1">
+            <div class="w-11 h-11 rounded-xl bg-[#002c5f] border border-[#c89d7c]/40 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-[#c89d7c]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="text-white font-bold font-heading mb-2">Revision de Garantia</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Atendemos tu vehiculo dentro de los 5 anos o 100.000 km de fabrica.</p>
+          </div>
+          <div class="bg-[#0b111a] border border-slate-800 hover:border-[#c89d7c]/50 rounded-2xl p-7 transition-all hover:-translate-y-1">
+            <div class="w-11 h-11 rounded-xl bg-[#002c5f] border border-[#c89d7c]/40 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-[#c89d7c]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v18M5 8l7-5 7 5v8l-7 5-7-5z"/></svg>
+            </div>
+            <h3 class="text-white font-bold font-heading mb-2">Filtros y Fluidos</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Filtro de aceite, aire y combustible, aceite de transmision y refrigerante.</p>
+          </div>
+      </div>
+    </div>
   </section>
+
+  <!-- ================= COMO SE TRABAJA ================= -->
+  <section class="py-20 bg-[#0e1522] border-t border-slate-800/80 px-4 sm:px-8">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-heading">As&iacute; funciona tu cita</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-[#0b111a] border border-slate-800 rounded-2xl p-8 relative">
+          <span class="absolute -top-4 left-8 w-9 h-9 rounded-full bg-[#002c5f] border border-[#c89d7c]/50 flex items-center justify-center text-[#c89d7c] font-extrabold font-heading text-sm">1</span>
+          <h3 class="text-white font-bold font-heading mt-3 mb-2">Agendas por WhatsApp</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Eliges servicio, veh&iacute;culo y d&iacute;a, y te confirmamos el espacio disponible.</p>
+        </div>
+        <div class="bg-[#0b111a] border border-slate-800 rounded-2xl p-8 relative">
+          <span class="absolute -top-4 left-8 w-9 h-9 rounded-full bg-[#002c5f] border border-[#c89d7c]/50 flex items-center justify-center text-[#c89d7c] font-extrabold font-heading text-sm">2</span>
+          <h3 class="text-white font-bold font-heading mt-3 mb-2">Diagn&oacute;stico en taller</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Revisi&oacute;n con esc&aacute;ner G-Scan y presupuesto claro antes de empezar.</p>
+        </div>
+        <div class="bg-[#0b111a] border border-slate-800 rounded-2xl p-8 relative">
+          <span class="absolute -top-4 left-8 w-9 h-9 rounded-full bg-[#002c5f] border border-[#c89d7c]/50 flex items-center justify-center text-[#c89d7c] font-extrabold font-heading text-sm">3</span>
+          <h3 class="text-white font-bold font-heading mt-3 mb-2">Trabajo y entrega</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Con repuestos originales y el servicio registrado en el historial de tu veh&iacute;culo.</p>
+        </div>
+      </div>
+
+      <div class="mt-10 rounded-2xl bg-[#002c5f]/25 border border-[#c89d7c]/40 p-7 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+        <div>
+          <span class="text-[#c89d7c] font-heading font-extrabold text-2xl block">5 a&ntilde;os o 100.000 km</span>
+          <span class="text-slate-300 text-sm">Tu veh&iacute;culo todav&iacute;a est&aacute; en garant&iacute;a de f&aacute;brica. Te explicamos qu&eacute; cubre.</span>
+        </div>
+        <a href="garantia.html" class="shrink-0 px-6 py-3.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-[#c89d7c]/60 text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-all">Ver garant&iacute;a</a>
+      </div>
+    </div>
+  </section>
+
+</section>
 
 <!-- ================= FOOTER ================= -->
   <footer class="bg-[#0b111a] border-t border-slate-800 py-12 px-4 sm:px-8 text-xs text-slate-400">

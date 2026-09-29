@@ -43,4 +43,27 @@
        (los datos de precio siguen guardados en js/kibu.js) */
     body[data-precios="oculto"] .precio { display: none !important; }
     body[data-precios="oculto"] [id$="Price"] { display: none !important; }
+    /* ---------- comparador de modelos ----------
+       la barra es fija abajo: hay que dejar aire para el footer
+       y subir el boton flotante de WhatsApp mientras este abierta */
+    body { transition: padding-bottom .25s ease; }
+    body.compare-open { padding-bottom: 6.5rem; }
+    #fabWsp { transition: bottom .25s ease, transform .2s ease; }
+    body.compare-open #fabWsp { bottom: 7.5rem; }
+    @media (max-width: 640px) {
+      body.compare-open { padding-bottom: 11rem; }
+      body.compare-open #fabWsp { bottom: 12rem; }
+    }
 
+    /* radar en alerta del simulador de obstaculos */
+    #radarIcon { transition: border-color .3s ease, transform .3s ease; }
+    #radarIcon svg { transition: color .3s ease; }
+
+    /* panel ADAS */
+    #adasAlert { animation: adasIn .25s ease; }
+    @keyframes adasIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+    /* aviso de cambio de modo en el simulador de la Ruta Andina */
+    #modeFlash { opacity: 1; }
+    #modeFlash.mode-flash-off { opacity: 0; }
+    #modeFlash > span { display: inline-block; }
