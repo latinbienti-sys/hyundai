@@ -1,929 +1,926 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Automotores KIBÚN - Concesionario Oficial Hyundai Mérida</title>
-<meta name="description" content="Automotores KIBÚN, concesionario oficial Hyundai en Mérida, Venezuela. Gran i10, Creta y más. Cotiza tu Hyundai hoy.">
-<link rel="icon" type="image/png" href="img/modelos/logo-hyundai-blanco.png">
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
-<script>
-tailwind.config = {
-    theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Inter', 'system-ui', 'sans-serif'],
-                heading: ['Sora', 'Inter', 'sans-serif']
-            },
-            colors: {
-                hyundai: {
-                    navy: '#002c5f',
-                    blue: '#0e2b5c',
-                    light: '#345fa8',
-                    copper: '#c89d7c',
-                    sand: '#e2cbb5',
-                    dark: '#121824'
-                }
-            }
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automotores Kibun - Concesionario Oficial Hyundai Mérida</title>
+  <meta name="description" content="Concesionario oficial Hyundai en Mérida, Venezuela. Flota 2025-2026, garantía oficial de 5 años, financiamiento en USD y taller certificado en los Andes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://cdn.prod.website-files.com/695b182e874dc417335a062b/695c394d095ae1ab3242a04a_Favion%20Hyundai.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --hyundai-blue: #002c5f;
+      --hyundai-navy: #0e2b5c;
+      --hyundai-cobalt: #345fa8;
+      --hyundai-terracota: #c89d7c;
+      --hyundai-sand: #e2cbb5;
+      --hyundai-dark: #121824;
     }
-}
-</script>
-<style>
-    html { scroll-behavior: smooth; }
-    body { background: #0b111a; color: #e5e7eb; }
-    ::selection { background: #c89d7c; color: #0b111a; }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #0b111a; }
-    ::-webkit-scrollbar-thumb { background: #345fa8; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #c89d7c; }
-
-    .hero-gradient {
-        background: linear-gradient(135deg, #0e2b5c 0%, #002c5f 50%, #0b111a 100%);
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #0b111a;
+      color: #f1f5f9;
     }
-    .copper-line {
-        background: linear-gradient(90deg, transparent, #c89d7c, transparent);
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.02em;
     }
-    .glow-copper {
-        box-shadow: 0 0 40px rgba(200, 157, 124, 0.15);
-    }
-    .reel-card {
-        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
-        backface-visibility: hidden;
-    }
-    .reel-card.active {
-        transform: translateY(0) scale(1) rotate(0deg);
-        opacity: 1;
-        z-index: 10;
-    }
-    .reel-card.next {
-        transform: translateY(-18px) scale(0.92) rotate(4deg);
-        opacity: 0.55;
-        z-index: 5;
-    }
-    .reel-card.far {
-        transform: translateY(-34px) scale(0.85) rotate(-6deg);
-        opacity: 0.2;
-        z-index: 1;
-    }
-    .fade-up {
-        animation: fadeUp 0.8s ease forwards;
-        opacity: 0;
-    }
-    @keyframes fadeUp {
-        from { transform: translateY(30px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-    .float-car {
-        animation: floatCar 6s ease-in-out infinite;
-    }
-    @keyframes floatCar {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
-    }
-    .pulse-dot {
-        animation: pulseDot 2s ease-in-out infinite;
-    }
-    @keyframes pulseDot {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.5; transform: scale(1.2); }
-    }
-    .sierra-fade {
-        background: linear-gradient(to bottom, transparent 60%, #0e2b5c 100%);
-    }
-    .glow-copper-text {
-        text-shadow: 0 0 30px rgba(200, 157, 124, 0.4);
-    }
-</style>
+    @keyframes roadMove { from { background-position: 0 0; } to { background-position: -160px 0; } }
+    .animate-road { animation: roadMove 0.8s linear infinite; }
+    @keyframes mountainScroll { 0% { background-position: 0 35%; } 100% { background-position: -1600px 35%; } }
+    .animate-mountains { background-repeat: repeat-x; background-size: 1600px auto; animation: mountainScroll 25s linear infinite; }
+    @keyframes carBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+    .animate-car { animation: carBounce 0.7s ease-in-out infinite; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
 </head>
-<body class="font-sans antialiased">
+<body class="antialiased selection:bg-[#c89d7c] selection:text-slate-950">
 
-<!-- ═══════════════ NAVBAR ═══════════════ -->
-<nav class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar" style="background: rgba(11,17,26,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(200,157,124,0.15);">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-hyundai-copper rounded flex items-center justify-center font-black text-hyundai-dark text-xl">K</div>
-            <span class="font-heading font-bold text-white block">Automotores Kibún</span>
+  <!-- ================= NAVBAR OFICIAL ================= -->
+  <header id="mainHeader" class="fixed top-0 left-0 right-0 z-50 bg-[#0b111a]/95 backdrop-blur-md border-b border-slate-800/80 py-3.5 px-4 sm:px-8 transition-all">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="#inicio" class="flex items-center gap-3">
+        <div class="w-10 h-7 rounded bg-[#002c5f] flex items-center justify-center p-1 border border-white/20 shadow-sm">
+          <img src="https://cdn.prod.website-files.com/695b182e874dc417335a062b/69cec19d0592eb45eefce71b_Favicon%20hyundai%20blanco.png" alt="Hyundai" class="h-4 w-auto">
         </div>
-        <div class="hidden md:flex items-center gap-8">
-            <a href="#inicio" class="text-sm font-medium text-slate-300 hover:text-hyundai-copper transition">Inicio</a>
-            <a href="#modelos" class="text-sm font-medium text-slate-300 hover:text-hyundai-copper transition">Modelos</a>
-            <a href="#videos" class="text-sm font-medium text-slate-300 hover:text-hyundai-copper transition">Videos</a>
-            <a href="#estudio" class="text-sm font-medium text-slate-300 hover:text-hyundai-copper transition">Estudio 360</a>
-            <a href="#posventa" class="text-sm font-medium text-slate-300 hover:text-hyundai-copper transition">Posventa</a>
+        <div>
+          <span class="text-base font-bold text-white tracking-tight leading-none block font-heading">Automotores Kibun</span>
+          <span class="text-[10px] text-[#c89d7c] font-semibold tracking-widest uppercase block">Hyundai Mérida · Concesionario Oficial</span>
         </div>
-        <a href="#cotizador" class="px-6 py-3 bg-hyundai-copper text-hyundai-dark font-bold text-sm rounded-lg hover:bg-hyundai-sand transition glow-copper">
-            Cotizar Ahora
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden xl:flex items-center gap-6 text-xs uppercase font-bold tracking-wider text-slate-300 font-heading">
+        <a href="#inicio" class="hover:text-[#c89d7c] transition-colors">Inicio</a>
+        <a href="#modelos" class="hover:text-[#c89d7c] transition-colors">Modelos</a>
+        <a href="#videos" class="hover:text-[#c89d7c] transition-colors">Reels Video</a>
+        <a href="#estudio" class="hover:text-[#c89d7c] transition-colors">Estudio 360°</a>
+        <a href="#ruta-andina" class="hover:text-[#c89d7c] transition-colors">Ruta Andina</a>
+        <a href="#garantia" class="hover:text-[#c89d7c] transition-colors">Garantía Oficial</a>
+        <a href="#posventa" class="hover:text-[#c89d7c] transition-colors">Taller Oficial</a>
+        <a href="#cotizador" class="hover:text-[#c89d7c] transition-colors">Cotizador</a>
+      </nav>
+
+      <!-- Right Action -->
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/584147482282?text=Hola%20Automotores%20Kibun%2C%20deseo%20informaci%C3%B3n%20sobre%20los%20veh%C3%ADculos%20Hyundai%20en%20M%C3%A9rida" target="_blank" class="px-4 py-2 bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/40 text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors flex items-center gap-1.5 shadow-md">
+          <span>Contactar Asesor</span>
         </a>
-    </div>
-</nav>
-
-<!-- ═══════════════ HERO / INICIO ═══════════════ -->
-<section id="inicio" class="relative min-h-screen flex items-center overflow-hidden">
-    <!-- Fondo: Mérida + Sierra Nevada -->
-    <div class="absolute inset-0 hero-gradient"></div>
-    <div class="absolute inset-0" style="background: url('img/hero-merida.png') center/cover; opacity: 0.35;"></div>
-    <div class="absolute inset-0" style="background: linear-gradient(to top, #0b111a 0%, transparent 50%, rgba(14,43,92,0.5) 100%);"></div>
-
-    <div class="relative max-w-7xl mx-auto px-6 w-full pt-32 pb-20">
-        <div class="max-w-4xl">
-            <div class="fade-up" style="animation-delay: 0.2s;">
-                <div class="flex items-center gap-3 mb-8">
-                    <div class="w-12 h-px bg-hyundai-copper"></div>
-                    <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">EDICIÓN 2026</span>
-                </div>
-            </div>
-
-            <h1 class="fade-up font-heading font-black text-5xl sm:text-7xl lg:text-8xl leading-[0.95] tracking-tight text-white mb-8" style="animation-delay: 0.4s;">
-                El auto que<br>
-                <span class="text-hyundai-copper glow-copper-text">se adapta</span><br>
-                a tu vida.
-            </h1>
-
-            <p class="fade-up text-xl text-slate-300 max-w-2xl mb-12 leading-relaxed" style="animation-delay: 0.6s;">
-                Comprometidos con la seguridad vial de Mérida. Con el respaldo de Automotores Kibún, tu distribuidor oficial Hyundai.
-            </p>
-
-            <div class="fade-up flex flex-col sm:flex-row gap-4" style="animation-delay: 0.8s;">
-                <a href="#modelos" class="px-8 py-4 bg-hyundai-copper text-hyundai-dark font-bold rounded-lg hover:bg-hyundai-sand transition glow-copper text-center">
-                    Ver Modelos
-                </a>
-                <a href="#videos" class="px-8 py-4 border-2 border-hyundai-copper text-hyundai-copper font-bold rounded-lg hover:bg-hyundai-copper hover:text-hyundai-dark transition text-center">
-                    Ver Videos
-                </a>
-            </div>
-
-            <!-- Stats -->
-            <div class="fade-up grid grid-cols-3 gap-6 mt-20 max-w-2xl" style="animation-delay: 1s;">
-                <div class="border-l-2 border-hyundai-copper pl-4">
-                    <div class="text-3xl font-black text-white" id="stat1">0</div>
-                    <div class="text-sm text-slate-400 mt-1">Años en Mérida</div>
-                </div>
-                <div class="border-l-2 border-hyundai-copper pl-4">
-                    <div class="text-3xl font-black text-white" id="stat2">0</div>
-                    <div class="text-sm text-slate-400 mt-1">Modelos</div>
-                </div>
-                <div class="border-l-2 border-hyundai-copper pl-4">
-                    <div class="text-3xl font-black text-white" id="stat3">0</div>
-                    <div class="text-sm text-slate-400 mt-1">Clientes felices</div>
-                </div>
-            </div>
-        </div>
+        <button id="menuToggleBtn" class="xl:hidden p-2 text-slate-300 hover:text-white bg-slate-900 rounded-lg border border-slate-800" aria-label="Menú">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
     </div>
 
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span class="text-xs text-slate-500 tracking-widest">SCROLL</span>
-        <div class="w-px h-12 bg-gradient-to-b from-hyundai-copper to-transparent"></div>
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden xl:hidden bg-[#0b111a] border-t border-slate-800 px-4 py-4 mt-3 space-y-2">
+      <a href="#inicio" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Inicio</a>
+      <a href="#modelos" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Modelos</a>
+      <a href="#videos" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Reels Video</a>
+      <a href="#estudio" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Estudio 360°</a>
+      <a href="#ruta-andina" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Ruta Andina</a>
+      <a href="#garantia" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Garantía</a>
+      <a href="#posventa" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Taller Oficial</a>
+      <a href="#cotizador" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Cotizador</a>
     </div>
-</section>
+  </header>
 
-<!-- ═══════════════ MODELOS ═══════════════ -->
-<section id="modelos" class="py-32 relative">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-20">
-            <div class="inline-flex items-center gap-3 mb-4">
-                <div class="w-8 h-px bg-hyundai-copper"></div>
-                <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">NUESTRA FLOTA</span>
-                <div class="w-8 h-px bg-hyundai-copper"></div>
-            </div>
-            <h2 class="font-heading font-black text-4xl sm:text-6xl text-white tracking-tight mb-6">Compara Modelos</h2>
-            <p class="text-slate-400 text-lg max-w-2xl mx-auto">Cada Hyundai está diseñado para adaptarse a tu estilo de vida. Encuentra el tuyo.</p>
+  <!-- ================= 1. HERO KINÉTICO (PARALLAX + SLIDER) ================= -->
+  <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-8 overflow-hidden bg-[#0b111a]">
+    <div id="heroBg" class="absolute inset-0 bg-cover bg-center transition-all duration-700 scale-105 will-change-transform" style="background-image: url('https://latinbienti-sys.github.io/hyundai/img/watermarked_img_5871150173315358561.jpg');"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0b111a] via-[#0b111a]/70 to-[#0b111a]/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0b111a]/95 via-[#0b111a]/60 to-transparent"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#002c5f]/70 backdrop-blur-md border border-[#c89d7c]/40 text-xs text-[#e2cbb5]">
+          <span class="w-2 h-2 rounded-full bg-[#c89d7c] animate-ping"></span>
+          <span id="heroEyebrow" class="font-bold tracking-widest uppercase text-[11px]">Tucson · Páramo Merideño</span>
         </div>
-
-        <!-- Filtros -->
-        <div class="flex flex-wrap justify-center gap-3 mb-16">
-            <button onclick="filterCategory('all')" class="filter-btn px-6 py-3 rounded-lg font-semibold text-sm transition-all bg-hyundai-copper text-hyundai-dark">Todos</button>
-            <button onclick="filterCategory('sedan')" class="filter-btn px-6 py-3 rounded-lg font-semibold text-sm transition-all bg-white/5 border border-white/10 text-slate-300 hover:border-hyundai-copper">Sedanes</button>
-            <button onclick="filterCategory('suv')" class="filter-btn px-6 py-3 rounded-lg font-semibold text-sm transition-all bg-white/5 border border-white/10 text-slate-300 hover:border-hyundai-copper">SUV</button>
-            <button onclick="filterCategory('hatchback')" class="filter-btn px-6 py-3 rounded-lg font-semibold text-sm transition-all bg-white/5 border border-white/10 text-slate-300 hover:border-hyundai-copper">Hatchback</button>
+        <h1 id="heroTitle" class="text-4xl sm:text-6xl font-extrabold text-white leading-tight font-heading">
+          Aventura sin límites, <span class="text-[#c89d7c] italic">diseñada para los Andes.</span>
+        </h1>
+        <p id="heroSub" class="text-base text-slate-300 max-w-lg leading-relaxed font-normal">
+          El nuevo Hyundai Tucson combina tecnología SmartSense™, tracción HTRAC™ 4WD y un diseño Parametric Dynamics listo para conquistar el páramo merideño.
+        </p>
+        <div class="flex flex-wrap gap-4 pt-2">
+          <a href="#cotizador" class="px-6 py-3.5 bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/50 text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-all shadow-xl shadow-black/40">
+            Cotizar Este Modelo
+          </a>
+          <a href="#estudio" class="px-6 py-3.5 bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-200 hover:text-white font-semibold rounded-xl text-xs uppercase tracking-wider transition-all">
+            Personalizar Color 360°
+          </a>
         </div>
+        <!-- Slide Switcher Pills -->
+        <div class="flex items-center gap-2 pt-4 border-t border-slate-800/80">
+          <button onclick="setSlide(0)" class="hero-dot px-3.5 py-1.5 text-xs rounded-lg bg-[#002c5f] text-white border border-[#c89d7c]/60 font-bold">Tucson</button>
+          <button onclick="setSlide(1)" class="hero-dot px-3.5 py-1.5 text-xs rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Creta</button>
+          <button onclick="setSlide(2)" class="hero-dot px-3.5 py-1.5 text-xs rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Elantra</button>
+          <button onclick="setSlide(3)" class="hero-dot px-3.5 py-1.5 text-xs rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Palisade</button>
+        </div>
+      </div>
 
-        <!-- Grid de modelos -->
-        <div id="modelos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+      <div class="lg:col-span-5 flex flex-col items-center justify-center">
+        <img id="heroCar" src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson" class="w-full max-w-lg object-contain filter drop-shadow-[0_25px_45px_rgba(0,0,0,0.95)] transition-transform duration-300 will-change-transform">
+        <div class="w-4/5 h-6 bg-black/90 blur-xl rounded-full -mt-4"></div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- ═══════════════ VIDEOS / REELS ═══════════════ -->
-<section id="videos" class="py-32 relative overflow-hidden" style="background: linear-gradient(180deg, #0b111a 0%, #0e2b5c 50%, #0b111a 100%);">
-    <!-- Decorativo -->
-    <div class="absolute top-0 left-0 w-full h-px copper-line"></div>
-    <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full" style="background: radial-gradient(circle, rgba(200,157,124,0.08) 0%, transparent 70%);"></div>
-
-    <div class="max-w-7xl mx-auto px-6 relative">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <!-- Player -->
-            <div class="flex justify-center">
-                <div class="relative">
-                    <!-- Halo -->
-                    <div class="absolute -inset-8 rounded-full" style="background: radial-gradient(circle, rgba(200,157,124,0.15) 0%, transparent 70%); filter: blur(30px);"></div>
-
-                    <!-- Celular -->
-                    <div class="relative w-[280px] sm:w-[320px] rounded-[3rem] p-3 shadow-2xl border border-hyundai-copper/30" style="background: linear-gradient(145deg, #1a1a1a, #0f0f0f);">
-                        <!-- Notch -->
-                        <div class="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-20"></div>
-
-                        <!-- Pantalla -->
-                        <div class="relative aspect-[9/19.5] rounded-[2.5rem] overflow-hidden bg-black">
-                            <video id="reelVideoPlayer" class="w-full h-full object-cover" playsinline loop preload="metadata"
-                                   poster="img/modelos/Grandi10-Hatchback-GL-Azul.png">
-                                <source src="videos/grand-i10.mp4" type="video/mp4">
-                            </video>
-
-                            <!-- Overlay superior -->
-                            <div class="absolute top-0 left-0 right-0 p-4 pt-10 bg-gradient-to-b from-black/70 to-transparent z-10 flex items-start justify-between">
-                                <div class="flex items-center gap-2">
-                                    <span class="w-2 h-2 rounded-full bg-red-500 pulse-dot"></span>
-                                    <span class="text-white text-[10px] font-bold tracking-widest" id="reelLabelTop">Clip 01</span>
-                                </div>
-                                <span class="text-white/70 text-[10px] font-medium" id="reelDurTop">00:12</span>
-                            </div>
-
-                            <!-- Overlay inferior -->
-                            <div class="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10">
-                                <div class="text-white font-bold text-sm mb-1" id="reelTitleOverlay">Grand i10 GL</div>
-                                <div class="text-white/70 text-[11px] mb-3" id="reelSubOverlay">El comienzo de todo</div>
-
-                                <!-- Barra de progreso -->
-                                <div class="w-full h-1 bg-white/20 rounded-full mb-4 overflow-hidden">
-                                    <div id="reelProgress" class="h-full rounded-full transition-all duration-300" style="width:0%; background:#345fa8;"></div>
-                                </div>
-
-                                <!-- Controles -->
-                                <div class="flex items-center justify-between">
-                                    <button onclick="toggleReelPlay()" class="w-10 h-10 rounded-full bg-white/10 backdrop-blur flex items-center justify-center hover:bg-hyundai-copper transition" id="reelPlayBtn" aria-label="Reproducir o pausar">
-                                        <svg id="reelPlayIcon" class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                    </button>
-
-                                    <!-- Dots -->
-                                    <div class="flex gap-1.5" id="reelDots"></div>
-
-                                    <button onclick="toggleReelMute()" class="w-10 h-10 rounded-full bg-white/10 backdrop-blur flex items-center justify-center hover:bg-hyundai-copper transition" id="reelMuteBtn" aria-label="Activar o silenciar sonido">
-                                        <svg id="reelMuteIcon" class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Badge exterior -->
-                    <div class="absolute -bottom-4 -right-4 px-4 py-2 rounded-lg bg-hyundai-copper text-hyundai-dark font-black text-xs shadow-lg">
-                        9:16 Vertical
-                    </div>
-                </div>
-            </div>
-
-            <!-- Info + tarjetas -->
-            <div>
-                <div class="inline-flex items-center gap-3 mb-4">
-                    <div class="w-8 h-px bg-hyundai-copper"></div>
-                    <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">REELS</span>
-                </div>
-                <h2 class="font-heading font-black text-4xl sm:text-5xl text-white tracking-tight mb-6">Grand i10 y Creta: El Little Giant que se robó el Roadster</h2>
-                <p class="text-slate-400 text-lg mb-10 leading-relaxed">El i10 GL ya tiene su lugar en la historia. Ahora mira cómo se ven en movimiento.</p>
-
-                <!-- Tarjetas de clips -->
-                <div class="space-y-4 mb-10" id="reelCards">
-                    <!-- Se generan por JS -->
-                </div>
-
-                <!-- Cómo activar -->
-                <div class="p-5 rounded-xl bg-white/5 border border-white/10 mb-8">
-                    <p class="text-white font-semibold text-sm mb-3">CÓMO ACTIVAR LOS VIDEOS</p>
-                    <ul class="text-slate-400 text-sm space-y-1.5">
-                        <li>→ Cambia <code class="text-hyundai-copper">.mp4</code> en la carpeta <code class="text-hyundai-copper">videos/</code></li>
-                        <li>→ Edita el array <code class="text-hyundai-copper">REELS</code> al inicio del script</li>
-                        <li>→ Duración auto-calculada del metadata del video</li>
-                    </ul>
-                </div>
-
-                <a href="#modelos" class="inline-flex items-center gap-2 px-8 py-4 bg-hyundai-copper text-hyundai-dark font-bold rounded-lg hover:bg-hyundai-sand transition glow-copper">
-                    Comparar modelos
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </a>
-            </div>
+  <!-- ================= 2. MODELOS HYUNDAI (FILTRO + CORPORATIVO) ================= -->
+  <section id="modelos" class="py-24 bg-[#0e1522] border-t border-slate-800/80 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-[#c89d7c] block mb-2 font-heading">Flota Oficial Hyundai Venezuela 2025 - 2026</span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-heading">Gama de Modelos 0KM</h2>
+          <p class="mt-2 text-slate-400 text-sm max-w-xl">5 años de garantía o 100.000 km, respaldo directo de fábrica y entrega inmediata en Mérida.</p>
         </div>
+        <!-- Category Filters -->
+        <div class="flex items-center gap-1.5 p-1 bg-slate-900/90 rounded-xl border border-slate-800 overflow-x-auto hide-scrollbar">
+          <button onclick="filterCategory('all')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg bg-[#002c5f] text-white border border-[#c89d7c]/50">Todos</button>
+          <button onclick="filterCategory('suv')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white border border-transparent">SUVs</button>
+          <button onclick="filterCategory('sedan')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white border border-transparent">Sedanes</button>
+          <button onclick="filterCategory('hatchback')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white border border-transparent">Hatchbacks</button>
+          <button onclick="filterCategory('van')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white border border-transparent">Vans 11P</button>
+        </div>
+      </div>
+
+      <!-- Models Grid -->
+      <div id="modelsGridContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered dynamically via JS below -->
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- ═══════════════ ESTUDIO 360 ═══════════════ -->
-<section id="estudio" class="py-32 relative">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <div class="inline-flex items-center gap-3 mb-4">
-                    <div class="w-8 h-px bg-hyundai-copper"></div>
-                    <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">ESTUDIO VIRTUAL</span>
-                </div>
-                <h2 class="font-heading font-black text-4xl sm:text-5xl text-white tracking-tight mb-6">Explora cada detalle<br>desde tu casa.</h2>
-                <p class="text-slate-400 text-lg mb-8 leading-relaxed">Gira, amplía y mira cada centímetro de tu próximo Hyundai. Nuestro estudio interactivo te permite verlo como si estuvieras en el showroom, sin salir de tu casa.</p>
-                <a href="https://www.hyundai.com/worldwide/en/eco/sustainability" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 border-2 border-hyundai-copper text-hyundai-copper font-bold rounded-lg hover:bg-hyundai-copper hover:text-hyundai-dark transition">
-                    Abrir Estudio 360
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </a>
-            </div>
-
-            <!-- Preview -->
-            <div class="relative">
-                <div class="aspect-square rounded-2xl overflow-hidden border border-hyundai-copper/20 relative group" style="background: radial-gradient(circle at center, #1e3a6e 0%, #0e2b5c 100%);">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="text-center">
-                            <div class="w-24 h-24 mx-auto rounded-full border-2 border-hyundai-copper/30 flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110">
-                                <svg class="w-10 h-10 text-hyundai-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.66-.89l.812-1.22A2 2 0 0110.24 4h3.52a2 2 0 011.638.89l.812 1.22A2 2 0 0118.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17H7m10 0h-2m-5 4v-2h4v2"/></svg>
-                            </div>
-                            <p class="text-white font-semibold text-lg">Vista 360°</p>
-                            <p class="text-slate-400 text-sm mt-1">Arrastra para girar</p>
-                        </div>
-                    </div>
-
-                    <!-- Controls decorativos -->
-                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 px-5 py-3 rounded-full bg-black/60 backdrop-blur border border-white/10">
-                        <button class="w-9 h-9 rounded-full hover:bg-hyundai-copper transition flex items-center justify-center" aria-label="Anterior">
-                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                        </button>
-                        <div class="w-2 h-2 rounded-full bg-hyundai-copper"></div>
-                        <div class="w-2 h-2 rounded-full bg-white/20"></div>
-                        <div class="w-2 h-2 rounded-full bg-white/20"></div>
-                        <button class="w-9 h-9 rounded-full hover:bg-hyundai-copper transition flex items-center justify-center" aria-label="Siguiente">
-                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Thumbnails -->
-                <div class="flex gap-3 mt-4">
-                    <div class="flex-1 aspect-video rounded-lg border-2 border-hyundai-copper overflow-hidden" style="background: linear-gradient(135deg, #345fa8, #0e2b5c);"></div>
-                    <div class="flex-1 aspect-video rounded-lg border-2 border-white/10 overflow-hidden" style="background: linear-gradient(135deg, #1e3a6e, #0b111a);"></div>
-                    <div class="flex-1 aspect-video rounded-lg border-2 border-white/10 overflow-hidden" style="background: linear-gradient(135deg, #1e3a6e, #0b111a);"></div>
-                    <div class="flex-1 aspect-video rounded-lg border-2 border-white/10 overflow-hidden" style="background: linear-gradient(135deg, #1e3a6e, #0b111a);"></div>
-                </div>
-            </div>
+  <!-- ================= 2.5. VIDEO REELS SHOWROOM (RESPONSIVE 9:16 SIN MARCA DE AGUA) ================= -->
+  <section id="videos" class="py-24 bg-[#0a0f18] border-t border-slate-800/80 px-4 sm:px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-[#002c5f] border border-[#c89d7c]/40 text-xs font-semibold text-[#c89d7c] mb-3 uppercase tracking-wider font-heading">Galería Multimedia 9:16</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">Grand i10 en Acción: Video Showroom</h2>
+        <p class="mt-2 text-slate-400 text-sm max-w-2xl mx-auto">Formato vertical cinematográfico sin marcas de agua. Diseño 100% responsive optimizado para teléfonos y computadoras.</p>
+        
+        <div class="flex items-center justify-center gap-2 mt-6">
+          <button id="reelBtn0" onclick="switchReel(0)" class="px-4 py-2 rounded-xl text-xs font-bold bg-[#002c5f] text-white border border-[#c89d7c]/60 shadow-lg font-heading">Clip 01: Grand i10 GL</button>
+          <button id="reelBtn1" onclick="switchReel(1)" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-400 hover:text-white border border-slate-800 font-heading">Clip 02: Grand i10 GLS</button>
         </div>
-    </div>
-</section>
+      </div>
 
-<!-- ═══════════════ RUTA ANDINA ═══════════════ -->
-<section id="ruta-andina" class="py-32 relative overflow-hidden" style="background: linear-gradient(135deg, #0e2b5c 0%, #002c5f 100%);">
-    <!-- Textura de montañas -->
-    <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><path d=\"M0 100 L30 40 L50 70 L70 30 L100 100 Z\" fill=\"none\" stroke=\"white\" stroke-width=\"0.5\"/></svg>'); background-size: 400px;"></div>
-
-    <div class="max-w-7xl mx-auto px-6 relative">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div class="order-2 lg:order-1">
-                <div class="inline-flex items-center gap-3 mb-4">
-                    <div class="w-8 h-px bg-hyundai-copper"></div>
-                    <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">DESTINO OBLIGATORIO</span>
-                </div>
-                <h2 class="font-heading font-black text-4xl sm:text-5xl text-white tracking-tight mb-6">Del centro de Mérida al Pico Bolívar, con la seguridad que mereces.</h2>
-                <p class="text-slate-300 text-lg mb-8 leading-relaxed">La seguridad de tu familia no es negociable. Cada Hyundai está equipado con la tecnología de seguridad más avanzada del mercado, diseñada para protegerte en cada kilómetro de montaña y de ciudad.</p>
-
-                <div class="grid grid-cols-2 gap-6 mb-10">
-                    <div class="p-5 rounded-xl bg-white/5 border border-hyundai-copper/20">
-                        <div class="text-hyundai-copper text-2xl font-black mb-2">6 Airbags</div>
-                        <p class="text-slate-400 text-sm">Protección completa para todos los ocupantes</p>
-                    </div>
-                    <div class="p-5 rounded-xl bg-white/5 border border-hyundai-copper/20">
-                        <div class="text-hyundai-copper text-2xl font-black mb-2">ABS + ESC</div>
-                        <p class="text-slate-400 text-sm">Control de estabilidad para carreteras de montaña</p>
-                    </div>
-                </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center max-w-5xl mx-auto">
+        <!-- Phone Frame 9:16 -->
+        <div class="lg:col-span-6 flex justify-center">
+          <div class="relative w-full max-w-[320px] aspect-[9/16] rounded-[36px] bg-slate-950 p-3 shadow-2xl border-4 border-slate-800 ring-1 ring-[#c89d7c]/30 flex flex-col overflow-hidden">
+            <div class="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-4 bg-slate-900 rounded-full z-30 flex items-center justify-center">
+              <div class="w-2 h-2 bg-black rounded-full border border-slate-800 mr-2"></div>
+              <div class="w-8 h-1 bg-slate-800 rounded-full"></div>
             </div>
 
-            <div class="order-1 lg:order-2 float-car">
-                <div class="aspect-[4/3] rounded-2xl overflow-hidden border border-hyundai-copper/20 relative" style="background: linear-gradient(to bottom, #1a3a6e 0%, #0e2b5c 60%, #002c5f 100%);">
-                    <!-- Silueta de montaña -->
-                    <svg class="absolute bottom-0 w-full h-full" viewBox="0 0 400 300" preserveAspectRatio="none">
-                        <path d="M0 300 L100 120 L180 220 L260 80 L400 300 Z" fill="#0b111a" opacity="0.6"></path>
-                        <path d="M0 300 L120 160 L220 250 L320 130 L400 300 Z" fill="#0b111a" opacity="0.4"></path>
-                    </svg>
-                    <!-- Pin -->
-                    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-                        <div class="w-4 h-4 rounded-full bg-hyundai-copper mx-auto mb-2 pulse-dot"></div>
-                        <div class="bg-black/70 backdrop-blur px-4 py-2 rounded-lg border border-hyundai-copper/30">
-                            <div class="text-white font-bold text-sm">Pico Bolívar</div>
-                            <div class="text-hyundai-copper text-xs">5.762 msnm</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+            <div class="relative w-full h-full rounded-[26px] overflow-hidden bg-[#0c121e] flex flex-col justify-between">
+              <video id="reelVideoPlayer" playsinline muted autoplay loop class="absolute inset-0 w-full h-full object-cover z-10 cursor-pointer" src="videos/grand-i10.mp4" poster="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png" onclick="toggleReelPlay()"></video>
 
-<!-- ═══════════════ GARANTÍA ═══════════════ -->
-<section id="garantia" class="py-32 relative">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-20">
-            <div class="inline-flex items-center gap-3 mb-4">
-                <div class="w-8 h-px bg-hyundai-copper"></div>
-                <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">TRANQUILIDAD</span>
-                <div class="w-8 h-px bg-hyundai-copper"></div>
+              <!-- Dynamic Card Flip Overlay -->
+              <div id="reelCardDeck" onclick="rotateReelCard()" class="absolute inset-0 z-15 p-4 flex flex-col items-center justify-center cursor-pointer select-none">
+                <div class="relative w-full max-w-[240px] aspect-[3/4] rounded-2xl bg-white text-slate-950 p-4 shadow-2xl flex flex-col justify-between border-2 border-white/80">
+                  <div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#002c5f] block">Automotores Kibun</span>
+                    <h4 id="deckCardTitle" class="text-lg font-extrabold text-slate-950 font-heading leading-tight mt-0.5">Grand i10 GL</h4>
+                    <span id="deckCardSub" class="text-[11px] font-semibold text-slate-600 block">Edición M/T · Blanco Polar</span>
+                  </div>
+                  <div class="my-auto py-2 flex items-center justify-center">
+                    <img id="deckCardImg" src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png" alt="Grand i10" class="max-h-32 object-contain filter drop-shadow-md">
+                  </div>
+                  <div class="pt-2 border-t border-slate-300 flex items-center justify-between text-[11px]">
+                    <span id="deckCardPrice" class="font-bold text-[#002c5f] font-mono">$21,900 USD</span>
+                    <span class="text-[10px] text-slate-500">Toca para rotar</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Top Controls -->
+              <div class="relative z-20 p-4 pt-6 bg-gradient-to-b from-slate-950/80 to-transparent flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full bg-slate-950/80 border border-[#c89d7c]/40 text-[10px] font-bold text-[#c89d7c] font-heading">EN VIVO</span>
+                <button onclick="toggleReelMute()" class="p-2 rounded-full bg-slate-950/80 text-white border border-white/20">
+                  <span id="reelMuteIcon">🔇</span>
+                </button>
+              </div>
+
+              <!-- Bottom Controls -->
+              <div class="relative z-20 p-4 bg-gradient-to-t from-slate-950/90 to-transparent flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-bold text-[#c89d7c] uppercase block">Hyundai Mérida</span>
+                  <h5 id="reelBottomTitle" class="text-xs font-bold text-white font-heading">Grand i10 GL M/T</h5>
+                </div>
+                <button onclick="toggleReelPlay()" id="reelPlayBtn" class="p-2 rounded-full bg-[#002c5f] text-white border border-[#c89d7c]/50 text-xs">
+                  ⏸
+                </button>
+              </div>
             </div>
-            <h2 class="font-heading font-black text-4xl sm:text-6xl text-white tracking-tight mb-6">Tu Hyundai está<br><span class="text-hyundai-copper">en buenas manos.</span></h2>
-            <p class="text-slate-400 text-lg max-w-2xl mx-auto">Garantía oficial Hyundai y servicio de posventa con la misma calidad del día que entregamos tu auto.</p>
+          </div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-hyundai-copper/40 transition-all hover:-translate-y-2">
-                <div class="w-14 h-14 rounded-xl bg-hyundai-copper/10 flex items-center justify-center mb-6">
-                    <svg class="w-7 h-7 text-hyundai-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m7 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                </div>
-                <h3 class="text-white font-bold text-lg mb-3">Garantía de Fabrica</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">5 años o 100.000 km en motor y transmisión. Respaldo oficial Hyundai Venezuela.</p>
+        <!-- Details Column -->
+        <div class="lg:col-span-6 space-y-6">
+          <div>
+            <span id="reelDetailBadge" class="text-xs uppercase font-bold text-[#c89d7c] block font-heading">Reel Oficial 01</span>
+            <h3 id="reelDetailTitle" class="text-2xl font-bold text-white font-heading mt-1">Grand i10 GL M/T · Edición Dinámica</h3>
+            <p id="reelDetailDesc" class="mt-2 text-slate-300 text-xs leading-relaxed">Ágil en el tráfico merideño y económico en consumo. Transmisión manual de 5 velocidades para máximo control en ascensos.</p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 text-center text-xs">
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+              <span class="text-[10px] text-slate-400 block uppercase">Transmisión</span>
+              <span id="reelSpecTrans" class="font-bold text-white text-xs mt-0.5 block">Sincrónica 5 vel</span>
             </div>
-
-            <div class="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-hyundai-copper/40 transition-all hover:-translate-y-2">
-                <div class="w-14 h-14 rounded-xl bg-hyundai-copper/10 flex items-center justify-center mb-6">
-                    <svg class="w-7 h-7 text-hyundai-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                </div>
-                <h3 class="text-white font-bold text-lg mb-3">Servicio en 48 Horas</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Agenda tu mantenimiento y recibe tu auto en menos de 48 horas. Sin filas, sin sorpresas.</p>
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+              <span class="text-[10px] text-slate-400 block uppercase">Consumo</span>
+              <span id="reelSpecConsumo" class="font-bold text-[#c89d7c] text-xs mt-0.5 block">5.0 L/100km</span>
             </div>
-
-            <div class="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-hyundai-copper/40 transition-all hover:-translate-y-2">
-                <div class="w-14 h-14 rounded-xl bg-hyundai-copper/10 flex items-center justify-center mb-6">
-                    <svg class="w-7 h-7 text-hyundai-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </div>
-                <h3 class="text-white font-bold text-lg mb-3">Repuestos Originales</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Solo componentes Hyundai genuinos. Tu auto se mantiene como el día uno.</p>
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+              <span class="text-[10px] text-slate-400 block uppercase">Garantía</span>
+              <span class="font-bold text-white text-xs mt-0.5 block">5 Años / 100k km</span>
             </div>
-        </div>
-    </div>
-</section>
+          </div>
 
-<!-- ═══════════════ POSVENTA / AGENDA ═══════════════ -->
-<section id="posventa" class="py-32 relative" style="background: linear-gradient(180deg, #0b111a 0%, #0e2b5c 100%);">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <div class="inline-flex items-center gap-3 mb-4">
-                    <div class="w-8 h-px bg-hyundai-copper"></div>
-                    <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">AGENDA TU CITA</span>
-                </div>
-                <h2 class="font-heading font-black text-4xl sm:text-5xl text-white tracking-tight mb-6">Mantenimiento sin filas. Sin sorpresas.</h2>
-                <p class="text-slate-300 text-lg mb-10 leading-relaxed">Agenda tu servicio por WhatsApp y te confirmamos la cita en minutos. Nuestro equipo de Mérida está listo para atenderte.</p>
-
-                <div class="space-y-4 mb-10">
-                    <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                        <div class="w-10 h-10 rounded-full bg-hyundai-copper/10 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-5 h-5 text-hyundai-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        </div>
-                        <div>
-                            <div class="text-white font-semibold">Lunes a Viernes</div>
-                            <div class="text-slate-400 text-sm">8:00 AM — 5:00 PM</div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                        <div class="w-10 h-10 rounded-full bg-hyundai-copper/10 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-5 h-5 text-hyundai-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </div>
-                        <div>
-                            <div class="text-white font-semibold">Sábado</div>
-                            <div class="text-slate-400 text-sm">8:00 AM — 12:00 PM</div>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="https://wa.me/584147482282?text=Hola%20Automotores%20Kibun%2C%20quiero%20agendar%20mi%20cita%20de%20mantenimiento" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-hyundai-copper text-hyundai-dark font-bold rounded-lg hover:bg-hyundai-sand transition glow-copper">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.82 9.82 0 016.988 2.896 9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.945c0 2.096.549 4.142 1.595 5.945L0 24l6.305-1.654a11.9 11.9 0 005.683 1.448h.005c6.585 0 11.946-5.359 11.949-11.945a11.87 11.87 0 00-3.421-8.4"/></svg>
-                    Agendar por WhatsApp
-                </a>
+          <div class="p-4 rounded-xl bg-[#002c5f]/30 border border-[#c89d7c]/30 text-xs space-y-2">
+            <strong class="text-white block font-heading">¿Cómo activar tus videos en tu página?</strong>
+            <p class="text-slate-400 text-[11px] leading-relaxed"><strong>1. En tu GitHub:</strong> Crea una carpeta <code class="text-[#c89d7c]">videos/</code> en tu repositorio y sube tus archivos como <code class="text-white">grand-i10.mp4</code> y <code class="text-white">creta.mp4</code>.</p>
+            <div class="pt-1 flex items-center gap-2 flex-wrap">
+              <label class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/40 text-xs text-white font-semibold">
+                <span>📁 Probar con mi video MP4 ahora</span>
+                <input type="file" accept="video/*" onchange="loadLocalVideo(event)" class="hidden">
+              </label>
+              <span id="localVideoStatus" class="text-[10px] text-[#c89d7c]"></span>
             </div>
+          </div>
 
-            <!-- Agenda visual -->
-            <div class="p-8 rounded-2xl bg-white/5 border border-hyundai-copper/20">
-                <div class="flex items-center justify-between mb-6">
-                    <h3 class="text-white font-bold">Próximas Citas</h3>
-                    <span class="px-3 py-1 rounded-full bg-hyundai-copper/20 text-hyundai-copper text-xs font-semibold">Esta semana</span>
-                </div>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-4 p-4 rounded-lg bg-black/20 border border-white/5">
-                        <div class="text-center flex-shrink-0">
-                            <div class="text-hyundai-copper font-black text-lg">15</div>
-                            <div class="text-slate-500 text-[10px] uppercase">Sep</div>
-                        </div>
-                        <div class="flex-1">
-                            <div class="text-white text-sm font-semibold">Mantenimiento 30.000 km</div>
-                            <div class="text-slate-500 text-xs">9:00 AM · María G.</div>
-                        </div>
-                        <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
-                    </div>
-                    <div class="flex items-center gap-4 p-4 rounded-lg bg-black/20 border border-white/5">
-                        <div class="text-center flex-shrink-0">
-                            <div class="text-hyundai-copper font-black text-lg">15</div>
-                            <div class="text-slate-500 text-[10px] uppercase">Sep</div>
-                        </div>
-                        <div class="flex-1">
-                            <div class="text-white text-sm font-semibold">Cambio de aceite</div>
-                            <div class="text-slate-500 text-xs">11:30 AM · Carlos R.</div>
-                        </div>
-                        <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
-                    </div>
-                    <div class="flex items-center gap-4 p-4 rounded-lg bg-black/20 border border-white/5">
-                        <div class="text-center flex-shrink-0">
-                            <div class="text-hyundai-copper font-black text-lg">16</div>
-                            <div class="text-slate-500 text-[10px] uppercase">Sep</div>
-                        </div>
-                        <div class="flex-1">
-                            <div class="text-white text-sm font-semibold">Revisión de frenos</div>
-                            <div class="text-slate-500 text-xs">10:00 AM · Ana P.</div>
-                        </div>
-                        <span class="w-2 h-2 rounded-full bg-yellow-400 flex-shrink-0"></span>
-                    </div>
-                    <div class="flex items-center gap-4 p-4 rounded-lg bg-black/20 border border-white/5">
-                        <div class="text-center flex-shrink-0">
-                            <div class="text-hyundai-copper font-black text-lg">16</div>
-                            <div class="text-slate-500 text-[10px] uppercase">Sep</div>
-                        </div>
-                        <div class="flex-1">
-                            <div class="text-white text-sm font-semibold">Garantía</div>
-                            <div class="text-slate-500 text-xs">3:00 PM · Luis M.</div>
-                        </div>
-                        <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════ COTIZADOR ═══════════════ -->
-<section id="cotizador" class="py-32 relative overflow-hidden">
-    <div class="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full" style="background: radial-gradient(circle, rgba(200,157,124,0.06) 0%, transparent 70%);"></div>
-
-    <div class="max-w-4xl mx-auto px-6 relative">
-        <div class="text-center mb-16">
-            <div class="inline-flex items-center gap-3 mb-4">
-                <div class="w-8 h-px bg-hyundai-copper"></div>
-                <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">COTIZADOR DE CRÉDITO</span>
-                <div class="w-8 h-px bg-hyundai-copper"></div>
-            </div>
-            <h2 class="font-heading font-black text-4xl sm:text-6xl text-white tracking-tight mb-6">Tu Hyundai, a cuotas.</h2>
-            <p class="text-slate-400 text-lg">Calcula tu cuota mensual y recibe una propuesta personalizada en menos de 24 horas.</p>
-        </div>
-
-        <div class="p-8 rounded-2xl bg-white/5 border border-hyundai-copper/20 backdrop-blur">
-            <!-- Selección de modelo -->
-            <div class="mb-8">
-                <label class="block text-white font-semibold text-sm mb-3">Modelo</label>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="modeloBtns">
-                    <button onclick="setModelo(this)" class="modelo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper">Grand i10</button>
-                    <button onclick="setModelo(this)" class="modelo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper">Creta</button>
-                    <button onclick="setModelo(this)" class="modelo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper">Tucson</button>
-                    <button onclick="setModelo(this)" class="modelo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper">Elantra</button>
-                </div>
-            </div>
-
-            <!-- Slider precio inicial -->
-            <div class="mb-8">
-                <div class="flex justify-between items-center mb-3">
-                    <label class="text-white font-semibold text-sm">Entrada inicial</label>
-                    <span class="text-hyundai-copper font-black text-xl" id="entradaLabel">$0</span>
-                </div>
-                <input type="range" min="0" max="100" value="0" oninput="updateEntrada(this.value)" class="w-full accent-[#c89d7c] h-2 rounded-lg cursor-pointer">
-                <div class="flex justify-between text-xs text-slate-500 mt-2">
-                    <span>$0</span>
-                    <span>Monto máximo</span>
-                </div>
-            </div>
-
-            <!-- Plazo -->
-            <div class="mb-8">
-                <label class="block text-white font-semibold text-sm mb-3">Plazo del crédito</label>
-                <div class="grid grid-cols-3 gap-3" id="plazoBtns">
-                    <button onclick="setPlazo(this, 24)" class="plazo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper">24 meses</button>
-                    <button onclick="setPlazo(this, 36)" class="plazo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper">36 meses</button>
-                    <button onclick="setPlazo(this, 48)" class="plazo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper">48 meses</button>
-                </div>
-            </div>
-
-            <!-- Resultado -->
-            <div class="p-6 rounded-xl bg-hyundai-copper/10 border border-hyundai-copper/30 text-center">
-                <div class="text-slate-300 text-sm mb-2">Tu cuota mensual estimada</div>
-                <div class="text-5xl font-black text-white mb-1" id="cuotaResult">$0</div>
-                <div class="text-slate-400 text-xs" id="cuotaDetalle">Sobre un modelo de $0 USD</div>
-            </div>
-
-            <a href="https://wa.me/584147482282?text=Hola%20Automotores%20Kibun%2C%20quiero%20cotizar%20un%20Hyundai" target="_blank" class="mt-6 w-full block text-center px-8 py-4 bg-hyundai-copper text-hyundai-dark font-bold rounded-lg hover:bg-hyundai-sand transition glow-copper">
-                Solicitar cotización por WhatsApp
+          <div class="flex gap-3">
+            <a href="#cotizador" class="flex-1 py-3 px-4 rounded-xl bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/60 text-white font-bold text-xs uppercase tracking-wider text-center font-heading">
+              Cotizar Grand i10
             </a>
+            <a href="https://wa.me/584147482282?text=Hola%20Automotores%20Kibun%2C%20quiero%20cotizar%20el%20Grand%20i10%20que%20vi%20en%20el%20video" target="_blank" class="py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-semibold text-xs flex items-center gap-1.5">
+              <span>WhatsApp</span>
+            </a>
+          </div>
         </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- ═══════════════ FOOTER ═══════════════ -->
-<footer class="border-t border-hyundai-copper/20 py-16" style="background: #070b12;">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid md:grid-cols-4 gap-12 mb-12">
-            <div>
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 bg-hyundai-copper rounded flex items-center justify-center font-black text-hyundai-dark text-xl">K</div>
-                    <span class="font-heading font-bold text-white">Automotores Kibún</span>
-                </div>
-                <p class="text-slate-400 text-sm leading-relaxed">Concesionario oficial Hyundai en Mérida, Venezuela. Tu sonrisa es nuestra garantía.</p>
+  <!-- ================= 3. ESTUDIO 360° INTERACTIVO (COLORES Y FAROS) ================= -->
+  <section id="estudio" class="py-24 bg-[#0b111a] border-t border-slate-800/80 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-[#002c5f] border border-[#c89d7c]/40 text-xs font-semibold text-[#c89d7c] mb-3 uppercase tracking-wider">Estudio Virtual Kibun</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">Personalizador de Color y Faros LED</h2>
+        <p class="mt-2 text-slate-400 text-sm">Prueba los acabados de pintura oficial Hyundai, activa la iluminación diurna LED y cotiza tu versión preferida.</p>
+      </div>
+
+      <!-- Studio Box -->
+      <div class="rounded-3xl bg-gradient-to-b from-[#111927] via-[#0b111a] to-[#0b111a] border border-slate-800 p-6 sm:p-10 shadow-2xl relative">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 pb-6">
+          <div>
+            <span id="studioCat" class="text-xs uppercase font-bold text-[#c89d7c] block tracking-wider font-heading">SUV All-Terrain</span>
+            <h3 id="studioName" class="text-2xl sm:text-3xl font-bold text-white font-heading">Hyundai Tucson GLX 4WD</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <button id="headlightToggleBtn" onclick="toggleHeadlights()" class="px-4 py-2 rounded-xl text-xs font-bold border border-amber-400/50 bg-amber-400/15 text-amber-200 cursor-pointer">
+              Faros LED: ON
+            </button>
+            <div class="px-4 py-2 rounded-xl bg-slate-950 border border-slate-800 text-right">
+              <span class="text-[10px] text-slate-400 block uppercase tracking-wider">Precio Sugerido</span>
+              <span id="studioPrice" class="text-base font-extrabold text-[#c89d7c] font-mono">$44,900 USD</span>
             </div>
-            <div>
-                <h4 class="text-white font-bold mb-5 text-sm tracking-wider uppercase">Navegación</h4>
-                <ul class="space-y-3 text-slate-400 text-sm">
-                    <li><a href="#modelos" class="hover:text-hyundai-copper transition">Modelos</a></li>
-                    <li><a href="#videos" class="hover:text-hyundai-copper transition">Videos</a></li>
-                    <li><a href="#estudio" class="hover:text-hyundai-copper transition">Estudio 360</a></li>
-                    <li><a href="#posventa" class="hover:text-hyundai-copper transition">Posventa</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-5 text-sm tracking-wider uppercase">Contacto</h4>
-                <ul class="space-y-3 text-slate-400 text-sm">
-                    <li>Av. Principal de Los stadiums, Mérida</li>
-                    <li>+58 414 748 2282</li>
-                    <li>admin@automotoreskibun.com</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-5 text-sm tracking-wider uppercase">Síguenos</h4>
-                <div class="flex gap-3">
-                    <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-hyundai-copper transition" aria-label="Instagram">
-                        <svg class="w-5 h-5 text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.98-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.98-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-hyundai-copper transition" aria-label="Facebook">
-                        <svg class="w-5 h-5 text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                    </a>
-                </div>
-            </div>
+          </div>
         </div>
-        <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="text-slate-500 text-xs">© 2026 Automotores Kibún C.A. Concesionario oficial Hyundai en Mérida.</p>
-            <p class="text-slate-600 text-xs">Imágenes: cámara yokedas.com</p>
+
+        <!-- Studio Stage -->
+        <div class="relative my-10 min-h-[300px] flex flex-col items-center justify-center">
+          <div id="headlightGlow" class="absolute inset-0 pointer-events-none z-10">
+            <div class="absolute top-1/2 left-[15%] -translate-y-1/2 w-72 h-36 bg-amber-200/10 blur-2xl -rotate-12 rounded-full"></div>
+            <div class="absolute top-1/2 right-[15%] -translate-y-1/2 w-72 h-36 bg-amber-200/10 blur-2xl rotate-12 rounded-full"></div>
+          </div>
+          <img id="studioCarImg" src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson Studio" class="w-full max-w-xl object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.9)] transition-all duration-300">
+          <!-- Reflection -->
+          <div class="w-full max-h-[80px] overflow-hidden opacity-25 filter blur-[2px] pointer-events-none -mt-4">
+            <img id="studioCarReflection" src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" class="w-full max-w-xl mx-auto object-contain transform scale-y-[-1]">
+          </div>
         </div>
+
+        <!-- Studio Bottom Controls -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-slate-800">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-semibold text-slate-400">Color Oficial:</span>
+            <div id="studioColorDots" class="flex items-center gap-2">
+              <!-- Rendered via JS -->
+            </div>
+            <span id="studioColorLabel" class="text-xs text-[#e2cbb5] font-semibold ml-2">Azul Océano</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="switchStudioModel('tucson')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 hover:text-white border border-slate-700">Tucson</button>
+            <button onclick="switchStudioModel('creta')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 hover:text-white border border-slate-700">Creta</button>
+            <button onclick="switchStudioModel('elantra')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 hover:text-white border border-slate-700">Elantra</button>
+            <button onclick="switchStudioModel('palisade')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 hover:text-white border border-slate-700">Palisade</button>
+            <button onclick="switchStudioModel('staria')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 hover:text-white border border-slate-700">Staria</button>
+          </div>
+        </div>
+      </div>
     </div>
-</footer>
+  </section>
 
-<script>
-// ═══════════════ DATOS DE MODELOS ═══════════════
-// Las fotos viven en img/modelos/. Formato 700x492 con fondo de estudio.
-const MODELOS = [
-    { id:'i10-gl',  nombre:'Grand i10',    cat:'hatchback', precio:14900, img:'img/modelos/Grandi10-Hatchback-GL-Azul.png',   motor:'1.0 MPI', hp:'75',  trans:'Manual 5 vel',   badge:'Little Giant' },
-    { id:'i10-gls', nombre:'Grand i10 GLS',cat:'hatchback', precio:15900, img:'img/modelos/Grandi10-Hatchback-GLS-rojo.png', motor:'1.2 MPI', hp:'82',  trans:'Manual 5 vel',   badge:'Versión superior' },
-    { id:'creta',   nombre:'Creta',        cat:'suv',       precio:24500, img:'img/modelos/Creta-Blanco_.png',             motor:'1.5 MPI', hp:'113', trans:'Automática 6 vel', badge:'SUV compacto' },
-    { id:'tucson',  nombre:'Tucson',       cat:'suv',       precio:29900, img:'img/modelos/Tucson-blanco.png',              motor:'2.0 MPI', hp:'150', trans:'Automática 8 vel', badge:'Bestseller' },
-    { id:'elantra', nombre:'Elantra',      cat:'sedan',     precio:21500, img:'img/modelos/Elantra-rojo.png',               motor:'2.0 MPI', hp:'147', trans:'Automática IVT',   badge:'Sedán' },
-    { id:'accent',  nombre:'Accent',       cat:'sedan',     precio:18500, img:'img/modelos/Accent-blanco.png',              motor:'1.6 MPI', hp:'121', trans:'Automática IVT',   badge:'Sedán' },
-    { id:'palisade',nombre:'Palisade',     cat:'suv',       precio:34900, img:'img/modelos/Palisade-rojo.png',              motor:'2.2 MPI', hp:'150', trans:'Automática 8 vel', badge:'SUV premium' }
-];
-
-// ═══════════════ REELS / VIDEOS ═══════════════
-// Cambia los .mp4 en la carpeta videos/ y edita este array.
-const REELS = [
-    { num:'01', label:'Clip 01', dur:'00:12', title:'Grand i10 GL', sub:'El comienzo de todo',  accent:'#345fa8', src:'videos/grand-i10.mp4', poster:'img/modelos/Grandi10-Hatchback-GL-Azul.png' },
-    { num:'02', label:'Clip 02', dur:'00:09', title:'Creta',        sub:'Cómo te mueves',       accent:'#c89d7c', src:'videos/creta.mp4',     poster:'img/modelos/Creta-Blanco_.png' }
-];
-
-let reelActual = 0;
-
-// ═══════════════ RENDER MODELOS ═══════════════
-function renderModelos(cat) {
-    const grid = document.getElementById('modelos-grid');
-    const items = cat === 'all' ? MODELOS : MODELOS.filter(m => m.cat === cat);
-    grid.innerHTML = items.map(m => `
-        <div class="group relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-hyundai-copper/40 transition-all duration-300 hover:-translate-y-2">
-            <div class="aspect-[4/3] relative overflow-hidden" style="background: radial-gradient(circle at center, #1e3a6e 0%, #0e2b5c 100%);">
-                <img src="${m.img}" alt="${m.nombre}" loading="lazy"
-                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                     onerror="this.style.display='none'">
-                <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-hyundai-copper text-hyundai-dark text-[10px] font-black uppercase tracking-wider">${m.badge}</div>
-            </div>
-            <div class="p-5">
-                <h3 class="text-white font-bold text-lg mb-3">${m.nombre}</h3>
-                <ul class="space-y-1.5 text-slate-400 text-xs mb-4">
-                    <li class="flex justify-between"><span>Motor</span><span class="text-slate-300 font-semibold">${m.motor}</span></li>
-                    <li class="flex justify-between"><span>Potencia</span><span class="text-slate-300 font-semibold">${m.hp} HP</span></li>
-                    <li class="flex justify-between"><span>Transmisión</span><span class="text-slate-300 font-semibold">${m.trans}</span></li>
-                </ul>
-                <div class="pt-4 border-t border-white/10 flex items-center justify-between">
-                    <div>
-                        <span class="text-2xl font-black text-hyundai-copper">$${m.precio.toLocaleString()}</span>
-                        <span class="text-slate-500 text-xs"> USD</span>
-                    </div>
-                    <a href="https://wa.me/584147482282?text=Hola%20Automotores%20Kibun%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20${m.nombre}" target="_blank"
-                       class="px-4 py-2 bg-hyundai-copper/10 border border-hyundai-copper/30 text-hyundai-copper text-xs font-bold rounded-lg hover:bg-hyundai-copper hover:text-hyundai-dark transition">
-                        Cotizar
-                    </a>
-                </div>
-            </div>
+  <!-- ================= 4. SIMULADOR DE RUTA ANDINA ================= -->
+  <section id="ruta-andina" class="py-24 bg-[#0e1522] border-t border-slate-800/80 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-[#c89d7c] block mb-2 font-heading">Simulador de Cordillera</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">Hyundai en los Andes Merideños</h2>
+          <p class="mt-2 text-slate-400 text-sm max-w-xl">Tracción integral HTRAC™ 4WD calibrada para ascensos pronunciados y curvas de montaña.</p>
         </div>
-    `).join('');
-}
-
-// Filtros de categoría
-function filterCategory(cat) {
-    document.querySelectorAll('.filter-btn').forEach(b => {
-        const on = b.textContent.trim().toLowerCase() ===
-                  (cat === 'all' ? 'todos' : cat === 'sedan' ? 'sedanes' : cat === 'suv' ? 'suv' : 'hatchback');
-        b.className = on
-            ? 'filter-btn px-6 py-3 rounded-lg font-semibold text-sm transition-all bg-hyundai-copper text-hyundai-dark'
-            : 'filter-btn px-6 py-3 rounded-lg font-semibold text-sm transition-all bg-white/5 border border-white/10 text-slate-300 hover:border-hyundai-copper';
-    });
-    renderModelos(cat);
-}
-
-// ═══════════════ REELS PLAYER ═══════════════
-function buildReels() {
-    // Dots
-    document.getElementById('reelDots').innerHTML = REELS.map((r, i) =>
-        `<span onclick="switchReel(${i})" class="reel-dot w-1.5 h-1.5 rounded-full cursor-pointer transition-all ${i === 0 ? 'bg-hyundai-copper w-6' : 'bg-white/30'}"></span>`
-    ).join('');
-
-    // Tarjetas
-    document.getElementById('reelCards').innerHTML = REELS.map((r, i) => `
-        <div onclick="switchReel(${i})" class="reel-card cursor-pointer rounded-xl p-5 border transition-all ${i === 0 ? 'active border-hyundai-copper/40 bg-white/5' : 'border-white/10 bg-white/[0.02] hover:border-hyundai-copper/30'}"
-             data-i="${i}">
-            <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-lg flex items-center justify-center font-black text-lg flex-shrink-0"
-                     style="background:${r.accent}20;color:${r.accent}">${r.num}</div>
-                <div class="flex-1">
-                    <div class="text-white font-bold">${r.title}</div>
-                    <div class="text-slate-400 text-sm">${r.sub}</div>
-                </div>
-                <div class="text-right flex-shrink-0">
-                    <div class="text-slate-300 text-xs font-semibold">${r.dur}</div>
-                    <div class="text-hyundai-copper text-[10px] uppercase tracking-wider">${r.label}</div>
-                </div>
-            </div>
+        <div class="flex items-center gap-1.5 bg-slate-900 p-1 rounded-xl border border-slate-800">
+          <button onclick="setDriveMode('ECO')" id="modeBtnECO" class="mode-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white">ECO</button>
+          <button onclick="setDriveMode('COMFORT')" id="modeBtnCOMFORT" class="mode-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#002c5f] text-white border border-[#c89d7c]/60">COMFORT</button>
+          <button onclick="setDriveMode('SPORT')" id="modeBtnSPORT" class="mode-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white">SPORT</button>
+          <button onclick="setDriveMode('HTRAC')" id="modeBtnHTRAC" class="mode-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white">HTRAC 4WD</button>
         </div>
-    `).join('');
-}
+      </div>
 
-function switchReel(i) {
-    reelActual = i;
-    const r = REELS[i];
-    const v = document.getElementById('reelVideoPlayer');
+      <!-- Simulator Stage -->
+      <div class="rounded-3xl bg-slate-900/90 border border-slate-800 p-6 sm:p-10 shadow-2xl space-y-8">
+        <!-- Moving Road Viewport with Sierra Nevada de Mérida Backdrop -->
+        <div class="relative h-72 sm:h-84 rounded-3xl bg-[#0b111a] border border-slate-800 overflow-hidden flex flex-col justify-end items-center shadow-xl">
+          <!-- Sierra Nevada Mountains Moving Parallax Layer -->
+          <div id="simMountainLayer" class="absolute inset-0 animate-mountains pointer-events-none will-change-[background-position]" style="background-image: url('sierra_nevada_merida.jpg'), url('https://latinbienti-sys.github.io/hyundai/img/watermarked_img_13367943299367624531.jpg');"></div>
+          
+          <!-- Atmospheric lighting and gradient -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0b111a] via-[#0b111a]/30 to-[#0e2b5c]/35 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#0b111a]/80 via-transparent to-[#0b111a]/80 pointer-events-none"></div>
 
-    v.poster = r.poster;
-    v.querySelector('source').src = r.src;
-    v.load();
-    v.play().catch(() => {});
+          <!-- Sierra Nevada Badge -->
+          <div class="absolute top-4 left-1/2 -translate-x-1/2 z-20 hidden md:flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-[#c89d7c]/40 text-[11px] text-[#e2cbb5] shadow-lg">
+            <span class="font-heading font-semibold">Sierra Nevada de Mérida · Picos Nevados Pico Bolívar & Humboldt</span>
+          </div>
 
-    document.getElementById('reelLabelTop').textContent  = r.label;
-    document.getElementById('reelDurTop').textContent    = r.dur;
-    document.getElementById('reelTitleOverlay').textContent = r.title;
-    document.getElementById('reelSubOverlay').textContent   = r.sub;
-    document.getElementById('reelProgress').style.background = r.accent;
+          <div class="absolute top-4 left-4 z-20 text-xs font-mono text-slate-300 bg-slate-950/80 px-2.5 py-1 rounded-lg border border-slate-800">
+            RUTA TRASANDINA: <span id="simLandmark" class="text-[#c89d7c] font-bold">Mérida Centro (1,630 msnm)</span>
+          </div>
 
-    // Dots
-    document.querySelectorAll('.reel-dot').forEach((d, di) => {
-        d.className = 'reel-dot w-1.5 h-1.5 rounded-full cursor-pointer transition-all ' +
-                      (di === i ? 'bg-hyundai-copper w-6' : 'bg-white/30');
-    });
+          <!-- Paramo mist layer above road -->
+          <div class="absolute inset-x-0 bottom-20 h-16 bg-gradient-to-t from-[#0b111a] via-white/5 to-transparent pointer-events-none"></div>
 
-    // Tarjetas: active / next / far
-    document.querySelectorAll('.reel-card').forEach((c, ci) => {
-        const diff = ci - i;
-        c.classList.remove('active', 'next', 'far');
-        if (diff === 0) c.classList.add('active');
-        else if (diff === 1) c.classList.add('next');
-        else c.classList.add('far');
-    });
-}
+          <!-- Vehicle -->
+          <div class="relative z-20 mb-4 animate-car">
+            <img id="simCarImg" src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson" class="w-64 sm:w-80 object-contain filter drop-shadow-[0_18px_32px_rgba(0,0,0,0.95)]">
+            <div class="w-56 sm:w-72 h-3.5 bg-black/95 blur-md rounded-full mx-auto -mt-2"></div>
+          </div>
 
-function toggleReelPlay() {
-    const v = document.getElementById('reelVideoPlayer');
-    const icon = document.getElementById('reelPlayIcon');
-    if (v.paused) {
-        v.play().catch(() => {});
-        icon.innerHTML = '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
-    } else {
-        v.pause();
-        icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+          <!-- Road -->
+          <div class="w-full h-16 sm:h-20 bg-gradient-to-b from-[#141b26] to-[#0a0f16] border-t border-slate-700/80 relative overflow-hidden">
+            <div id="simRoadLine" class="absolute top-1/2 left-0 right-0 h-2 -translate-y-1/2 animate-road" style="background-image: repeating-linear-gradient(90deg, #fff 0px, #fff 35px, transparent 35px, transparent 80px);"></div>
+            <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#c89d7c]/40 to-transparent"></div>
+          </div>
+        </div>
+
+        <!-- Telemetry Gauges -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+          <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+            <span class="text-[11px] font-bold uppercase text-slate-400 block tracking-wider">Velocímetro</span>
+            <div class="flex items-baseline gap-1 mt-1">
+              <span id="simSpeedNum" class="text-3xl font-extrabold text-white font-mono">75</span>
+              <span class="text-xs text-slate-400 font-semibold">km/h</span>
+            </div>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+            <span class="text-[11px] font-bold uppercase text-slate-400 block tracking-wider">Tacómetro RPM</span>
+            <div class="flex items-baseline gap-1 mt-1">
+              <span id="simRpmNum" class="text-3xl font-extrabold text-white font-mono">2,300</span>
+              <span class="text-xs text-slate-400 font-semibold">rpm</span>
+            </div>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+            <span class="text-[11px] font-bold uppercase text-slate-400 block tracking-wider">Altitud Andina</span>
+            <div class="flex items-baseline gap-1 mt-1">
+              <span id="simAltNum" class="text-3xl font-extrabold text-[#c89d7c] font-mono">2,450</span>
+              <span class="text-xs text-slate-400 font-semibold">msnm</span>
+            </div>
+          </div>
+          <div>
+            <button id="throttleBtn" class="w-full py-4 px-6 rounded-2xl bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/60 text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-xl active:scale-95 select-none cursor-pointer">
+              Mantener Acelerador
+            </button>
+            <span class="text-[10px] text-slate-400 block text-center mt-1">Presiona para acelerar en subida</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. GARANTÍA Y RESPALDO HYUNDAI VENEZUELA ================= -->
+  <section id="garantia" class="py-24 bg-[#0b111a] border-t border-slate-800/80 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-[#002c5f] border border-[#c89d7c]/40 text-xs font-semibold text-[#c89d7c] mb-3 uppercase tracking-wider">Estándar Oficial Hyundai Venezuela</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">Garantía y Respaldo Oficial</h2>
+        <p class="mt-2 text-slate-400 text-sm">Automotores Kibun cuenta con el respaldo directo del distribuidor exclusivo de la marca en el país.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 rounded-3xl bg-[#0e1522] border border-slate-800 hover:border-[#c89d7c]/40 transition-all">
+          <div class="w-10 h-10 rounded-xl bg-[#002c5f] border border-[#c89d7c]/30 flex items-center justify-center text-[#c89d7c] font-bold mb-4 font-heading">5A</div>
+          <h3 class="text-base font-bold text-white font-heading">5 Años de Garantía</h3>
+          <span class="text-xs text-[#c89d7c] block mb-2 font-semibold">o 100.000 kilómetros</span>
+          <p class="text-xs text-slate-400 leading-relaxed">Tranquilidad absoluta de fábrica en toda la red nacional de concesionarios Hyundai Venezuela.</p>
+        </div>
+        <div class="p-6 rounded-3xl bg-[#0e1522] border border-slate-800 hover:border-[#c89d7c]/40 transition-all">
+          <div class="w-10 h-10 rounded-xl bg-[#002c5f] border border-[#c89d7c]/30 flex items-center justify-center text-[#c89d7c] font-bold mb-4 font-heading">M®</div>
+          <h3 class="text-base font-bold text-white font-heading">Repuestos Mobis®</h3>
+          <span class="text-xs text-[#c89d7c] block mb-2 font-semibold">Genuinos y Certificados</span>
+          <p class="text-xs text-slate-400 leading-relaxed">Garantizamos la durabilidad de tu motor únicamente con partes originales Hyundai Mobis®.</p>
+        </div>
+        <div class="p-6 rounded-3xl bg-[#0e1522] border border-slate-800 hover:border-[#c89d7c]/40 transition-all">
+          <div class="w-10 h-10 rounded-xl bg-[#002c5f] border border-[#c89d7c]/30 flex items-center justify-center text-[#c89d7c] font-bold mb-4 font-heading">G-S</div>
+          <h3 class="text-base font-bold text-white font-heading">Taller Certificado</h3>
+          <span class="text-xs text-[#c89d7c] block mb-2 font-semibold">Escáner Oficial G-Scan</span>
+          <p class="text-xs text-slate-400 leading-relaxed">Técnicos especializados para mantenimiento preventivo en nuestra sede de la Av. Urdaneta (entre calles 48 y 49).</p>
+        </div>
+        <div class="p-6 rounded-3xl bg-[#0e1522] border border-slate-800 hover:border-[#c89d7c]/40 transition-all">
+          <div class="w-10 h-10 rounded-xl bg-[#002c5f] border border-[#c89d7c]/30 flex items-center justify-center text-[#c89d7c] font-bold mb-4 font-heading">12E</div>
+          <h3 class="text-base font-bold text-white font-heading">Red Nacional</h3>
+          <span class="text-xs text-[#c89d7c] block mb-2 font-semibold">12 Estados Conectados</span>
+          <p class="text-xs text-slate-400 leading-relaxed">Atención coordinada con Caracas, Valencia, Maracaibo, Barquisimeto, San Cristóbal y Mérida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 6. TALLER OFICIAL Y AGENDAMIENTO ================= -->
+  <section id="posventa" class="py-24 bg-[#0e1522] border-t border-slate-800/80 px-4 sm:px-8">
+    <div class="max-w-4xl mx-auto rounded-3xl bg-slate-900 border border-slate-800 p-6 sm:p-10 shadow-2xl">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold uppercase tracking-wider text-[#c89d7c] block mb-1 font-heading">Posventa Oficial</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading">Agendar Cita en Taller Kibun Mérida</h2>
+      </div>
+      <div class="space-y-4">
+        <div>
+          <label class="text-xs font-bold text-slate-400 uppercase block mb-1">Servicio Requerido</label>
+          <select id="apptService" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-xs">
+            <option value="Mantenimiento Preventivo (5.000 / 10.000 km)">Mantenimiento Preventivo (5.000 / 10.000 km)</option>
+            <option value="Diagnóstico Computarizado G-Scan">Diagnóstico Computarizado G-Scan</option>
+            <option value="Servicio Especializado de Frenos y Suspensión">Servicio Especializado de Frenos y Suspensión</option>
+            <option value="Consulta y Venta de Repuestos Mobis®">Consulta y Venta de Repuestos Mobis®</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-bold text-slate-400 uppercase block mb-1">Modelo de Vehículo</label>
+            <input id="apptModel" type="text" value="Hyundai Tucson" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white text-xs">
+          </div>
+          <div>
+            <label class="text-xs font-bold text-slate-400 uppercase block mb-1">Día de Preferencia</label>
+            <select id="apptDay" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white text-xs">
+              <option value="Lunes">Lunes</option>
+              <option value="Martes">Martes</option>
+              <option value="Miércoles">Miércoles</option>
+              <option value="Jueves">Jueves</option>
+              <option value="Viernes">Viernes</option>
+              <option value="Sábado (Mañana)">Sábado (Mañana)</option>
+            </select>
+          </div>
+        </div>
+        <button onclick="sendAppointmentWhatsApp()" class="w-full py-3.5 bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/60 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer">
+          Confirmar Cita de Taller por WhatsApp
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 7. COTIZADOR FINANCIERO EN TIEMPO REAL ================= -->
+  <section id="cotizador" class="py-24 bg-[#0b111a] border-t border-slate-800/80 px-4 sm:px-8">
+    <div class="max-w-4xl mx-auto rounded-3xl bg-slate-900 border border-slate-800 p-6 sm:p-10 shadow-2xl">
+      <div class="text-center mb-10">
+        <span class="text-xs font-bold uppercase tracking-wider text-[#c89d7c] block mb-1 font-heading">Financiamiento Oficial en USD</span>
+        <h2 class="text-3xl font-extrabold text-white font-heading">Simulador de Crédito y Cotización</h2>
+        <p class="text-xs text-slate-400 mt-1">Calcula tu cuota mensual estimada y recibe la cotización oficial en tu WhatsApp.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div>
+            <label class="text-xs font-bold text-slate-400 uppercase block mb-1">Modelo Hyundai</label>
+            <select id="calcModelSelect" onchange="calculateQuote()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-xs">
+              <option value="44900" data-name="Hyundai Tucson GLX 4WD">Hyundai Tucson GLX 4WD — $44,900 USD</option>
+              <option value="33500" data-name="Hyundai Creta GLS">Hyundai Creta GLS — $33,500 USD</option>
+              <option value="36800" data-name="Hyundai Elantra GLS IVT">Hyundai Elantra GLS IVT — $36,800 USD</option>
+              <option value="78900" data-name="Hyundai Palisade V6 4WD">Hyundai Palisade V6 4WD — $78,900 USD</option>
+              <option value="54900" data-name="Hyundai Staria Wagon 11P">Hyundai Staria Wagon 11P — $54,900 USD</option>
+              <option value="28900" data-name="Hyundai Accent GLS IVT">Hyundai Accent GLS IVT — $28,900 USD</option>
+              <option value="23500" data-name="Hyundai Grand i10 Sedán">Hyundai Grand i10 Sedán — $23,500 USD</option>
+              <option value="21900" data-name="Hyundai Grand i10 Hatchback">Hyundai Grand i10 Hatchback — $21,900 USD</option>
+            </select>
+          </div>
+
+          <!-- Down payment slider -->
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400 font-bold uppercase">Inicial (<span id="calcPercentLabel">30</span>%)</span>
+              <span id="calcDownPaymentLabel" class="font-mono text-[#c89d7c] font-bold text-sm">$13,470 USD</span>
+            </div>
+            <input id="calcDownPaymentSlider" type="range" min="20" max="70" step="5" value="30" oninput="calculateQuote()" class="w-full h-2 bg-slate-950 rounded-lg cursor-pointer accent-[#c89d7c]">
+          </div>
+
+          <!-- Term buttons -->
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-slate-400 uppercase block">Plazo en Meses</span>
+            <div class="grid grid-cols-4 gap-2">
+              <button onclick="setCalcTerm(12)" class="calc-term-btn py-2 text-xs font-bold rounded-xl bg-slate-950 text-slate-400 border border-slate-800">12m</button>
+              <button onclick="setCalcTerm(24)" class="calc-term-btn py-2 text-xs font-bold rounded-xl bg-slate-950 text-slate-400 border border-slate-800">24m</button>
+              <button onclick="setCalcTerm(36)" class="calc-term-btn py-2 text-xs font-bold rounded-xl bg-[#002c5f] text-white border border-[#c89d7c]/60">36m</button>
+              <button onclick="setCalcTerm(48)" class="calc-term-btn py-2 text-xs font-bold rounded-xl bg-slate-950 text-slate-400 border border-slate-800">48m</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Box -->
+        <div class="lg:col-span-5 p-6 rounded-2xl bg-gradient-to-b from-[#002c5f]/50 to-slate-950 border border-[#c89d7c]/30 space-y-4">
+          <span class="text-xs uppercase font-bold text-[#c89d7c] block tracking-wider font-heading">Cuota Mensual Estimada</span>
+          <div class="flex items-baseline gap-1">
+            <span id="calcMonthlyPayment" class="text-4xl font-extrabold text-white font-mono">$1,007</span>
+            <span class="text-xs text-slate-300">USD/mes</span>
+          </div>
+          <div class="text-xs space-y-1.5 py-3 border-y border-slate-800 text-slate-400">
+            <div class="flex justify-between"><span>Precio Total:</span><span id="calcSummaryPrice" class="text-white font-semibold font-mono">$44,900 USD</span></div>
+            <div class="flex justify-between"><span>Inicial:</span><span id="calcSummaryInitial" class="text-[#c89d7c] font-semibold font-mono">$13,470 USD</span></div>
+            <div class="flex justify-between"><span>Plazo:</span><span id="calcSummaryTerm" class="text-white font-semibold font-mono">36 cuotas</span></div>
+          </div>
+          <button onclick="sendQuoteWhatsApp()" class="w-full py-3.5 bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/60 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+            <span>Solicitar Cotización Oficial</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-[#0b111a] border-t border-slate-800 py-12 px-4 sm:px-8 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img src="https://cdn.prod.website-files.com/695b182e874dc417335a062b/69cec19d0592eb45eefce71b_Favicon%20hyundai%20blanco.png" alt="Hyundai" class="h-5">
+        <span>© 2026 Automotores Kibun C.A. Concesionario oficial Hyundai en Mérida, Venezuela.</span>
+      </div>
+      <div class="text-center sm:text-right">
+        <span>Av. Urdaneta, entre calles 48 y 49, local n.° 49-29, Mérida. Tel: +58 (274) 266-4022</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/584147482282" target="_blank" class="fixed bottom-6 right-6 z-40 p-4 rounded-full bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/50 text-white shadow-2xl hover:scale-110 active:scale-95 transition-all" aria-label="WhatsApp">
+    <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+  </a>
+
+  <!-- ================= JAVASCRIPT MASTER INTERACTIVITY ================= -->
+  <script>
+    // --- Modelos Data ---
+    const MODELS = [
+      { id: 'tucson', name: 'Hyundai Tucson GLX 4WD', cat: 'suv', catLabel: 'SUV All-Terrain', price: 44900, motor: '2.0L MPI Smartstream (154 HP)', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png', colors: [{l:'Azul Océano', img:'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png', c:'#1E3A8A'},{l:'Blanco Atlas', img:'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823c97ec17a7e03309284f_Tucson-blanco.png', c:'#F8FAFC'}] },
+      { id: 'creta', name: 'Hyundai Creta GLS', cat: 'suv', catLabel: 'SUV Compacta', price: 33500, motor: '1.5L Gamma II (113 HP)', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/699dc30fedebb4b0d6d72a19_Creta%20Blanco_.png', colors: [{l:'Blanco Polar', img:'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/699dc30fedebb4b0d6d72a19_Creta%20Blanco_.png', c:'#FFFFFF'}] },
+      { id: 'palisade', name: 'Hyundai Palisade V6 4WD', cat: 'suv', catLabel: 'SUV 7 Pasajeros', price: 78900, motor: '3.8L V6 Atkinson (291 HP)', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695f0af617714685f4d6adc9_Palisade-rojo.png', colors: [{l:'Rojo Borgogna', img:'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695f0af617714685f4d6adc9_Palisade-rojo.png', c:'#8B1E2B'}] },
+      { id: 'staria', name: 'Hyundai Staria Wagon 11P', cat: 'van', catLabel: 'Van / Pasajeros', price: 54900, motor: '3.5L V6 MPI (272 HP)', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696538854f30d525b5e71656_Staria-WAGON.png', colors: [{l:'Negro Abismo', img:'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696538854f30d525b5e71656_Staria-WAGON.png', c:'#111827'}] },
+      { id: 'elantra', name: 'Hyundai Elantra GLS IVT', cat: 'sedan', catLabel: 'Sedán Premium', price: 36800, motor: '2.0L Smartstream (156 HP)', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/698561c627e39b93b4031662_Elantra-rojo.png', colors: [{l:'Rojo Fiery', img:'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/698561c627e39b93b4031662_Elantra-rojo.png', c:'#B91C1C'}] },
+      { id: 'accent', name: 'Hyundai Accent GLS IVT', cat: 'sedan', catLabel: 'Sedán Compacto', price: 28900, motor: '1.5L MPI (113 HP)', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69d444234c01074f6c41678a_Accent-blanco.png', colors: [{l:'Blanco Atlas', img:'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69d444234c01074f6c41678a_Accent-blanco.png', c:'#F8FAFC'}] },
+      { id: 'i10sedan', name: 'Hyundai Grand i10 Sedán', cat: 'sedan', catLabel: 'Sedán Subcompacto', price: 23500, motor: '1.2L Kappa MPI (82 HP)', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png', colors: [{l:'Blanco Puro', img:'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png', c:'#FFFFFF'}] },
+      { id: 'i10hatch', name: 'Hyundai Grand i10 Hatchback', cat: 'hatchback', catLabel: 'Hatchback Urbano', price: 21900, motor: '1.2L Kappa MPI (82 HP)', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png', colors: [{l:'Rojo Pasión', img:'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png', c:'#DC2626'},{l:'Plata', img:'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823fe186892428b7a8fab3_Grandi10-Hatchback-GL-Plata.png', c:'#CBD5E1'},{l:'Azul', img:'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69856148203811e31988110b_Grandi10-Hatchback-GL-Azul.png', c:'#2563EB'}] }
+    ];
+
+    // --- Render Models Grid ---
+    function renderModels(category) {
+      const container = document.getElementById('modelsGridContainer');
+      const filtered = category === 'all' ? MODELS : MODELS.filter(m => m.cat === category);
+      container.innerHTML = filtered.map(m => `
+        <div class="rounded-3xl bg-[#0b111a] border border-slate-800 hover:border-[#c89d7c]/60 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-xl">
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#c89d7c] font-heading">${m.catLabel}</span>
+              <span class="text-xs font-mono font-bold text-white bg-slate-800/80 px-2.5 py-1 rounded">$${m.price.toLocaleString()} USD</span>
+            </div>
+            <h3 class="text-xl font-bold text-white font-heading">${m.name}</h3>
+            <p class="text-xs text-slate-400 mt-1">${m.motor}</p>
+          </div>
+          <div class="my-6 py-4 flex items-center justify-center min-h-[160px]">
+            <img src="${m.image}" alt="${m.name}" class="w-full max-h-[150px] object-contain filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.85)] hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
+            <button onclick="goToQuote('${m.name}', ${m.price})" class="w-full py-2.5 rounded-xl bg-[#002c5f] hover:bg-[#345fa8] text-white text-xs font-bold uppercase tracking-wider transition-all border border-[#c89d7c]/30 cursor-pointer">
+              Cotizar Este Modelo
+            </button>
+          </div>
+        </div>
+      `).join('');
     }
-}
 
-function toggleReelMute() {
-    const v = document.getElementById('reelVideoPlayer');
-    const icon = document.getElementById('reelMuteIcon');
-    v.muted = !v.muted;
-    if (v.muted) {
-        icon.innerHTML = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/>';
-    } else {
-        icon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+    function filterCategory(cat) {
+      document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-[#002c5f]', 'text-white', 'border-[#c89d7c]/50');
+        btn.classList.add('text-slate-400', 'border-transparent');
+      });
+      event.target.classList.add('bg-[#002c5f]', 'text-white', 'border-[#c89d7c]/50');
+      event.target.classList.remove('text-slate-400', 'border-transparent');
+      renderModels(cat);
     }
-}
 
-// Duración real desde el metadata del video
-function leerDuracion(i) {
-    const v = document.getElementById('reelVideoPlayer');
-    const tmp = document.createElement('video');
-    tmp.preload = 'metadata';
-    tmp.src = REELS[i].src;
-    tmp.onloadedmetadata = () => {
-        const s = Math.round(tmp.duration);
-        const mm = String(Math.floor(s / 60)).padStart(2, '0');
-        const ss = String(s % 60).padStart(2, '0');
-        REELS[i].dur = mm + ':' + ss;
-        if (i === reelActual) {
-            document.getElementById('reelDurTop').textContent = REELS[i].dur;
-            const card = document.querySelectorAll('.reel-card')[i];
-            if (card) card.querySelector('.text-slate-300.text-xs').textContent = REELS[i].dur;
+    function goToQuote(name, price) {
+      const select = document.getElementById('calcModelSelect');
+      for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].getAttribute('data-name') === name) {
+          select.selectedIndex = i;
+          break;
         }
+      }
+      calculateQuote();
+      document.getElementById('cotizador').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // --- Hero Slides ---
+    const HERO_SLIDES = [
+      { bg: 'https://latinbienti-sys.github.io/hyundai/img/watermarked_img_5871150173315358561.jpg', car: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png', eyebrow: 'Tucson · Páramo Merideño', title: 'Aventura sin límites, <span class="text-[#c89d7c] italic">diseñada para los Andes.</span>', sub: 'El nuevo Hyundai Tucson combina tecnología SmartSense™, tracción HTRAC™ 4WD y lenguaje Parametric Dynamics listo para subir a más de 3,500 metros.' },
+      { bg: 'https://latinbienti-sys.github.io/hyundai/img/watermarked_img_13367943299367624531.jpg', car: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/699dc30fedebb4b0d6d72a19_Creta%20Blanco_.png', eyebrow: 'Creta · Pico Bolívar', title: 'Con CRETA <span class="text-[#c89d7c] italic">concreta</span> tus sueños.', sub: 'SUV compacta con techo panorámico, pantalla de 10.25" y consumo eficiente. Diseñada para conquistar la geografía andina con estilo.' },
+      { bg: 'https://latinbienti-sys.github.io/hyundai/img/watermarked_img_17804480962303296709.jpg', car: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/698561c627e39b93b4031662_Elantra-rojo.png', eyebrow: 'Elantra · Laguna de Mucubají', title: 'Elegancia que <span class="text-[#c89d7c] italic">se siente</span> en cada kilómetro.', sub: 'Silueta aerodinámica Parametric Jewel, clúster digital de 10.25 pulgadas y transmisión IVT. Confort premium para recorrer Venezuela.' },
+      { bg: 'https://latinbienti-sys.github.io/hyundai/img/watermarked_img_10948222792170652927.jpg', car: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695f0af617714685f4d6adc9_Palisade-rojo.png', eyebrow: 'Palisade · Sierra Nevada de Mérida', title: 'Manejá tu próximo <span class="text-[#c89d7c] italic">Hyundai</span> en los Andes.', sub: 'El buque insignia de 3 filas y 7 pasajeros. Motor 3.8L V6 GDI con 291 HP, tracción integral 4WD y seguridad Hyundai SmartSense™.' }
+    ];
+
+    function setSlide(idx) {
+      const s = HERO_SLIDES[idx];
+      document.getElementById('heroBg').style.backgroundImage = `url('${s.bg}')`;
+      document.getElementById('heroCar').src = s.car;
+      document.getElementById('heroEyebrow').innerText = s.eyebrow;
+      document.getElementById('heroTitle').innerHTML = s.title;
+      document.getElementById('heroSub').innerText = s.sub;
+      document.querySelectorAll('.hero-dot').forEach((d, i) => {
+        d.className = i === idx ? 'hero-dot px-3.5 py-1.5 text-xs rounded-lg bg-[#002c5f] text-white border border-[#c89d7c]/60 font-bold' : 'hero-dot px-3.5 py-1.5 text-xs rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800';
+      });
+    }
+
+    // Parallax mouse move in hero
+    const hero = document.getElementById('inicio');
+    const heroBg = document.getElementById('heroBg');
+    const heroCar = document.getElementById('heroCar');
+    hero.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 15;
+      if (heroBg) heroBg.style.transform = 'scale(1.06) translate3d(' + (-x * 0.4) + 'px, ' + (-y * 0.4) + 'px, 0)';
+      if (heroCar) heroCar.style.transform = 'translate3d(' + (x * 0.8) + 'px, ' + (y * 0.6) + 'px, 0) rotateY(' + (x * 0.5) + 'deg)';
+    });
+
+    // --- Studio 360 Features ---
+    let currentStudioModel = MODELS[0];
+    let studioHeadlights = true;
+
+    function renderStudioColors() {
+      const container = document.getElementById('studioColorDots');
+      container.innerHTML = currentStudioModel.colors.map((c, i) => `
+        <button onclick="setStudioColor(${i})" class="w-6 h-6 rounded-full border border-slate-600 transition-transform hover:scale-110" style="background-color:${c.c}" title="${c.l}"></button>
+      `).join('');
+      setStudioColor(0);
+    }
+
+    function setStudioColor(idx) {
+      const c = currentStudioModel.colors[idx];
+      document.getElementById('studioCarImg').src = c.img;
+      document.getElementById('studioCarReflection').src = c.img;
+      document.getElementById('studioColorLabel').innerText = c.l;
+    }
+
+    function switchStudioModel(id) {
+      currentStudioModel = MODELS.find(m => m.id === id) || MODELS[0];
+      document.getElementById('studioName').innerText = currentStudioModel.name;
+      document.getElementById('studioCat').innerText = currentStudioModel.catLabel;
+      document.getElementById('studioPrice').innerText = '$' + currentStudioModel.price.toLocaleString() + ' USD';
+      renderStudioColors();
+    }
+
+    function toggleHeadlights() {
+      studioHeadlights = !studioHeadlights;
+      const glow = document.getElementById('headlightGlow');
+      const btn = document.getElementById('headlightToggleBtn');
+      if (studioHeadlights) {
+        glow.classList.remove('hidden');
+        btn.innerText = 'Faros LED: ON';
+        btn.className = 'px-4 py-2 rounded-xl text-xs font-bold border border-amber-400/50 bg-amber-400/15 text-amber-200';
+      } else {
+        glow.classList.add('hidden');
+        btn.innerText = 'Faros LED: OFF';
+        btn.className = 'px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 bg-slate-800 text-slate-400';
+      }
+    }
+
+    // --- Simulator Features ---
+    let simMode = 'COMFORT';
+    let isAccelerating = false;
+    let simSpeed = 75;
+    let simRpm = 2300;
+    let simAlt = 2450;
+
+    const SIM_CONFIGS = {
+      ECO: { speed: 50, rpm: 1800, dur: '1.2s' },
+      COMFORT: { speed: 75, rpm: 2300, dur: '0.8s' },
+      SPORT: { speed: 110, rpm: 4200, dur: '0.35s' },
+      HTRAC: { speed: 65, rpm: 2800, dur: '0.6s' }
     };
-}
 
-// Barra de progreso
-document.addEventListener('DOMContentLoaded', () => {
-    const v = document.getElementById('reelVideoPlayer');
-    v.addEventListener('timeupdate', () => {
-        if (v.duration) {
-            document.getElementById('reelProgress').style.width = ((v.currentTime / v.duration) * 100) + '%';
-        }
+    function setDriveMode(mode) {
+      simMode = mode;
+      document.querySelectorAll('.mode-btn').forEach(b => {
+        b.className = 'mode-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white';
+      });
+      document.getElementById('modeBtn' + mode).className = 'mode-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#002c5f] text-white border border-[#c89d7c]/60';
+      document.getElementById('simRoadLine').style.animationDuration = SIM_CONFIGS[mode].dur;
+    }
+
+    const throttleBtn = document.getElementById('throttleBtn');
+    ['mousedown', 'touchstart'].forEach(e => throttleBtn.addEventListener(e, () => { isAccelerating = true; throttleBtn.innerText = '¡Acelerando en pendiente!'; }));
+    ['mouseup', 'mouseleave', 'touchend'].forEach(e => throttleBtn.addEventListener(e, () => { isAccelerating = false; throttleBtn.innerText = 'Mantener Acelerador'; }));
+
+    setInterval(() => {
+      const cfg = SIM_CONFIGS[simMode];
+      const targetSpeed = isAccelerating ? cfg.speed + 30 : cfg.speed;
+      const targetRpm = isAccelerating ? cfg.rpm + 1800 : cfg.rpm;
+      simSpeed += (targetSpeed - simSpeed) * 0.1;
+      simRpm += (targetRpm - simRpm) * 0.15;
+      simAlt = simAlt > 4118 ? 1630 : simAlt + (isAccelerating ? 2.5 : 0.8);
+
+      document.getElementById('simSpeedNum').innerText = Math.round(simSpeed);
+      document.getElementById('simRpmNum').innerText = Math.round(simRpm).toLocaleString();
+      document.getElementById('simAltNum').innerText = Math.round(simAlt).toLocaleString();
+
+      if (simAlt < 2000) document.getElementById('simLandmark').innerText = 'Mérida Centro (1,630 msnm)';
+      else if (simAlt < 3000) document.getElementById('simLandmark').innerText = 'Tabay y El Valle (2,100 msnm)';
+      else if (simAlt < 3700) document.getElementById('simLandmark').innerText = 'Laguna de Mucubají (3,550 msnm)';
+      else document.getElementById('simLandmark').innerText = 'Pico El Águila (4,118 msnm)';
+    }, 100);
+
+    // --- Calculator Features ---
+    let calcTerm = 36;
+    function setCalcTerm(term) {
+      calcTerm = term;
+      document.querySelectorAll('.calc-term-btn').forEach(b => {
+        b.className = 'calc-term-btn py-2 text-xs font-bold rounded-xl bg-slate-950 text-slate-400 border border-slate-800';
+      });
+      event.target.className = 'calc-term-btn py-2 text-xs font-bold rounded-xl bg-[#002c5f] text-white border border-[#c89d7c]/60';
+      calculateQuote();
+    }
+
+    function calculateQuote() {
+      const select = document.getElementById('calcModelSelect');
+      const price = Number(select.value);
+      const percent = Number(document.getElementById('calcDownPaymentSlider').value);
+      const initial = Math.round(price * (percent / 100));
+      const loan = price - initial;
+      const monthlyRate = 0.095 / 12;
+      const monthly = Math.round((loan * monthlyRate * Math.pow(1 + monthlyRate, calcTerm)) / (Math.pow(1 + monthlyRate, calcTerm) - 1));
+
+      document.getElementById('calcPercentLabel').innerText = percent;
+      document.getElementById('calcDownPaymentLabel').innerText = '$' + initial.toLocaleString() + ' USD';
+      document.getElementById('calcMonthlyPayment').innerText = '$' + monthly.toLocaleString();
+      document.getElementById('calcSummaryPrice').innerText = '$' + price.toLocaleString() + ' USD';
+      document.getElementById('calcSummaryInitial').innerText = '$' + initial.toLocaleString() + ' USD';
+      document.getElementById('calcSummaryTerm').innerText = calcTerm + ' cuotas';
+    }
+
+    function sendQuoteWhatsApp() {
+      const select = document.getElementById('calcModelSelect');
+      const name = select.options[select.selectedIndex].getAttribute('data-name');
+      const price = select.value;
+      const percent = document.getElementById('calcPercentLabel').innerText;
+      const initial = document.getElementById('calcDownPaymentLabel').innerText;
+      const monthly = document.getElementById('calcMonthlyPayment').innerText;
+      const msg = `Hola Automotores Kibun Mérida! 👋 Deseo cotización oficial para el *${name}* (Precio: $${Number(price).toLocaleString()} USD). Propongo una inicial de ${initial} (${percent}%) y el saldo en ${calcTerm} cuotas de aprox ${monthly}/mes. Agradezco su atención.`;
+      window.open(`https://wa.me/584147482282?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function sendAppointmentWhatsApp() {
+      const serv = document.getElementById('apptService').value;
+      const model = document.getElementById('apptModel').value;
+      const day = document.getElementById('apptDay').value;
+      const msg = `Hola Automotores Kibun Mérida! 🔧 Deseo agendar cita en su taller oficial:\n- Servicio: ${serv}\n- Vehículo: ${model}\n- Día preferido: ${day}\nPor favor confirmar disponibilidad.`;
+      window.open(`https://wa.me/584147482282?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    // --- Video Reels Logic ---
+    const REELS = [
+      {
+        badge: 'Reel Oficial 01',
+        title: 'Grand i10 GL M/T · Edición Dinámica',
+        desc: 'Ágil en el tráfico merideño y económico en consumo. Transmisión manual de 5 velocidades para máximo control en ascensos.',
+        video: 'videos/grand-i10.mp4',
+        poster: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png',
+        trans: 'Sincrónica 5 vel',
+        consumo: '5.0 L/100km',
+        cards: [
+          { title: 'Grand i10 GL', sub: 'Edición M/T · Blanco Polar', price: '$21,900 USD', img: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png' },
+          { title: 'Grand i10 GL', sub: 'Transmisión M/T | A/T · Rojo Pasión', price: '$21,900 USD', img: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png' },
+          { title: 'Grand i10 GLS', sub: 'Full Equipo · Azul Celeste', price: '$23,500 USD', img: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69856148203811e31988110b_Grandi10-Hatchback-GL-Azul.png' }
+        ]
+      },
+      {
+        badge: 'Reel Oficial 02',
+        title: 'Grand i10 GLS A/T · Sedán & Hatchback',
+        desc: 'La combinación perfecta entre maletero espacioso de 402 litros, transmisión automática confortable y faros LED de iluminación nítida.',
+        video: 'videos/creta.mp4',
+        poster: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png',
+        trans: 'Automática 4 vel',
+        consumo: '5.2 L/100km',
+        cards: [
+          { title: 'Grand i10 GLS', sub: 'Sedán Familiar · Blanco Atlas', price: '$23,500 USD', img: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png' },
+          { title: 'Grand i10 GLS', sub: 'Hatchback Deportivo · Plata Estelar', price: '$23,500 USD', img: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823fe186892428b7a8fab3_Grandi10-Hatchback-GL-Plata.png' },
+          { title: 'Grand i10 GL', sub: 'Rojo Carmesí Metalizado', price: '$21,900 USD', img: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png' }
+        ]
+      }
+    ];
+
+    let currentReelIdx = 0;
+    let currentCardIdx = 0;
+
+    function switchReel(idx) {
+      currentReelIdx = idx;
+      currentCardIdx = 0;
+      const r = REELS[idx];
+      document.getElementById('reelDetailBadge').innerText = r.badge;
+      document.getElementById('reelDetailTitle').innerText = r.title;
+      document.getElementById('reelDetailDesc').innerText = r.desc;
+      document.getElementById('reelBottomTitle').innerText = r.title;
+      document.getElementById('reelSpecTrans').innerText = r.trans;
+      document.getElementById('reelSpecConsumo').innerText = r.consumo;
+      const v = document.getElementById('reelVideoPlayer');
+      v.src = r.video;
+      v.poster = r.poster;
+      v.play().catch(() => {});
+      updateDeckCard();
+
+      document.getElementById('reelBtn0').className = idx === 0 ? 'px-4 py-2 rounded-xl text-xs font-bold bg-[#002c5f] text-white border border-[#c89d7c]/60 shadow-lg font-heading' : 'px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-400 hover:text-white border border-slate-800 font-heading';
+      document.getElementById('reelBtn1').className = idx === 1 ? 'px-4 py-2 rounded-xl text-xs font-bold bg-[#002c5f] text-white border border-[#c89d7c]/60 shadow-lg font-heading' : 'px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-400 hover:text-white border border-slate-800 font-heading';
+    }
+
+    function toggleReelPlay() {
+      const v = document.getElementById('reelVideoPlayer');
+      const btn = document.getElementById('reelPlayBtn');
+      if (v.paused) {
+        v.play();
+        btn.innerText = '⏸';
+      } else {
+        v.pause();
+        btn.innerText = '▶';
+      }
+    }
+
+    function toggleReelMute() {
+      const v = document.getElementById('reelVideoPlayer');
+      v.muted = !v.muted;
+      document.getElementById('reelMuteIcon').innerText = v.muted ? '🔇' : '🔊';
+    }
+
+    function rotateReelCard() {
+      const r = REELS[currentReelIdx];
+      currentCardIdx = (currentCardIdx + 1) % r.cards.length;
+      updateDeckCard();
+    }
+
+    function updateDeckCard() {
+      const card = REELS[currentReelIdx].cards[currentCardIdx];
+      document.getElementById('deckCardTitle').innerText = card.title;
+      document.getElementById('deckCardSub').innerText = card.sub;
+      document.getElementById('deckCardPrice').innerText = card.price;
+      document.getElementById('deckCardImg').src = card.img;
+    }
+
+    function loadLocalVideo(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const url = URL.createObjectURL(file);
+        const v = document.getElementById('reelVideoPlayer');
+        v.src = url;
+        v.muted = true;
+        v.play().catch(() => {});
+        document.getElementById('reelCardDeck').classList.add('hidden');
+        document.getElementById('localVideoStatus').innerText = '✓ Video cargado: ' + file.name;
+      }
+    }
+
+    // Mobile Menu Toggle
+    document.getElementById('menuToggleBtn').addEventListener('click', () => {
+      document.getElementById('mobileDrawer').classList.toggle('hidden');
     });
-    v.addEventListener('ended', () => switchReel((reelActual + 1) % REELS.length));
-    v.addEventListener('loadedmetadata', () => {
-        const s = Math.round(v.duration);
-        const mm = String(Math.floor(s / 60)).padStart(2, '0');
-        const ss = String(s % 60).padStart(2, '0');
-        REELS[0].dur = mm + ':' + ss;
-        document.getElementById('reelDurTop').textContent = REELS[0].dur;
+    document.querySelectorAll('.mobile-nav-link').forEach(l => {
+      l.addEventListener('click', () => document.getElementById('mobileDrawer').classList.add('hidden'));
     });
 
-    REELS.forEach((r, i) => leerDuracion(i));
-});
-
-// ═══════════════ COTIZADOR ═══════════════
-let modeloSel = MODELOS[0];
-let plazoSel = 36;
-let entradaPct = 0;
-
-function setModelo(btn) {
-    document.querySelectorAll('.modelo-btn').forEach(b => {
-        b.className = 'modelo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper';
-    });
-    btn.className = 'modelo-btn px-4 py-3 rounded-lg border-hyundai-copper bg-hyundai-copper/15 text-hyundai-copper font-semibold text-sm transition-all';
-    const nombre = btn.textContent.trim();
-    modeloSel = MODELOS.find(m => m.nombre === nombre) || MODELOS[0];
-    calcularCuota();
-}
-
-function setPlazo(btn, meses) {
-    document.querySelectorAll('.plazo-btn').forEach(b => {
-        b.className = 'plazo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper';
-    });
-    btn.className = 'plazo-btn px-4 py-3 rounded-lg border-hyundai-copper bg-hyundai-copper/15 text-hyundai-copper font-semibold text-sm transition-all';
-    plazoSel = meses;
-    calcularCuota();
-}
-
-function updateEntrada(pct) {
-    entradaPct = parseInt(pct, 10);
-    const max = modeloSel.precio * 0.6;
-    document.getElementById('entradaLabel').textContent = '$' + Math.round(max * entradaPct / 100).toLocaleString();
-    calcularCuota();
-}
-
-function calcularCuota() {
-    const maxEntrada = modeloSel.precio * 0.6;
-    const entrada = maxEntrada * entradaPct / 100;
-    const financia = modeloSel.precio - entrada;
-    const tasa = 0.009; // ~10.8% anual
-    const cuota = (financia * tasa * Math.pow(1 + tasa, plazoSel)) / (Math.pow(1 + tasa, plazoSel) - 1);
-    document.getElementById('cuotaResult').textContent = '$' + Math.round(cuota).toLocaleString();
-    document.getElementById('cuotaDetalle').textContent =
-        'Sobre un ' + modeloSel.nombre + ' de $' + modeloSel.precio.toLocaleString() + ' USD a ' + plazoSel + ' meses';
-}
-
-// ═══════════════ STATS ANIMADOS ═══════════════
-function animateStat(id, target, suffix = '') {
-    const el = document.getElementById(id);
-    let current = 0;
-    const step = Math.ceil(target / 40);
-    const timer = setInterval(() => {
-        current += step;
-        if (current >= target) { current = target; clearInterval(timer); }
-        el.textContent = current.toLocaleString() + suffix;
-    }, 30);
-}
-
-// ═══════════════ INIT ═══════════════
-document.addEventListener('DOMContentLoaded', () => {
-    renderModelos('all');
-    buildReels();
-    switchReel(0);
-    updateEntrada(0);
-    setModelo(document.querySelector('.modelo-btn'));
-    setPlazo(document.querySelectorAll('.plazo-btn')[1], 36);
-
-    // Stats al hacer scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                animateStat('stat1', 15, '+');
-                animateStat('stat2', 8, '');
-                animateStat('stat3', 2400, '+');
-                observer.disconnect();
-            }
-        });
-    }, { threshold: 0.5 });
-    observer.observe(document.getElementById('inicio'));
-});
-</script>
+    // Init
+    renderModels('all');
+    renderStudioColors();
+    calculateQuote();
+  </script>
 </body>
 </html>
