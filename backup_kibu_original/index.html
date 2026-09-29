@@ -1,0 +1,393 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automotores Kibun - Concesionario Oficial</title>
+<meta name="description" content="Concesionario oficial Hyundai en Mérida, Venezuela. Explora nuestra gama completa de vehículos en el corazón de los Andes venezolanos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="https://cdn.prod.website-files.com/695b182e874dc417335a062b/695c394d095ae1ab3242a04a_Favion%20Hyundai.png" type="image/png">
+<style>
+:root {
+  --primary: #002c5f;
+  --primary-light: #003f7f;
+  --accent: #002c5f;
+  --accent-light: #e0e7ef;
+  --dark: #1a1a2e;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  --white: #ffffff;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--dark);
+  background: var(--gray-100);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* Navbar */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: transparent;
+  transition: var(--transition); padding: 16px 0;
+}
+.navbar.scrolled { background: rgba(0,0,0,0.6); backdrop-filter: blur(12px); padding: 8px 0; }
+.navbar .container { display: flex; align-items: center; justify-content: center; height: 40px; gap: 48px; }
+.navbar .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto; }
+.navbar .logo img { height: 28px; width: auto; }
+.navbar .logo span { font-size: 16px; font-weight: 700; color: #fff; }
+.nav-links { display: flex; align-items: center; justify-content: center; gap: 40px; list-style: none; flex: 1; }
+.nav-links a {
+  text-decoration: none; color: rgba(255,255,255,0.85); font-size: 15px; font-weight: 500;
+  transition: var(--transition); position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+  background: var(--accent); transition: var(--transition);
+}
+.nav-links a:hover { color: #fff; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links .btn-primary-nav {
+  background: #002c5f; color: #fff !important; padding: 8px 20px;
+  border-radius: 6px; font-weight: 600; transition: var(--transition);
+}
+.nav-links li:last-child { margin-left: auto; }
+.nav-links .btn-primary-nav:hover { background: #003f7f; transform: translateY(-1px); }
+.nav-links .btn-primary-nav::after { display: none; }
+.nav-links .cta-btn {
+  background: #25D366; color: #fff !important; padding: 8px 20px;
+  border-radius: 6px; font-weight: 600; transition: var(--transition);
+}
+.nav-links .cta-btn:hover { background: #1da851; transform: translateY(-1px); }
+.nav-links .cta-btn::after { display: none; }
+
+.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.menu-toggle span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: var(--transition); }
+.menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Hero Carousel */
+.hero {
+  position: relative; width: 100%; height: 100vh; min-height: 640px;
+  overflow: hidden; background: #000;
+}
+.slides { display: flex; height: 100%; transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.slide { flex: 0 0 100%; height: 100%; display: flex; align-items: flex-end; position: relative; }
+.slide-bg {
+  position: absolute; inset: 0; background-size: cover; background-position: center center;
+  background-repeat: no-repeat; transition: background-position 6s linear;
+}
+.slide-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.35) 35%, rgba(0,0,0,0.45) 100%);
+}
+.slide-content {
+  position: relative; z-index: 2; max-width: 1280px; margin: 0 auto;
+  padding: 0 48px 180px; width: 100%;
+}
+.slide-content .tagline {
+  display: inline-flex; align-items: center; gap: 8px; font-size: 11px;
+  letter-spacing: 0.3em; text-transform: uppercase; font-weight: 700; color: rgba(255,255,255,0.85);
+  margin-bottom: 24px; opacity: 0; transform: translateY(16px);
+  transition: all 0.6s ease 0.2s;
+}
+.slide-content .tagline.show { opacity: 1; transform: translateY(0); }
+.slide-content .tagline .line { width: 32px; height: 1px; background: rgb(0,170,210); }
+.slide-content h1 {
+  font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: #fff; line-height: 1.15;
+  margin-bottom: 4px; opacity: 0; transform: translateY(20px);
+  transition: all 0.6s ease 0.3s;
+}
+.slide-content h1.show { opacity: 1; transform: translateY(0); }
+.slide-content h1 .accent { color: rgb(0,170,210); display: block; font-style: italic; }
+.slide-content p {
+  font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6;
+  margin: 16px 0 32px; max-width: 560px; opacity: 0; transform: translateY(20px);
+  transition: all 0.6s ease 0.4s;
+}
+.slide-content p.show { opacity: 1; transform: translateY(0); }
+.slide-buttons {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  opacity: 0; transform: translateY(20px); transition: all 0.6s ease 0.5s;
+}
+.slide-buttons.show { opacity: 1; transform: translateY(0); }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px;
+  border-radius: 4px; font-size: 13px; font-weight: 600; text-decoration: none;
+  cursor: pointer; border: none; transition: all 0.3s ease-in-out;
+}
+.btn-primary { background: rgb(0,170,210); color: #fff; }
+.btn-primary:hover { background: rgb(0,150,190); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+.btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+.arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08); backdrop-filter: blur(8px);
+  color: #fff; font-size: 18px; cursor: pointer; display: flex;
+  align-items: center; justify-content: center;
+  transition: all 0.2s; font-family: inherit; line-height: 1;
+}
+.arrow:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.4); }
+.arrow-prev { left: 20px; }
+.arrow-next { right: 20px; }
+.dots {
+  position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%); z-index: 10;
+  display: flex; gap: 8px;
+}
+.dots button {
+  width: 8px; height: 8px; border-radius: 50%; border: none; cursor: pointer;
+  background: rgba(255,255,255,0.3); transition: all 0.3s; padding: 0;
+}
+.dots button.active { background: rgb(0,170,210); width: 28px; border-radius: 4px; }
+.dots button:hover { background: rgba(255,255,255,0.6); }
+
+/* Sections */
+.section { padding: 80px 0; }
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 { font-size: clamp(26px, 3vw, 36px); font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+.section-header p { font-size: 16px; color: var(--gray-600); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+.section-header .subtitle { display: inline-block; font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+
+.btn-small { padding: 10px 16px; font-size: 13px; border-radius: 8px; }
+
+/* Contact */
+.contact-section { background: var(--primary); color: var(--white); }
+.contact-section .section-header h2 { color: var(--white); }
+.contact-section .section-header p { color: rgba(255,255,255,0.7); }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.contact-card {
+  background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+  border-radius: var(--radius); padding: 32px; text-align: center;
+  border: 1px solid rgba(255,255,255,0.1); transition: var(--transition);
+}
+.contact-card:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+.contact-card .icon { font-size: 32px; margin-bottom: 16px; }
+.contact-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.contact-card p, .contact-card a { font-size: 14px; color: rgba(255,255,255,0.8); text-decoration: none; line-height: 1.6; transition: all 0.3s ease-in-out; }
+.contact-card a:hover { color: var(--accent); transform: translateY(-1px); }
+
+/* Footer */
+.footer {
+  background: var(--dark); color: rgba(255,255,255,0.8); padding: 48px 0 24px;
+}
+.footer .container { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+.footer h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 16px; }
+.footer p, .footer a { font-size: 14px; color: rgba(255,255,255,0.7); text-decoration: none; line-height: 2; display: block; }
+.footer a:hover { color: var(--accent); }
+.footer-logo { margin-bottom: 16px; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px; padding-top: 24px; text-align: center; font-size: 13px; }
+
+/* WhatsApp Float */
+.whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 999;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; color: white; display: flex; align-items: center; justify-content: center;
+  text-decoration: none; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: all 0.4s ease; font-size: 28px;
+  opacity: 1; transform: translateY(0);
+}
+.whatsapp-float.hidden-float { opacity: 0; transform: translateY(20px); pointer-events: none; }
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5); }
+
+/* Animations */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
+  .nav-links {
+    position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.92); backdrop-filter: blur(12px);
+    flex-direction: column; padding: 80px 24px 24px; gap: 20px;
+    transform: translateY(-100%); opacity: 0; pointer-events: none; transition: var(--transition);
+  }
+  .nav-links a { color: rgba(255,255,255,0.85); font-size: 16px; }
+  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+  .slide-content { padding: 0 24px 140px; }
+  .arrow { width: 36px; height: 36px; font-size: 15px; }
+  .arrow-prev { left: 10px; }
+  .arrow-next { right: 10px; }
+  .dots { bottom: 28px; }
+  .footer .container { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .footer .container { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="https://cdn.prod.website-files.com/695b182e874dc417335a062b/69cec19d0592eb45eefce71b_Favicon%20hyundai%20blanco.png" alt="Hyundai">
+      <span>Automotores Kibun</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" style="color: var(--accent); font-weight: 600;">Inicio</a></li>
+      <li><a href="modelos.html">Modelos</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="contacto.html" class="btn-primary-nav">Solicitar Cotización</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Carousel -->
+<section class="hero" id="inicio">
+  <div class="slides" id="slides"></div>
+  <button class="arrow arrow-prev" id="prevBtn">&#10094;</button>
+  <button class="arrow arrow-next" id="nextBtn">&#10095;</button>
+  <div class="dots" id="dots"></div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div>
+      <div class="footer-logo">
+        <img src="https://cdn.prod.website-files.com/695b182e874dc417335a062b/69cec19d0592eb45eefce71b_Favicon%20hyundai%20blanco.png" alt="Hyundai" style="height:36px;width:auto;">
+      </div>
+      <p>Concesionario oficial Hyundai. Excelencia automotriz con respaldo global.</p>
+    </div>
+    <div>
+      <h4>Modelos</h4>
+      <a href="modelos.html">Grand i10</a>
+      <a href="modelos.html">Elantra</a>
+      <a href="modelos.html">Accent</a>
+      <a href="modelos.html">Tucson</a>
+      <a href="modelos.html">Creta</a>
+      <a href="modelos.html">Palisade</a>
+    </div>
+    <div>
+      <h4>Servicios</h4>
+      <a href="servicios.html">Agendar cita</a>
+    </div>
+    </div>
+  <div class="footer-bottom">
+    <div class="container">&copy; 2026 Automotores Kibun. Hyundai es una marca registrada de Hyundai Motor Company.</div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/584147482282?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20veh%C3%ADculos%20Hyundai%20en%20M%C3%A9rida" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">&#128172;</a>
+
+<script>
+
+// Mobile menu
+document.getElementById('menuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('menuToggle').classList.remove('active');
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Hero Carousel
+const SLIDES = [
+  { image: 'img/watermarked_img_13367943299367624531.jpg', eyebrow: 'Creta · Pico Bolívar', title: 'Con CRETA', accent: 'concreta', end: 'tus sueños.', sub: 'SUV compacta con techo panorámico, pantalla de 10.25" y consumo eficiente. El Creta llegó para acompañarte en cada etapa de tu vida.', cta: 'Ver detalles', ctaHref: 'modelos.html', cta2: 'Cotizar Creta', cta2Href: 'contacto.html' },
+  { image: 'img/watermarked_img_10948222792170652927.jpg', eyebrow: 'Palisade · Sierra Nevada de Mérida', title: 'Manejá tu próximo', accent: 'Hyundai', end: 'en los Andes.', sub: 'Descubre la línea completa Hyundai 2025 con precios en USD, simulador de crédito y atención personalizada en el corazón de Mérida.', cta: 'Ver modelos', ctaHref: 'modelos.html', cta2: 'Solicitar cotización', cta2Href: 'contacto.html' },
+  { image: 'img/watermarked_img_5871150173315358561.jpg', eyebrow: 'Tucson · Páramo Merideño', title: 'Aventura sin', accent: 'límites,', end: 'diseñada para los Andes.', sub: 'El nuevo Hyundai Tucson combina tecnología SmartSense, tracción HTRAC y un diseño Parametric Dynamics listo para conquistar el páramo merideño.', cta: 'Conocer Tucson', ctaHref: 'modelos.html', cta2: 'Solicitar prueba', cta2Href: 'contacto.html' },
+  { image: 'img/watermarked_img_17804480962303296709.jpg', eyebrow: 'Elantra · Laguna de Mucubají', title: 'Elegancia que', accent: 'se siente', end: 'en cada kilómetro.', sub: 'Diseño Parametric, tablero digital y consumo inteligente. El nuevo Elantra te lleva más lejos con el confort de un sedán premium.', cta: 'Conocer Elantra', ctaHref: 'modelos.html', cta2: 'Agendar cita', cta2Href: 'servicios.html' }
+];
+
+const slidesEl = document.getElementById('slides');
+const dotsEl = document.getElementById('dots');
+let current = 0;
+let timer;
+
+function build() {
+  SLIDES.forEach((s, i) => {
+    const div = document.createElement('div');
+    div.className = 'slide';
+    div.innerHTML = '<div class="slide-bg" style="background-image:url(\'' + s.image + '\')"></div><div class="slide-overlay"></div><div class="slide-content"><div class="tagline"><span class="line"></span><span>' + s.eyebrow + '</span></div><h1>' + s.title + ' <span class="accent">' + s.accent + '</span> ' + s.end + '</h1><p>' + s.sub + '</p><div class="slide-buttons"><a href="' + s.ctaHref + '" class="btn btn-primary">' + s.cta + '</a><a href="' + s.cta2Href + '" class="btn btn-outline">' + s.cta2 + '</a></div></div>';
+    slidesEl.appendChild(div);
+    const dot = document.createElement('button');
+    dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+    dot.addEventListener('click', function() { go(i); });
+    dotsEl.appendChild(dot);
+  });
+}
+
+function go(idx) {
+  if (idx === current) return;
+  current = idx;
+  slidesEl.style.transform = 'translateX(-' + (idx * 100) + '%)';
+  document.querySelectorAll('.dots button').forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+  animate(idx);
+  resetTimer();
+}
+
+function animate(idx) {
+  var els = slidesEl.children[idx].querySelectorAll('.tagline, h1, p, .slide-buttons');
+  els.forEach(function(el) { el.classList.remove('show'); });
+  requestAnimationFrame(function() { requestAnimationFrame(function() { els.forEach(function(el) { el.classList.add('show'); }); }); });
+}
+
+function next() { go((current + 1) % SLIDES.length); }
+function prev() { go((current - 1 + SLIDES.length) % SLIDES.length); }
+function resetTimer() { clearInterval(timer); timer = setInterval(next, 6500); }
+
+document.getElementById('nextBtn').addEventListener('click', function() { next(); resetTimer(); });
+document.getElementById('prevBtn').addEventListener('click', function() { prev(); resetTimer(); });
+
+build();
+go(0);
+
+// Fade-in observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// WhatsApp scroll animation
+const whatsappBtn = document.querySelector('.whatsapp-float');
+let lastScrollY = window.scrollY;
+window.addEventListener('scroll', () => {
+  const currentScrollY = window.scrollY;
+  if (currentScrollY > 300 && currentScrollY > lastScrollY) {
+    whatsappBtn.classList.add('hidden-float');
+  } else {
+    whatsappBtn.classList.remove('hidden-float');
+  }
+  lastScrollY = currentScrollY;
+});
+</script>
+</body>
+</html>
