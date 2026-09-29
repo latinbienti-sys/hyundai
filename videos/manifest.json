@@ -1,0 +1,16 @@
+{
+  "reels": [
+    {
+      "archivo": "videos/creta.mp4",
+      "modelo": "Creta 1.5L A/T GLS",
+      "bajada": "Edición GLS",
+      "descripcion": "SUV compacta de 4,300 mm, techo panorámico y pantalla de 10.25 pulgadas. La Creta llegó para acompañarte en cada etapa de tu vida."
+    },
+    {
+      "archivo": "videos/grand-i10.mp4",
+      "modelo": "Grand i10 1.2L M/T GL",
+      "bajada": "Edición Dinámica",
+      "descripcion": "El city car de 3,665 mm: compacto, ágil y fácil de parquear en la ciudad. Manual de 5 velocidades con Edición Dinámica de fábrica."
+    }
+  ]
+}
