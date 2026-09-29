@@ -1,636 +1,929 @@
 <!DOCTYPE html>
-<html lang="es-VE">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hyundai Automotores Kibun | Modelos 0KM, taller y financiamiento en MÃ©rida</title>
-<meta name="description" content="Hyundai Automotores Kibun en MÃ©rida: 10 modelos 0KM, comparador, estudio de color, simulador de crÃ©dito, taller certificado y garantÃ­a oficial. Av. Urdaneta 49-29.">
-<meta name="theme-color" content="#0e2b5c">
-<link rel="icon" href="img/modelos/logo-hyundai.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/kibu.css">
+<title>Automotores KIBÚN - Concesionario Oficial Hyundai Mérida</title>
+<meta name="description" content="Automotores KIBÚN, concesionario oficial Hyundai en Mérida, Venezuela. Gran i10, Creta y más. Cotiza tu Hyundai hoy.">
+<link rel="icon" type="image/png" href="img/modelos/logo-hyundai-blanco.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Inter', 'system-ui', 'sans-serif'],
+                heading: ['Sora', 'Inter', 'sans-serif']
+            },
+            colors: {
+                hyundai: {
+                    navy: '#002c5f',
+                    blue: '#0e2b5c',
+                    light: '#345fa8',
+                    copper: '#c89d7c',
+                    sand: '#e2cbb5',
+                    dark: '#121824'
+                }
+            }
+        }
+    }
+}
+</script>
+<style>
+    html { scroll-behavior: smooth; }
+    body { background: #0b111a; color: #e5e7eb; }
+    ::selection { background: #c89d7c; color: #0b111a; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0b111a; }
+    ::-webkit-scrollbar-thumb { background: #345fa8; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #c89d7c; }
+
+    .hero-gradient {
+        background: linear-gradient(135deg, #0e2b5c 0%, #002c5f 50%, #0b111a 100%);
+    }
+    .copper-line {
+        background: linear-gradient(90deg, transparent, #c89d7c, transparent);
+    }
+    .glow-copper {
+        box-shadow: 0 0 40px rgba(200, 157, 124, 0.15);
+    }
+    .reel-card {
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+        backface-visibility: hidden;
+    }
+    .reel-card.active {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 1;
+        z-index: 10;
+    }
+    .reel-card.next {
+        transform: translateY(-18px) scale(0.92) rotate(4deg);
+        opacity: 0.55;
+        z-index: 5;
+    }
+    .reel-card.far {
+        transform: translateY(-34px) scale(0.85) rotate(-6deg);
+        opacity: 0.2;
+        z-index: 1;
+    }
+    .fade-up {
+        animation: fadeUp 0.8s ease forwards;
+        opacity: 0;
+    }
+    @keyframes fadeUp {
+        from { transform: translateY(30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    .float-car {
+        animation: floatCar 6s ease-in-out infinite;
+    }
+    @keyframes floatCar {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+    }
+    .pulse-dot {
+        animation: pulseDot 2s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.2); }
+    }
+    .sierra-fade {
+        background: linear-gradient(to bottom, transparent 60%, #0e2b5c 100%);
+    }
+    .glow-copper-text {
+        text-shadow: 0 0 30px rgba(200, 157, 124, 0.4);
+    }
+</style>
 </head>
-<body>
+<body class="font-sans antialiased">
 
-<a class="u-sr" href="#main">Saltar al contenido principal</a>
-
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• NAVBAR â•â•â•â•â•â• -->
-<header class="nav" id="nav">
-  <div class="nav__inner">
-    <a class="nav__logo" href="#inicio" aria-label="Hyundai Automotores Kibun, inicio">
-      <img src="img/modelos/logo-hyundai-blanco.png" alt="Hyundai Automotores Kibun" height="30">
-    </a>
-
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Abrir menÃº">
-      <span></span><span></span><span></span>
-    </button>
-
-    <ul class="nav__links">
-      <li><a href="#inicio" aria-current="page">Inicio</a></li>
-      <li><a href="#catalogo">Modelos</a></li>
-      <li><a href="#comparador">Compara</a></li>
-      <li><a href="#cotizador">Simulador</a></li>
-      <li><a href="#taller">Servicios</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </div>
-</header>
-
-<main id="main">
-
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â• -->
-  <section class="hero" id="inicio" aria-label="Destacados">
-    <div class="hero__track" id="heroTrack"></div>
-    <div class="hero__dots" id="heroDots" role="tablist" aria-label="Diapositivas"></div>
-  </section>
-
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• BARRA DE SECCIONES â•â•â•â•â•â• -->
-  <nav class="secnav" aria-label="Secciones de esta pÃ¡gina">
-    <div class="secnav__inner">
-      <a href="#catalogo">CatÃ¡logo</a>
-      <a href="#reels" id="reels-open">Reels</a>
-      <a href="#estudio">Estudio 360Â°</a>
-      <a href="#comparador">Comparador</a>
-      <a href="#cotizador">Cotizador</a>
-      <a href="#ruta-andina">Ruta Andina</a>
-      <a href="#garantia">GarantÃ­a</a>
-      <a href="#taller">Taller</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#nosotros">Nosotros</a>
-      <a href="#contacto">Contacto</a>
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<nav class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar" style="background: rgba(11,17,26,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(200,157,124,0.15);">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-hyundai-copper rounded flex items-center justify-center font-black text-hyundai-dark text-xl">K</div>
+            <span class="font-heading font-bold text-white block">Automotores Kibún</span>
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="#inicio" class="text-sm font-medium text-slate-300 hover:text-hyundai-copper transition">Inicio</a>
+            <a href="#modelos" class="text-sm font-medium text-slate-300 hover:text-hyundai-copper transition">Modelos</a>
+            <a href="#videos" class="text-sm font-medium text-slate-300 hover:text-hyundai-copper transition">Videos</a>
+            <a href="#estudio" class="text-sm font-medium text-slate-300 hover:text-hyundai-copper transition">Estudio 360</a>
+            <a href="#posventa" class="text-sm font-medium text-slate-300 hover:text-hyundai-copper transition">Posventa</a>
+        </div>
+        <a href="#cotizador" class="px-6 py-3 bg-hyundai-copper text-hyundai-dark font-bold text-sm rounded-lg hover:bg-hyundai-sand transition glow-copper">
+            Cotizar Ahora
+        </a>
     </div>
-  </nav>
+</nav>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• CATÃLOGO â•â•â•â•â•â• -->
-  <section class="section section--alt" id="catalogo">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Nuestro catÃ¡logo</span>
-        <h2 class="display">Todos los Hyundai que tenemos para ti</h2>
-        <p>Diez versiones disponibles, desde el Grand i10 hasta el Palisade 7 unsureros. Filtra por categorÃ­a y conoce las especificaciones de cada una.</p>
-      </div>
+<!-- ═══════════════ HERO / INICIO ═══════════════ -->
+<section id="inicio" class="relative min-h-screen flex items-center overflow-hidden">
+    <!-- Fondo: Mérida + Sierra Nevada -->
+    <div class="absolute inset-0 hero-gradient"></div>
+    <div class="absolute inset-0" style="background: url('img/hero-merida.png') center/cover; opacity: 0.35;"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(to top, #0b111a 0%, transparent 50%, rgba(14,43,92,0.5) 100%);"></div>
 
-      <div class="filters" id="filters" role="group" aria-label="Filtrar por categorÃ­a"></div>
-      <div class="cards" id="cards"></div>
-    </div>
-  </section>
-
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• ESTUDIO 360Â° â•â•â•â•â•â• -->
-  <section class="section" id="estudio">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Estudio virtual</span>
-        <h2 class="display">Mira tu Hyundai en el color que quieras</h2>
-        <p>Cambia la pintura y enciende los faros LED sobre la foto real del vehÃ­culo. Es una vista previa; los colores disponibles se confirman en el concesionario.</p>
-      </div>
-
-      <div class="studio reveal" id="studio">
-        <div class="studio__head">
-          <div>
-            <span class="studio__cat" id="studioTrim">A/T 6 vel</span>
-            <h3 id="studioName">Tucson 2.0L A/T 2WD GLS</h3>
-          </div>
-          <div class="studio__price">
-            <span>Precio total</span>
-            <b id="studioPrice">$50,130.00</b>
-          </div>
-        </div>
-
-        <div class="studio__stage">
-          <div class="studio__glow" id="studioGlow"><i></i><i></i></div>
-          <div class="studio__car">
-            <img id="studioImg" src="img/modelos/Tucson-premium-Azul-.png" alt="Hyundai Tucson en color Azul" width="700" height="492">
-          </div>
-          <div class="studio__reflect" aria-hidden="true">
-            <img id="studioRefl" src="img/modelos/Tucson-premium-Azul-.png" alt="">
-          </div>
-        </div>
-
-        <div class="studio__foot">
-          <button class="btn btn--outline btn--sm" type="button" id="studioLights" aria-pressed="true">Faros LED: encendidos</button>
-
-          <div class="studio__palette">
-            <div class="studio__swatches" id="studioSwatches" role="group" aria-label="Color del vehÃ­culo"></div>
-            <span class="studio__colorlabel" id="studioColorLabel">Azul</span>
-          </div>
-
-          <div class="studio__models" id="studioModels" role="group" aria-label="Elegir modelo"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• COMPARADOR â•â•â•â•â•â• -->
-  <section class="section section--alt" id="comparador">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Comparador</span>
-        <h2 class="display">Compara tu Hyundai</h2>
-        <p>Compara modelos lado a lado y descubre cuÃ¡l cubre tus necesidades. Puedes seleccionar hasta tres versiones a la vez.</p>
-      </div>
-
-      <div class="compare__grid">
-        <div class="compare__picker">
-          <h3>Selecciona los modelos</h3>
-          <p class="compare__hint">Marca dos o mÃ¡s versiones para verlas lado a lado.</p>
-          <ul class="compare__list" id="compareList"></ul>
-          <div class="compare__tools">
-            <button class="btn btn--outline btn--sm" type="button" id="compareClear">Limpiar selecciÃ³n</button>
-          </div>
-        </div>
-
-        <div class="compare__tablewrap" id="compareTable" aria-live="polite"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• COTIZADOR â•â•â•â•â•â• -->
-  <section class="section" id="cotizador">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Financiamiento</span>
-        <h2 class="display">Simulador de crÃ©dito</h2>
-        <p>Elige tu modelo, la cuota inicial y el plazo. Te mostramos una estimaciÃ³n de tu cuota mensual con la misma tasa del 12% anual.</p>
-      </div>
-
-      <div class="sim__grid">
-        <div class="sim__panel">
-          <div class="sim__field">
-            <label class="sim__label" for="qModel">Modelo</label>
-            <select class="sim__select" id="qModel"></select>
-          </div>
-
-          <div class="sim__field">
-            <span class="sim__label">Cuota inicial <b id="qDownPct">30%</b></span>
-            <input class="sim__range" type="range" id="qDown" min="10" max="90" step="5" value="30"
-                   aria-label="Porcentaje de cuota inicial">
-          </div>
-
-          <div class="sim__field">
-            <span class="sim__label">Plazo en meses</span>
-            <div class="terms terms--wrap" id="qTerms" role="group" aria-label="Plazo en meses"></div>
-          </div>
-        </div>
-
-        <div class="sim__panel">
-          <ul class="sim__rows">
-            <li><span class="k">Precio total</span><span class="v" id="qOutPrice">â€”</span></li>
-            <li><span class="k">Cuota inicial</span><span class="v" id="qOutDown">â€”</span></li>
-            <li><span class="k">Monto a financiar</span><span class="v" id="qOutFinance">â€”</span></li>
-            <li><span class="k">Plazo</span><span class="v" id="qOutTerm">â€”</span></li>
-          </ul>
-
-          <div class="sim__result">
-            <span>Cuota mensual estimada</span>
-            <b id="qOutMonthly">â€”</b>
-          </div>
-
-          <div class="form__actions" style="margin-top:1.25rem">
-            <button class="btn btn--cobre" type="button" id="qSend">Recibir cotizaciÃ³n por WhatsApp</button>
-          </div>
-
-          <p class="sim__note">EstimaciÃ³n basada en una tasa fija del 12% anual, sin seguros, gastos de gestiÃ³n ni comisiones. No constituye una oferta en firme. Los precios pueden variar sin previo aviso.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• RUTA ANDINA â•â•â•â•â•â• -->
-  <section class="section section--dark" id="ruta-andina">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Simulador de ascenso</span>
-        <h2 class="display">Sube la cordillera de MÃ©rida</h2>
-        <p>Elige el modo de conducciÃ³n y mantÃ©n el acelerador para ver cÃ³mo responde el vehÃ­culo mientras sube hacia el pÃ¡ramo.</p>
-      </div>
-
-      <div class="andina reveal" id="andina">
-        <div class="andina__view">
-          <span class="andina__where" id="andinaWhere">MÃ©rida Centro Â· 1.630 msnm</span>
-          <div class="andina__car" id="andinaCar">
-            <img src="img/modelos/Tucson-premium-Azul-.png" alt="Hyundai Tucson subiendo la cordillera de MÃ©rida" width="700" height="492">
-          </div>
-          <div class="andina__road"><div class="andina__lane" id="andinaLane"></div></div>
-        </div>
-
-        <div class="andina__panel">
-          <div class="andina__modes" id="andinaModes" role="group" aria-label="Modo de conducciÃ³n"></div>
-
-          <div class="andina__gauges">
-            <div class="gauge"><span>Velocidad</span><b id="gSpeed">75 <i>km/h</i></b></div>
-            <div class="gauge"><span>TacÃ³metro</span><b id="gRpm">2.300 <i>rpm</i></b></div>
-            <div class="gauge"><span>Altitud</span><b id="gAlt">1.630 <i>msnm</i></b></div>
-          </div>
-
-          <div>
-            <button class="andina__throttle" type="button" id="andinaThrottle">Mantener acelerador</button>
-            <p class="andina__hint">MantÃ©n presionado el botÃ³n para acelerar en la subida.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• GARANTÃA â•â•â•â•â•â•â•â•â• -->
-  <section class="section section--alt" id="garantia">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Respaldo oficial</span>
-        <h2 class="display">GarantÃ­a y postventa Hyundai</h2>
-        <p>Todos nuestros vehÃ­culos son 0KM y cuentan con el respaldo de la garantÃ­a oficial de la marca.</p>
-      </div>
-
-      <div class="tiles">
-        <article class="tile reveal">
-          <span class="tile__icon" aria-hidden="true">ðŸ›¡ï¸</span>
-          <h3>5 aÃ±os o 100.000 km</h3>
-          <p>5 aÃ±os o 100.000 km de garantÃ­a oficial de fÃ¡brica.</p>
-        </article>
-        <article class="tile reveal">
-          <span class="tile__icon" aria-hidden="true">ðŸ”©</span>
-          <h3>Repuestos originales</h3>
-          <p>Repuestos originales y garantÃ­a de fÃ¡brica. Garantizamos la autenticidad en cada pieza.</p>
-        </article>
-        <article class="tile reveal">
-          <span class="tile__icon" aria-hidden="true">ðŸ¤</span>
-          <h3>GarantÃ­a sin costo</h3>
-          <p>Servicio de garantÃ­a oficial Hyundai sin costo para los vehÃ­culos que estÃ©n dentro del perÃ­odo.</p>
-        </article>
-        <article class="tile reveal">
-          <span class="tile__icon" aria-hidden="true">ðŸ”§</span>
-          <h3>Taller certificado</h3>
-          <p>Agenda tu cita de mantenimiento o reparaciÃ³n con nuestro equipo certificado.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• TALLER â•â•â•â•â•â•â•â• -->
-  <section class="section" id="taller">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Postventa</span>
-        <h2 class="display">Agenda tu cita en el taller</h2>
-        <p>Mantenimiento, reparaciÃ³n o garantÃ­a. Completa el formulario con los datos de tu vehÃ­culo y te confirmamos la disponibilidad por WhatsApp.</p>
-      </div>
-
-      <div class="two-col">
-        <div>
-          <ul class="chips">
-            <li>Cambio de aceite</li>
-            <li>Frenos</li>
-            <li>SuspensiÃ³n y direcciÃ³n</li>
-            <li>Sistema elÃ©ctrico</li>
-            <li>Aire acondicionado</li>
-            <li>TransmisiÃ³n</li>
-            <li>Motor</li>
-            <li>DiagnÃ³stico general</li>
-          </ul>
-
-          <div class="infogrid">
-            <div class="info">
-              <span class="info__icon" aria-hidden="true">ðŸ’¬</span>
-              <div>
-                <h3>WhatsApp</h3>
-                <p><a href="https://wa.me/584147482282" target="_blank" rel="noopener">+58 414-7482282</a></p>
-                <small>Respuesta en horario laboral</small>
-              </div>
-            </div>
-            <div class="info">
-              <span class="info__icon" aria-hidden="true">ðŸ“ž</span>
-              <div>
-                <h3>TelÃ©fono</h3>
-                <p><a href="tel:+584147447887">0414-7447887</a></p>
-                <small><a href="tel:+584228927419">0422-8927419</a></small>
-              </div>
-            </div>
-            <div class="info">
-              <span class="info__icon" aria-hidden="true">ðŸ•˜</span>
-              <div>
-                <h3>Horario</h3>
-                <p>Lun a Vie</p>
-                <small>8:00 â€“ 12:00 / 14:00 â€“ 18:00</small>
-              </div>
-            </div>
-            <div class="info">
-              <span class="info__icon" aria-hidden="true">ðŸ“</span>
-              <div>
-                <h3>UbicaciÃ³n</h3>
-                <p>Av. Urdaneta NÂ° 49-29</p>
-                <small>MÃ©rida, Edo. MÃ©rida</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="formpanel">
-          <h3>Solicitar cita</h3>
-          <p>Los campos marcados con <span class="req">*</span> son obligatorios.</p>
-
-          <form class="form" data-wa data-wa-title="deseo agendar una cita de servicio en el taller." novalidate>
-            <div class="form__row">
-              <div class="field">
-                <label for="apModel">VehÃ­culo <span class="req">*</span></label>
-                <select class="select" id="apModel" name="VehÃ­culo" data-models required>
-                  <option value="">Elige tu vehÃ­culo</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="apYear">AÃ±o <span class="req">*</span></label>
-                <select class="select" id="apYear" name="AÃ±o" data-years required>
-                  <option value="">Selecciona aÃ±o</option>
-                </select>
-              </div>
+    <div class="relative max-w-7xl mx-auto px-6 w-full pt-32 pb-20">
+        <div class="max-w-4xl">
+            <div class="fade-up" style="animation-delay: 0.2s;">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-12 h-px bg-hyundai-copper"></div>
+                    <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">EDICIÓN 2026</span>
+                </div>
             </div>
 
-            <div class="field">
-              <label for="apService">Servicio requerido <span class="req">*</span></label>
-              <select class="select" id="apService" name="Servicio" required>
-                <option value="">Elige un servicio</option>
-                <option>Mantenimiento programado</option>
-                <option>Cambio de aceite y filtros</option>
-                <option>RevisiÃ³n y cambio de frenos</option>
-                <option>SuspensiÃ³n y direcciÃ³n</option>
-                <option>Sistema elÃ©ctrico</option>
-                <option>Aire acondicionado</option>
-                <option>TransmisiÃ³n</option>
-                <option>Motor</option>
-                <option>Servicio de garantÃ­a</option>
-                <option>DiagnÃ³stico general</option>
-              </select>
-            </div>
+            <h1 class="fade-up font-heading font-black text-5xl sm:text-7xl lg:text-8xl leading-[0.95] tracking-tight text-white mb-8" style="animation-delay: 0.4s;">
+                El auto que<br>
+                <span class="text-hyundai-copper glow-copper-text">se adapta</span><br>
+                a tu vida.
+            </h1>
 
-            <div class="form__row">
-              <div class="field">
-                <label for="apDate">Fecha preferida <span class="req">*</span></label>
-                <input class="input" type="date" id="apDate" name="Fecha preferida" required>
-              </div>
-              <div class="field">
-                <label for="apTurno">Turno preferido <span class="req">*</span></label>
-                <select class="select" id="apTurno" name="Turno" required>
-                  <option value="">Selecciona turno</option>
-                  <option>MaÃ±ana (8:00-12:00)</option>
-                  <option>Tarde (13:00-17:00)</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="field">
-              <label for="apName">Nombre completo <span class="req">*</span></label>
-              <input class="input" type="text" id="apName" name="Nombre" autocomplete="name" required>
-            </div>
-
-            <div class="form__row">
-              <div class="field">
-                <label for="apPhone">TelÃ©fono <span class="req">*</span></label>
-                <input class="input" type="tel" id="apPhone" name="TelÃ©fono" placeholder="+58 414 0000000" autocomplete="tel" required>
-              </div>
-              <div class="field">
-                <label for="apEmail">Email</label>
-                <input class="input" type="email" id="apEmail" name="Email" autocomplete="email">
-              </div>
-            </div>
-
-            <div class="form__actions">
-              <button class="btn btn--primary" type="submit">Agendar cita por WhatsApp</button>
-            </div>
-
-            <p class="form__note" data-wa-done hidden tabindex="-1">Abrimos WhatsApp con tu solicitud.</p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• SERVICIOS â•â•â•â•â•â•â• -->
-  <section class="section section--alt" id="servicios">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Nuestros servicios</span>
-        <h2 class="display">AtenciÃ³n integral para tu Hyundai</h2>
-        <p>Desde mantenimiento de rutina hasta reparaciones mayores, con equipo certificado y repuestos originales.</p>
-      </div>
-
-      <ul class="svclist">
-        <li class="svc"><span class="svc__icon" aria-hidden="true">ðŸ“…</span><div><h3>Mantenimiento programado</h3><p>Cumple con el plan de mantenimiento Hyundai segÃºn tu kilometraje.</p></div></li>
-        <li class="svc"><span class="svc__icon" aria-hidden="true">ðŸ’§</span><div><h3>Cambio de aceite</h3><p>Aceites y filtros originales Hyundai para mÃ¡xima protecciÃ³n.</p></div></li>
-        <li class="svc"><span class="svc__icon" aria-hidden="true">âš™ï¸</span><div><h3>Frenos</h3><p>Pastillas, discos y lÃ­quido de frenos con estÃ¡ndar original.</p></div></li>
-        <li class="svc"><span class="svc__icon" aria-hidden="true">ðŸ›ž</span><div><h3>SuspensiÃ³n y direcciÃ³n</h3><p>DiagnÃ³stico y reparaciÃ³n del sistema de suspensiÃ³n.</p></div></li>
-        <li class="svc"><span class="svc__icon" aria-hidden="true">âš¡</span><div><h3>Sistema elÃ©ctrico</h3><p>BaterÃ­a, alternador, motor de arranque y sensores.</p></div></li>
-        <li class="svc"><span class="svc__icon" aria-hidden="true">â„ï¸</span><div><h3>Aire acondicionado</h3><p>Carga de gas, compresor y mantenimiento del sistema HVAC.</p></div></li>
-        <li class="svc"><span class="svc__icon" aria-hidden="true">âš™ï¸</span><div><h3>TransmisiÃ³n</h3><p>Servicio de transmisiÃ³n automÃ¡tica y manual.</p></div></li>
-        <li class="svc"><span class="svc__icon" aria-hidden="true">ðŸ”§</span><div><h3>Motor</h3><p>DiagnÃ³stico avanzado y reparaciÃ³n de motor.</p></div></li>
-        <li class="svc"><span class="svc__icon" aria-hidden="true">ðŸ›¡ï¸</span><div><h3>GarantÃ­a</h3><p>Servicio de garantÃ­a oficial Hyundai sin costo.</p></div></li>
-        <li class="svc"><span class="svc__icon" aria-hidden="true">ðŸ”Ž</span><div><h3>DiagnÃ³stico general</h3><p>RevisiÃ³n completa con equipo de escÃ¡ner profesional.</p></div></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• NOSOTROS â•â•â•â•â•â• -->
-  <section class="section" id="nosotros">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Nuestro concesionario</span>
-        <h2 class="display">Para vivir, MÃ©rida. Para conducir, Hyundai.</h2>
-        <p>En Automotores Kibun hacemos realidad tu anhelo. MÃ¡s que un concesionario: un punto de encuentro entre la ingenierÃ­a coreana y la pasiÃ³n venezolana por conducir. Te recibimos con showroom, taller certificado y respaldo total.</p>
-      </div>
-
-      <div class="tiles">
-        <article class="tile reveal">
-          <span class="tile__icon" aria-hidden="true">ðŸ’°</span>
-          <h3>Ventas</h3>
-          <p>AsesorÃ­a experta en toda la lÃ­nea Hyundai 0KM.</p>
-        </article>
-        <article class="tile reveal">
-          <span class="tile__icon" aria-hidden="true">ðŸ”§</span>
-          <h3>Servicio tÃ©cnico</h3>
-          <p>Mantenimiento certificado con repuestos originales.</p>
-        </article>
-        <article class="tile reveal">
-          <span class="tile__icon" aria-hidden="true">ðŸ›¡ï¸</span>
-          <h3>GarantÃ­a</h3>
-          <p>5 aÃ±os o 100.000 km de garantÃ­a oficial.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• CONTACTO â•â•â•â•â•â• -->
-  <section class="section section--alt" id="contacto">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">VisÃ­tanos</span>
-        <h2 class="display">Hablemos de tu prÃ³ximo Hyundai</h2>
-        <p>Te esperamos en el concesionario. DÃ©janos tus datos y un asesor te contacta con propuestas a medida, disponibilidad de unidades y opciones de financiamiento.</p>
-      </div>
-
-      <div class="infogrid">
-        <div class="info">
-          <span class="info__icon" aria-hidden="true">ðŸ“</span>
-          <div>
-            <h3>VisÃ­tanos</h3>
-            <p>Av. Urdaneta NÂ° 49-29</p>
-            <small>MÃ©rida, Edo. MÃ©rida</small>
-          </div>
-        </div>
-        <div class="info">
-          <span class="info__icon" aria-hidden="true">ðŸ“ž</span>
-          <div>
-            <h3>LlÃ¡manos</h3>
-            <p><a href="tel:+584147447887">0414-7447887</a></p>
-            <small><a href="tel:+584228927419">0422-8927419</a></small>
-          </div>
-        </div>
-        <div class="info">
-          <span class="info__icon" aria-hidden="true">ðŸ’¬</span>
-          <div>
-            <h3>WhatsApp</h3>
-            <p><a href="https://wa.me/584147482282" target="_blank" rel="noopener">+58 414-7482282</a></p>
-            <small>AtenciÃ³n directa</small>
-          </div>
-        </div>
-        <div class="info">
-          <span class="info__icon" aria-hidden="true">âœ‰ï¸</span>
-          <div>
-            <h3>EscrÃ­benos</h3>
-            <p><a href="mailto:administracion.guillen@kibunhyundai.com">administracion.guillen@kibunhyundai.com</a></p>
-            <small>AdministraciÃ³n</small>
-          </div>
-        </div>
-        <div class="info">
-          <span class="info__icon" aria-hidden="true">ðŸ•˜</span>
-          <div>
-            <h3>Horario</h3>
-            <p>Lun a Vie</p>
-            <small>8:00 â€“ 12:00 / 14:00 â€“ 18:00</small>
-          </div>
-        </div>
-      </div>
-
-      <div class="two-col" style="margin-top:clamp(2rem,4vw,3rem)">
-        <div>
-          <span class="eyebrow">Enviar consulta</span>
-          <h3 class="display" style="font-size:clamp(1.6rem,3.4vw,2.3rem);margin-block:.8rem .9rem">Te respondemos rÃ¡pido</h3>
-          <p class="lead" style="margin-bottom:1.5rem">CuÃ©ntanos quÃ© modelo te interesa y te enviamos informaciÃ³n, disponibilidad y condiciones de financiamiento.</p>
-
-          <p class="notice">
-            <strong>Importante.</strong> Todos nuestros modelos son 0KM. Las unidades y precios estÃ¡n sujetos a confirmaciÃ³n con tu asesor, segÃºn disponibilidad en MÃ©rida.
-          </p>
-
-          <div class="hero__actions" style="margin-top:1.75rem">
-            <a class="btn btn--cobre" href="https://wa.me/584147482282" target="_blank" rel="noopener">EscrÃ­benos por WhatsApp</a>
-            <a class="btn btn--outline" href="#catalogo">Ver modelos</a>
-          </div>
-        </div>
-
-        <div class="formpanel">
-          <h3>Formulario de contacto</h3>
-          <p>Los campos marcados con <span class="req">*</span> son obligatorios.</p>
-
-          <form class="form" data-wa data-wa-title="me gustarÃ­a recibir informaciÃ³n sobre un Hyundai." novalidate>
-            <div class="field">
-              <label for="ctName">Nombre completo <span class="req">*</span></label>
-              <input class="input" type="text" id="ctName" name="Nombre" autocomplete="name" required>
-            </div>
-
-            <div class="form__row">
-              <div class="field">
-                <label for="ctEmail">Email <span class="req">*</span></label>
-                <input class="input" type="email" id="ctEmail" name="Email" autocomplete="email" required>
-              </div>
-              <div class="field">
-                <label for="ctPhone">TelÃ©fono <span class="req">*</span></label>
-                <input class="input" type="tel" id="ctPhone" name="TelÃ©fono" placeholder="+58 414 0000000" autocomplete="tel" required>
-              </div>
-            </div>
-
-            <div class="field">
-              <label for="ctModel">Modelo de interÃ©s</label>
-              <select class="select" id="ctModel" name="Modelo de interÃ©s" data-models>
-                <option value="">Selecciona un modelo</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="ctMsg">Mensaje</label>
-              <textarea class="textarea" id="ctMsg" name="Mensaje" placeholder="CuÃ©ntanos quÃ© necesitas saber: precio, financiamiento, colores disponibles, entrega..."></textarea>
-            </div>
-
-            <div class="form__actions">
-              <button class="btn btn--primary" type="submit">Enviar consulta</button>
-              <span class="form__note">Se abrirÃ¡ WhatsApp con tu mensaje.</span>
-            </div>
-
-            <p class="notice" data-wa-done hidden tabindex="-1">
-              <strong>Listo.</strong> Se abriÃ³ WhatsApp con tu consulta. EnvÃ­a el mensaje para que un asesor te responda.
+            <p class="fade-up text-xl text-slate-300 max-w-2xl mb-12 leading-relaxed" style="animation-delay: 0.6s;">
+                Comprometidos con la seguridad vial de Mérida. Con el respaldo de Automotores Kibún, tu distribuidor oficial Hyundai.
             </p>
-          </form>
+
+            <div class="fade-up flex flex-col sm:flex-row gap-4" style="animation-delay: 0.8s;">
+                <a href="#modelos" class="px-8 py-4 bg-hyundai-copper text-hyundai-dark font-bold rounded-lg hover:bg-hyundai-sand transition glow-copper text-center">
+                    Ver Modelos
+                </a>
+                <a href="#videos" class="px-8 py-4 border-2 border-hyundai-copper text-hyundai-copper font-bold rounded-lg hover:bg-hyundai-copper hover:text-hyundai-dark transition text-center">
+                    Ver Videos
+                </a>
+            </div>
+
+            <!-- Stats -->
+            <div class="fade-up grid grid-cols-3 gap-6 mt-20 max-w-2xl" style="animation-delay: 1s;">
+                <div class="border-l-2 border-hyundai-copper pl-4">
+                    <div class="text-3xl font-black text-white" id="stat1">0</div>
+                    <div class="text-sm text-slate-400 mt-1">Años en Mérida</div>
+                </div>
+                <div class="border-l-2 border-hyundai-copper pl-4">
+                    <div class="text-3xl font-black text-white" id="stat2">0</div>
+                    <div class="text-sm text-slate-400 mt-1">Modelos</div>
+                </div>
+                <div class="border-l-2 border-hyundai-copper pl-4">
+                    <div class="text-3xl font-black text-white" id="stat3">0</div>
+                    <div class="text-sm text-slate-400 mt-1">Clientes felices</div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
 
-</main>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <span class="text-xs text-slate-500 tracking-widest">SCROLL</span>
+        <div class="w-px h-12 bg-gradient-to-b from-hyundai-copper to-transparent"></div>
+    </div>
+</section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• FOOTER â•â•â•â•â•â• -->
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__grid footer__grid--4">
-      <div>
-        <div class="footer__logo">
-          <img src="img/modelos/logo-hyundai-blanco.png" alt="Hyundai Automotores Kibun" height="30">
+<!-- ═══════════════ MODELOS ═══════════════ -->
+<section id="modelos" class="py-32 relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20">
+            <div class="inline-flex items-center gap-3 mb-4">
+                <div class="w-8 h-px bg-hyundai-copper"></div>
+                <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">NUESTRA FLOTA</span>
+                <div class="w-8 h-px bg-hyundai-copper"></div>
+            </div>
+            <h2 class="font-heading font-black text-4xl sm:text-6xl text-white tracking-tight mb-6">Compara Modelos</h2>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto">Cada Hyundai está diseñado para adaptarse a tu estilo de vida. Encuentra el tuyo.</p>
         </div>
-        <p>Concesionario autorizado Hyundai en MÃ©rida, Venezuela.</p>
-      </div>
 
-      <div>
-        <h4>NavegaciÃ³n</h4>
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#catalogo">Modelos</a></li>
-          <li><a href="#comparador">Compara tu Hyundai</a></li>
-          <li><a href="#cotizador">Simulador</a></li>
-        </ul>
-      </div>
+        <!-- Filtros -->
+        <div class="flex flex-wrap justify-center gap-3 mb-16">
+            <button onclick="filterCategory('all')" class="filter-btn px-6 py-3 rounded-lg font-semibold text-sm transition-all bg-hyundai-copper text-hyundai-dark">Todos</button>
+            <button onclick="filterCategory('sedan')" class="filter-btn px-6 py-3 rounded-lg font-semibold text-sm transition-all bg-white/5 border border-white/10 text-slate-300 hover:border-hyundai-copper">Sedanes</button>
+            <button onclick="filterCategory('suv')" class="filter-btn px-6 py-3 rounded-lg font-semibold text-sm transition-all bg-white/5 border border-white/10 text-slate-300 hover:border-hyundai-copper">SUV</button>
+            <button onclick="filterCategory('hatchback')" class="filter-btn px-6 py-3 rounded-lg font-semibold text-sm transition-all bg-white/5 border border-white/10 text-slate-300 hover:border-hyundai-copper">Hatchback</button>
+        </div>
 
-      <div>
-        <h4>AtenciÃ³n al cliente</h4>
-        <ul>
-          <li><a href="#taller">Servicios</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contacto</h4>
-        <ul class="footer__contact">
-          <li><span>ðŸ“</span><span>Av. Urdaneta NÂ° 49-29, MÃ©rida</span></li>
-          <li><span>ðŸ’¬</span><a href="https://wa.me/584147482282" target="_blank" rel="noopener">+58 414-7482282</a></li>
-          <li><span>ðŸ“ž</span><a href="tel:+584147447887">0414-7447887</a></li>
-          <li><span>ðŸ“±</span><a href="tel:+584228927419">0422-8927419</a></li>
-          <li><span>âœ‰ï¸</span><a href="mailto:administracion.guillen@kibunhyundai.com">administracion.guillen@kibunhyundai.com</a></li>
-        </ul>
-      </div>
+        <!-- Grid de modelos -->
+        <div id="modelos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
     </div>
+</section>
 
-    <div class="footer__bottom">
-      <span>Â© 2026 Automotores Kibun. Hyundai es una marca registrada de Hyundai Motor Company.</span>
-      <span>Todos los modelos son 0KM</span>
-      <span><a href="original/index.html">Ver sitio anterior</a></span>
+<!-- ═══════════════ VIDEOS / REELS ═══════════════ -->
+<section id="videos" class="py-32 relative overflow-hidden" style="background: linear-gradient(180deg, #0b111a 0%, #0e2b5c 50%, #0b111a 100%);">
+    <!-- Decorativo -->
+    <div class="absolute top-0 left-0 w-full h-px copper-line"></div>
+    <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full" style="background: radial-gradient(circle, rgba(200,157,124,0.08) 0%, transparent 70%);"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Player -->
+            <div class="flex justify-center">
+                <div class="relative">
+                    <!-- Halo -->
+                    <div class="absolute -inset-8 rounded-full" style="background: radial-gradient(circle, rgba(200,157,124,0.15) 0%, transparent 70%); filter: blur(30px);"></div>
+
+                    <!-- Celular -->
+                    <div class="relative w-[280px] sm:w-[320px] rounded-[3rem] p-3 shadow-2xl border border-hyundai-copper/30" style="background: linear-gradient(145deg, #1a1a1a, #0f0f0f);">
+                        <!-- Notch -->
+                        <div class="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-20"></div>
+
+                        <!-- Pantalla -->
+                        <div class="relative aspect-[9/19.5] rounded-[2.5rem] overflow-hidden bg-black">
+                            <video id="reelVideoPlayer" class="w-full h-full object-cover" playsinline loop preload="metadata"
+                                   poster="img/modelos/Grandi10-Hatchback-GL-Azul.png">
+                                <source src="videos/grand-i10.mp4" type="video/mp4">
+                            </video>
+
+                            <!-- Overlay superior -->
+                            <div class="absolute top-0 left-0 right-0 p-4 pt-10 bg-gradient-to-b from-black/70 to-transparent z-10 flex items-start justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-red-500 pulse-dot"></span>
+                                    <span class="text-white text-[10px] font-bold tracking-widest" id="reelLabelTop">Clip 01</span>
+                                </div>
+                                <span class="text-white/70 text-[10px] font-medium" id="reelDurTop">00:12</span>
+                            </div>
+
+                            <!-- Overlay inferior -->
+                            <div class="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10">
+                                <div class="text-white font-bold text-sm mb-1" id="reelTitleOverlay">Grand i10 GL</div>
+                                <div class="text-white/70 text-[11px] mb-3" id="reelSubOverlay">El comienzo de todo</div>
+
+                                <!-- Barra de progreso -->
+                                <div class="w-full h-1 bg-white/20 rounded-full mb-4 overflow-hidden">
+                                    <div id="reelProgress" class="h-full rounded-full transition-all duration-300" style="width:0%; background:#345fa8;"></div>
+                                </div>
+
+                                <!-- Controles -->
+                                <div class="flex items-center justify-between">
+                                    <button onclick="toggleReelPlay()" class="w-10 h-10 rounded-full bg-white/10 backdrop-blur flex items-center justify-center hover:bg-hyundai-copper transition" id="reelPlayBtn" aria-label="Reproducir o pausar">
+                                        <svg id="reelPlayIcon" class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </button>
+
+                                    <!-- Dots -->
+                                    <div class="flex gap-1.5" id="reelDots"></div>
+
+                                    <button onclick="toggleReelMute()" class="w-10 h-10 rounded-full bg-white/10 backdrop-blur flex items-center justify-center hover:bg-hyundai-copper transition" id="reelMuteBtn" aria-label="Activar o silenciar sonido">
+                                        <svg id="reelMuteIcon" class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Badge exterior -->
+                    <div class="absolute -bottom-4 -right-4 px-4 py-2 rounded-lg bg-hyundai-copper text-hyundai-dark font-black text-xs shadow-lg">
+                        9:16 Vertical
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info + tarjetas -->
+            <div>
+                <div class="inline-flex items-center gap-3 mb-4">
+                    <div class="w-8 h-px bg-hyundai-copper"></div>
+                    <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">REELS</span>
+                </div>
+                <h2 class="font-heading font-black text-4xl sm:text-5xl text-white tracking-tight mb-6">Grand i10 y Creta: El Little Giant que se robó el Roadster</h2>
+                <p class="text-slate-400 text-lg mb-10 leading-relaxed">El i10 GL ya tiene su lugar en la historia. Ahora mira cómo se ven en movimiento.</p>
+
+                <!-- Tarjetas de clips -->
+                <div class="space-y-4 mb-10" id="reelCards">
+                    <!-- Se generan por JS -->
+                </div>
+
+                <!-- Cómo activar -->
+                <div class="p-5 rounded-xl bg-white/5 border border-white/10 mb-8">
+                    <p class="text-white font-semibold text-sm mb-3">CÓMO ACTIVAR LOS VIDEOS</p>
+                    <ul class="text-slate-400 text-sm space-y-1.5">
+                        <li>→ Cambia <code class="text-hyundai-copper">.mp4</code> en la carpeta <code class="text-hyundai-copper">videos/</code></li>
+                        <li>→ Edita el array <code class="text-hyundai-copper">REELS</code> al inicio del script</li>
+                        <li>→ Duración auto-calculada del metadata del video</li>
+                    </ul>
+                </div>
+
+                <a href="#modelos" class="inline-flex items-center gap-2 px-8 py-4 bg-hyundai-copper text-hyundai-dark font-bold rounded-lg hover:bg-hyundai-sand transition glow-copper">
+                    Comparar modelos
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
+</section>
+
+<!-- ═══════════════ ESTUDIO 360 ═══════════════ -->
+<section id="estudio" class="py-32 relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <div class="inline-flex items-center gap-3 mb-4">
+                    <div class="w-8 h-px bg-hyundai-copper"></div>
+                    <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">ESTUDIO VIRTUAL</span>
+                </div>
+                <h2 class="font-heading font-black text-4xl sm:text-5xl text-white tracking-tight mb-6">Explora cada detalle<br>desde tu casa.</h2>
+                <p class="text-slate-400 text-lg mb-8 leading-relaxed">Gira, amplía y mira cada centímetro de tu próximo Hyundai. Nuestro estudio interactivo te permite verlo como si estuvieras en el showroom, sin salir de tu casa.</p>
+                <a href="https://www.hyundai.com/worldwide/en/eco/sustainability" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 border-2 border-hyundai-copper text-hyundai-copper font-bold rounded-lg hover:bg-hyundai-copper hover:text-hyundai-dark transition">
+                    Abrir Estudio 360
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+            </div>
+
+            <!-- Preview -->
+            <div class="relative">
+                <div class="aspect-square rounded-2xl overflow-hidden border border-hyundai-copper/20 relative group" style="background: radial-gradient(circle at center, #1e3a6e 0%, #0e2b5c 100%);">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-24 h-24 mx-auto rounded-full border-2 border-hyundai-copper/30 flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110">
+                                <svg class="w-10 h-10 text-hyundai-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.66-.89l.812-1.22A2 2 0 0110.24 4h3.52a2 2 0 011.638.89l.812 1.22A2 2 0 0118.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17H7m10 0h-2m-5 4v-2h4v2"/></svg>
+                            </div>
+                            <p class="text-white font-semibold text-lg">Vista 360°</p>
+                            <p class="text-slate-400 text-sm mt-1">Arrastra para girar</p>
+                        </div>
+                    </div>
+
+                    <!-- Controls decorativos -->
+                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 px-5 py-3 rounded-full bg-black/60 backdrop-blur border border-white/10">
+                        <button class="w-9 h-9 rounded-full hover:bg-hyundai-copper transition flex items-center justify-center" aria-label="Anterior">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                        </button>
+                        <div class="w-2 h-2 rounded-full bg-hyundai-copper"></div>
+                        <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                        <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                        <button class="w-9 h-9 rounded-full hover:bg-hyundai-copper transition flex items-center justify-center" aria-label="Siguiente">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Thumbnails -->
+                <div class="flex gap-3 mt-4">
+                    <div class="flex-1 aspect-video rounded-lg border-2 border-hyundai-copper overflow-hidden" style="background: linear-gradient(135deg, #345fa8, #0e2b5c);"></div>
+                    <div class="flex-1 aspect-video rounded-lg border-2 border-white/10 overflow-hidden" style="background: linear-gradient(135deg, #1e3a6e, #0b111a);"></div>
+                    <div class="flex-1 aspect-video rounded-lg border-2 border-white/10 overflow-hidden" style="background: linear-gradient(135deg, #1e3a6e, #0b111a);"></div>
+                    <div class="flex-1 aspect-video rounded-lg border-2 border-white/10 overflow-hidden" style="background: linear-gradient(135deg, #1e3a6e, #0b111a);"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════ RUTA ANDINA ═══════════════ -->
+<section id="ruta-andina" class="py-32 relative overflow-hidden" style="background: linear-gradient(135deg, #0e2b5c 0%, #002c5f 100%);">
+    <!-- Textura de montañas -->
+    <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><path d=\"M0 100 L30 40 L50 70 L70 30 L100 100 Z\" fill=\"none\" stroke=\"white\" stroke-width=\"0.5\"/></svg>'); background-size: 400px;"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1">
+                <div class="inline-flex items-center gap-3 mb-4">
+                    <div class="w-8 h-px bg-hyundai-copper"></div>
+                    <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">DESTINO OBLIGATORIO</span>
+                </div>
+                <h2 class="font-heading font-black text-4xl sm:text-5xl text-white tracking-tight mb-6">Del centro de Mérida al Pico Bolívar, con la seguridad que mereces.</h2>
+                <p class="text-slate-300 text-lg mb-8 leading-relaxed">La seguridad de tu familia no es negociable. Cada Hyundai está equipado con la tecnología de seguridad más avanzada del mercado, diseñada para protegerte en cada kilómetro de montaña y de ciudad.</p>
+
+                <div class="grid grid-cols-2 gap-6 mb-10">
+                    <div class="p-5 rounded-xl bg-white/5 border border-hyundai-copper/20">
+                        <div class="text-hyundai-copper text-2xl font-black mb-2">6 Airbags</div>
+                        <p class="text-slate-400 text-sm">Protección completa para todos los ocupantes</p>
+                    </div>
+                    <div class="p-5 rounded-xl bg-white/5 border border-hyundai-copper/20">
+                        <div class="text-hyundai-copper text-2xl font-black mb-2">ABS + ESC</div>
+                        <p class="text-slate-400 text-sm">Control de estabilidad para carreteras de montaña</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-1 lg:order-2 float-car">
+                <div class="aspect-[4/3] rounded-2xl overflow-hidden border border-hyundai-copper/20 relative" style="background: linear-gradient(to bottom, #1a3a6e 0%, #0e2b5c 60%, #002c5f 100%);">
+                    <!-- Silueta de montaña -->
+                    <svg class="absolute bottom-0 w-full h-full" viewBox="0 0 400 300" preserveAspectRatio="none">
+                        <path d="M0 300 L100 120 L180 220 L260 80 L400 300 Z" fill="#0b111a" opacity="0.6"></path>
+                        <path d="M0 300 L120 160 L220 250 L320 130 L400 300 Z" fill="#0b111a" opacity="0.4"></path>
+                    </svg>
+                    <!-- Pin -->
+                    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+                        <div class="w-4 h-4 rounded-full bg-hyundai-copper mx-auto mb-2 pulse-dot"></div>
+                        <div class="bg-black/70 backdrop-blur px-4 py-2 rounded-lg border border-hyundai-copper/30">
+                            <div class="text-white font-bold text-sm">Pico Bolívar</div>
+                            <div class="text-hyundai-copper text-xs">5.762 msnm</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════ GARANTÍA ═══════════════ -->
+<section id="garantia" class="py-32 relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20">
+            <div class="inline-flex items-center gap-3 mb-4">
+                <div class="w-8 h-px bg-hyundai-copper"></div>
+                <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">TRANQUILIDAD</span>
+                <div class="w-8 h-px bg-hyundai-copper"></div>
+            </div>
+            <h2 class="font-heading font-black text-4xl sm:text-6xl text-white tracking-tight mb-6">Tu Hyundai está<br><span class="text-hyundai-copper">en buenas manos.</span></h2>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto">Garantía oficial Hyundai y servicio de posventa con la misma calidad del día que entregamos tu auto.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-hyundai-copper/40 transition-all hover:-translate-y-2">
+                <div class="w-14 h-14 rounded-xl bg-hyundai-copper/10 flex items-center justify-center mb-6">
+                    <svg class="w-7 h-7 text-hyundai-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m7 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3 class="text-white font-bold text-lg mb-3">Garantía de Fabrica</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">5 años o 100.000 km en motor y transmisión. Respaldo oficial Hyundai Venezuela.</p>
+            </div>
+
+            <div class="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-hyundai-copper/40 transition-all hover:-translate-y-2">
+                <div class="w-14 h-14 rounded-xl bg-hyundai-copper/10 flex items-center justify-center mb-6">
+                    <svg class="w-7 h-7 text-hyundai-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3 class="text-white font-bold text-lg mb-3">Servicio en 48 Horas</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Agenda tu mantenimiento y recibe tu auto en menos de 48 horas. Sin filas, sin sorpresas.</p>
+            </div>
+
+            <div class="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-hyundai-copper/40 transition-all hover:-translate-y-2">
+                <div class="w-14 h-14 rounded-xl bg-hyundai-copper/10 flex items-center justify-center mb-6">
+                    <svg class="w-7 h-7 text-hyundai-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+                <h3 class="text-white font-bold text-lg mb-3">Repuestos Originales</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Solo componentes Hyundai genuinos. Tu auto se mantiene como el día uno.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════ POSVENTA / AGENDA ═══════════════ -->
+<section id="posventa" class="py-32 relative" style="background: linear-gradient(180deg, #0b111a 0%, #0e2b5c 100%);">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <div class="inline-flex items-center gap-3 mb-4">
+                    <div class="w-8 h-px bg-hyundai-copper"></div>
+                    <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">AGENDA TU CITA</span>
+                </div>
+                <h2 class="font-heading font-black text-4xl sm:text-5xl text-white tracking-tight mb-6">Mantenimiento sin filas. Sin sorpresas.</h2>
+                <p class="text-slate-300 text-lg mb-10 leading-relaxed">Agenda tu servicio por WhatsApp y te confirmamos la cita en minutos. Nuestro equipo de Mérida está listo para atenderte.</p>
+
+                <div class="space-y-4 mb-10">
+                    <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-hyundai-copper/10 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-hyundai-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div>
+                            <div class="text-white font-semibold">Lunes a Viernes</div>
+                            <div class="text-slate-400 text-sm">8:00 AM — 5:00 PM</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-hyundai-copper/10 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-hyundai-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </div>
+                        <div>
+                            <div class="text-white font-semibold">Sábado</div>
+                            <div class="text-slate-400 text-sm">8:00 AM — 12:00 PM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/584147482282?text=Hola%20Automotores%20Kibun%2C%20quiero%20agendar%20mi%20cita%20de%20mantenimiento" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-hyundai-copper text-hyundai-dark font-bold rounded-lg hover:bg-hyundai-sand transition glow-copper">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.82 9.82 0 016.988 2.896 9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.945c0 2.096.549 4.142 1.595 5.945L0 24l6.305-1.654a11.9 11.9 0 005.683 1.448h.005c6.585 0 11.946-5.359 11.949-11.945a11.87 11.87 0 00-3.421-8.4"/></svg>
+                    Agendar por WhatsApp
+                </a>
+            </div>
+
+            <!-- Agenda visual -->
+            <div class="p-8 rounded-2xl bg-white/5 border border-hyundai-copper/20">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-white font-bold">Próximas Citas</h3>
+                    <span class="px-3 py-1 rounded-full bg-hyundai-copper/20 text-hyundai-copper text-xs font-semibold">Esta semana</span>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-4 p-4 rounded-lg bg-black/20 border border-white/5">
+                        <div class="text-center flex-shrink-0">
+                            <div class="text-hyundai-copper font-black text-lg">15</div>
+                            <div class="text-slate-500 text-[10px] uppercase">Sep</div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-white text-sm font-semibold">Mantenimiento 30.000 km</div>
+                            <div class="text-slate-500 text-xs">9:00 AM · María G.</div>
+                        </div>
+                        <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 rounded-lg bg-black/20 border border-white/5">
+                        <div class="text-center flex-shrink-0">
+                            <div class="text-hyundai-copper font-black text-lg">15</div>
+                            <div class="text-slate-500 text-[10px] uppercase">Sep</div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-white text-sm font-semibold">Cambio de aceite</div>
+                            <div class="text-slate-500 text-xs">11:30 AM · Carlos R.</div>
+                        </div>
+                        <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 rounded-lg bg-black/20 border border-white/5">
+                        <div class="text-center flex-shrink-0">
+                            <div class="text-hyundai-copper font-black text-lg">16</div>
+                            <div class="text-slate-500 text-[10px] uppercase">Sep</div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-white text-sm font-semibold">Revisión de frenos</div>
+                            <div class="text-slate-500 text-xs">10:00 AM · Ana P.</div>
+                        </div>
+                        <span class="w-2 h-2 rounded-full bg-yellow-400 flex-shrink-0"></span>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 rounded-lg bg-black/20 border border-white/5">
+                        <div class="text-center flex-shrink-0">
+                            <div class="text-hyundai-copper font-black text-lg">16</div>
+                            <div class="text-slate-500 text-[10px] uppercase">Sep</div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-white text-sm font-semibold">Garantía</div>
+                            <div class="text-slate-500 text-xs">3:00 PM · Luis M.</div>
+                        </div>
+                        <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════ COTIZADOR ═══════════════ -->
+<section id="cotizador" class="py-32 relative overflow-hidden">
+    <div class="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full" style="background: radial-gradient(circle, rgba(200,157,124,0.06) 0%, transparent 70%);"></div>
+
+    <div class="max-w-4xl mx-auto px-6 relative">
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-3 mb-4">
+                <div class="w-8 h-px bg-hyundai-copper"></div>
+                <span class="text-hyundai-copper text-xs font-semibold tracking-widest uppercase">COTIZADOR DE CRÉDITO</span>
+                <div class="w-8 h-px bg-hyundai-copper"></div>
+            </div>
+            <h2 class="font-heading font-black text-4xl sm:text-6xl text-white tracking-tight mb-6">Tu Hyundai, a cuotas.</h2>
+            <p class="text-slate-400 text-lg">Calcula tu cuota mensual y recibe una propuesta personalizada en menos de 24 horas.</p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-white/5 border border-hyundai-copper/20 backdrop-blur">
+            <!-- Selección de modelo -->
+            <div class="mb-8">
+                <label class="block text-white font-semibold text-sm mb-3">Modelo</label>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="modeloBtns">
+                    <button onclick="setModelo(this)" class="modelo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper">Grand i10</button>
+                    <button onclick="setModelo(this)" class="modelo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper">Creta</button>
+                    <button onclick="setModelo(this)" class="modelo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper">Tucson</button>
+                    <button onclick="setModelo(this)" class="modelo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper">Elantra</button>
+                </div>
+            </div>
+
+            <!-- Slider precio inicial -->
+            <div class="mb-8">
+                <div class="flex justify-between items-center mb-3">
+                    <label class="text-white font-semibold text-sm">Entrada inicial</label>
+                    <span class="text-hyundai-copper font-black text-xl" id="entradaLabel">$0</span>
+                </div>
+                <input type="range" min="0" max="100" value="0" oninput="updateEntrada(this.value)" class="w-full accent-[#c89d7c] h-2 rounded-lg cursor-pointer">
+                <div class="flex justify-between text-xs text-slate-500 mt-2">
+                    <span>$0</span>
+                    <span>Monto máximo</span>
+                </div>
+            </div>
+
+            <!-- Plazo -->
+            <div class="mb-8">
+                <label class="block text-white font-semibold text-sm mb-3">Plazo del crédito</label>
+                <div class="grid grid-cols-3 gap-3" id="plazoBtns">
+                    <button onclick="setPlazo(this, 24)" class="plazo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper">24 meses</button>
+                    <button onclick="setPlazo(this, 36)" class="plazo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper">36 meses</button>
+                    <button onclick="setPlazo(this, 48)" class="plazo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper">48 meses</button>
+                </div>
+            </div>
+
+            <!-- Resultado -->
+            <div class="p-6 rounded-xl bg-hyundai-copper/10 border border-hyundai-copper/30 text-center">
+                <div class="text-slate-300 text-sm mb-2">Tu cuota mensual estimada</div>
+                <div class="text-5xl font-black text-white mb-1" id="cuotaResult">$0</div>
+                <div class="text-slate-400 text-xs" id="cuotaDetalle">Sobre un modelo de $0 USD</div>
+            </div>
+
+            <a href="https://wa.me/584147482282?text=Hola%20Automotores%20Kibun%2C%20quiero%20cotizar%20un%20Hyundai" target="_blank" class="mt-6 w-full block text-center px-8 py-4 bg-hyundai-copper text-hyundai-dark font-bold rounded-lg hover:bg-hyundai-sand transition glow-copper">
+                Solicitar cotización por WhatsApp
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="border-t border-hyundai-copper/20 py-16" style="background: #070b12;">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-12 mb-12">
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 bg-hyundai-copper rounded flex items-center justify-center font-black text-hyundai-dark text-xl">K</div>
+                    <span class="font-heading font-bold text-white">Automotores Kibún</span>
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed">Concesionario oficial Hyundai en Mérida, Venezuela. Tu sonrisa es nuestra garantía.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-5 text-sm tracking-wider uppercase">Navegación</h4>
+                <ul class="space-y-3 text-slate-400 text-sm">
+                    <li><a href="#modelos" class="hover:text-hyundai-copper transition">Modelos</a></li>
+                    <li><a href="#videos" class="hover:text-hyundai-copper transition">Videos</a></li>
+                    <li><a href="#estudio" class="hover:text-hyundai-copper transition">Estudio 360</a></li>
+                    <li><a href="#posventa" class="hover:text-hyundai-copper transition">Posventa</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-5 text-sm tracking-wider uppercase">Contacto</h4>
+                <ul class="space-y-3 text-slate-400 text-sm">
+                    <li>Av. Principal de Los stadiums, Mérida</li>
+                    <li>+58 414 748 2282</li>
+                    <li>admin@automotoreskibun.com</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-5 text-sm tracking-wider uppercase">Síguenos</h4>
+                <div class="flex gap-3">
+                    <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-hyundai-copper transition" aria-label="Instagram">
+                        <svg class="w-5 h-5 text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.98-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.98-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-hyundai-copper transition" aria-label="Facebook">
+                        <svg class="w-5 h-5 text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p class="text-slate-500 text-xs">© 2026 Automotores Kibún C.A. Concesionario oficial Hyundai en Mérida.</p>
+            <p class="text-slate-600 text-xs">Imágenes: cámara yokedas.com</p>
+        </div>
+    </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/584147482282" target="_blank" rel="noopener">
-  <span aria-hidden="true">ðŸ’¬</span><span class="wa-float__label">EscrÃ­benos</span>
-</a>
-<script src="js/data.js"></script>
-<script src="js/kibu.js"></script>
-<script src="js/form-wa.js"></script>
-<script src="js/experiencia.js"></script>
-<script src="js/reels.js" defer></script>
+<script>
+// ═══════════════ DATOS DE MODELOS ═══════════════
+// Las fotos viven en img/modelos/. Formato 700x492 con fondo de estudio.
+const MODELOS = [
+    { id:'i10-gl',  nombre:'Grand i10',    cat:'hatchback', precio:14900, img:'img/modelos/Grandi10-Hatchback-GL-Azul.png',   motor:'1.0 MPI', hp:'75',  trans:'Manual 5 vel',   badge:'Little Giant' },
+    { id:'i10-gls', nombre:'Grand i10 GLS',cat:'hatchback', precio:15900, img:'img/modelos/Grandi10-Hatchback-GLS-rojo.png', motor:'1.2 MPI', hp:'82',  trans:'Manual 5 vel',   badge:'Versión superior' },
+    { id:'creta',   nombre:'Creta',        cat:'suv',       precio:24500, img:'img/modelos/Creta-Blanco_.png',             motor:'1.5 MPI', hp:'113', trans:'Automática 6 vel', badge:'SUV compacto' },
+    { id:'tucson',  nombre:'Tucson',       cat:'suv',       precio:29900, img:'img/modelos/Tucson-blanco.png',              motor:'2.0 MPI', hp:'150', trans:'Automática 8 vel', badge:'Bestseller' },
+    { id:'elantra', nombre:'Elantra',      cat:'sedan',     precio:21500, img:'img/modelos/Elantra-rojo.png',               motor:'2.0 MPI', hp:'147', trans:'Automática IVT',   badge:'Sedán' },
+    { id:'accent',  nombre:'Accent',       cat:'sedan',     precio:18500, img:'img/modelos/Accent-blanco.png',              motor:'1.6 MPI', hp:'121', trans:'Automática IVT',   badge:'Sedán' },
+    { id:'palisade',nombre:'Palisade',     cat:'suv',       precio:34900, img:'img/modelos/Palisade-rojo.png',              motor:'2.2 MPI', hp:'150', trans:'Automática 8 vel', badge:'SUV premium' }
+];
+
+// ═══════════════ REELS / VIDEOS ═══════════════
+// Cambia los .mp4 en la carpeta videos/ y edita este array.
+const REELS = [
+    { num:'01', label:'Clip 01', dur:'00:12', title:'Grand i10 GL', sub:'El comienzo de todo',  accent:'#345fa8', src:'videos/grand-i10.mp4', poster:'img/modelos/Grandi10-Hatchback-GL-Azul.png' },
+    { num:'02', label:'Clip 02', dur:'00:09', title:'Creta',        sub:'Cómo te mueves',       accent:'#c89d7c', src:'videos/creta.mp4',     poster:'img/modelos/Creta-Blanco_.png' }
+];
+
+let reelActual = 0;
+
+// ═══════════════ RENDER MODELOS ═══════════════
+function renderModelos(cat) {
+    const grid = document.getElementById('modelos-grid');
+    const items = cat === 'all' ? MODELOS : MODELOS.filter(m => m.cat === cat);
+    grid.innerHTML = items.map(m => `
+        <div class="group relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-hyundai-copper/40 transition-all duration-300 hover:-translate-y-2">
+            <div class="aspect-[4/3] relative overflow-hidden" style="background: radial-gradient(circle at center, #1e3a6e 0%, #0e2b5c 100%);">
+                <img src="${m.img}" alt="${m.nombre}" loading="lazy"
+                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                     onerror="this.style.display='none'">
+                <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-hyundai-copper text-hyundai-dark text-[10px] font-black uppercase tracking-wider">${m.badge}</div>
+            </div>
+            <div class="p-5">
+                <h3 class="text-white font-bold text-lg mb-3">${m.nombre}</h3>
+                <ul class="space-y-1.5 text-slate-400 text-xs mb-4">
+                    <li class="flex justify-between"><span>Motor</span><span class="text-slate-300 font-semibold">${m.motor}</span></li>
+                    <li class="flex justify-between"><span>Potencia</span><span class="text-slate-300 font-semibold">${m.hp} HP</span></li>
+                    <li class="flex justify-between"><span>Transmisión</span><span class="text-slate-300 font-semibold">${m.trans}</span></li>
+                </ul>
+                <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                    <div>
+                        <span class="text-2xl font-black text-hyundai-copper">$${m.precio.toLocaleString()}</span>
+                        <span class="text-slate-500 text-xs"> USD</span>
+                    </div>
+                    <a href="https://wa.me/584147482282?text=Hola%20Automotores%20Kibun%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20${m.nombre}" target="_blank"
+                       class="px-4 py-2 bg-hyundai-copper/10 border border-hyundai-copper/30 text-hyundai-copper text-xs font-bold rounded-lg hover:bg-hyundai-copper hover:text-hyundai-dark transition">
+                        Cotizar
+                    </a>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Filtros de categoría
+function filterCategory(cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+        const on = b.textContent.trim().toLowerCase() ===
+                  (cat === 'all' ? 'todos' : cat === 'sedan' ? 'sedanes' : cat === 'suv' ? 'suv' : 'hatchback');
+        b.className = on
+            ? 'filter-btn px-6 py-3 rounded-lg font-semibold text-sm transition-all bg-hyundai-copper text-hyundai-dark'
+            : 'filter-btn px-6 py-3 rounded-lg font-semibold text-sm transition-all bg-white/5 border border-white/10 text-slate-300 hover:border-hyundai-copper';
+    });
+    renderModelos(cat);
+}
+
+// ═══════════════ REELS PLAYER ═══════════════
+function buildReels() {
+    // Dots
+    document.getElementById('reelDots').innerHTML = REELS.map((r, i) =>
+        `<span onclick="switchReel(${i})" class="reel-dot w-1.5 h-1.5 rounded-full cursor-pointer transition-all ${i === 0 ? 'bg-hyundai-copper w-6' : 'bg-white/30'}"></span>`
+    ).join('');
+
+    // Tarjetas
+    document.getElementById('reelCards').innerHTML = REELS.map((r, i) => `
+        <div onclick="switchReel(${i})" class="reel-card cursor-pointer rounded-xl p-5 border transition-all ${i === 0 ? 'active border-hyundai-copper/40 bg-white/5' : 'border-white/10 bg-white/[0.02] hover:border-hyundai-copper/30'}"
+             data-i="${i}">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-lg flex items-center justify-center font-black text-lg flex-shrink-0"
+                     style="background:${r.accent}20;color:${r.accent}">${r.num}</div>
+                <div class="flex-1">
+                    <div class="text-white font-bold">${r.title}</div>
+                    <div class="text-slate-400 text-sm">${r.sub}</div>
+                </div>
+                <div class="text-right flex-shrink-0">
+                    <div class="text-slate-300 text-xs font-semibold">${r.dur}</div>
+                    <div class="text-hyundai-copper text-[10px] uppercase tracking-wider">${r.label}</div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function switchReel(i) {
+    reelActual = i;
+    const r = REELS[i];
+    const v = document.getElementById('reelVideoPlayer');
+
+    v.poster = r.poster;
+    v.querySelector('source').src = r.src;
+    v.load();
+    v.play().catch(() => {});
+
+    document.getElementById('reelLabelTop').textContent  = r.label;
+    document.getElementById('reelDurTop').textContent    = r.dur;
+    document.getElementById('reelTitleOverlay').textContent = r.title;
+    document.getElementById('reelSubOverlay').textContent   = r.sub;
+    document.getElementById('reelProgress').style.background = r.accent;
+
+    // Dots
+    document.querySelectorAll('.reel-dot').forEach((d, di) => {
+        d.className = 'reel-dot w-1.5 h-1.5 rounded-full cursor-pointer transition-all ' +
+                      (di === i ? 'bg-hyundai-copper w-6' : 'bg-white/30');
+    });
+
+    // Tarjetas: active / next / far
+    document.querySelectorAll('.reel-card').forEach((c, ci) => {
+        const diff = ci - i;
+        c.classList.remove('active', 'next', 'far');
+        if (diff === 0) c.classList.add('active');
+        else if (diff === 1) c.classList.add('next');
+        else c.classList.add('far');
+    });
+}
+
+function toggleReelPlay() {
+    const v = document.getElementById('reelVideoPlayer');
+    const icon = document.getElementById('reelPlayIcon');
+    if (v.paused) {
+        v.play().catch(() => {});
+        icon.innerHTML = '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
+    } else {
+        v.pause();
+        icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+    }
+}
+
+function toggleReelMute() {
+    const v = document.getElementById('reelVideoPlayer');
+    const icon = document.getElementById('reelMuteIcon');
+    v.muted = !v.muted;
+    if (v.muted) {
+        icon.innerHTML = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/>';
+    } else {
+        icon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+    }
+}
+
+// Duración real desde el metadata del video
+function leerDuracion(i) {
+    const v = document.getElementById('reelVideoPlayer');
+    const tmp = document.createElement('video');
+    tmp.preload = 'metadata';
+    tmp.src = REELS[i].src;
+    tmp.onloadedmetadata = () => {
+        const s = Math.round(tmp.duration);
+        const mm = String(Math.floor(s / 60)).padStart(2, '0');
+        const ss = String(s % 60).padStart(2, '0');
+        REELS[i].dur = mm + ':' + ss;
+        if (i === reelActual) {
+            document.getElementById('reelDurTop').textContent = REELS[i].dur;
+            const card = document.querySelectorAll('.reel-card')[i];
+            if (card) card.querySelector('.text-slate-300.text-xs').textContent = REELS[i].dur;
+        }
+    };
+}
+
+// Barra de progreso
+document.addEventListener('DOMContentLoaded', () => {
+    const v = document.getElementById('reelVideoPlayer');
+    v.addEventListener('timeupdate', () => {
+        if (v.duration) {
+            document.getElementById('reelProgress').style.width = ((v.currentTime / v.duration) * 100) + '%';
+        }
+    });
+    v.addEventListener('ended', () => switchReel((reelActual + 1) % REELS.length));
+    v.addEventListener('loadedmetadata', () => {
+        const s = Math.round(v.duration);
+        const mm = String(Math.floor(s / 60)).padStart(2, '0');
+        const ss = String(s % 60).padStart(2, '0');
+        REELS[0].dur = mm + ':' + ss;
+        document.getElementById('reelDurTop').textContent = REELS[0].dur;
+    });
+
+    REELS.forEach((r, i) => leerDuracion(i));
+});
+
+// ═══════════════ COTIZADOR ═══════════════
+let modeloSel = MODELOS[0];
+let plazoSel = 36;
+let entradaPct = 0;
+
+function setModelo(btn) {
+    document.querySelectorAll('.modelo-btn').forEach(b => {
+        b.className = 'modelo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper';
+    });
+    btn.className = 'modelo-btn px-4 py-3 rounded-lg border-hyundai-copper bg-hyundai-copper/15 text-hyundai-copper font-semibold text-sm transition-all';
+    const nombre = btn.textContent.trim();
+    modeloSel = MODELOS.find(m => m.nombre === nombre) || MODELOS[0];
+    calcularCuota();
+}
+
+function setPlazo(btn, meses) {
+    document.querySelectorAll('.plazo-btn').forEach(b => {
+        b.className = 'plazo-btn px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 font-semibold text-sm transition-all hover:border-hyundai-copper';
+    });
+    btn.className = 'plazo-btn px-4 py-3 rounded-lg border-hyundai-copper bg-hyundai-copper/15 text-hyundai-copper font-semibold text-sm transition-all';
+    plazoSel = meses;
+    calcularCuota();
+}
+
+function updateEntrada(pct) {
+    entradaPct = parseInt(pct, 10);
+    const max = modeloSel.precio * 0.6;
+    document.getElementById('entradaLabel').textContent = '$' + Math.round(max * entradaPct / 100).toLocaleString();
+    calcularCuota();
+}
+
+function calcularCuota() {
+    const maxEntrada = modeloSel.precio * 0.6;
+    const entrada = maxEntrada * entradaPct / 100;
+    const financia = modeloSel.precio - entrada;
+    const tasa = 0.009; // ~10.8% anual
+    const cuota = (financia * tasa * Math.pow(1 + tasa, plazoSel)) / (Math.pow(1 + tasa, plazoSel) - 1);
+    document.getElementById('cuotaResult').textContent = '$' + Math.round(cuota).toLocaleString();
+    document.getElementById('cuotaDetalle').textContent =
+        'Sobre un ' + modeloSel.nombre + ' de $' + modeloSel.precio.toLocaleString() + ' USD a ' + plazoSel + ' meses';
+}
+
+// ═══════════════ STATS ANIMADOS ═══════════════
+function animateStat(id, target, suffix = '') {
+    const el = document.getElementById(id);
+    let current = 0;
+    const step = Math.ceil(target / 40);
+    const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = current.toLocaleString() + suffix;
+    }, 30);
+}
+
+// ═══════════════ INIT ═══════════════
+document.addEventListener('DOMContentLoaded', () => {
+    renderModelos('all');
+    buildReels();
+    switchReel(0);
+    updateEntrada(0);
+    setModelo(document.querySelector('.modelo-btn'));
+    setPlazo(document.querySelectorAll('.plazo-btn')[1], 36);
+
+    // Stats al hacer scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                animateStat('stat1', 15, '+');
+                animateStat('stat2', 8, '');
+                animateStat('stat3', 2400, '+');
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.5 });
+    observer.observe(document.getElementById('inicio'));
+});
+</script>
 </body>
 </html>
