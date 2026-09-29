@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <title>Video Showroom | Hyundai Mérida</title>
+  <meta name="description" content="El Grand i10 en acción. Videos verticales del showroom Hyundai de Automotores Kibun en Mérida.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://cdn.prod.website-files.com/695b182e874dc417335a062b/695c394d095ae1ab3242a04a_Favion%20Hyundai.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/kibu.css">
+</head>
+<body class="antialiased selection:bg-[#c89d7c] selection:text-slate-950" data-precios="oculto">
+
+<!-- ================= NAVBAR OFICIAL ================= -->
+  <header id="mainHeader" class="fixed top-0 left-0 right-0 z-50 bg-[#0b111a]/95 backdrop-blur-md border-b border-slate-800/80 py-3.5 px-4 sm:px-8 transition-all">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-7 rounded bg-[#002c5f] flex items-center justify-center p-1 border border-white/20 shadow-sm">
+          <img src="https://cdn.prod.website-files.com/695b182e874dc417335a062b/69cec19d0592eb45eefce71b_Favicon%20hyundai%20blanco.png" alt="Hyundai" class="h-4 w-auto">
+        </div>
+        <div>
+          <span class="text-base font-bold text-white tracking-tight leading-none block font-heading">Automotores Kibun</span>
+          <span class="text-[10px] text-[#c89d7c] font-semibold tracking-widest uppercase block">Hyundai Mérida · Concesionario Oficial</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden xl:flex items-center gap-6 text-xs uppercase font-bold tracking-wider text-slate-300 font-heading">
+        <a href="index.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Inicio</a>
+        <a href="nosotros.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Nosotros</a>
+        <a href="modelos.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Modelos</a>
+        <a href="videos.html" class=" nav-link nav-activo hover:text-[#c89d7c] transition-colors">Reels</a>
+        <a href="estudio.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Estudio 360°</a>
+        <a href="ruta-andina.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Ruta Andina</a>
+        <a href="garantia.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Garantía</a>
+        <a href="taller.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Taller</a>
+      </nav>
+
+      <!-- Right Action -->
+      <div class="flex items-center gap-3">
+        <a href="contacto.html" class="px-4 py-2 bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/40 text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors flex items-center gap-1.5 shadow-md">
+          <span>Contáctanos</span>
+        </a>
+        <button id="menuToggleBtn" class="xl:hidden p-2 text-slate-300 hover:text-white bg-slate-900 rounded-lg border border-slate-800" aria-label="Menú">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden xl:hidden bg-[#0b111a] border-t border-slate-800 px-4 py-4 mt-3 space-y-2">
+      <a href="index.html" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Inicio</a>
+      <a href="nosotros.html" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Nosotros</a>
+      <a href="modelos.html" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Modelos</a>
+      <a href="videos.html" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Reels</a>
+      <a href="estudio.html" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Estudio 360°</a>
+      <a href="ruta-andina.html" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Ruta Andina</a>
+      <a href="garantia.html" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Garantía</a>
+      <a href="taller.html" class="mobile-nav-link block py-2 text-sm text-slate-200 hover:text-[#c89d7c]">Taller</a>
+    </div>
+  </header>
+
+<section id="videos" class="pt-32 pb-24 bg-[#0a0f18] border-t border-slate-800/80 px-4 sm:px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-[#002c5f] border border-[#c89d7c]/40 text-xs font-semibold text-[#c89d7c] mb-3 uppercase tracking-wider font-heading">Galería Multimedia 9:16</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">Grand i10 en Acción: Video Showroom</h2>
+        <p class="mt-2 text-slate-400 text-sm max-w-2xl mx-auto">Formato vertical cinematográfico sin marcas de agua. Diseño 100% responsive optimizado para teléfonos y computadoras.</p>
+        
+        <div class="flex items-center justify-center gap-2 mt-6">
+          <button id="reelBtn0" onclick="switchReel(0)" class="px-4 py-2 rounded-xl text-xs font-bold bg-[#002c5f] text-white border border-[#c89d7c]/60 shadow-lg font-heading">Clip 01: Grand i10 GL</button>
+          <button id="reelBtn1" onclick="switchReel(1)" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-400 hover:text-white border border-slate-800 font-heading">Clip 02: Grand i10 GLS</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center max-w-5xl mx-auto">
+        <!-- Phone Frame 9:16 -->
+        <div class="lg:col-span-6 flex justify-center">
+          <div class="relative w-full max-w-[320px] aspect-[9/16] rounded-[36px] bg-slate-950 p-3 shadow-2xl border-4 border-slate-800 ring-1 ring-[#c89d7c]/30 flex flex-col overflow-hidden">
+            <div class="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-4 bg-slate-900 rounded-full z-30 flex items-center justify-center">
+              <div class="w-2 h-2 bg-black rounded-full border border-slate-800 mr-2"></div>
+              <div class="w-8 h-1 bg-slate-800 rounded-full"></div>
+            </div>
+
+            <div class="relative w-full h-full rounded-[26px] overflow-hidden bg-[#0c121e] flex flex-col justify-between">
+              <video id="reelVideoPlayer" playsinline muted autoplay loop class="absolute inset-0 w-full h-full object-cover z-10 cursor-pointer" src="videos/grand-i10.mp4" poster="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png" onclick="toggleReelPlay()"></video>
+
+              <!-- Dynamic Card Flip Overlay -->
+              <div id="reelCardDeck" onclick="rotateReelCard()" class="absolute inset-0 z-15 p-4 flex flex-col items-center justify-center cursor-pointer select-none">
+                <div class="relative w-full max-w-[240px] aspect-[3/4] rounded-2xl bg-white text-slate-950 p-4 shadow-2xl flex flex-col justify-between border-2 border-white/80">
+                  <div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#002c5f] block">Automotores Kibun</span>
+                    <h4 id="deckCardTitle" class="text-lg font-extrabold text-slate-950 font-heading leading-tight mt-0.5">Grand i10 GL</h4>
+                    <span id="deckCardSub" class="text-[11px] font-semibold text-slate-600 block">Edición M/T · Blanco Polar</span>
+                  </div>
+                  <div class="my-auto py-2 flex items-center justify-center">
+                    <img id="deckCardImg" src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png" alt="Grand i10" class="max-h-32 object-contain filter drop-shadow-md">
+                  </div>
+                  <div class="pt-2 border-t border-slate-300 flex items-center justify-between text-[11px]">
+                    <span id="deckCardPrice" class="font-bold text-[#002c5f] font-mono"></span>
+                    <span class="text-[10px] text-slate-500">Toca para rotar</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Top Controls -->
+              <div class="relative z-20 p-4 pt-6 bg-gradient-to-b from-slate-950/80 to-transparent flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full bg-slate-950/80 border border-[#c89d7c]/40 text-[10px] font-bold text-[#c89d7c] font-heading">EN VIVO</span>
+                <button onclick="toggleReelMute()" class="p-2 rounded-full bg-slate-950/80 text-white border border-white/20">
+                  <span id="reelMuteIcon">🔇</span>
+                </button>
+              </div>
+
+              <!-- Bottom Controls -->
+              <div class="relative z-20 p-4 bg-gradient-to-t from-slate-950/90 to-transparent flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-bold text-[#c89d7c] uppercase block">Hyundai Mérida</span>
+                  <h5 id="reelBottomTitle" class="text-xs font-bold text-white font-heading">Grand i10 GL M/T</h5>
+                </div>
+                <button onclick="toggleReelPlay()" id="reelPlayBtn" class="p-2 rounded-full bg-[#002c5f] text-white border border-[#c89d7c]/50 text-xs">
+                  ⏸
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Details Column -->
+        <div class="lg:col-span-6 space-y-6">
+          <div>
+            <span id="reelDetailBadge" class="text-xs uppercase font-bold text-[#c89d7c] block font-heading">Reel Oficial 01</span>
+            <h3 id="reelDetailTitle" class="text-2xl font-bold text-white font-heading mt-1">Grand i10 GL M/T · Edición Dinámica</h3>
+            <p id="reelDetailDesc" class="mt-2 text-slate-300 text-xs leading-relaxed">Ágil en el tráfico merideño y económico en consumo. Transmisión manual de 5 velocidades para máximo control en ascensos.</p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 text-center text-xs">
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+              <span class="text-[10px] text-slate-400 block uppercase">Transmisión</span>
+              <span id="reelSpecTrans" class="font-bold text-white text-xs mt-0.5 block">Sincrónica 5 vel</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+              <span class="text-[10px] text-slate-400 block uppercase">Consumo</span>
+              <span id="reelSpecConsumo" class="font-bold text-[#c89d7c] text-xs mt-0.5 block">5.0 L/100km</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+              <span class="text-[10px] text-slate-400 block uppercase">Garantía</span>
+              <span class="font-bold text-white text-xs mt-0.5 block">5 Años / 100k km</span>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-[#002c5f]/30 border border-[#c89d7c]/30 text-xs space-y-2">
+            <strong class="text-white block font-heading">¿Cómo activar tus videos en tu página?</strong>
+            <p class="text-slate-400 text-[11px] leading-relaxed"><strong>1. En tu GitHub:</strong> Crea una carpeta <code class="text-[#c89d7c]">videos/</code> en tu repositorio y sube tus archivos como <code class="text-white">grand-i10.mp4</code> y <code class="text-white">creta.mp4</code>.</p>
+            <div class="pt-1 flex items-center gap-2 flex-wrap">
+              <label class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/40 text-xs text-white font-semibold">
+                <span>📁 Probar con mi video MP4 ahora</span>
+                <input type="file" accept="video/*" onchange="loadLocalVideo(event)" class="hidden">
+              </label>
+              <span id="localVideoStatus" class="text-[10px] text-[#c89d7c]"></span>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <a href="contacto.html" class="flex-1 py-3 px-4 rounded-xl bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/60 text-white font-bold text-xs uppercase tracking-wider text-center font-heading">
+              Cotizar Grand i10
+            </a>
+            <a href="https://wa.me/584147482282?text=Hola%20Automotores%20Kibun%2C%20quiero%20cotizar%20el%20Grand%20i10%20que%20vi%20en%20el%20video" target="_blank" class="py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-semibold text-xs flex items-center gap-1.5">
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ================= FOOTER ================= -->
+  <footer class="bg-[#0b111a] border-t border-slate-800 py-12 px-4 sm:px-8 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img src="https://cdn.prod.website-files.com/695b182e874dc417335a062b/69cec19d0592eb45eefce71b_Favicon%20hyundai%20blanco.png" alt="Hyundai" class="h-5">
+        <span>© 2026 Automotores Kibun C.A. Concesionario oficial Hyundai en Mérida, Venezuela.</span>
+      </div>
+      <div class="text-center sm:text-right">
+        <span>Av. Urdaneta, entre calles 48 y 49, local n.° 49-29, Mérida. Tel: +58 (274) 266-4022</span>
+        <a href="https://wa.me/584147482282?text=Hola%20Automotores%20Kibun%2C%20deseo%20informaci%C3%B3n%20sobre%20los%20veh%C3%ADculos%20Hyundai%20en%20M%C3%A9rida" target="_blank" rel="noopener" class="block mt-2 text-[#c89d7c] font-bold hover:text-white transition-colors">+58 414-7482282 · WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/584147482282?text=Hola%20Automotores%20Kibun%2C%20deseo%20informaci%C3%B3n%20sobre%20los%20veh%C3%ADculos%20Hyundai%20en%20M%C3%A9rida" target="_blank" rel="noopener" class="fixed bottom-6 right-6 z-40 p-4 rounded-full bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/50 text-white shadow-2xl hover:scale-110 active:scale-95 transition-all" aria-label="WhatsApp">
+    <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+  </a>
+
+  <script src="js/kibu.js"></script>
+</body>
+</html>

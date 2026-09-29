@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-  <title>Gama de Modelos 0KM | Hyundai Mérida</title>
-  <meta name="description" content="Flota oficial Hyundai 0KM 2025-2026 en Mérida: SUVs, sedanes, hatchbacks y vans con garantía de fábrica de 5 años.">
+  <title>Estudio 360° | Personaliza tu Hyundai</title>
+  <meta name="description" content="Prueba los acabados de pintura oficial Hyundai y activa la iluminación diurna LED en el estudio 360° de Automotores Kibun Mérida.">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -33,9 +33,9 @@
       <nav class="hidden xl:flex items-center gap-6 text-xs uppercase font-bold tracking-wider text-slate-300 font-heading">
         <a href="index.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Inicio</a>
         <a href="nosotros.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Nosotros</a>
-        <a href="modelos.html" class=" nav-link nav-activo hover:text-[#c89d7c] transition-colors">Modelos</a>
+        <a href="modelos.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Modelos</a>
         <a href="videos.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Reels</a>
-        <a href="estudio.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Estudio 360°</a>
+        <a href="estudio.html" class=" nav-link nav-activo hover:text-[#c89d7c] transition-colors">Estudio 360°</a>
         <a href="ruta-andina.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Ruta Andina</a>
         <a href="garantia.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Garantía</a>
         <a href="taller.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Taller</a>
@@ -65,27 +65,62 @@
     </div>
   </header>
 
-<section id="modelos" class="pt-32 pb-24 bg-[#0e1522] border-t border-slate-800/80 px-4 sm:px-8">
+<section id="estudio" class="pt-32 pb-24 bg-[#0b111a] border-t border-slate-800/80 px-4 sm:px-8">
     <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-widest text-[#c89d7c] block mb-2 font-heading">Flota Oficial Hyundai Venezuela 2025 - 2026</span>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-heading">Gama de Modelos 0KM</h2>
-          <p class="mt-2 text-slate-400 text-sm max-w-xl">5 años de garantía o 100.000 km, respaldo directo de fábrica y entrega inmediata en Mérida.</p>
-        </div>
-        <!-- Category Filters -->
-        <div class="flex items-center gap-1.5 p-1 bg-slate-900/90 rounded-xl border border-slate-800 overflow-x-auto hide-scrollbar">
-          <button onclick="filterCategory('all')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg bg-[#002c5f] text-white border border-[#c89d7c]/50">Todos</button>
-          <button onclick="filterCategory('suv')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white border border-transparent">SUVs</button>
-          <button onclick="filterCategory('sedan')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white border border-transparent">Sedanes</button>
-          <button onclick="filterCategory('hatchback')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white border border-transparent">Hatchbacks</button>
-          <button onclick="filterCategory('van')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white border border-transparent">Vans 11P</button>
-        </div>
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-[#002c5f] border border-[#c89d7c]/40 text-xs font-semibold text-[#c89d7c] mb-3 uppercase tracking-wider">Estudio Virtual Kibun</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">Personalizador de Color y Faros LED</h2>
+        <p class="mt-2 text-slate-400 text-sm">Prueba los acabados de pintura oficial Hyundai, activa la iluminación diurna LED y cotiza tu versión preferida.</p>
       </div>
 
-      <!-- Models Grid -->
-      <div id="modelsGridContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Rendered dynamically via JS below -->
+      <!-- Studio Box -->
+      <div class="rounded-3xl bg-gradient-to-b from-[#111927] via-[#0b111a] to-[#0b111a] border border-slate-800 p-6 sm:p-10 shadow-2xl relative">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 pb-6">
+          <div>
+            <span id="studioCat" class="text-xs uppercase font-bold text-[#c89d7c] block tracking-wider font-heading">SUV All-Terrain</span>
+            <h3 id="studioName" class="text-2xl sm:text-3xl font-bold text-white font-heading">Hyundai Tucson GLX 4WD</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <button id="headlightToggleBtn" onclick="toggleHeadlights()" class="px-4 py-2 rounded-xl text-xs font-bold border border-amber-400/50 bg-amber-400/15 text-amber-200 cursor-pointer">
+              Faros LED: ON
+            </button>
+            <div class="px-4 py-2 rounded-xl bg-slate-950 border border-slate-800 text-right">
+              <span class="text-[10px] text-slate-400 block uppercase tracking-wider">Consultar</span>
+              <a href="contacto.html" class="text-base font-extrabold text-[#c89d7c] font-heading hover:text-white transition-colors">Precio en showroom</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Studio Stage -->
+        <div class="relative my-10 min-h-[300px] flex flex-col items-center justify-center">
+          <div id="headlightGlow" class="absolute inset-0 pointer-events-none z-10">
+            <div class="absolute top-1/2 left-[15%] -translate-y-1/2 w-72 h-36 bg-amber-200/10 blur-2xl -rotate-12 rounded-full"></div>
+            <div class="absolute top-1/2 right-[15%] -translate-y-1/2 w-72 h-36 bg-amber-200/10 blur-2xl rotate-12 rounded-full"></div>
+          </div>
+          <img id="studioCarImg" src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson Studio" class="w-full max-w-xl object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.9)] transition-all duration-300">
+          <!-- Reflection -->
+          <div class="w-full max-h-[80px] overflow-hidden opacity-25 filter blur-[2px] pointer-events-none -mt-4">
+            <img id="studioCarReflection" src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" class="w-full max-w-xl mx-auto object-contain transform scale-y-[-1]">
+          </div>
+        </div>
+
+        <!-- Studio Bottom Controls -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-slate-800">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-semibold text-slate-400">Color Oficial:</span>
+            <div id="studioColorDots" class="flex items-center gap-2">
+              <!-- Rendered via JS -->
+            </div>
+            <span id="studioColorLabel" class="text-xs text-[#e2cbb5] font-semibold ml-2">Azul Océano</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="switchStudioModel('tucson')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 hover:text-white border border-slate-700">Tucson</button>
+            <button onclick="switchStudioModel('creta')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 hover:text-white border border-slate-700">Creta</button>
+            <button onclick="switchStudioModel('elantra')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 hover:text-white border border-slate-700">Elantra</button>
+            <button onclick="switchStudioModel('palisade')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 hover:text-white border border-slate-700">Palisade</button>
+            <button onclick="switchStudioModel('staria')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 hover:text-white border border-slate-700">Staria</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>

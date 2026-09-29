@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-  <title>Gama de Modelos 0KM | Hyundai Mérida</title>
-  <meta name="description" content="Flota oficial Hyundai 0KM 2025-2026 en Mérida: SUVs, sedanes, hatchbacks y vans con garantía de fábrica de 5 años.">
+  <title>Ruta Andina | Hyundai en los Andes Merideños</title>
+  <meta name="description" content="Hyundai en los Andes merideños. Tracción, potencia y control en el páramo con los SUV de la flota oficial.">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -33,10 +33,10 @@
       <nav class="hidden xl:flex items-center gap-6 text-xs uppercase font-bold tracking-wider text-slate-300 font-heading">
         <a href="index.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Inicio</a>
         <a href="nosotros.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Nosotros</a>
-        <a href="modelos.html" class=" nav-link nav-activo hover:text-[#c89d7c] transition-colors">Modelos</a>
+        <a href="modelos.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Modelos</a>
         <a href="videos.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Reels</a>
         <a href="estudio.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Estudio 360°</a>
-        <a href="ruta-andina.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Ruta Andina</a>
+        <a href="ruta-andina.html" class=" nav-link nav-activo hover:text-[#c89d7c] transition-colors">Ruta Andina</a>
         <a href="garantia.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Garantía</a>
         <a href="taller.html" class=" nav-link hover:text-[#c89d7c] transition-colors">Taller</a>
       </nav>
@@ -65,27 +65,88 @@
     </div>
   </header>
 
-<section id="modelos" class="pt-32 pb-24 bg-[#0e1522] border-t border-slate-800/80 px-4 sm:px-8">
+<section id="ruta-andina" class="pt-32 pb-24 bg-[#0e1522] border-t border-slate-800/80 px-4 sm:px-8">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
-          <span class="text-xs font-bold uppercase tracking-widest text-[#c89d7c] block mb-2 font-heading">Flota Oficial Hyundai Venezuela 2025 - 2026</span>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-heading">Gama de Modelos 0KM</h2>
-          <p class="mt-2 text-slate-400 text-sm max-w-xl">5 años de garantía o 100.000 km, respaldo directo de fábrica y entrega inmediata en Mérida.</p>
+          <span class="text-xs font-bold uppercase tracking-widest text-[#c89d7c] block mb-2 font-heading">Simulador de Cordillera</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">Hyundai en los Andes Merideños</h2>
+          <p class="mt-2 text-slate-400 text-sm max-w-xl">Tracción integral HTRAC™ 4WD calibrada para ascensos pronunciados y curvas de montaña.</p>
         </div>
-        <!-- Category Filters -->
-        <div class="flex items-center gap-1.5 p-1 bg-slate-900/90 rounded-xl border border-slate-800 overflow-x-auto hide-scrollbar">
-          <button onclick="filterCategory('all')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg bg-[#002c5f] text-white border border-[#c89d7c]/50">Todos</button>
-          <button onclick="filterCategory('suv')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white border border-transparent">SUVs</button>
-          <button onclick="filterCategory('sedan')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white border border-transparent">Sedanes</button>
-          <button onclick="filterCategory('hatchback')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white border border-transparent">Hatchbacks</button>
-          <button onclick="filterCategory('van')" class="cat-filter-btn px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white border border-transparent">Vans 11P</button>
+        <div class="flex items-center gap-1.5 bg-slate-900 p-1 rounded-xl border border-slate-800">
+          <button onclick="setDriveMode('ECO')" id="modeBtnECO" class="mode-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white">ECO</button>
+          <button onclick="setDriveMode('COMFORT')" id="modeBtnCOMFORT" class="mode-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#002c5f] text-white border border-[#c89d7c]/60">COMFORT</button>
+          <button onclick="setDriveMode('SPORT')" id="modeBtnSPORT" class="mode-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white">SPORT</button>
+          <button onclick="setDriveMode('HTRAC')" id="modeBtnHTRAC" class="mode-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white">HTRAC 4WD</button>
         </div>
       </div>
 
-      <!-- Models Grid -->
-      <div id="modelsGridContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Rendered dynamically via JS below -->
+      <!-- Simulator Stage -->
+      <div class="rounded-3xl bg-slate-900/90 border border-slate-800 p-6 sm:p-10 shadow-2xl space-y-8">
+        <!-- Moving Road Viewport with Sierra Nevada de Mérida Backdrop -->
+        <div class="relative h-72 sm:h-84 rounded-3xl bg-[#0b111a] border border-slate-800 overflow-hidden flex flex-col justify-end items-center shadow-xl">
+          <!-- Sierra Nevada Mountains Moving Parallax Layer -->
+          <div id="simMountainLayer" class="absolute inset-0 animate-mountains pointer-events-none will-change-[background-position]" style="background-image: url('sierra_nevada_merida.jpg'), url('https://latinbienti-sys.github.io/hyundai/img/watermarked_img_13367943299367624531.jpg');"></div>
+          
+          <!-- Atmospheric lighting and gradient -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0b111a] via-[#0b111a]/30 to-[#0e2b5c]/35 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#0b111a]/80 via-transparent to-[#0b111a]/80 pointer-events-none"></div>
+
+          <!-- Sierra Nevada Badge -->
+          <div class="absolute top-4 left-1/2 -translate-x-1/2 z-20 hidden md:flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-[#c89d7c]/40 text-[11px] text-[#e2cbb5] shadow-lg">
+            <span class="font-heading font-semibold">Sierra Nevada de Mérida · Picos Nevados Pico Bolívar & Humboldt</span>
+          </div>
+
+          <div class="absolute top-4 left-4 z-20 text-xs font-mono text-slate-300 bg-slate-950/80 px-2.5 py-1 rounded-lg border border-slate-800">
+            RUTA TRASANDINA: <span id="simLandmark" class="text-[#c89d7c] font-bold">Mérida Centro (1,630 msnm)</span>
+          </div>
+
+          <!-- Paramo mist layer above road -->
+          <div class="absolute inset-x-0 bottom-20 h-16 bg-gradient-to-t from-[#0b111a] via-white/5 to-transparent pointer-events-none"></div>
+
+          <!-- Vehicle -->
+          <div class="relative z-20 mb-4 animate-car">
+            <img id="simCarImg" src="https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png" alt="Hyundai Tucson" class="w-64 sm:w-80 object-contain filter drop-shadow-[0_18px_32px_rgba(0,0,0,0.95)]">
+            <div class="w-56 sm:w-72 h-3.5 bg-black/95 blur-md rounded-full mx-auto -mt-2"></div>
+          </div>
+
+          <!-- Road -->
+          <div class="w-full h-16 sm:h-20 bg-gradient-to-b from-[#141b26] to-[#0a0f16] border-t border-slate-700/80 relative overflow-hidden">
+            <div id="simRoadLine" class="absolute top-1/2 left-0 right-0 h-2 -translate-y-1/2 animate-road" style="background-image: repeating-linear-gradient(90deg, #fff 0px, #fff 35px, transparent 35px, transparent 80px);"></div>
+            <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#c89d7c]/40 to-transparent"></div>
+          </div>
+        </div>
+
+        <!-- Telemetry Gauges -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+          <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+            <span class="text-[11px] font-bold uppercase text-slate-400 block tracking-wider">Velocímetro</span>
+            <div class="flex items-baseline gap-1 mt-1">
+              <span id="simSpeedNum" class="text-3xl font-extrabold text-white font-mono">75</span>
+              <span class="text-xs text-slate-400 font-semibold">km/h</span>
+            </div>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+            <span class="text-[11px] font-bold uppercase text-slate-400 block tracking-wider">Tacómetro RPM</span>
+            <div class="flex items-baseline gap-1 mt-1">
+              <span id="simRpmNum" class="text-3xl font-extrabold text-white font-mono">2,300</span>
+              <span class="text-xs text-slate-400 font-semibold">rpm</span>
+            </div>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+            <span class="text-[11px] font-bold uppercase text-slate-400 block tracking-wider">Altitud Andina</span>
+            <div class="flex items-baseline gap-1 mt-1">
+              <span id="simAltNum" class="text-3xl font-extrabold text-[#c89d7c] font-mono">2,450</span>
+              <span class="text-xs text-slate-400 font-semibold">msnm</span>
+            </div>
+          </div>
+          <div>
+            <button id="throttleBtn" class="w-full py-4 px-6 rounded-2xl bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/60 text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-xl active:scale-95 select-none cursor-pointer">
+              Mantener Acelerador
+            </button>
+            <span class="text-[10px] text-slate-400 block text-center mt-1">Presiona para acelerar en subida</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
