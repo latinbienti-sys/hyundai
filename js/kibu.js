@@ -1,6 +1,6 @@
 /* ==========================================================================
-   KIBU Â· Interaccion de la pagina de inicio
-   Carrusel hero Â· Catalogo con filtros Â· Modulo "Compara tu Hyundai"
+   KIBU · Interaccion de la pagina de inicio
+   Carrusel hero · Catalogo con filtros · Modulo "Compara tu Hyundai"
    ========================================================================== */
 
 (function () {
@@ -40,10 +40,10 @@
 
   /* ======================================================== CARRUSEL === */
   var SLIDES = [
-    { image: 'img/watermarked_img_13367943299367624531.jpg', eyebrow: 'Creta Â· Pico BolÃ­var', title: 'Con CRETA', accent: 'concreta', end: 'tus sueÃ±os.', sub: 'SUV compacta con techo panorÃ¡mico, pantalla de 10.25" y consumo eficiente. El Creta llegÃ³ para acompaÃ±arte en cada etapa de tu vida.', cta: 'Ver detalles', ctaHref: '#catalogo', cta2: 'Cotizar Creta', cta2Href: '#contacto' },
-    { image: 'img/watermarked_img_10948222792170652927.jpg', eyebrow: 'Palisade Â· Sierra Nevada de MÃ©rida', title: 'ManejÃ¡ tu prÃ³ximo', accent: 'Hyundai', end: 'en los Andes.', sub: 'Descubre la lÃ­nea completa Hyundai 0KM con precios en USD, simulador de crÃ©dito y atenciÃ³n personalizada en el corazÃ³n de MÃ©rida.', cta: 'Ver modelos', ctaHref: '#catalogo', cta2: 'Solicitar cotizaciÃ³n', cta2Href: '#contacto' },
-    { image: 'img/watermarked_img_5871150173315358561.jpg', eyebrow: 'Tucson Â· PÃ¡ramo MerideÃ±o', title: 'Aventura sin', accent: 'lÃ­mites,', end: 'diseÃ±ada para los Andes.', sub: 'El nuevo Hyundai Tucson combina tecnologÃ­a SmartSense, tracciÃ³n HTRAC y un diseÃ±o Parametric Dynamics listo para conquistar el pÃ¡ramo merideÃ±o.', cta: 'Conocer Tucson', ctaHref: '#estudio', cta2: 'Solicitar prueba', cta2Href: '#contacto' },
-    { image: 'img/watermarked_img_17804480962303296709.jpg', eyebrow: 'Elantra Â· Laguna de MucubajÃ­', title: 'Elegancia que', accent: 'se siente', end: 'en cada kilÃ³metro.', sub: 'DiseÃ±o Parametric, tablero digital y consumo inteligente. El nuevo Elantra te lleva mÃ¡s lejos con el confort de un sedÃ¡n premium.', cta: 'Conocer Elantra', ctaHref: '#estudio', cta2: 'Agendar cita', cta2Href: '#taller' }
+    { image: 'img/watermarked_img_13367943299367624531.jpg', eyebrow: 'Creta · Pico Bolívar', title: 'Con CRETA', accent: 'concreta', end: 'tus sueños.', sub: 'SUV compacta con techo panorámico, pantalla de 10.25" y consumo eficiente. El Creta llegó para acompañarte en cada etapa de tu vida.', cta: 'Ver detalles', ctaHref: '#catalogo', cta2: 'Cotizar Creta', cta2Href: '#contacto' },
+    { image: 'img/watermarked_img_10948222792170652927.jpg', eyebrow: 'Palisade · Sierra Nevada de Mérida', title: 'Manejá tu próximo', accent: 'Hyundai', end: 'en los Andes.', sub: 'Descubre la línea completa Hyundai 0KM con precios en USD, simulador de crédito y atención personalizada en el corazón de Mérida.', cta: 'Ver modelos', ctaHref: '#catalogo', cta2: 'Solicitar cotización', cta2Href: '#contacto' },
+    { image: 'img/watermarked_img_5871150173315358561.jpg', eyebrow: 'Tucson · Páramo Merideño', title: 'Aventura sin', accent: 'límites,', end: 'diseñada para los Andes.', sub: 'El nuevo Hyundai Tucson combina tecnología SmartSense, tracción HTRAC y un diseño Parametric Dynamics listo para conquistar el páramo merideño.', cta: 'Conocer Tucson', ctaHref: '#estudio', cta2: 'Solicitar prueba', cta2Href: '#contacto' },
+    { image: 'img/watermarked_img_17804480962303296709.jpg', eyebrow: 'Elantra · Laguna de Mucubají', title: 'Elegancia que', accent: 'se siente', end: 'en cada kilómetro.', sub: 'Diseño Parametric, tablero digital y consumo inteligente. El nuevo Elantra te lleva más lejos con el confort de un sedán premium.', cta: 'Conocer Elantra', ctaHref: '#estudio', cta2: 'Agendar cita', cta2Href: '#taller' }
   ];
 
   function initHero() {
@@ -120,14 +120,14 @@
   }
 
   /* ========================================================= CATALOGO === */
-  var CAT_LABEL = { hatchback: 'Hatchback', sedan: 'SedÃ¡n', suv: 'SUV' };
+  var CAT_LABEL = { hatchback: 'Hatchback', sedan: 'Sedán', suv: 'SUV' };
 
   function specList(m) {
     return '' +
       '<ul class="card__specs">' +
         '<li><span class="k">Motor</span><span class="v">' + m.motor + '</span></li>' +
         '<li><span class="k">Potencia</span><span class="v">' + D.hp(m.potencia) + ' HP</span></li>' +
-        '<li><span class="k">TransmisiÃ³n</span><span class="v">' + m.transmision + '</span></li>' +
+        '<li><span class="k">Transmisión</span><span class="v">' + m.transmision + '</span></li>' +
         '<li><span class="k">Tanque</span><span class="v">' + m.capacidad_tanque + '</span></li>' +
       '</ul>';
   }
@@ -146,10 +146,10 @@
         '</div>' +
         '<div class="card__body">' +
           '<h3>' + D.family(m) + '</h3>' +
-          '<p class="card__variant">' + m.name + ' Â· ' + m.variant + '</p>' +
+          '<p class="card__variant">' + m.name + ' · ' + m.variant + '</p>' +
           specList(m) +
           '<p class="card__price">' + D.money(m.precio) + '</p>' +
-          '<a class="btn btn--outline btn--sm card__cta" href="#cotizador">Ver mÃ¡s</a>' +
+          '<a class="btn btn--outline btn--sm card__cta" href="#cotizador">Ver más</a>' +
         '</div>';
       return el;
     }
@@ -231,7 +231,7 @@
 
       var picks = selected.map(function (i) { return D.models[i]; });
 
-      var html = '<table class="compare__table"><thead><tr><th>EspecificaciÃ³n</th>';
+      var html = '<table class="compare__table"><thead><tr><th>Especificación</th>';
       picks.forEach(function (m) { html += '<th>' + m.name + '</th>'; });
       html += '</tr></thead><tbody>';
 
