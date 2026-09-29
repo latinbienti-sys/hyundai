@@ -1,490 +1,149 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<html lang="es-VE">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Servicios - Automotores Kibun</title>
-<meta name="description" content="Simula tu financiamiento Hyundai en Mérida. Calcula cuotas mensuales personalizadas.">
+<title>Simulador de crédito | Hyundai Automotores Kibu</title>
+<meta name="description" content="Simula el crédito de tu Hyundai en Automotores Kibu. Elige modelo, cuota inicial y plazo, y conoce tu cuota mensual estimada.">
+<meta name="theme-color" content="#0e2b5c">
+<link rel="icon" href="img/modelos/logo-hyundai.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="icon" href="https://cdn.prod.website-files.com/695b182e874dc417335a062b/695c394d095ae1ab3242a04a_Favion%20Hyundai.png" type="image/png">
-<style>
-:root {
-  --primary: #002c5f;
-  --primary-light: #003f7f;
-  --accent: #00a5cf;
-  --accent-light: #e6f7fc;
-  --dark: #1a1a2e;
-  --gray-100: #f8f9fa;
-  --gray-200: #e9ecef;
-  --gray-300: #dee2e6;
-  --gray-400: #ced4da;
-  --gray-500: #adb5bd;
-  --gray-600: #6c757d;
-  --gray-700: #495057;
-  --gray-800: #343a40;
-  --white: #ffffff;
-  --shadow: 0 4px 24px rgba(0,0,0,0.08);
-  --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
-  --radius: 12px;
-  --radius-lg: 20px;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: var(--dark);
-  background: var(--white);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  padding-top: 72px;
-}
-
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-/* Navbar */
-.navbar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--gray-200);
-  transition: var(--transition);
-}
-.navbar.scrolled { box-shadow: var(--shadow); }
-.navbar .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-.navbar .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.navbar .logo img { height: 32px; width: auto; }
-.navbar .logo span { font-size: 18px; font-weight: 700; color: var(--primary); }
-.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-.nav-links a {
-  text-decoration: none; color: var(--gray-700); font-size: 14px; font-weight: 500;
-  transition: var(--transition); position: relative;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
-  background: var(--accent); transition: var(--transition);
-}
-.nav-links a:hover { color: var(--primary); }
-.nav-links a:hover::after { width: 100%; }
-.nav-links .btn-primary-nav {
-  background: var(--primary); color: var(--white) !important; padding: 10px 24px;
-  border-radius: 8px; font-weight: 600; transition: var(--transition);
-}
-.nav-links .btn-primary-nav:hover { background: var(--primary-light); transform: translateY(-1px); }
-.nav-links .btn-primary-nav::after { display: none; }
-
-.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-.menu-toggle span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: var(--transition); }
-.menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.menu-toggle.active span:nth-child(2) { opacity: 0; }
-.menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-/* Hero */
-.hero {
-  min-height: 100vh; display: flex; align-items: center;
-  background: linear-gradient(135deg, #002c5f 0%, #003f7f 40%, #004d99 100%);
-  position: relative; overflow: hidden; padding-top: 72px;
-}
-.hero::before {
-  content: ''; position: absolute; top: -50%; right: -30%; width: 80%; height: 200%;
-  background: radial-gradient(ellipse, rgba(0,165,207,0.15) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding-top: 60px; padding-bottom: 60px; }
-.hero-content h1 {
-  font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 20px;
-}
-.hero-content h1 span { color: var(--accent); }
-.hero-content p { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 32px; max-width: 480px; line-height: 1.7; }
-.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-.btn {
-  display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
-  border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none;
-  transition: all 0.3s ease-in-out; cursor: pointer; border: none;
-}
-.btn-primary { background: var(--accent); color: var(--white); }
-.btn-primary:hover { background: #0090b5; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,165,207,0.3); }
-.btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
-.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
-.hero-image { display: flex; justify-content: center; align-items: center; }
-.hero-image img { max-width: 100%; height: auto; filter: drop-shadow(0 20px 60px rgba(0,0,0,0.3)); animation: float 6s ease-in-out infinite; }
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
-
-.hero-stats { display: flex; gap: 40px; margin-top: 40px; }
-.hero-stat h3 { font-size: 28px; font-weight: 700; color: var(--white); }
-.hero-stat p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 0; text-transform: uppercase; letter-spacing: 1px; }
-
-/* Sections */
-.section { padding: 100px 0; }
-.section-header { text-align: center; margin-bottom: 60px; }
-.section-header h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; color: var(--primary); margin-bottom: 16px; }
-.section-header p { font-size: 17px; color: var(--gray-600); max-width: 600px; margin: 0 auto; line-height: 1.7; }
-.section-header .subtitle { display: inline-block; font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-
-/* Category Tabs */
-.categories { display: flex; justify-content: center; gap: 8px; margin-bottom: 48px; flex-wrap: wrap; }
-.cat-btn {
-  padding: 10px 24px; border-radius: 100px; border: 1px solid var(--gray-300);
-  background: var(--white); color: var(--gray-700); font-size: 14px; font-weight: 500;
-  cursor: pointer; transition: var(--transition); font-family: inherit;
-}
-.cat-btn:hover { border-color: var(--accent); color: var(--accent); }
-.cat-btn.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
-
-/* Models Grid */
-.models-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
-.model-card {
-  background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
-  border: 1px solid var(--gray-200); transition: var(--transition);
-}
-.model-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.model-card-image {
-  height: 220px; display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, var(--gray-100), var(--white)); padding: 24px;
-  position: relative; overflow: hidden;
-}
-.model-card-image img { max-width: 90%; max-height: 90%; object-fit: contain; transition: var(--transition); }
-.model-card:hover .model-card-image img { transform: scale(1.05); }
-.model-card-badge {
-  position: absolute; top: 16px; left: 16px; background: var(--accent); color: var(--white);
-  padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
-}
-.model-card-body { padding: 24px; }
-.model-card-body h3 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
-.model-card-body .variant { font-size: 14px; color: var(--gray-500); margin-bottom: 16px; }
-.model-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-.model-spec { }
-.model-spec .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-500); font-weight: 500; }
-.model-spec .value { font-size: 14px; font-weight: 600; color: var(--dark); }
-.price-breakdown { margin: 12px 0; padding: 12px; background: var(--gray-100); border-radius: 8px; font-size: 13px; }
-.price-row { display: flex; justify-content: space-between; padding: 3px 0; color: var(--gray-600); }
-.price-row.total { border-top: 1px solid var(--gray-300); margin-top: 4px; padding-top: 6px; font-weight: 700; color: var(--primary); font-size: 14px; }
-.model-card-actions { display: flex; gap: 8px; }
-.model-card-actions .btn { flex: 1; justify-content: center; padding: 10px 16px; font-size: 13px; }
-.btn-small { padding: 10px 16px; font-size: 13px; border-radius: 8px; }
-
-/* Simulator */
-.simulator-section { background: #F7F4EE; }
-.simulator {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
-  background: #F7F4EE; border-radius: var(--radius-lg); padding: 48px;
-  box-shadow: var(--shadow);
-}
-.simulator-form { position: relative; padding-left: 24px; border-left: 3px solid var(--primary); }
-.simulator-form h3 { font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
-.simulator-form > p { color: var(--gray-600); margin-bottom: 32px; }
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; font-size: 14px; font-weight: 500; color: var(--gray-700); margin-bottom: 6px; }
-.form-group select, .form-group input {
-  width: 100%; padding: 12px 16px; border: 1px solid var(--gray-300); border-radius: 8px;
-  font-size: 15px; font-family: inherit; color: var(--dark); background: var(--white);
-  transition: var(--transition);
-}
-.form-group select:focus, .form-group input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,165,207,0.15); }
-.form-group input[type="range"] { padding: 0; border: none; height: 6px; appearance: none; background: var(--gray-200); border-radius: 3px; }
-.form-group input[type="range"]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); cursor: pointer; box-shadow: 0 2px 8px rgba(0,165,207,0.3); }
-.range-labels { display: flex; justify-content: space-between; font-size: 13px; color: var(--gray-500); margin-top: 4px; }
-.simulator-result { background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: var(--radius); padding: 32px; color: var(--white); }
-.simulator-result h4 { font-size: 18px; font-weight: 600; margin-bottom: 24px; opacity: 0.9; }
-.result-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.result-item:last-child { border-bottom: none; }
-.result-item .label { font-size: 14px; opacity: 0.8; }
-.result-item .value { font-size: 16px; font-weight: 600; }
-.result-item .value.highlight { font-size: 22px; color: var(--accent); }
-.result-total { margin-top: 16px; padding-top: 16px; border-top: 2px solid rgba(255,255,255,0.2); }
-.result-total .value { font-size: 28px !important; font-weight: 700 !important; color: var(--accent); }
-
-/* Why Us */
-.features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
-.feature-card {
-  text-align: center; padding: 40px 24px; border-radius: var(--radius-lg);
-  border: 1px solid var(--gray-200); transition: var(--transition);
-}
-.feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.feature-icon { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 28px; }
-.feature-card h3 { font-size: 18px; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
-.feature-card p { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
-
-/* Contact */
-.contact-section { background: var(--primary); color: var(--white); }
-.contact-section .section-header h2 { color: var(--white); }
-.contact-section .section-header p { color: rgba(255,255,255,0.7); }
-.contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-.contact-card {
-  background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
-  border-radius: var(--radius); padding: 32px; text-align: center;
-  border: 1px solid rgba(255,255,255,0.1); transition: var(--transition);
-}
-.contact-card:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
-.contact-card .icon { font-size: 32px; margin-bottom: 16px; }
-.contact-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
-.contact-card p, .contact-card a { font-size: 14px; color: rgba(255,255,255,0.8); text-decoration: none; line-height: 1.6; transition: all 0.3s ease-in-out; }
-.contact-card a:hover { color: var(--accent); transform: translateY(-1px); }
-
-/* Footer */
-.footer {
-  background: var(--dark); color: rgba(255,255,255,0.6); padding: 48px 0 24px;
-}
-.footer .container { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
-.footer h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 16px; }
-.footer p, .footer a { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; line-height: 2; display: block; }
-.footer a:hover { color: var(--accent); }
-.footer-logo { margin-bottom: 16px; }
-.footer-logo svg { height: 24px; }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px; padding-top: 24px; text-align: center; font-size: 13px; }
-
-/* WhatsApp Float */
-.whatsapp-float {
-  position: fixed; bottom: 24px; right: 24px; z-index: 999;
-  width: 56px; height: 56px; border-radius: 50%;
-  background: #25D366; color: white; display: flex; align-items: center; justify-content: center;
-  text-decoration: none; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  transition: all 0.4s ease; font-size: 28px;
-  opacity: 1; transform: translateY(0);
-}
-.whatsapp-float.hidden-float { opacity: 0; transform: translateY(20px); pointer-events: none; }
-.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5); }
-
-/* Mobile */
-@media (max-width: 768px) {
-  .menu-toggle { display: flex; }
-  .nav-links {
-    position: fixed; top: 72px; left: 0; right: 0; background: var(--white);
-    flex-direction: column; padding: 24px; gap: 16px; border-bottom: 1px solid var(--gray-200);
-    transform: translateY(-100%); opacity: 0; pointer-events: none; transition: var(--transition);
-  }
-  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
-  .hero .container { grid-template-columns: 1fr; text-align: center; }
-  .hero-content p { margin: 0 auto 32px; }
-  .hero-buttons { justify-content: center; }
-  .hero-stats { justify-content: center; }
-  .hero-image { display: none; }
-  .simulator { grid-template-columns: 1fr; padding: 24px; }
-  .footer .container { grid-template-columns: 1fr 1fr; }
-  .models-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 480px) {
-  .footer .container { grid-template-columns: 1fr; }
-  .hero-stats { flex-direction: column; gap: 16px; align-items: center; }
-  .model-specs { grid-template-columns: 1fr; }
-}
-
-/* Animations */
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-.hidden { display: none; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/kibu.css">
 </head>
-<body style="padding-top:72px;">
+<body>
 
-<!-- Navbar -->
-<nav class="navbar" id="navbar">
-  <div class="container">
-    <a href="index.html" class="logo">
-      <img src="https://cdn.prod.website-files.com/695b182e874dc417335a062b/695c394d095ae1ab3242a04a_Favion%20Hyundai.png" alt="Hyundai">
-      <span>Automotores Kibun</span>
+<a class="u-sr" href="#main">Saltar al contenido principal</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Hyundai Automotores Kibu, inicio">
+      <img src="img/modelos/logo-hyundai-blanco.png" alt="Hyundai Automotores Kibu" height="30">
     </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Abrir menú">
       <span></span><span></span><span></span>
     </button>
-    <ul class="nav-links" id="navLinks">
+    <ul class="nav__links">
       <li><a href="index.html">Inicio</a></li>
       <li><a href="modelos.html">Modelos</a></li>
-      <li><a href="servicios.html" style="color: var(--accent); font-weight: 600;">Servicios</a></li>
+      <li><a href="index.html#comparador">Compara</a></li>
+      <li><a href="simulador.html" aria-current="page">Simulador</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
       <li><a href="nosotros.html">Nosotros</a></li>
       <li><a href="contacto.html">Contacto</a></li>
-      <li><a href="contacto.html" class="btn-primary-nav">Solicitar Cotización</a></li>
     </ul>
   </div>
-</nav>
+</header>
 
-<!-- Simulador -->
-<section class="section simulator-section" id="simulador">
-  <div class="container">
-    <div class="section-header">
-      <span class="subtitle">Financiamiento</span>
-      <h2>Calcula tu Financiamiento</h2>
-      <p>Calcula cuotas mensuales personalizadas para el vehículo de tus sueños.</p>
-    </div>
-    <div class="simulator">
-      <div class="simulator-form">
-        <h3>Calcula tu cuota</h3>
-        <p>Completa los campos para recibir una estimación personalizada.</p>
-        <div class="form-group">
-          <label for="simModel">Modelo</label>
-          <select id="simModel"></select>
-        </div>
-        <div class="form-group">
-          <label for="simPrice">Precio Total (USD)</label>
-          <input type="text" id="simPrice" readonly>
-        </div>
-        <div class="form-group">
-          <label for="simDown">Inicial: <span id="downLabel">30%</span></label>
-          <input type="range" id="simDown" min="10" max="60" value="30">
-          <div class="range-labels"><span>10%</span><span>60%</span></div>
-        </div>
-        <div class="form-group">
-          <label for="simTerm">Plazo: <span id="termLabel">24 meses</span></label>
-          <input type="range" id="simTerm" min="12" max="60" value="24" step="12">
-          <div class="range-labels"><span>12 meses</span><span>60 meses</span></div>
-        </div>
-      </div>
-      <div class="simulator-result" id="simResult">
-        <h4>Resultado de simulación</h4>
-        <div class="result-item"><span class="label">Precio Total</span><span class="value" id="resPrice">$0</span></div>
-        <div class="result-item"><span class="label">Inicial (<span id="resDownPct">30</span>%)</span><span class="value" id="resDown">$0</span></div>
-        <div class="result-item"><span class="label">Monto a financiar</span><span class="value" id="resFinance">$0</span></div>
-        <div class="result-item"><span class="label">Plazo</span><span class="value" id="resTerm">24 meses</span></div>
-        <div class="result-item"><span class="label">Tasa de interés estimada</span><span class="value">12% anual</span></div>
-        <div class="result-item result-total"><span class="label">Cuota mensual estimada</span><span class="value highlight" id="resMonthly">$0</span></div>
+<main id="main">
+
+  <section class="section section--dark" style="padding-top:calc(var(--nav-h) + 3.5rem);padding-bottom:3.5rem;">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="eyebrow eyebrow--light">Financiamiento</span>
+        <h1 class="display">Simulador de crédito</h1>
+        <p>Elige tu modelo, la cuota inicial y el plazo. Te mostramos una estimación de tu cuota mensual.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Footer -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sim__grid">
+
+        <!-- ══════════════════════════════════════════════ CONTROLES ══════ -->
+        <div class="sim__panel">
+          <div class="sim__field">
+            <label class="sim__label" for="simModel">Modelo <b id="simPrice"></b></label>
+            <select class="sim__select" id="simModel"></select>
+          </div>
+
+          <div class="sim__field">
+            <label class="sim__label" for="simDown">Cuota inicial <b id="downLabel"></b></label>
+            <input class="sim__range" type="range" id="simDown" min="10" max="90" step="5" value="30">
+          </div>
+
+          <div class="sim__field">
+            <label class="sim__label" for="simTerm">Plazo <b id="termLabel"></b></label>
+            <input class="sim__range" type="range" id="simTerm" min="12" max="84" step="12" value="60">
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════ RESULTADO ══════ -->
+        <div class="sim__panel">
+          <div class="sim__total">
+            <span>Precio total del vehículo</span>
+            <b id="resPrice">—</b>
+          </div>
+
+          <ul class="sim__rows">
+            <li><span class="k">Cuota inicial</span><span class="v"><span id="resDownPct">—</span>% · <span id="resDown">—</span></span></li>
+            <li><span class="k">Monto a financiar</span><span class="v" id="resFinance">—</span></li>
+            <li><span class="k">Plazo</span><span class="v" id="resTerm">—</span></li>
+          </ul>
+
+          <div class="sim__result">
+            <span>Cuota mensual estimada</span>
+            <b id="resMonthly">—</b>
+          </div>
+
+          <p class="sim__note">Estimación basada en una tasa fija del 12% anual, sin seguros, gastos de gestión ni comisiones. No constituye una oferta en firme. Los precios pueden variar sin previo aviso.</p>
+
+          <a class="btn btn--primary" href="contacto.html" style="width:100%;margin-top:1.5rem;">Solicitar información</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Antes de decidir</span>
+        <h2 class="display">Compara antes deApartar</h2>
+        <p>¿Aún no sabes cuál modelo elegir? Usa el comparador para ver las especificaciones de cada versión lado a lado.</p>
+      </div>
+      <a class="btn btn--outline" href="index.html#comparador">Ir al comparador</a>
+    </div>
+  </section>
+
+</main>
+
 <footer class="footer">
-  <div class="container">
-    <div>
-      <div class="footer-logo">
-        <img src="https://cdn.prod.website-files.com/695b182e874dc417335a062b/69cec19d0592eb45eefce71b_Favicon%20hyundai%20blanco.png" alt="Hyundai" style="height:36px;width:auto;">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo"><img src="img/modelos/logo-hyundai-blanco.png" alt="Hyundai Automotores Kibu" height="30"></div>
+        <p>Concesionario autorizado Hyundai en Mérida, Venezuela.</p>
       </div>
-      <p>Concesionario oficial Hyundai en Mérida, Venezuela. Excelencia automotriz con respaldo global.</p>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="modelos.html">Modelos</a></li>
+          <li><a href="index.html#comparador">Compara tu Hyundai</a></li>
+          <li><a href="simulador.html">Simulador</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Atención al cliente</h4>
+        <ul>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
     </div>
-    <div>
-      <h4>Modelos</h4>
-      <a href="modelos.html">Grand i10</a>
-      <a href="modelos.html">Elantra</a>
-      <a href="modelos.html">Accent</a>
-      <a href="modelos.html">Tucson</a>
-      <a href="modelos.html">Creta</a>
-      <a href="modelos.html">Palisade</a>
+    <div class="footer__bottom">
+      <span>© 2026 Hyundai Automotores Kibu</span>
+      <span>Todos los modelos son 0KM</span>
     </div>
-    <div>
-      <h4>Servicios</h4>
-      <a href="servicios.html">Agendar cita</a>
-    </div>
-    </div>
-  <div class="footer-bottom">
-    <div class="container">&copy; 2026 Automotores Kibun. Hyundai es una marca registrada de Hyundai Motor Company.</div>
   </div>
 </footer>
 
-<!-- WhatsApp Float -->
-<a href="https://wa.me/584147482282?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20veh%C3%ADculos%20Hyundai%20en%20M%C3%A9rida" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">&#128172;</a>
-
-<script>
-const models = [
-  { name: 'Grand i10 1.2L M/T GL', variant: 'M/T 5 vel', category: 'hatchback', price: 20640.04, pvp: 16107.00, iva: 2577.12, igtf: 483.21, tramites: 1472.71, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69856148203811e31988110b_Grandi10-Hatchback-GL-Azul.png' },
-  { name: 'Grand i10 1.2L A/T GL', variant: 'A/T 4 vel', category: 'hatchback', price: 22681.10, pvp: 17780.00, iva: 2844.80, igtf: 533.40, tramites: 1522.90, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823fe186892428b7a8fab3_Grandi10-Hatchback-GL-Plata.png' },
-  { name: 'Grand i10 1.2L A/T GLS', variant: 'A/T 4 vel', category: 'hatchback', price: 25267.50, pvp: 19900.00, iva: 3184.00, igtf: 597.00, tramites: 1586.50, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/696544b630bc623e59fcb862_Grandi10-Hatchback-GLS-rojo.png' },
-  { name: 'Grand i10 1.2L A/T GLS Sedán', variant: 'A/T 4 vel', category: 'sedan', price: 26261.80, pvp: 20715.00, iva: 3314.40, igtf: 621.45, tramites: 1610.95, motor: '1.2L', potencia: '82 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695d6ee0057d4f637c28595b_Grandi10%20sedan%20fondo%20transparente.png' },
-  { name: 'Accent 1.5L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 32029.50, pvp: 25073.74, iva: 4011.80, igtf: 752.21, tramites: 2191.75, motor: '1.5L', potencia: '113 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69d444234c01074f6c41678a_Accent-blanco.png' },
-  { name: 'Elantra 2.0L A/T GLS', variant: 'A/T 6 IVT', category: 'sedan', price: 41619.56, pvp: 32923.00, iva: 5267.68, igtf: 987.69, tramites: 2441.19, motor: '2.0L', potencia: '156 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/698561c627e39b93b4031662_Elantra-rojo.png' },
-  { name: 'Creta 1.5L A/T GLS', variant: 'A/T 6 vel', category: 'suv', price: 39310.35, pvp: 31030.17, iva: 4964.83, igtf: 930.91, tramites: 2384.45, motor: '1.5L', potencia: '113 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/699dc30fedebb4b0d6d72a19_Creta%20Blanco_.png' },
-  { name: 'Tucson 2.0L A/T 2WD GLS', variant: 'A/T 6 vel', category: 'suv', price: 50130.00, pvp: 39900.00, iva: 6384.00, igtf: 1197.00, tramites: 2649.00, motor: '2.0L', potencia: '154 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png' },
-  { name: 'Tucson 2.0L A/T 4WD GLX', variant: 'A/T 6 vel', category: 'suv', price: 59525.50, pvp: 47600.00, iva: 7616.00, igtf: 1428.00, tramites: 2881.50, motor: '2.0L', potencia: '154 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69823c97ec17a7e03309284f_Tucson-blanco.png' },
-  { name: 'Palisade 3.8L A/T 4WD GLS 7P', variant: 'A/T 8 vel', category: 'suv', price: 124063.50, pvp: 100500.00, iva: 16080.00, igtf: 3015.00, tramites: 4468.50, motor: '3.8L', potencia: '291 HP', image: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695f0af617714685f4d6adc9_Palisade-rojo.png' }
-];
-
-const simModel = document.getElementById('simModel');
-const simPrice = document.getElementById('simPrice');
-const simDown = document.getElementById('simDown');
-const simTerm = document.getElementById('simTerm');
-const downLabel = document.getElementById('downLabel');
-const termLabel = document.getElementById('termLabel');
-
-const resPrice = document.getElementById('resPrice');
-const resDownPct = document.getElementById('resDownPct');
-const resDown = document.getElementById('resDown');
-const resFinance = document.getElementById('resFinance');
-const resTerm = document.getElementById('resTerm');
-const resMonthly = document.getElementById('resMonthly');
-
-function updateSimulator() {
-  const idx = parseInt(simModel.value);
-  const model = models[idx];
-  const price = model.price;
-  const downPct = parseInt(simDown.value);
-  const termMonths = parseInt(simTerm.value);
-  const downAmount = price * (downPct / 100);
-  const financeAmount = price - downAmount;
-  const annualRate = 0.12;
-  const monthlyRate = annualRate / 12;
-  const monthlyPayment = financeAmount * (monthlyRate * Math.pow(1 + monthlyRate, termMonths)) / (Math.pow(1 + monthlyRate, termMonths) - 1);
-
-  simPrice.value = `$${price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-  downLabel.textContent = `${downPct}%`;
-  termLabel.textContent = `${termMonths} meses`;
-
-  resPrice.textContent = `$${price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-  resDownPct.textContent = downPct;
-  resDown.textContent = `$${downAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-  resFinance.textContent = `$${financeAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-  resTerm.textContent = `${termMonths} meses`;
-  resMonthly.textContent = `$${Math.round(monthlyPayment).toLocaleString()}/mes`;
-}
-
-// Populate simulator dropdown
-models.forEach((m, i) => {
-  const opt = document.createElement('option');
-  opt.value = i;
-  opt.textContent = `${m.name} - Total: $${m.price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-  simModel.appendChild(opt);
-});
-
-simModel.addEventListener('change', updateSimulator);
-simDown.addEventListener('input', updateSimulator);
-simTerm.addEventListener('input', updateSimulator);
-
-// Init
-updateSimulator();
-
-// Mobile menu
-document.getElementById('menuToggle').addEventListener('click', function() {
-  this.classList.toggle('active');
-  document.getElementById('navLinks').classList.toggle('open');
-});
-
-// Close mobile menu on link click
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('menuToggle').classList.remove('active');
-    document.getElementById('navLinks').classList.remove('open');
-  });
-});
-
-// Navbar scroll
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-});
-
-// Fade-in animation
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// WhatsApp scroll animation
-const whatsappBtn = document.querySelector('.whatsapp-float');
-let lastScrollY = window.scrollY;
-window.addEventListener('scroll', () => {
-  const currentScrollY = window.scrollY;
-  if (currentScrollY > 300 && currentScrollY > lastScrollY) {
-    whatsappBtn.classList.add('hidden-float');
-  } else {
-    whatsappBtn.classList.remove('hidden-float');
-  }
-  lastScrollY = currentScrollY;
-});
-</script>
+<script src="js/data.js"></script>
+<script src="js/kibu.js"></script>
+<script src="js/simulador.js"></script>
 </body>
 </html>
