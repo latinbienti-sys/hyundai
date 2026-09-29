@@ -1,379 +1,218 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<html lang="es-VE">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contacto - Automotores Kibun</title>
-<meta name="description" content="Contacta a Automotores Kibun. Ubicación, teléfonos, email y horarios.">
+<title>Contacto | Automotores Kibun en Mérida</title>
+<meta name="description" content="Contacta a Automotores Kibun, concesionario oficial Hyundai en Mérida. Av. Urdaneta 49-29. WhatsApp +58 414-7482282. Un asesor te contacta con propuestas a medida.">
+<meta name="theme-color" content="#0e2b5c">
+<link rel="icon" href="img/modelos/logo-hyundai.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="icon" href="https://cdn.prod.website-files.com/695b182e874dc417335a062b/695c394d095ae1ab3242a04a_Favion%20Hyundai.png" type="image/png">
-<style>
-:root {
-  --primary: #002c5f;
-  --primary-light: #003f7f;
-  --accent: #00a5cf;
-  --accent-light: #e6f7fc;
-  --dark: #1a1a2e;
-  --gray-100: #f8f9fa;
-  --gray-200: #e9ecef;
-  --gray-300: #dee2e6;
-  --gray-400: #ced4da;
-  --gray-500: #adb5bd;
-  --gray-600: #6c757d;
-  --gray-700: #495057;
-  --gray-800: #343a40;
-  --white: #ffffff;
-  --shadow: 0 4px 24px rgba(0,0,0,0.08);
-  --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
-  --radius: 12px;
-  --radius-lg: 20px;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: var(--dark);
-  background: var(--white);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  padding-top: 72px;
-}
-
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-/* Navbar */
-.navbar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--gray-200);
-  transition: var(--transition);
-}
-.navbar.scrolled { box-shadow: var(--shadow); }
-.navbar .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-.navbar .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.navbar .logo img { height: 32px; width: auto; }
-.navbar .logo span { font-size: 18px; font-weight: 700; color: var(--primary); }
-.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-.nav-links a {
-  text-decoration: none; color: var(--gray-700); font-size: 14px; font-weight: 500;
-  transition: var(--transition); position: relative;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
-  background: var(--accent); transition: var(--transition);
-}
-.nav-links a:hover { color: var(--primary); }
-.nav-links a:hover::after { width: 100%; }
-.nav-links .btn-primary-nav {
-  background: var(--primary); color: var(--white) !important; padding: 10px 24px;
-  border-radius: 8px; font-weight: 600; transition: var(--transition);
-}
-.nav-links .btn-primary-nav:hover { background: var(--primary-light); transform: translateY(-1px); }
-.nav-links .btn-primary-nav::after { display: none; }
-
-.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-.menu-toggle span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: var(--transition); }
-.menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.menu-toggle.active span:nth-child(2) { opacity: 0; }
-.menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-.btn {
-  display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
-  border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none;
-  transition: all 0.3s ease-in-out; cursor: pointer; border: none;
-}
-.btn-primary { background: var(--accent); color: var(--white); }
-.btn-primary:hover { background: #0090b5; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,165,207,0.3); }
-.btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
-.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
-
-/* Contact */
-.contact-section {
-  background: linear-gradient(135deg, var(--primary) 0%, #003a70 50%, var(--primary-light) 100%);
-  color: var(--white); padding: 80px 0;
-}
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-.contact-info {}
-.contact-info .subtitle { font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; display: block; }
-.contact-info h2 { font-size: clamp(32px, 4vw, 44px); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
-.contact-info h2 span { color: var(--accent); }
-.contact-info > p { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 36px; max-width: 440px; }
-.contact-info-items { display: grid; gap: 20px; }
-.contact-info-item { display: flex; gap: 14px; align-items: flex-start; }
-.contact-info-item .icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
-.contact-info-item div h4 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
-.contact-info-item div p { font-size: 14px; color: rgba(255,255,255,0.7); }
-.contact-form-card {
-  background: var(--white); border-radius: var(--radius-lg); padding: 40px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-}
-.contact-form-card .form-group { margin-bottom: 20px; }
-.contact-form-card .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--gray-700); margin-bottom: 6px; }
-.contact-form-card .form-group input,
-.contact-form-card .form-group select,
-.contact-form-card .form-group textarea {
-  width: 100%; padding: 12px 16px; border: 1px solid var(--gray-300); border-radius: 8px;
-  font-size: 14px; font-family: inherit; color: var(--dark); background: var(--white);
-  transition: var(--transition);
-}
-.contact-form-card .form-group input:focus,
-.contact-form-card .form-group select:focus,
-.contact-form-card .form-group textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,165,207,0.15); }
-.contact-form-card .form-group textarea { resize: vertical; min-height: 90px; }
-.contact-form-card .form-group .btn { width: 100%; justify-content: center; }
-
-/* Footer */
-.footer {
-  background: var(--dark); color: rgba(255,255,255,0.6); padding: 48px 0 24px;
-}
-.footer .container { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
-.footer h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 16px; }
-.footer p, .footer a { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; line-height: 2; display: block; }
-.footer a:hover { color: var(--accent); }
-.footer-logo { margin-bottom: 16px; }
-.footer-logo svg { height: 24px; }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px; padding-top: 24px; text-align: center; font-size: 13px; }
-
-/* WhatsApp Float */
-.whatsapp-float {
-  position: fixed; bottom: 24px; right: 24px; z-index: 999;
-  width: 56px; height: 56px; border-radius: 50%;
-  background: #25D366; color: white; display: flex; align-items: center; justify-content: center;
-  text-decoration: none; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  transition: all 0.4s ease; font-size: 28px;
-  opacity: 1; transform: translateY(0);
-}
-.whatsapp-float.hidden-float { opacity: 0; transform: translateY(20px); pointer-events: none; }
-.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5); }
-
-/* Mobile */
-@media (max-width: 768px) {
-  .menu-toggle { display: flex; }
-  .nav-links {
-    position: fixed; top: 72px; left: 0; right: 0; background: var(--white);
-    flex-direction: column; padding: 24px; gap: 16px; border-bottom: 1px solid var(--gray-200);
-    transform: translateY(-100%); opacity: 0; pointer-events: none; transition: var(--transition);
-  }
-  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
-  .contact-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-  .contact-info > p { margin: 0 auto 36px; }
-  .contact-info-item { flex-direction: column; align-items: center; text-align: center; }
-  .footer .container { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 480px) {
-  .footer .container { grid-template-columns: 1fr; }
-  .hero-stats { flex-direction: column; gap: 16px; align-items: center; }
-  .model-specs { grid-template-columns: 1fr; }
-}
-
-/* Animations */
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-.hidden { display: none; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/kibu.css">
 </head>
-<body style="padding-top:72px;">
+<body>
+<div class="page">
 
-<!-- Navbar -->
-<nav class="navbar" id="navbar">
-  <div class="container">
-    <a href="index.html" class="logo">
-      <img src="https://cdn.prod.website-files.com/695b182e874dc417335a062b/695c394d095ae1ab3242a04a_Favion%20Hyundai.png" alt="Hyundai">
-      <span>Automotores Kibun</span>
+<a class="u-sr" href="#main">Saltar al contenido principal</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Automotores Kibun, inicio">
+      <img src="img/modelos/logo-hyundai-blanco.png" alt="Automotores Kibun" height="30">
     </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Abrir menú">
       <span></span><span></span><span></span>
     </button>
-    <ul class="nav-links" id="navLinks">
+    <ul class="nav__links">
       <li><a href="index.html">Inicio</a></li>
       <li><a href="modelos.html">Modelos</a></li>
+      <li><a href="index.html#comparador">Compara</a></li>
+      <li><a href="simulador.html">Simulador</a></li>
       <li><a href="servicios.html">Servicios</a></li>
       <li><a href="nosotros.html">Nosotros</a></li>
-      <li><a href="#" style="color: var(--accent); font-weight: 600;">Contacto</a></li>
-      <li><a href="contacto.html" class="btn-primary-nav">Solicitar Cotización</a></li>
+      <li><a href="contacto.html" aria-current="page">Contacto</a></li>
     </ul>
   </div>
-</nav>
+</header>
 
-<!-- Contacto -->
-<section class="contact-section" id="contacto">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="contact-info">
-        <span class="subtitle">Contacto</span>
-        <h2>Hablemos de tu<br><span>próximo Hyundai.</span></h2>
-        <p>Dejanos tus datos y un asesor te contacta con propuestas a medida, disponibilidad de unidades y opciones de financiamiento.</p>
-        <div class="contact-info-items">
-          <div class="contact-info-item">
-            <div class="icon">&#9906;</div>
-            <div>
-              <h4>Visitanos</h4>
-              <p>AV. URDANETA N" 49-29 MÉRIDA EDO MÉRIDA</p>
-            </div>
+<main id="main">
+
+  <section class="page-hero">
+    <div class="wrap page-hero__inner">
+      <ol class="breadcrumb">
+        <li><a href="index.html">Inicio</a></li>
+        <li><span aria-current="page">Contacto</span></li>
+      </ol>
+      <span class="eyebrow">Contacto</span>
+      <h1 class="display">Hablemos de tu próximo Hyundai.</h1>
+      <p>Déjanos tus datos y un asesor te contacta con propuestas a medida, disponibilidad de unidades y opciones de financiamiento.</p>
+      <div class="page-hero__actions">
+        <a class="btn btn--lime" href="https://wa.me/584147482282" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+        <a class="btn btn--ghost" href="modelos.html">Ver modelos</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="infogrid">
+        <div class="info">
+          <span class="info__icon" aria-hidden="true">📍</span>
+          <div>
+            <h3>Visítanos</h3>
+            <p>Av. Urdaneta N° 49-29</p>
+            <small>Mérida, Edo. Mérida</small>
           </div>
-          <div class="contact-info-item">
-            <div class="icon">&#128222;</div>
-            <div>
-              <h4>Llamanos</h4>
-              <p>0414-7447887</p>
-              <p>0422-8927419</p>
-              <p>+58 414-7482282</p>
-            </div>
+        </div>
+        <div class="info">
+          <span class="info__icon" aria-hidden="true">📞</span>
+          <div>
+            <h3>Llámanos</h3>
+            <p><a href="tel:+584147447887">0414-7447887</a></p>
+            <small><a href="tel:+584228927419">0422-8927419</a></small>
           </div>
-          <div class="contact-info-item">
-            <div class="icon">&#9993;</div>
-            <div>
-              <h4>Escríbenos</h4>
-              <p>administracion.guillen@kibunhyundai.com</p>
-            </div>
+        </div>
+        <div class="info">
+          <span class="info__icon" aria-hidden="true">💬</span>
+          <div>
+            <h3>WhatsApp</h3>
+            <p><a href="https://wa.me/584147482282" target="_blank" rel="noopener">+58 414-7482282</a></p>
+            <small>Atención directa</small>
+          </div>
+        </div>
+        <div class="info">
+          <span class="info__icon" aria-hidden="true">✉️</span>
+          <div>
+            <h3>Escríbenos</h3>
+            <p><a href="mailto:administracion.guillen@kibunhyundai.com">administracion.guillen@kibunhyundai.com</a></p>
+            <small>Administración</small>
+          </div>
+        </div>
+        <div class="info">
+          <span class="info__icon" aria-hidden="true">🕘</span>
+          <div>
+            <h3>Horario</h3>
+            <p>Lun a Vie</p>
+            <small>8:00 – 12:00 / 14:00 – 18:00</small>
           </div>
         </div>
       </div>
-      <div class="contact-form-card">
-        <form id="contactForm">
-          <div class="form-group">
-            <label>Nombre completo *</label>
-            <input type="text" placeholder="Juan Pérez" required>
-          </div>
-          <div class="form-group">
-            <label>Email *</label>
-            <input type="email" placeholder="tucorreo@ejemplo.com" required>
-          </div>
-          <div class="form-group">
-            <label>Teléfono *</label>
-            <input type="tel" placeholder="+58 414 0000000" required>
-          </div>
-          <div class="form-group">
-            <label>Modelo de interés</label>
-            <select>
-              <option value="">Selecciona un modelo</option>
-              <option value="grand-i10-mt">Grand i10 M/T</option>
-              <option value="grand-i10-at">Grand i10 A/T</option>
-              <option value="grand-i10-gls">Grand i10 GLS</option>
-              <option value="grand-i10-sedan">Grand i10 Sedán</option>
-              <option value="accent">Accent</option>
-              <option value="elantra">Elantra</option>
-              <option value="creta">Creta</option>
-              <option value="tucson-2wd">Tucson 2WD</option>
-              <option value="tucson-4wd">Tucson 4WD</option>
-              <option value="palisade">Palisade</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Mensaje</label>
-            <textarea placeholder="Contanos en qué podemos ayudarte..."></textarea>
-          </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary">Enviar consulta</button>
-          </div>
-        </form>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div>
-      <div class="footer-logo">
-        <img src="https://cdn.prod.website-files.com/695b182e874dc417335a062b/69cec19d0592eb45eefce71b_Favicon%20hyundai%20blanco.png" alt="Hyundai" style="height:36px;width:auto;">
+  <section class="section section--alt" id="consulta">
+    <div class="wrap">
+      <div class="two-col">
+        <div>
+          <span class="eyebrow">Enviar consulta</span>
+          <h2 class="display" style="font-size:clamp(1.9rem,4vw,2.8rem);margin-block:.9rem 1.1rem">Te respondemos rápido</h2>
+          <p class="lead" style="margin-bottom:1.75rem">Cuéntanos qué modelo te interesa y te enviamos información, disponibilidad y condiciones de financiamiento.</p>
+
+          <p class="notice">
+            <strong>Importante.</strong> Todos nuestros modelos son 0KM. Las unidades y precios están sujetos a confirmación con tu asesor, según disponibilidad en Mérida.
+          </p>
+        </div>
+
+        <div class="formpanel">
+          <h3>Formulario de contacto</h3>
+          <p>Los campos marcados con <span class="req">*</span> son obligatorios.</p>
+
+          <form class="form" data-wa data-wa-title="me gustaría recibir información sobre un Hyundai." novalidate>
+            <div class="field">
+              <label for="ctNombre">Nombre completo <span class="req">*</span></label>
+              <input class="input" type="text" id="ctNombre" name="nombre" autocomplete="name" required>
+            </div>
+
+            <div class="form__row">
+              <div class="field">
+                <label for="ctEmail">Email <span class="req">*</span></label>
+                <input class="input" type="email" id="ctEmail" name="email" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="ctPhone">Teléfono <span class="req">*</span></label>
+                <input class="input" type="tel" id="ctPhone" name="telefono" placeholder="+58 414 0000000" autocomplete="tel" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="ctModelo">Modelo de interés</label>
+              <select class="select" id="ctModelo" name="modelo de interes" data-models>
+                <option value="">Selecciona un modelo</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="ctMsg">Mensaje</label>
+              <textarea class="textarea" id="ctMsg" name="mensaje" placeholder="Cuéntanos qué necesitas saber: precio, financiamiento, colores disponibles, entrega..."></textarea>
+            </div>
+
+            <div class="form__actions">
+              <button class="btn btn--primary" type="submit">Enviar consulta</button>
+              <span class="form__note">Se abrirá WhatsApp con tu mensaje.</span>
+            </div>
+
+            <p class="notice" data-wa-done hidden tabindex="-1">
+              <strong>Listo.</strong> Se abrió WhatsApp con tu consulta. Envía el mensaje para que un asesor te responda.
+            </p>
+          </form>
+        </div>
       </div>
-      <p>Concesionario oficial Hyundai en Mérida, Venezuela. Excelencia automotriz con respaldo global.</p>
     </div>
-    <div>
-      <h4>Modelos</h4>
-      <a href="modelos.html">Grand i10</a>
-      <a href="modelos.html">Elantra</a>
-      <a href="modelos.html">Accent</a>
-      <a href="modelos.html">Tucson</a>
-      <a href="modelos.html">Creta</a>
-      <a href="modelos.html">Palisade</a>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid footer__grid--4">
+      <div>
+        <div class="footer__logo">
+          <img src="img/modelos/logo-hyundai-blanco.png" alt="Automotores Kibun" height="30">
+        </div>
+        <p>Concesionario autorizado Hyundai en Mérida, Venezuela.</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="modelos.html">Modelos</a></li>
+          <li><a href="index.html#comparador">Compara tu Hyundai</a></li>
+          <li><a href="simulador.html">Simulador</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Atención al cliente</h4>
+        <ul>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="footer__contact">
+          <li><span>📍</span><span>Av. Urdaneta N° 49-29, Mérida</span></li>
+          <li><span>💬</span><a href="https://wa.me/584147482282" target="_blank" rel="noopener">+58 414-7482282</a></li>
+          <li><span>📞</span><a href="tel:+584147447887">0414-7447887</a></li>
+          <li><span>✉️</span><a href="mailto:administracion.guillen@kibunhyundai.com">administracion.guillen@kibunhyundai.com</a></li>
+        </ul>
+      </div>
     </div>
-    <div>
-      <h4>Servicios</h4>
-      <a href="servicios.html">Agendar cita</a>
+    <div class="footer__bottom">
+      <span>© 2026 Automotores Kibun. Hyundai es una marca registrada de Hyundai Motor Company.</span>
+      <span>Todos los modelos son 0KM</span>
     </div>
-    </div>
-  <div class="footer-bottom">
-    <div class="container">&copy; 2026 Automotores Kibun. Hyundai es una marca registrada de Hyundai Motor Company.</div>
   </div>
 </footer>
 
-<!-- WhatsApp Float -->
-<a href="https://wa.me/584147482282?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20veh%C3%ADculos%20Hyundai%20en%20M%C3%A9rida" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">&#128172;</a>
+<a class="wa-float" href="https://wa.me/584147482282" target="_blank" rel="noopener">
+  <span aria-hidden="true">💬</span><span class="wa-float__label">Escríbenos</span>
+</a>
 
-<script>
-// Mobile menu
-document.getElementById('menuToggle').addEventListener('click', function() {
-  this.classList.toggle('active');
-  document.getElementById('navLinks').classList.toggle('open');
-});
-
-// Close mobile menu on link click
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('menuToggle').classList.remove('active');
-    document.getElementById('navLinks').classList.remove('open');
-  });
-});
-
-// Navbar scroll
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-});
-
-// Fade-in animation
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// WhatsApp scroll animation
-const whatsappBtn = document.querySelector('.whatsapp-float');
-let lastScrollY = window.scrollY;
-window.addEventListener('scroll', () => {
-  const currentScrollY = window.scrollY;
-  if (currentScrollY > 300 && currentScrollY > lastScrollY) {
-    whatsappBtn.classList.add('hidden-float');
-  } else {
-    whatsappBtn.classList.remove('hidden-float');
-  }
-  lastScrollY = currentScrollY;
-});
-
-// Contact form submit to email
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const name = this.querySelector('input[type="text"]')?.value || '';
-  const email = this.querySelector('input[type="email"]')?.value || '';
-  const phone = this.querySelector('input[type="tel"]')?.value || '';
-  const model = this.querySelector('select')?.value || '';
-  const message = this.querySelector('textarea')?.value || '';
-
-  const subject = encodeURIComponent('Consulta desde la web - Automotores Kibun');
-  const body = encodeURIComponent(
-    'Nombre: ' + name + '\n' +
-    'Email: ' + email + '\n' +
-    'Teléfono: ' + phone + '\n' +
-    'Modelo de interés: ' + model + '\n' +
-    'Mensaje: ' + message
-  );
-
-  window.location.href = 'mailto:administracion.guillen@kibunhyundai.com?subject=' + subject + '&body=' + body;
-  alert('Gracias por tu interés. Tu consulta será enviada a nuestro equipo.');
-  this.reset();
-});
-</script>
+<script src="js/data.js"></script>
+<script src="js/kibu.js"></script>
+<script src="js/form-wa.js"></script>
 </body>
 </html>

@@ -295,6 +295,9 @@
   }
 
   /* ============================================================== INIT === */
+  // Las paginas internas reutilizan el navbar y el observador de entrada
+  window.KIBU_UI = { reveal: observeReveal };
+
   function init() {
     initNav();
     initHero();
