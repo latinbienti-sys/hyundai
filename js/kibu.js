@@ -535,7 +535,6 @@
 
     // ================= FICHA DE RUTA POR VEHICULO =================
     let currentRutaModel = 'tucson';
-    let adasAlertTimer = null;
 
     function renderRutaPicker() {
       const box = document.getElementById('rutaModelPicker');
@@ -565,69 +564,151 @@
       const img = document.getElementById('simCarImg');
       if (img) { img.src = v.image; img.alt = v.name; }
       applyDriveSplit();
-
-      // ficha ADAS
-      const list = document.getElementById('adasList');
-      if (list) list.innerHTML = v.adas.map(a => `
-        <div class="flex items-center gap-3 rounded-xl bg-slate-950/70 border border-slate-800 px-4 py-3.5">
-          <span class="w-8 h-8 shrink-0 rounded-lg bg-[#002c5f] border border-[#c89d7c]/40 flex items-center justify-center text-[#c89d7c]">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </span>
-          <span class="text-xs font-semibold text-slate-200">${a}</span>
-        </div>`).join('');
-
-      txt('adasRadar', v.radar);
-      txt('adasAviso', v.aviso);
-      txt('adasDisponible', v.smartsense
-        ? 'Disponible de serie en ' + v.name.replace('Hyundai ', '') + ' y en el resto de la gama con paquete Hyundai SmartSense™'
-        : 'Sensorización básica en ' + v.name.replace('Hyundai ', '') + '. SmartSense™ disponible en Tucson, Palisade y Creta GLS');
-
-      // el radar se enciende o se apaga segun el equipo
-      const icon = document.getElementById('radarIcon');
-      const status = document.getElementById('radarStatus');
-      const svg = icon ? icon.querySelector('svg') : null;
-      const btn = document.getElementById('obstacleBtn');
-      if (icon) icon.style.borderColor = v.smartsense ? '#c89d7c' : '#334155';
-      if (svg) svg.style.color = v.smartsense ? '#c89d7c' : '#475569';
-      if (status) {
-        status.innerText = v.smartsense ? 'LISTO' : 'SIN EQUIPO';
-        status.className = 'text-sm font-extrabold font-mono tracking-wider ' +
-          (v.smartsense ? 'text-[#c89d7c]' : 'text-slate-500');
-      }
-      if (btn) {
-        btn.disabled = !v.smartsense;
-        btn.className = 'mt-5 w-full py-3.5 rounded-xl text-xs uppercase tracking-wider font-bold transition-all ' +
-          (v.smartsense
-            ? 'bg-[#002c5f] hover:bg-[#345fa8] border border-[#c89d7c]/50 text-white cursor-pointer'
-            : 'bg-slate-900 border border-slate-800 text-slate-600 cursor-not-allowed');
-      }
-      hide('adasAlert', true);
       markRutaModel(id);
     }
 
-    function simulateObstacle() {
-      const v = getVehicle(currentRutaModel);
-      if (!v.smartsense) return;
-      const icon = document.getElementById('radarIcon');
-      const status = document.getElementById('radarStatus');
-      const alert_ = document.getElementById('adasAlert');
-      const btn = document.getElementById('obstacleBtn');
-      if (icon) { icon.style.borderColor = '#f59e0b'; icon.style.transform = 'scale(1.12)'; }
-      if (status) { status.innerText = 'DETECTANDO'; status.className = 'text-sm font-extrabold font-mono tracking-wider text-amber-400'; }
-      if (alert_) alert_.classList.remove('hidden');
-      txt('adasAlertTitle', '⚠ ' + v.adas[0].split('·')[0].trim() + ' ACTIVADO');
-      txt('adasAlertText', v.adas[0].split('·').slice(1).join('').trim()
-        + ' · ' + v.aviso
-        + ' Se aplicó una frenada automática y aviso al conductor.');
-      if (btn) btn.innerText = 'Obstáculo detectado';
+    // ================= PAGINA TECNOLOGIA ADAS / SMARTSENSE =================
+    // Cada sistema tiene: ficha, sensor, zona sobre la camioneta y what it does.
+    const ADAS_SISTEMAS = {
+      FCA: {
+        zona: 'FCA',
+        nombre: 'Frenado Autónomo de Emergencia',
+        sensor: 'Radar milimétrico frontal + cámara de alta definición',
+        que: 'Vigila la calle por delante. Si detecta un vehículo más lento o un obstáculo y tú no reaccionas, avisa primero y frena de forma automática para evitar el impacto.',
+        evita: 'Choque frontal por exceso de velocidad o distracción'
+      },
+      LKA: {
+        zona: 'LKA',
+        nombre: 'Asistente de Mantenimiento de Carril',
+        sensor: 'Cámara frontal sobre el parabrisas',
+        que: 'Lee las líneas del carril y mantiene el vehículo centrado con correcciones suaves de dirección. Antes de corregir te avisa con un sonido y vibración en el volante.',
+        evita: 'Salidas involuntarias del carril por curvas o distracción'
+      },
+      BCA: {
+        zona: 'BCA',
+        nombre: 'Monitoreo de Punto Ciego',
+        sensor: 'Dos radares en los quarters traseros',
+        que: 'Detecta vehículos que se acercan por tu punto ciego. Enciende un aviso en el espejo y, si intentas cambiar de carril, frena solo el lado donde viene el auto.',
+        evita: 'Colisiones al cambiar de carril por no ver el espejo interior'
+      },
+      LDW: {
+        zona: 'LKA',
+        nombre: 'Aviso de Salida de Carril',
+        sensor: 'Cámara frontal sobre el parabrisas',
+        que: 'Avisa con sonido cuando las líneas del carril se desvían del trajectory previsto. Es un sistema de aviso: corrige la dirección, no el coche.',
+        evita: 'Salidas del carril en ruta o highway'
+      },
+      FCW: {
+        zona: 'FCA',
+        nombre: 'Aviso de Colisión Frontal',
+        sensor: 'Cámara frontal',
+        que: 'Avisa con sonido y un mensaje en el tablero cuando detecta un riesgo de impacto frontal. No frena de forma automática: la frenada queda a tu mando.',
+        evita: 'Reacciones tardías ante frenadasinasas de emergencia'
+      }
+    };
 
-      clearTimeout(adasAlertTimer);
-      adasAlertTimer = setTimeout(() => {
-        if (icon) { icon.style.borderColor = '#c89d7c'; icon.style.transform = 'scale(1)'; }
-        if (status) { status.innerText = 'LISTO'; status.className = 'text-sm font-extrabold font-mono tracking-wider text-[#c89d7c]'; }
-        hide('adasAlert', true);
-        if (btn) btn.innerText = 'Simular Obstáculo Imprevisto';
-      }, 6000);
+    let currentAdasModel = 'tucson';
+
+    function renderAdasModelPicker() {
+      const box = document.getElementById('adasModelPicker');
+      if (!box) return;
+      box.innerHTML = MODELS.map(m => `
+        <button onclick="switchAdasModel('${m.id}')" data-adas="${m.id}"
+          class="adas-model-btn px-3 py-2 rounded-lg text-xs font-bold border transition-colors">
+          ${m.name.replace('Hyundai ', '')}
+        </button>`).join('');
+    }
+
+    function markAdasModel(id) {
+      document.querySelectorAll('.adas-model-btn').forEach(b => {
+        const on_ = b.dataset.adas === id;
+        b.className = 'adas-model-btn px-3 py-2 rounded-lg text-xs font-bold border transition-colors ' +
+          (on_ ? 'bg-[#002c5f] text-white border-[#c89d7c]/60'
+               : 'bg-slate-900 text-slate-400 hover:text-white border-slate-800');
+      });
+    }
+
+    // normaliza 'FCA · Frenado...' -> 'FCA'
+    function adasCode(s) {
+      return String(s).split('·')[0].trim().toUpperCase();
+    }
+
+    function switchAdasModel(id) {
+      const v = getVehicle(id);
+      if (!v.name) return;
+      currentAdasModel = id;
+      txt('adasVehicleName', v.name);
+      txt('adasSpecBox', v.transmision + ' · ' + v.eje + ' · ' + v.colors.length + ' colores de fábrica');
+
+      const img = document.getElementById('adasCarImg');
+      if (img) { img.src = v.image; img.alt = v.name + ' con sensores SmartSense'; }
+
+      const status = document.getElementById('adasOverallStatus');
+      if (status) {
+        const n = v.adas.length;
+        status.innerText = v.smartsense
+          ? 'ACTIVO · ' + n + ' sistema' + (n > 1 ? 's' : '')
+          : 'SENSORIZACIÓN BÁSICA';
+        status.className = 'text-sm font-extrabold font-mono tracking-wider ' +
+          (v.smartsense ? 'text-[#c89d7c]' : 'text-slate-500');
+      }
+
+      // tarjetas de cada sistema
+      const list = document.getElementById('adasCards');
+      if (list) {
+        list.innerHTML = v.adas.map(a => {
+          const code = adasCode(a);
+          const s = ADAS_SISTEMAS[code];
+          return `
+          <button onclick="highlightAdas('${code}')" data-adas-code="${code}"
+            class="adas-card w-full text-left rounded-2xl bg-slate-950/70 border border-slate-800 p-5 transition-all hover:border-[#c89d7c]/60 cursor-pointer">
+            <div class="flex items-start gap-3">
+              <span class="shrink-0 w-10 h-10 rounded-xl bg-[#002c5f] border border-[#c89d7c]/40 flex items-center justify-center text-[#c89d7c] font-heading font-extrabold text-xs">
+                ${code}
+              </span>
+              <span class="min-w-0">
+                <span class="block text-sm font-bold text-white font-heading">${s ? s.nombre : a.split('·').slice(1).join('').trim()}</span>
+                <span class="block text-[10px] uppercase tracking-wider text-slate-500 mt-1">${s ? s.sensor : '—'}</span>
+              </span>
+            </div>
+          </button>`;
+        }).join('');
+      }
+
+      highlightAdas(null);
+      markAdasModel(id);
+    }
+
+    // Al pasar el cursor por una tarjeta se enciende la zona del sensor
+    // que zona de la camioneta ilumina cada sistema
+    const ADAS_ZONA = { FCA: 'FCA', FCW: 'FCA', LKA: 'LKA', BCA: 'BCA' };
+
+    function highlightAdas(code) {
+      const zona = ADAS_ZONA[code] || code;
+      document.querySelectorAll('.adas-card').forEach(c => {
+        c.classList.toggle('adas-activa', c.dataset.adasCode === code);
+      });
+      document.querySelectorAll('.sensor-zona').forEach(z => {
+        z.classList.toggle('sensor-on', z.dataset.zona === zona);
+      });
+
+      const panel = document.getElementById('adasReadout');
+      const v = getVehicle(currentAdasModel);
+      if (!panel) return;
+
+      if (!code) {
+        panel.innerHTML = '<p class="text-xs text-slate-500 leading-relaxed">'
+          + 'Pasa el cursor o toca una tarjeta para ver dónde está el sensor y qué previene.</p>';
+        return;
+      }
+      const s = ADAS_SISTEMAS[code];
+      if (!s) return;
+      panel.innerHTML = `
+        <span class="text-[10px] font-bold uppercase tracking-widest text-[#c89d7c] block mb-1.5">${code} · ${s.nombre}</span>
+        <p class="text-xs text-slate-300 leading-relaxed">${s.que}</p>
+        <p class="text-[11px] text-slate-500 mt-3 leading-relaxed"><span class="text-slate-400 font-bold">Sensor:</span> ${s.sensor}</p>
+        <p class="text-[11px] text-slate-500 mt-1.5 leading-relaxed"><span class="text-slate-400 font-bold">Previene:</span> ${s.evita}</p>
+        <p class="text-[10px] text-slate-600 mt-3">${v.name}</p>`;
     }
 
     // Init: cada landing solo ejecuta la parte que le toca
@@ -647,5 +728,9 @@
       renderRutaPicker();
       switchRutaModel('tucson');
       flashMode();
+    }
+    if (document.getElementById('adasModelPicker')) {
+      renderAdasModelPicker();
+      switchAdasModel('tucson');
     }
   

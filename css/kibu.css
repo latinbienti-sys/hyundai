@@ -63,6 +63,53 @@
     #adasAlert { animation: adasIn .25s ease; }
     @keyframes adasIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
+    /* ================= PAGINA TECNOLOGIA ADAS ================= */
+    /* las zonas del sensor se encogen en reposo y se iluminan al hacer hover */
+    [data-zona] {
+      position: absolute;
+      z-index: 20;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .3s ease, transform .3s ease, box-shadow .3s ease;
+      transform: scale(.85);
+      border-radius: 50%;
+    }
+    [data-zona].sensor-on {
+      opacity: 1;
+      transform: scale(1);
+    }
+    [data-zona="FCA"] {
+      background: radial-gradient(ellipse at 80% 50%, rgba(245,158,11,.45), rgba(245,158,11,0) 70%);
+      border: 1px solid rgba(245,158,11,.5);
+    }
+    [data-zona="LKA"] {
+      background: radial-gradient(circle, rgba(196,181,253,.5), rgba(196,181,253,0) 70%);
+      border: 1px solid rgba(196,181,253,.55);
+    }
+    [data-zona="BCA"] {
+      background: radial-gradient(ellipse at 20% 50%, rgba(239,68,68,.45), rgba(239,68,68,0) 70%);
+      border: 1px solid rgba(239,68,68,.5);
+    }
+    [data-zona].sensor-on { animation: sensorPulse 1.6s ease-in-out infinite; }
+    @keyframes sensorPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(200,157,124,.35); }
+      50%      { box-shadow: 0 0 22px 6px rgba(200,157,124,.18); }
+    }
+    /* abanico del radar: lineas que se expanden hacia afuera */
+    .sensor-fan {
+      background: repeating-conic-gradient(from 180deg at 100% 50%,
+        rgba(245,158,11,.22) 0deg 4deg, transparent 4deg 16deg);
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 60%);
+      mask-image: linear-gradient(to right, transparent, #000 60%);
+    }
+    /* tarjeta de sistema: se resalta junto con su sensor */
+    .adas-card { border-left: 3px solid transparent; }
+    .adas-card:hover, .adas-card.adas-activa {
+      border-left-color: #c89d7c;
+      background: rgba(0,44,95,.35);
+    }
+    .adas-model-btn { white-space: nowrap; }
+
     /* aviso de cambio de modo en el simulador de la Ruta Andina */
     #modeFlash { opacity: 1; }
     #modeFlash.mode-flash-off { opacity: 0; }
