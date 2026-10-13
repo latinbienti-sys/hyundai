@@ -5,7 +5,10 @@
    ============================================================ */
 
     :root {
-      --hyundai-blue: #002c5f;
+      /* azul corporativo oficial Hyundai: #002C5F = rgb(0, 44, 95) = hsl(212, 100%, 19%) */
+      --hyundai-blue: #002C5F;
+      --hyundai-blue-rgb: 0, 44, 95;
+      --hyundai-blue-hsl: 212, 100%, 19%;
       --hyundai-navy: #0e2b5c;
       --hyundai-cobalt: #345fa8;
       --hyundai-terracota: #c89d7c;
