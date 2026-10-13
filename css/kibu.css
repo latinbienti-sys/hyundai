@@ -168,43 +168,58 @@
     .from-slate-950\/80 { --tw-gradient-from: rgba(255,255,255,.85) !important; }
     .from-slate-950\/90 { --tw-gradient-from: rgba(255,255,255,.9) !important; }
     .via-white\/5 { --tw-gradient-stops: var(--tw-gradient-from), rgba(255,255,255,.55), var(--tw-gradient-to) !important; }
-    .via-\[\#c89d7c\]\/40 { --tw-gradient-stops: var(--tw-gradient-from), rgba(0,102,255,.25), var(--tw-gradient-to) !important; }
+    .via-\[\#c89d7c\]\/40 { --tw-gradient-stops: var(--tw-gradient-from), rgba(0,114,222,.25), var(--tw-gradient-to) !important; }
 
     /* ---------- botones y acciones ---------- */
-    .bg-\[\#0b111a\] {
+    .bg-\[\#0b111a\], .bg-\[\#002c5f\] {
       background-color: #0057b8 !important;
-      box-shadow: 0 4px 14px rgba(0,45,98,.16) !important;
+      background-image: linear-gradient(135deg, #0072de 0%, #002c5f 100%) !important;
+      box-shadow: 0 6px 16px rgba(0,45,98,.18) !important;
     }
-    .hover\:bg-\[\#345fa8\]:hover { background-color: #004a9c !important; }
-    .hover\:text-white:hover { color: #0b192c !important; }
+    .hover\:bg-\[\#345fa8\]:hover {
+      background-color: #004a9c !important;
+      background-image: linear-gradient(135deg, #3395ff 0%, #004a9c 100%) !important;
+    }
+    .hover\:text-white:hover { color: #002c5f !important; }
     .bg-\[\#0b111a\]\/70, .bg-\[\#0b111a\]\/30, .bg-\[\#0b111a\]\/25 {
-      background-color: rgba(0,102,255,.12) !important;
+      background-color: rgba(0,114,222,.12) !important;
     }
 
     /* ---------- texto ---------- */
-    .text-white { color: #0b192c !important; }
-    .text-slate-950 { color: #0b192c !important; }
+    .text-white, .text-slate-950 { color: #002c5f !important; }
     .text-slate-200 { color: #334155 !important; }
-    .text-slate-300 { color: #475569 !important; }
-    .text-slate-400 { color: #475569 !important; }
+    .text-slate-300, .text-slate-400 { color: #475569 !important; }
     .text-slate-500, .text-slate-600 { color: #64748b !important; }
-    .text-\[\#c89d7c\] { color: #0066ff !important; }
+    /* palabras clave dentro de titulos en azul electrico; el resto conserva el acento terracota */
+    h1 .text-\[\#c89d7c\], h2 .text-\[\#c89d7c\], h3 .text-\[\#c89d7c\] { color: #0072de !important; }
     .text-\[\#e2cbb5\], .text-\[\#0b111a\] { color: #0b192c !important; }
     .text-amber-200 { color: #b45309 !important; }
 
-    /* texto blanco que debe seguir blanco sobre botones/acciones azules */
-    .bg-\[\#0b111a\].text-white { color: #ffffff !important; }
-    .bg-\[\#0b111a\] .text-white { color: #ffffff !important; }
+    /* texto blanco que queda sobre botones con degradado */
+    .bg-\[\#0b111a\].text-white, .bg-\[\#002c5f\].text-white { color: #ffffff !important; }
+    .bg-\[\#0b111a\] svg.text-white, .bg-\[\#002c5f\] svg.text-white { color: #ffffff !important; }
 
-    /* iconos de beneficios: circuito limpio azul suave con icono azul */
+    /* iconos de beneficios: circulo limpio azul suave con icono azul */
     .bg-\[\#0b111a\]:has(> svg:only-child) {
       background-color: #eff6ff !important;
+      background-image: none !important;
       box-shadow: none !important;
     }
-    .bg-\[\#0b111a\]:has(> svg:only-child) svg { color: #0066ff !important; }
+    .bg-\[\#0b111a\]:has(> svg:only-child) svg { color: #0072de !important; }
     svg.text-\[\#c89d7c\] { color: #ffffff !important; }
-    /* punto de estado de los badges: azul brillante */
-    .bg-\[\#c89d7c\] { background-color: #0066ff !important; }
+    /* punto de estado de los badges: azul electrico */
+    .bg-\[\#c89d7c\] { background-color: #0072de !important; }
+
+    /* ---------- tarjetas del showroom de modelos (generadas por JS) ---------- */
+    .rounded-3xl.bg-\[\#0b111a\] {
+      background-color: #ffffff !important;
+      background-image: none !important;
+      box-shadow: 0 8px 20px rgba(15,23,42,.06), 0 1px 4px rgba(15,23,42,.05) !important;
+    }
+    .rounded-3xl.bg-\[\#0b111a\]:hover {
+      box-shadow: 0 18px 34px rgba(15,23,42,.12) !important;
+    }
+    .hover\:border-\[\#c89d7c\]\/60:hover { border-color: #0072de !important; }
 
     /* ---------- bordes ---------- */
     .border-slate-800, .border-slate-800\/80, .border-slate-700, .border-slate-700\/80 {
@@ -218,6 +233,10 @@
     .ring-\[\#c89d7c\]\/30 { --tw-ring-color: #bfdbfe !important; }
     .shadow-black\/40 { --tw-shadow-color: rgba(15,23,42,.12) !important; }
 
+    /* ---------- paneles generados por JS ---------- */
+    .bg-slate-950\/70 { background-color: rgba(255,255,255,.88) !important; }
+    .bg-\[\#0e1522\]\/50 { background-color: rgba(239,246,255,.6) !important; }
+
     /* ---------- formularios ---------- */
     select, input, textarea {
       background-color: #ffffff !important;
@@ -227,19 +246,27 @@
     select option { background: #ffffff; color: #0b192c; }
 
     /* ---------- navegacion activa ---------- */
-    .nav-activo { color: #0066ff !important; }
+    .nav-activo { color: #0072de !important; }
 
     /* ---------- tarjetas ADAS en tema claro ---------- */
     .adas-card:hover, .adas-card.adas-activa {
-      border-left-color: #0066ff !important;
-      background: rgba(0,102,255,.08) !important;
+      border-left-color: #0072de !important;
+      background: rgba(0,114,222,.08) !important;
     }
 
-    /* pulso del sensor con luz azul corporativa */
+    /* pulso del sensor con luz electrica corporativa */
     @keyframes sensorPulseLight {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(0,102,255,.35); }
-      50%      { box-shadow: 0 0 22px 6px rgba(0,102,255,.18); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,114,222,.35); }
+      50%      { box-shadow: 0 0 22px 6px rgba(0,114,222,.18); }
     }
     [data-zona].sensor-on {
       animation: sensorPulseLight 1.6s ease-in-out infinite !important;
     }
+
+    /* boton flotante de WhatsApp: degradado corporativo permanente */
+    #fabWsp.bg-\[\#0b111a\], #fabWsp.bg-\[\#002c5f\] {
+      background-color: #0057b8 !important;
+      background-image: linear-gradient(135deg, #0072de 0%, #002c5f 100%) !important;
+      box-shadow: 0 10px 24px rgba(0,45,98,.30) !important;
+    }
+    #fabWsp svg { color: #ffffff !important; }
