@@ -117,3 +117,129 @@
     #modeFlash { opacity: 1; }
     #modeFlash.mode-flash-off { opacity: 0; }
     #modeFlash > span { display: inline-block; }
+
+    /* =============================================================
+       TEMA CLARO CORPORATIVO (Hyundai Global)
+       Solo estilos de color/fondo. No altera estructura ni clases.
+       ============================================================= */
+
+    ::selection { background: #bfdbfe !important; color: #0b192c !important; }
+
+    body {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+      color: #0b192c !important;
+    }
+
+    /* ---------- fondos de secciones, tarjetas y paneles ---------- */
+    .bg-\[\#002C5F\] { background-color: #ffffff !important; }
+    .bg-\[\#002C5F\]\/95, .bg-\[\#002C5F\]\/97 { background-color: rgba(255,255,255,.96) !important; }
+    .bg-\[\#0e1522\] { background-color: #eff6ff !important; }
+    .bg-\[\#121a2a\] { background-color: #f1f5f9 !important; }
+    .bg-\[\#0a0f18\], .bg-\[\#0c121e\] { background-color: #f8fafc !important; }
+
+    .bg-slate-950, .bg-slate-900 { background-color: #ffffff !important; }
+    .bg-slate-950\/80, .bg-slate-950\/85, .bg-slate-900\/90 { background-color: rgba(255,255,255,.9) !important; }
+    .bg-slate-800 { background-color: #f1f5f9 !important; }
+    .hover\:bg-slate-800:hover { background-color: #e2e8f0 !important; }
+    .bg-white\/10 { background-color: #ffffff !important; }
+    .bg-slate-100 { background-color: #f1f5f9 !important; }
+
+    /* ---------- degradados: lavado blanco -> la imagen de fondo queda como marca de agua ---------- */
+    .from-\[\#002C5F\] {
+      --tw-gradient-from: #ffffff !important;
+      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+    }
+    .from-\[\#002C5F\]\/95 { --tw-gradient-from: rgba(248,250,252,.92) !important; }
+    .from-\[\#002C5F\]\/80 { --tw-gradient-from: rgba(248,250,252,.82) !important; }
+    .via-\[\#002C5F\] {
+      --tw-gradient-stops: var(--tw-gradient-from), #ffffff, var(--tw-gradient-to) !important;
+    }
+    .via-\[\#002C5F\]\/70 { --tw-gradient-stops: var(--tw-gradient-from), rgba(248,250,252,.68), var(--tw-gradient-to) !important; }
+    .via-\[\#002C5F\]\/60 { --tw-gradient-stops: var(--tw-gradient-from), rgba(248,250,252,.58), var(--tw-gradient-to) !important; }
+    .via-\[\#002C5F\]\/30 { --tw-gradient-stops: var(--tw-gradient-from), rgba(248,250,252,.30), var(--tw-gradient-to) !important; }
+    .to-\[\#002C5F\] { --tw-gradient-to: #ffffff !important; }
+    .to-\[\#002C5F\]\/80 { --tw-gradient-to: rgba(248,250,252,.85) !important; }
+    .to-\[\#002C5F\]\/40 { --tw-gradient-to: rgba(248,250,252,.45) !important; }
+    .from-\[\#111927\], .from-\[\#141b26\], .to-\[\#0a0f16\] {
+      --tw-gradient-from: #f8fafc !important;
+      --tw-gradient-to: #f8fafc !important;
+    }
+    .to-\[\#0e2b5c\]\/35 { --tw-gradient-to: rgba(219,234,254,.6) !important; }
+    .from-slate-950\/80 { --tw-gradient-from: rgba(255,255,255,.85) !important; }
+    .from-slate-950\/90 { --tw-gradient-from: rgba(255,255,255,.9) !important; }
+    .via-white\/5 { --tw-gradient-stops: var(--tw-gradient-from), rgba(255,255,255,.55), var(--tw-gradient-to) !important; }
+    .via-\[\#c89d7c\]\/40 { --tw-gradient-stops: var(--tw-gradient-from), rgba(0,102,255,.25), var(--tw-gradient-to) !important; }
+
+    /* ---------- botones y acciones ---------- */
+    .bg-\[\#0b111a\] {
+      background-color: #0057b8 !important;
+      box-shadow: 0 4px 14px rgba(0,45,98,.16) !important;
+    }
+    .hover\:bg-\[\#345fa8\]:hover { background-color: #004a9c !important; }
+    .hover\:text-white:hover { color: #0b192c !important; }
+    .bg-\[\#0b111a\]\/70, .bg-\[\#0b111a\]\/30, .bg-\[\#0b111a\]\/25 {
+      background-color: rgba(0,102,255,.12) !important;
+    }
+
+    /* ---------- texto ---------- */
+    .text-white { color: #0b192c !important; }
+    .text-slate-950 { color: #0b192c !important; }
+    .text-slate-200 { color: #334155 !important; }
+    .text-slate-300 { color: #475569 !important; }
+    .text-slate-400 { color: #475569 !important; }
+    .text-slate-500, .text-slate-600 { color: #64748b !important; }
+    .text-\[\#c89d7c\] { color: #0066ff !important; }
+    .text-\[\#e2cbb5\], .text-\[\#0b111a\] { color: #0b192c !important; }
+    .text-amber-200 { color: #b45309 !important; }
+
+    /* texto blanco que debe seguir blanco sobre botones/acciones azules */
+    .bg-\[\#0b111a\].text-white { color: #ffffff !important; }
+    .bg-\[\#0b111a\] .text-white { color: #ffffff !important; }
+
+    /* iconos de beneficios: circuito limpio azul suave con icono azul */
+    .bg-\[\#0b111a\]:has(> svg:only-child) {
+      background-color: #eff6ff !important;
+      box-shadow: none !important;
+    }
+    .bg-\[\#0b111a\]:has(> svg:only-child) svg { color: #0066ff !important; }
+    svg.text-\[\#c89d7c\] { color: #ffffff !important; }
+    /* punto de estado de los badges: azul brillante */
+    .bg-\[\#c89d7c\] { background-color: #0066ff !important; }
+
+    /* ---------- bordes ---------- */
+    .border-slate-800, .border-slate-800\/80, .border-slate-700, .border-slate-700\/80 {
+      border-color: #e2e8f0 !important;
+    }
+    .border-\[\#c89d7c\], .border-\[\#c89d7c\]\/30, .border-\[\#c89d7c\]\/40,
+    .border-\[\#c89d7c\]\/50, .border-\[\#c89d7c\]\/60 {
+      border-color: #e2e8f0 !important;
+    }
+    .border-white\/20, .border-white\/40, .border-white\/80 { border-color: #e2e8f0 !important; }
+    .ring-\[\#c89d7c\]\/30 { --tw-ring-color: #bfdbfe !important; }
+    .shadow-black\/40 { --tw-shadow-color: rgba(15,23,42,.12) !important; }
+
+    /* ---------- formularios ---------- */
+    select, input, textarea {
+      background-color: #ffffff !important;
+      color: #0b192c !important;
+      border-color: #e2e8f0 !important;
+    }
+    select option { background: #ffffff; color: #0b192c; }
+
+    /* ---------- navegacion activa ---------- */
+    .nav-activo { color: #0066ff !important; }
+
+    /* ---------- tarjetas ADAS en tema claro ---------- */
+    .adas-card:hover, .adas-card.adas-activa {
+      border-left-color: #0066ff !important;
+      background: rgba(0,102,255,.08) !important;
+    }
+
+    /* pulso del sensor con luz azul corporativa */
+    @keyframes sensorPulseLight {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,102,255,.35); }
+      50%      { box-shadow: 0 0 22px 6px rgba(0,102,255,.18); }
+    }
+    [data-zona].sensor-on {
+      animation: sensorPulseLight 1.6s ease-in-out infinite !important;
+    }
