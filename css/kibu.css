@@ -270,3 +270,93 @@
       box-shadow: 0 10px 24px rgba(0,45,98,.30) !important;
     }
     #fabWsp svg { color: #ffffff !important; }
+
+    /* ============================================================
+       INTERVENCION CORPORATIVA 2: footer azul + contraste premium
+       Solo CSS de color/fondo. No altera estructura ni rutas.
+       ============================================================ */
+
+    /* ---------- FOOTER AZUL CORPORATIVO (todas las paginas) ---------- */
+    footer.bg-\[\#002C5F\] {
+      background-color: #002c5f !important;
+      background-image: linear-gradient(180deg, #002c5f 0%, #0b1e36 100%) !important;
+      border-top: 1px solid #0072de !important;
+      color: #cbd5e1 !important;
+    }
+    footer.bg-\[\#002C5F\] .flex.items-center span {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+    }
+    footer.bg-\[\#002C5F\] .sm\:text-right { color: #cbd5e1 !important; }
+    footer.bg-\[\#002C5F\] a { color: #c89d7c !important; }
+    footer.bg-\[\#002C5F\] a.hover\:text-white:hover,
+    footer.bg-\[\#002C5F\] a.hover\:text-\[\#e2cbb5\]:hover { color: #ffffff !important; }
+
+    /* ---------- CARD 08 CONTACTANOS y CTA de WhatsApp: texto blanco sobre azul ---------- */
+    a.rounded-2xl.bg-\[\#0b111a\] .text-white,
+    a.rounded-2xl.bg-\[\#0b111a\] p,
+    a.rounded-2xl.bg-\[\#0b111a\] span,
+    a.rounded-2xl.bg-\[\#0b111a\] .text-slate-300 { color: #ffffff !important; }
+    a.rounded-2xl.bg-\[\#0b111a\] .bg-white\/10 { background-color: rgba(255,255,255,.14) !important; }
+
+    /* ---------- BANNER "VISITANOS EN MERIDA": degradado elegante + texto blanco ---------- */
+    div.rounded-2xl.bg-\[\#0b111a\] {
+      background-color: #002c5f !important;
+      background-image: linear-gradient(135deg, #0b1e36 0%, #002c5f 55%, #08345e 100%) !important;
+      border-color: rgba(0,114,222,.35) !important;
+      border-radius: 20px !important;
+      box-shadow: 0 18px 40px rgba(0,44,95,.16) !important;
+    }
+    div.rounded-2xl.bg-\[\#0b111a\] h2,
+    div.rounded-2xl.bg-\[\#0b111a\] .text-white { color: #ffffff !important; }
+    div.rounded-2xl.bg-\[\#0b111a\] p { color: #e2e8f0 !important; }
+    div.rounded-2xl.bg-\[\#0b111a\] .border-white\/40 {
+      border-color: rgba(255,255,255,.45) !important;
+      color: #ffffff !important;
+    }
+
+    /* ---------- BANNER GARANTIA DEL TALLER (3 anos o 125.000 km) ---------- */
+    div.rounded-2xl.bg-\[\#0b111a\]\/25 {
+      background-color: #002c5f !important;
+      background-image: linear-gradient(120deg, #002c5f 0%, #0b1e36 100%) !important;
+      border-color: rgba(0,114,222,.35) !important;
+    }
+    div.rounded-2xl.bg-\[\#0b111a\]\/25 .text-\[\#c89d7c\] { color: #ffffff !important; }
+    div.rounded-2xl.bg-\[\#0b111a\]\/25 .text-slate-300 { color: #e2e8f0 !important; }
+    div.rounded-2xl.bg-\[\#0b111a\]\/25 a.bg-slate-900 {
+      background-color: #ffffff !important;
+      background-image: none !important;
+      color: #002c5f !important;
+    }
+    div.rounded-2xl.bg-\[\#0b111a\]\/25 a.bg-slate-900:hover {
+      background-color: #f1f5f9 !important;
+      color: #002c5f !important;
+    }
+
+    /* ---------- SHOWROOM: fondo neutro sin azul pastel ---------- */
+    .bg-\[\#0e1522\] {
+      background-color: #f1f5f9 !important;
+      background-image: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%) !important;
+    }
+    .bg-\[\#0e1522\]\/50 { background-color: rgba(248,250,252,.75) !important; }
+    .bg-\[\#0b111a\]\/70 { background-color: rgba(255,255,255,.78) !important; }
+    /* acentos electricos sobre tarjetas claras (en vez de terracota apagado) */
+    .bg-\[\#121a2a\] .text-\[\#c89d7c\],
+    .bg-\[\#0e1522\] .text-\[\#c89d7c\] { color: #0072de !important; }
+
+    /* ---------- SHOWROOM: tarjetas de modelos finas y flotantes ---------- */
+    .rounded-3xl.bg-\[\#0b111a\] {
+      border: 1px solid #e2e8f0 !important;
+      box-shadow: 0 10px 25px -5px rgba(0,44,95,.08) !important;
+    }
+    .rounded-3xl.bg-\[\#0b111a\]:hover {
+      box-shadow: 0 22px 42px -10px rgba(0,44,95,.16) !important;
+    }
+    .hover\:-translate-y-1:hover { transform: translateY(-6px) !important; }
+    /* sombra de suelo suave bajo la foto del vehiculo */
+    .rounded-3xl.bg-\[\#0b111a\] img {
+      filter: drop-shadow(0 16px 14px rgba(15,23,42,.18)) !important;
+    }
+
+    /* ---------- chips numericos y pills sobre botones azules ---------- */
+    .bg-\[\#0b111a\].text-\[\#c89d7c\] { color: #ffffff !important; }
