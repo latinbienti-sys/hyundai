@@ -97,24 +97,93 @@
 
     // --- Hero Slides ---
     const HERO_SLIDES = [
-      { bg: 'https://latinbienti-sys.github.io/hyundai/img/watermarked_img_5871150173315358561.jpg', car: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png', eyebrow: 'Tucson · Páramo Merideño', title: 'Aventura sin límites, <span class="text-[#c89d7c] italic">diseñada para los Andes.</span>', sub: 'El nuevo Hyundai Tucson combina tecnología SmartSense™, tracción HTRAC™ 4WD y lenguaje Parametric Dynamics listo para subir a más de 3,500 metros.' },
-      { bg: 'https://latinbienti-sys.github.io/hyundai/img/watermarked_img_13367943299367624531.jpg', car: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/699dc30fedebb4b0d6d72a19_Creta%20Blanco_.png', eyebrow: 'Creta · Pico Bolívar', title: 'Con CRETA <span class="text-[#c89d7c] italic">concreta</span> tus sueños.', sub: 'SUV compacta con pantalla de 10.25" y consumo eficiente. Diseñada para conquistar la geografía andina con estilo.' },
-      { bg: 'https://latinbienti-sys.github.io/hyundai/img/watermarked_img_17804480962303296709.jpg', car: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/698561c627e39b93b4031662_Elantra-rojo.png', eyebrow: 'Elantra · Laguna de Mucubají', title: 'Elegancia que <span class="text-[#c89d7c] italic">se siente</span> en cada kilómetro.', sub: 'Silueta aerodinámica Parametric Jewel, clúster digital de 10.25 pulgadas y transmisión IVT. Confort premium para recorrer Venezuela.' },
-      { bg: 'https://latinbienti-sys.github.io/hyundai/img/watermarked_img_10948222792170652927.jpg', car: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695f0af617714685f4d6adc9_Palisade-rojo.png', eyebrow: 'Palisade · Sierra Nevada de Mérida', title: 'Manejá tu próximo <span class="text-[#c89d7c] italic">Hyundai</span> en los Andes.', sub: 'El buque insignia de 3 filas y 7 pasajeros. Motor 3.8L V6 GDI con 291 HP, tracción integral 4WD y seguridad Hyundai SmartSense™.' }
+      { modelId: 'tucson', bg: 'https://latinbienti-sys.github.io/hyundai/img/watermarked_img_5871150173315358561.jpg', car: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/69651ebc37abd4c7b56c5c58_Tucson-premium-Azul%20.png', eyebrow: 'Tucson · Páramo Merideño', title: 'Aventura sin límites, <span class="text-[#c89d7c] italic">diseñada para los Andes.</span>', sub: 'El nuevo Hyundai Tucson combina tecnología SmartSense™, tracción HTRAC™ 4WD y lenguaje Parametric Dynamics listo para subir a más de 3,500 metros.', altitude: '3.500 m.s.n.m.', specs: ['HTRAC™ 4WD', 'SmartSense™ ADAS', '2.0L Smartstream', 'A/T 6 Vel'] },
+      { modelId: 'creta', bg: 'https://latinbienti-sys.github.io/hyundai/img/watermarked_img_13367943299367624531.jpg', car: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/699dc30fedebb4b0d6d72a19_Creta%20Blanco_.png', eyebrow: 'Creta · Pico Bolívar', title: 'Con CRETA <span class="text-[#c89d7c] italic">concreta</span> tus sueños.', sub: 'SUV compacta con pantalla de 10.25" y consumo eficiente. Diseñada para conquistar la geografía andina con estilo.', altitude: '4.978 m.s.n.m.', specs: ['Pantalla 10.25"', '2.0L 156 HP', 'Consumo Eficiente', 'BCA Punto Ciego'] },
+      { modelId: 'elantra', bg: 'https://latinbienti-sys.github.io/hyundai/img/watermarked_img_17804480962303296709.jpg', car: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/698561c627e39b93b4031662_Elantra-rojo.png', eyebrow: 'Elantra · Laguna de Mucubají', title: 'Elegancia que <span class="text-[#c89d7c] italic">se siente</span> en cada kilómetro.', sub: 'Silueta aerodinámica Parametric Jewel, clúster digital de 10.25 pulgadas y transmisión IVT. Confort premium para recorrer Venezuela.', altitude: '3.550 m.s.n.m.', specs: ['Silueta Deportiva', 'Transmisión IVT', '2.0L MPI 156 HP', 'Seguridad Activa'] },
+      { modelId: 'palisade', bg: 'https://latinbienti-sys.github.io/hyundai/img/watermarked_img_10948222792170652927.jpg', car: 'https://cdn.prod.website-files.com/695d3a709b2e0524dd305631/695f0af617714685f4d6adc9_Palisade-rojo.png', eyebrow: 'Palisade · Sierra Nevada de Mérida', title: 'Manejá tu próximo <span class="text-[#c89d7c] italic">Hyundai</span> en los Andes.', sub: 'El buque insignia de 3 filas y 7 pasajeros. Motor 3.8L V6 GDI con 291 HP, tracción integral 4WD y seguridad Hyundai SmartSense™.', altitude: '4.765 m.s.n.m.', specs: ['3.8L V6 291 HP', '7 Pasajeros VIP', 'Tracción 4x4 HTRAC', 'SmartSense™ Completo'] }
     ];
+
+    let heroSlideIndex = 0;
+    let heroColorIndex = 0;
+    let heroFarosOn = true;
+
+    function heroVehicle() {
+      const s = HERO_SLIDES[heroSlideIndex];
+      return (s && MODELS.find(m => m.id === s.modelId)) || MODELS[0];
+    }
+
+    function renderHeroColors() {
+      const cont = document.getElementById('heroColors');
+      if (!cont) return;
+      const colors = heroVehicle().colors || [];
+      cont.innerHTML = colors.map((c, i) => `
+        <button onclick="setHeroColor(${i})" title="${c.l}" aria-label="${c.l}"
+          class="w-5 h-5 rounded-full border transition-all ${i === heroColorIndex ? 'ring-2 ring-[#c89d7c] scale-110 border-white' : 'border-slate-700 opacity-80 hover:opacity-100'}"
+          style="background-color:${c.c}"></button>
+      `).join('');
+    }
+
+    function applyHeroColor() {
+      const colors = heroVehicle().colors || [];
+      const c = colors[heroColorIndex] || colors[0];
+      if (!c) return;
+      const car = document.getElementById('heroCar');
+      if (car) {
+        car.src = c.img;
+        car.alt = 'Hyundai ' + heroVehicle().name.replace('Hyundai ', '');
+      }
+      txt('heroColorName', c.l + ' · Acabado Oficial Hyundai');
+    }
+
+    function setHeroColor(i) {
+      heroColorIndex = i;
+      renderHeroColors();
+      applyHeroColor();
+    }
+
+    function toggleFaros() {
+      heroFarosOn = !heroFarosOn;
+      const btn = document.getElementById('heroFarosBtn');
+      const beam = document.getElementById('heroBeam');
+      const icon = document.getElementById('heroFarosIcon');
+      txt('heroFarosTxt', 'Faros LED: ' + (heroFarosOn ? 'ON' : 'OFF'));
+      if (beam) beam.style.display = heroFarosOn ? '' : 'none';
+      if (btn) {
+        btn.className = 'px-3 py-1 text-[11px] font-bold rounded-lg border flex items-center gap-1.5 transition-colors ' +
+          (heroFarosOn ? 'bg-amber-400/20 text-amber-200 border-amber-400/50 shadow-sm shadow-amber-400/20'
+                       : 'bg-slate-900 text-slate-400 border-slate-800');
+      }
+      if (icon) icon.setAttribute('class', 'w-3.5 h-3.5 ' + (heroFarosOn ? 'text-amber-400' : 'text-slate-500'));
+    }
 
     function setSlide(idx) {
       const s = HERO_SLIDES[idx];
       if (!s || !document.getElementById('heroBg')) return;
+      heroSlideIndex = idx;
+      heroColorIndex = 0;
       document.getElementById('heroBg').style.backgroundImage = `url('${s.bg}')`;
-      document.getElementById('heroCar').src = s.car;
       txt('heroEyebrow', s.eyebrow);
+      txt('heroAltitude', s.altitude || '');
       document.getElementById('heroTitle').innerHTML = s.title;
       txt('heroSub', s.sub);
+      const specs = document.getElementById('heroSpecs');
+      if (specs) {
+        specs.innerHTML = (s.specs || []).map(t => `
+          <span class="px-3 py-1 rounded-md bg-[#0b111a]/90 border border-[#c89d7c]/30 text-xs font-semibold text-slate-200 backdrop-blur-sm">${t}</span>
+        `).join('');
+      }
       document.querySelectorAll('.hero-dot').forEach((d, i) => {
-        d.className = i === idx ? 'hero-dot px-3.5 py-1.5 text-xs rounded-lg bg-[#002c5f] text-white border border-[#c89d7c]/60 font-bold' : 'hero-dot px-3.5 py-1.5 text-xs rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800';
+        d.className = i === idx
+          ? 'hero-dot px-4 py-2 text-xs rounded-xl font-bold font-heading transition-all bg-[#0b111a] text-white border border-[#c89d7c] shadow-lg shadow-black/40 scale-105'
+          : 'hero-dot px-4 py-2 text-xs rounded-xl font-bold font-heading transition-all bg-slate-950/70 text-slate-400 hover:text-white border border-slate-800';
       });
+      renderHeroColors();
+      applyHeroColor();
     }
+
+    // estado inicial del hero (portada)
+    if (document.getElementById('heroBg')) setSlide(0);
+
 
     // Parallax mouse move in hero (solo en la portada)
     const hero = document.getElementById('inicio');
