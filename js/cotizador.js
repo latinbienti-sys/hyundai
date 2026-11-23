@@ -44,7 +44,7 @@
       const initial = document.getElementById('calcDownPaymentLabel').innerText;
       const monthly = document.getElementById('calcMonthlyPayment').innerText;
       const msg = `Hola Automotores Kibun Mérida! 👋 Deseo cotización oficial para el *${name}* (Precio: $${Number(price).toLocaleString()} USD). Propongo una inicial de ${initial} (${percent}%) y el saldo en ${calcTerm} cuotas de aprox ${monthly}/mes. Agradezco su atención.`;
-      window.open(`https://wa.me/584147482282?text=${encodeURIComponent(msg)}`, '_blank');
+      window.open(`https://wa.me/584147482282?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
     }
 
 /*

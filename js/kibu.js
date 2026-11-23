@@ -356,7 +356,7 @@
       const day = document.getElementById('apptDay');
       if (!serv || !model || !day) return;
       const msg = `Hola Automotores Kibun Mérida! 🔧 Deseo agendar cita en su taller oficial:\n- Servicio: ${serv.value}\n- Vehículo: ${model.value}\n- Día preferido: ${day.value}\nPor favor confirmar disponibilidad.`;
-      window.open(`https://wa.me/584147482282?text=${encodeURIComponent(msg)}`, '_blank');
+      window.open(`https://wa.me/584147482282?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
     }
 
     // --- Video Reels Logic ---
